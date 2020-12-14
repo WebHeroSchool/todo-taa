@@ -1,27 +1,6 @@
-import './App.css';
-import { count, length } from './modules/number.js';
+const myElement = (<div>
+  <h1>My element</h1>
+  <p>sample element</p>
+</div>);
 
-// вывод объекта style:
-const parStyle = {
-  backgroundColor: 'red',
-  fontSize: '2em',
-}
-// вывод значения переменной:
-const parText = 'my first react app';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p style ={parStyle}>
-          {parText}
-        </p>
-        <p>
-          Произведение count * length = {count * length}
-        </p>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export { myElement };

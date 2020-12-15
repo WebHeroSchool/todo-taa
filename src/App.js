@@ -1,24 +1,16 @@
+import InputItem from './components/InputItem/InputItem';
+import ItemList from './components/ItemList/ItemList';
+import Footer from './components/Footer/Footer';
+
+const title = (<h1>Очень важные дела:</h1>);
+
 const App = () => {
   return (<div>
-    <Title/>
+    { title }
+    <InputItem/>
     <ItemList/>
+    <Footer/>
   </div>);
-}
-
-const Title = () => {
-  return (<div>
-    <h2>Композиция компонентов</h2>
-    <p>Список элементов:</p>
-  </div>);
-}
-
-const ItemList = () => {
-  return (<ul>
-    <li>Пункт 1</li>
-    <li>Пункт 2</li>
-    <li>Пункт 2</li>
-    <li>Пункт 4</li>
-  </ul>);
 }
 
 export default App;

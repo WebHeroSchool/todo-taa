@@ -1,5 +1,7 @@
-const Item = () => {
-  return (<li>Важное дело!</li>);
+const Item = (props) => {
+  return (<li>
+    {props.thing}
+  </li>);
 }
 
 export default Item;

@@ -9,7 +9,7 @@ const App = () => {
     { title }
     <InputItem/>
     <ItemList/>
-    <Footer/>
+    <Footer count='3'/>
   </div>);
 }
 

@@ -2,10 +2,9 @@ import Item from '../Item/Item';
 
 const ItemList = () => {
   return (<ul>
-    <Item/>
-    <Item/>
-    <Item/>
-    <Item/>
+    <Item thing='Разобраться с пропсами'/>
+    <Item thing='Сделать комит'/>
+    <Item thing='Сдать задание на проверку'/>
   </ul>);
 }
 

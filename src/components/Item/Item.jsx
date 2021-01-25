@@ -1,6 +1,6 @@
-const Item = (props) => {
+const Item = ({ value }) => {
   return (<li>
-    {props.thing}
+    { value }
   </li>);
 }
 

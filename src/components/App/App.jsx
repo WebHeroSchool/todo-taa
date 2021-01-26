@@ -18,7 +18,7 @@ const items = [
 ];
 
 const App = () => {
-  return (<div className='wrapper'>
+  return (<div className={ styles.wrapper }>
     { title }
     <InputItem/>
     <ItemList items={ items }/>

@@ -1,7 +1,7 @@
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
-import './App.css';
+import styles from './App.module.css';
 
 const title = (<h1>Очень важные дела:</h1>);
 

@@ -1,6 +1,7 @@
-import InputItem from './components/InputItem/InputItem';
-import ItemList from './components/ItemList/ItemList';
-import Footer from './components/Footer/Footer';
+import InputItem from '../InputItem/InputItem';
+import ItemList from '../ItemList/ItemList';
+import Footer from '../Footer/Footer';
+import './App.css';
 
 const title = (<h1>Очень важные дела:</h1>);
 
@@ -17,7 +18,7 @@ const items = [
 ];
 
 const App = () => {
-  return (<div>
+  return (<div className='wrapper'>
     { title }
     <InputItem/>
     <ItemList items={ items }/>

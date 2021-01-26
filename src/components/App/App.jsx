@@ -8,12 +8,15 @@ const title = (<h1>Очень важные дела:</h1>);
 const items = [
   {
     value: 'Разобраться с пропсами',
+    isDone: false,
   },
   {
     value: 'Сделать комит',
+    isDone: true,
   },
   {
     value: 'Сдать задание на проверку',
+    isDone: false,
   },
 ];
 

@@ -16,6 +16,10 @@
     font-style: normal;
 }
 
+body {
+    background: #00000010;
+}
+
 .wrapper {
   font-family: montserrat;
   margin: auto;

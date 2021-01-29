@@ -4,7 +4,9 @@ import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 
-const title = (<h1>// TO DO:</h1>);
+const title = '// TO DO:';
+const subTitle = 'Список важных дел';
+
 const items = [
   {
     value: 'Разобраться с пропсами',
@@ -23,7 +25,11 @@ const items = [
 const App = () => {
   return (
     <Card className={ styles.card }>
-      <CardHeader title={ title }/>
+      <CardHeader
+        classes={ styles }
+        title={ title }
+        subheader={ subTitle }
+      />
       <CardContent>
         <InputItem/>
         <ItemList items={ items }/>

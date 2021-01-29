@@ -3,7 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 
-const title = (<h1>Очень важные дела:</h1>);
+const title = (<h1>// TO DO:</h1>);
 
 const items = [
   {

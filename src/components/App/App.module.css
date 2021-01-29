@@ -19,5 +19,10 @@
 .wrapper {
   font-family: montserrat;
   margin: auto;
+  padding: 0 2em;
   width: 30em;
+}
+
+.title {
+  font-weight: 700;
 }

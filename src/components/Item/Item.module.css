@@ -1,7 +1,8 @@
 .item {
-  color: #330;
+  color: #000000de;
 }
 
 .done {
-  color: #0cf;
+  color: #0000004e;
+  text-decoration: line-through;
 }

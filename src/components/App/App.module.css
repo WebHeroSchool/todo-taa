@@ -1,28 +1,36 @@
 @font-face {
     font-family: montserrat;
-    src: url('./fonts/JetBrainsMono-Medium.woff2') format('woff2'),
-    url('./fonts/JetBrainsMono-Medium.woff') format('woff'),
-    url('./fonts/JetBrainsMono-Medium.ttf') format('truetype');
+    src: url('./fonts/montserrat-400-normal.woff2') format('woff2'),
+    url('./fonts/montserrat-400-normal.woff') format('woff'),
+    url('./fonts/montserrat-400-normal.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: montserrat;
-    src: url('./fonts/JetBrainsMono-Bold.woff2') format('woff2'),
-    url('./fonts/JetBrainsMono-Bold.woff') format('woff'),
-    url('./fonts/JetBrainsMono-Bold.ttf') format('truetype');
+    src: url('./fonts/montserrat-700-normal.woff2') format('woff2'),
+    url('./fonts/montserrat-700-normal.woff') format('woff'),
+    url('./fonts/montserrat-700-normal.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
 
-.wrapper {
+body {
   font-family: montserrat;
-  margin: auto;
-  padding: 0 2em;
-  width: 30em;
+}
+
+.indent {
+  padding: .5em 1em;
+  margin: 0;
 }
 
 .title {
   font-weight: 700;
+  margin: 0;
+}
+
+.paper {
+  margin: auto;
+  width: 38em;
 }

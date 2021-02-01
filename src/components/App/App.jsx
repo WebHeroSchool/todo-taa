@@ -2,10 +2,9 @@ import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
-import { Card, CardContent, CardHeader } from '@material-ui/core';
+import { Paper, Divider } from '@material-ui/core';
 
-const title = '// TO DO:';
-const subTitle = 'Список важных дел';
+const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
 const items = [
   {
@@ -24,18 +23,17 @@ const items = [
 
 const App = () => {
   return (
-    <Card className={ styles.card }>
-      <CardHeader
-        classes={ styles }
-        title={ title }
-        subheader={ subTitle }
-      />
-      <CardContent>
-        <InputItem/>
-        <ItemList items={ items }/>
+    <Paper className={ styles.paper } elevation={3} >
+      <div className={ styles.indent }>
+        { title }
+        <InputItem />
+        <ItemList items={ items } />
+      </div>
+      <Divider />
+      <div className={ styles.indent }>
         <Footer count='3'/>
-      </CardContent>
-    </Card>
+      </div>
+    </Paper>
   );
 }
 

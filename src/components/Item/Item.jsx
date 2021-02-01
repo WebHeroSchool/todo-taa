@@ -2,14 +2,14 @@ import classnames from 'classnames';
 import styles from './Item.module.css';
 
 const Item = ({ value, isDone }) => {
-  return (<li className = {
+  return (<p className = {
     classnames({
       [styles.item]: true,
       [styles.done]: isDone,
     })
   }>
     { value }
-  </li>);
+  </p>);
 }
 
 export default Item;

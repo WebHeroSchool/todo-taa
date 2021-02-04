@@ -1,15 +1,25 @@
 import classnames from 'classnames';
 import styles from './Item.module.css';
+import { Button, FormControlLabel, Checkbox } from '@material-ui/core';
+import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 
 const Item = ({ value, isDone }) => {
-  return (<p className = {
+  return (<div className = {styles.item_wrap}>
+    <span className = {
     classnames({
       [styles.item]: true,
       [styles.done]: isDone,
     })
   }>
-    { value }
-  </p>);
+      <FormControlLabel
+        control={<Checkbox name={"checked" + value.toString()} />}
+        label={ value }
+      />
+      <Button variant="contained" color="secondary">
+        <DeleteForeverTwoToneIcon color="default" fontSize="default" />
+      </Button>
+    </span>
+  </div>);
 }
 
 export default Item;

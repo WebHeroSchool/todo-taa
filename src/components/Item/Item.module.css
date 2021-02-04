@@ -1,5 +1,8 @@
 .item {
+  align-items: center;
   color: #000000de;
+  display: flex;
+  justify-content: space-between;
 }
 
 .done {

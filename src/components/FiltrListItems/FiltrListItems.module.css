@@ -1,0 +1,9 @@
+.filtrWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 16em;
+}
+
+.buttonText {
+  font-size: .8em !important;
+}

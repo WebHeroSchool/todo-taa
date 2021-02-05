@@ -3,6 +3,12 @@ import styles from './Item.module.css';
 import { Button, FormControlLabel, Checkbox } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 
+
+const transition = {
+  transition: "opacity .4s ease-out",
+};
+
+
 const Item = ({ value, isDone }) => {
   return (<div className = {styles.itemWrap}>
     <span className = {
@@ -15,8 +21,8 @@ const Item = ({ value, isDone }) => {
         control={<Checkbox name={"checked" + value.toString()} />}
         label={ value }
       />
-      <Button className={styles.deleteBtn} variant="contained" color="secondary">
-        <DeleteForeverTwoToneIcon color="default" fontSize="default" />
+      <Button style={transition} className={styles.deleteBtn} variant="contained" color="secondary">
+        <DeleteForeverTwoToneIcon fontSize="default" />
       </Button>
     </span>
   </div>);

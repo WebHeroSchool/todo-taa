@@ -9,3 +9,12 @@
   color: #0000004e;
   text-decoration: line-through;
 }
+
+.deleteBtn {
+  opacity: 0;
+  transition: opacity .2s ease-out ;
+}
+
+.itemWrap:hover .deleteBtn {
+  opacity: 1;
+}

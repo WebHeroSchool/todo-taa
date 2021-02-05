@@ -1,7 +1,7 @@
-import styles from './FiltrListItems.module.css';
+import styles from './FilterListItems.module.css';
 import { ButtonGroup, Button } from '@material-ui/core';
 
-const FiltrListItems = () => {
+const FilterListItems = () => {
   return (<div className={styles.filtrWrapper}>
     <ButtonGroup size="small" aria-label="small outlined button group">
       <Button className={styles.buttonText}>Все</Button>
@@ -11,4 +11,4 @@ const FiltrListItems = () => {
   </div>);
 }
 
-export default FiltrListItems;
+export default FilterListItems;

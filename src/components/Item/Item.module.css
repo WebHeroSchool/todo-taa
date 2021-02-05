@@ -1,7 +1,19 @@
 .item {
-  color: #330;
+  align-items: center;
+  color: #000000de;
+  display: flex;
+  justify-content: space-between;
 }
 
 .done {
-  color: #0cf;
+  color: #0000004e;
+  text-decoration: line-through;
+}
+
+.deleteBtn {
+  opacity: 0;
+}
+
+.itemWrap:hover .deleteBtn {
+  opacity: 1;
 }

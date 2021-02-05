@@ -1,6 +1,13 @@
 import TextField from '@material-ui/core/TextField';
+import styles from './InputItem.module.css';
 
-const InputItem = () => 
-   <TextField id="outlined-basic" fullWidth="true" margin="dense" label="Новое дело" variant="outlined" />;
+const InputItem = () => <TextField
+  className={ styles.indent }
+  id="outlined-basic"
+  fullWidth={ true }
+  margin="dense"
+  label="Добавить дело"
+  variant="outlined"
+/>;
 
 export default InputItem;

@@ -10,28 +10,36 @@ import {
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
-const items = [
-  {
-    value: 'Разобраться с пропсами',
-    isDone: false,
-  },
-  {
-    value: 'Сделать комит',
-    isDone: true,
-  },
-  {
-    value: 'Сдать задание на проверку',
-    isDone: false,
-  },
-];
-
 class App extends React.Component {
+  state = {
+    items: [
+      {
+        value: 'Разобраться с пропсами',
+        isDone: false,
+      },
+      {
+        value: 'Сделать комит',
+        isDone: true,
+      },
+      {
+        value: 'Сдать задание на проверку',
+        isDone: false,
+      },
+    ],
+  }
+
+  /* eslint-disable no-console */
+  onClickIsDone = isDone => console.log(isDone);
+
   render () {
     return (<Paper className={ styles.paper } elevation={3} >
       <div className={ styles.indent }>
         { title }
         <InputItem />
-        <ItemList items={ items } />
+        <ItemList
+          items={ this.state.items }
+          onClickIsDone={this.onClickIsDone}
+        />
       </div>
       <Divider />
       <div className={ styles.indent }>

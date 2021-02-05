@@ -1,3 +1,4 @@
+import React from 'react';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
@@ -24,17 +25,20 @@ const items = [
   },
 ];
 
-const App = () => (<Paper className={ styles.paper } elevation={3} >
-  <div className={ styles.indent }>
-    { title }
-    <InputItem />
-    <ItemList items={ items } />
-  </div>
-  <Divider />
-  <div className={ styles.indent }>
-    <Footer count='3'/>
-  </div>
-</Paper>);
-
+class App extends React.Component {
+  render () {
+    return (<Paper className={ styles.paper } elevation={3} >
+      <div className={ styles.indent }>
+        { title }
+        <InputItem />
+        <ItemList items={ items } />
+      </div>
+      <Divider />
+      <div className={ styles.indent }>
+        <Footer count='3'/>
+      </div>
+    </Paper>);
+  }
+}
 
 export default App;

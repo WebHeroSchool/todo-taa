@@ -22,7 +22,12 @@ const Item = ({
     })
   }>
     <FormControlLabel
-      control={<Checkbox name={`checked ${value.toString()}`} />}
+      control={
+        <Checkbox
+          checked={isDone}
+          name={`checked ${value.toString()}`}
+        />
+      }
       label={ value }
     />
     <Button

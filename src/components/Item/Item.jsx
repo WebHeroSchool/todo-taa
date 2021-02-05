@@ -14,6 +14,7 @@ const transition = {
 const Item = ({
   value,
   isDone,
+  onClickIsDone,
 }) => (<div className = {styles.itemWrap}>
   <span className = {
     classnames({
@@ -24,6 +25,7 @@ const Item = ({
     <FormControlLabel
       control={
         <Checkbox
+          onChange={() => onClickIsDone(isDone)}
           checked={isDone}
           name={`checked ${value.toString()}`}
         />

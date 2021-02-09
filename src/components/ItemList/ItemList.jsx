@@ -5,8 +5,9 @@ const ItemList = ({
   items,
   onClickIsDone,
 }) => (<ul className={ styles.list }>
-  {items.map(item => <li key={ item.value.toString() }>
+  {items.map(item => <li key={ item.id.toString() }>
     <Item
+      id={ item.id }
       value={ item.value }
       isDone={ item.isDone }
       onClickIsDone={ onClickIsDone }

@@ -16,30 +16,38 @@ class App extends React.Component {
       {
         value: 'Разобраться с пропсами',
         isDone: false,
+        id: 1,
       },
       {
         value: 'Сделать комит',
         isDone: true,
+        id: 2,
       },
       {
         value: 'Сдать задание на проверку',
         isDone: false,
+        id: 3,
       },
     ],
     count: 6,
   }
 
-  /* eslint-disable no-console */
-  onClickIsDone = () => {
-    this.setState(() => ({
-      isDone: true,
-    }));
-  }
+  onClickIsDone = id => {
+    const newItemList = this.state.items.map(item => {
+      const newItem = {
+        ...item,
+      };
 
-  onClickFooter = () => {
-    this.setState(state => ({
-      count: state.count - 1,
-    }));
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
+
+      return newItem;
+    });
+
+    this.setState({
+      items: newItemList,
+    });
   }
 
   render () {
@@ -54,7 +62,7 @@ class App extends React.Component {
       </div>
       <Divider />
       <div className={ styles.indent }>
-        <Footer count={ this.state.count } onClickFooter={this.onClickFooter} />
+        <Footer count={ this.state.count } />
       </div>
     </Paper>);
   }

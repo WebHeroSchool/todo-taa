@@ -26,10 +26,21 @@ class App extends React.Component {
         isDone: false,
       },
     ],
+    count: 6,
   }
 
   /* eslint-disable no-console */
-  onClickIsDone = isDone => console.log(isDone);
+  onClickIsDone = () => {
+    this.setState(() => ({
+      isDone: true,
+    }));
+  }
+
+  onClickFooter = () => {
+    this.setState(state => ({
+      count: state.count - 1,
+    }));
+  }
 
   render () {
     return (<Paper className={ styles.paper } elevation={3} >
@@ -43,7 +54,7 @@ class App extends React.Component {
       </div>
       <Divider />
       <div className={ styles.indent }>
-        <Footer count='3'/>
+        <Footer count={ this.state.count } onClickFooter={this.onClickFooter} />
       </div>
     </Paper>);
   }

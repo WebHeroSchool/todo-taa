@@ -12,6 +12,7 @@ const transition = {
 };
 
 const Item = ({
+  id,
   value,
   isDone,
   onClickIsDone,
@@ -25,7 +26,7 @@ const Item = ({
     <FormControlLabel
       control={
         <Checkbox
-          onChange={() => onClickIsDone(isDone)}
+          onChange={() => onClickIsDone(id)}
           checked={isDone}
           name={`checked ${value.toString()}`}
         />

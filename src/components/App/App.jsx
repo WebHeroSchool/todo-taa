@@ -16,20 +16,39 @@ class App extends React.Component {
       {
         value: 'Разобраться с пропсами',
         isDone: false,
+        id: 1,
       },
       {
         value: 'Сделать комит',
         isDone: true,
+        id: 2,
       },
       {
         value: 'Сдать задание на проверку',
         isDone: false,
+        id: 3,
       },
     ],
+    count: 6,
   }
 
-  /* eslint-disable no-console */
-  onClickIsDone = isDone => console.log(isDone);
+  onClickIsDone = id => {
+    const newItemList = this.state.items.map(item => {
+      const newItem = {
+        ...item,
+      };
+
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
+
+      return newItem;
+    });
+
+    this.setState({
+      items: newItemList,
+    });
+  }
 
   render () {
     return (<Paper className={ styles.paper } elevation={3} >
@@ -43,7 +62,7 @@ class App extends React.Component {
       </div>
       <Divider />
       <div className={ styles.indent }>
-        <Footer count='3'/>
+        <Footer count={ this.state.count } />
       </div>
     </Paper>);
   }

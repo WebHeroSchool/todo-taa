@@ -59,19 +59,17 @@ class App extends React.Component {
   }
 
   onClickAddItem = value => {
-    if (value) {
-      this.setState({
-        items: [
-          ...this.state.items,
-          {
-            value,
-            isDone: false,
-            id: this.state.count + 1,
-          },
-        ],
-        count: this.state.count + 1,
-      });
-    }
+    this.setState({
+      items: [
+        {
+          value,
+          isDone: false,
+          id: this.state.count + 1,
+        },
+        ...this.state.items,
+      ],
+      count: this.state.count + 1,
+    });
   }
 
   render () {

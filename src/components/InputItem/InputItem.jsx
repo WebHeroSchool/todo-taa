@@ -9,19 +9,32 @@ import styles from './InputItem.module.css';
 class InputItem extends React.Component {
   state = {
     inputValue: '',
+    errorStatus: false,
+    helperText: '',
   }
 
   onButtonClick = () => {
     this.setState({
       inputValue: '',
+      errorStatus: false,
+      helperText: '',
     });
 
-    this.props.onClickAddItem(this.state.inputValue);
+    if (this.state.inputValue) {
+      this.props.onClickAddItem(this.state.inputValue);
+    } else {
+      this.setState({
+        errorStatus: true,
+        helperText: 'Нузно заполнить поле',
+      });
+    }
   }
 
   render () {
     return (<div className={styles.wrapper}>
       <TextField
+        error={this.state.errorStatus}
+        helperText={this.state.helperText}
         className={styles.textField}
         fullWidth={true}
         id="outlined-basic"

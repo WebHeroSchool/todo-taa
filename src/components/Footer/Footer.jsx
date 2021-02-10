@@ -4,8 +4,10 @@ import {
 } from '@material-ui/core';
 import styles from './Footer.module.css';
 
-const Footer = props => (<div className={styles.footer}>
-  Кол-во дел: {props.count}
+const Footer = ({
+  count,
+}) => (<div className={styles.footer}>
+  Кол-во дел: {count}
   <FilterListItems />
   <Button
     variant="outlined"
@@ -14,5 +16,9 @@ const Footer = props => (<div className={styles.footer}>
     <span className={styles.buttonText}>Очистить выполненные</span>
   </Button>
 </div>);
+
+Footer.defaultProps = {
+  count: 0,
+};
 
 export default Footer;

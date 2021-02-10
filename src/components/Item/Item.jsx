@@ -16,6 +16,7 @@ const Item = ({
   value,
   isDone,
   onClickIsDone,
+  onClickDelete,
 }) => (<div className = {styles.itemWrap}>
   <span className = {
     classnames({
@@ -37,7 +38,9 @@ const Item = ({
       style={transition}
       className={styles.deleteBtn}
       variant="contained"
-      color="secondary">
+      color="secondary"
+      onClick={() => onClickDelete(id)}
+    >
       <DeleteForeverTwoToneIcon fontSize="default" />
     </Button>
   </span>

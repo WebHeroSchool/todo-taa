@@ -29,7 +29,7 @@ class App extends React.Component {
         id: 3,
       },
     ],
-    count: 6,
+    count: 3,
   }
 
   onClickIsDone = id => {
@@ -58,11 +58,27 @@ class App extends React.Component {
     });
   }
 
+  onClickAddItem = value => {
+    if (value) {
+      this.setState({
+        items: [
+          ...this.state.items,
+          {
+            value,
+            isDone: false,
+            id: this.state.count + 1,
+          },
+        ],
+        count: this.state.count + 1,
+      });
+    }
+  }
+
   render () {
     return (<Paper className={styles.paper} elevation={3} >
       <div className={styles.indent}>
         {title}
-        <InputItem />
+        <InputItem onClickAddItem={this.onClickAddItem} />
         <ItemList
           items={this.state.items}
           onClickIsDone={this.onClickIsDone}

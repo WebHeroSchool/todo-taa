@@ -43,7 +43,7 @@ class InputItem extends React.Component {
         value={this.state.inputValue}
         variant="outlined"
         onChange={event => this.setState({
-          inputValue: event.target.value,
+          inputValue: event.target.value.toUpperCase(),
         })}
       />
       <Button

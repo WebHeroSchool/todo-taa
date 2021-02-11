@@ -10,6 +10,18 @@ import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
 class Item extends React.Component {
+  componentDidMount () {
+    console.log('component Item mounted');
+  }
+
+  componentDidUpdate () {
+    console.log('component Item updated');
+  }
+
+  componentWillUnmount () {
+    console.log('component Item unmounted');
+  }
+
   render () {
     const {
       id,

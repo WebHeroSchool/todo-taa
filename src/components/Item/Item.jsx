@@ -8,10 +8,6 @@ import {
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
-const transition = {
-  transition: 'opacity .4s ease-out',
-};
-
 const Item = ({
   id,
   value,
@@ -36,7 +32,6 @@ const Item = ({
       label={ value }
     />
     <Button
-      style={transition}
       className={styles.deleteBtn}
       variant="contained"
       color="secondary"

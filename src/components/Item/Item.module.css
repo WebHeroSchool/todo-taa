@@ -12,6 +12,7 @@
 
 .deleteBtn {
   opacity: 0;
+  transition: opacity .4s ease-out !important;
 }
 
 .itemWrap:hover .deleteBtn {

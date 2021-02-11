@@ -1,3 +1,4 @@
+import React from 'react';
 import classnames from 'classnames';
 import styles from './Item.module.css';
 import {
@@ -8,44 +9,57 @@ import {
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
-const transition = {
-  transition: 'opacity .4s ease-out',
-};
+class Item extends React.Component {
+  componentDidMount () {
+    console.log('component Item mounted');
+  }
 
-const Item = ({
-  id,
-  value,
-  isDone,
-  onClickIsDone,
-  onClickDelete,
-}) => (<div className = {styles.itemWrap}>
-  <span className = {
-    classnames({
-      [styles.item]: true,
-      [styles.done]: isDone,
-    })
-  }>
-    <FormControlLabel
-      control={
-        <Checkbox
-          onChange={() => onClickIsDone(id)}
-          checked={isDone}
-          name={`checked ${value.toString()}`}
+  componentDidUpdate () {
+    console.log('component Item updated');
+  }
+
+  componentWillUnmount () {
+    console.log('component Item unmounted');
+  }
+
+  render () {
+    const {
+      id,
+      value,
+      isDone,
+      onClickIsDone,
+      onClickDelete,
+    } = this.props;
+
+    return (<div className = {styles.itemWrap}>
+      <span className = {
+        classnames({
+          [styles.item]: true,
+          [styles.done]: isDone,
+        })
+      }>
+        <FormControlLabel
+          control={
+            <Checkbox
+              onChange={() => onClickIsDone(id)}
+              checked={isDone}
+              name={`checked ${value.toString()}`}
+            />
+          }
+          label={ value }
         />
-      }
-      label={ value }
-    />
-    <Button
-      style={transition}
-      className={styles.deleteBtn}
-      variant="contained"
-      color="secondary"
-      onClick={() => onClickDelete(id)}
-    >
-      <DeleteForeverTwoToneIcon fontSize="default" />
-    </Button>
-  </span>
-</div>);
+        <Button
+          className={styles.deleteBtn}
+          variant="contained"
+          color="secondary"
+          onClick={() => onClickDelete(id)}
+        >
+          <DeleteForeverTwoToneIcon fontSize="default" />
+        </Button>
+      </span>
+    </div>);
+  }
+}
 
 Item.propTypes = {
   className: PropTypes.string,

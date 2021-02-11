@@ -3,6 +3,7 @@ import {
   ButtonGroup,
   Button,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const FilterListItems = () => (<div className={styles.filtrWrapper}>
   <ButtonGroup size="small" aria-label="small outlined button group">
@@ -12,5 +13,8 @@ const FilterListItems = () => (<div className={styles.filtrWrapper}>
   </ButtonGroup>
 </div>);
 
+FilterListItems.propTypes = {
+  className: PropTypes.string,
+};
 
 export default FilterListItems;

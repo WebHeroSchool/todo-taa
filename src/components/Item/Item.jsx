@@ -6,6 +6,7 @@ import {
   Checkbox,
 } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
+import PropTypes from 'prop-types';
 
 const transition = {
   transition: 'opacity .4s ease-out',
@@ -45,5 +46,14 @@ const Item = ({
     </Button>
   </span>
 </div>);
+
+Item.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.number,
+  value: PropTypes.string,
+  isDone: PropTypes.bool,
+  onClickIsDone: PropTypes.func,
+  onClickDelete: PropTypes.func,
+};
 
 export default Item;

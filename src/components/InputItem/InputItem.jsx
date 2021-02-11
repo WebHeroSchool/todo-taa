@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import styles from './InputItem.module.css';
+import PropTypes from 'prop-types';
 
 class InputItem extends React.Component {
   state = {
@@ -56,5 +57,9 @@ class InputItem extends React.Component {
     </div>);
   }
 }
+
+InputItem.propTypes = {
+  className: PropTypes.string,
+};
 
 export default InputItem;

@@ -7,6 +7,7 @@ import {
   Paper,
   Divider,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
@@ -90,5 +91,17 @@ class App extends React.Component {
     </Paper>);
   }
 }
+
+App.propTypes = {
+  className: PropTypes.string,
+};
+
+InputItem.propTypes = {
+  onClickAddItem: PropTypes.func,
+};
+
+ItemList.propTypes = {
+  items: PropTypes.array,
+};
 
 export default App;

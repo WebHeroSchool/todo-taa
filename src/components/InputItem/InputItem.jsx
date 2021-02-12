@@ -31,6 +31,12 @@ class InputItem extends React.Component {
     }
   }
 
+  pressEnterToSubmit = event => {
+    if (event.code === 'Enter') {
+      this.onButtonClick();
+    }
+  }
+
   render () {
     return (<div className={styles.wrapper}>
       <TextField
@@ -46,6 +52,7 @@ class InputItem extends React.Component {
         onChange={event => this.setState({
           inputValue: event.target.value.toUpperCase(),
         })}
+        onKeyDown={event => this.pressEnterToSubmit(event)}
       />
       <Button
         className={styles.button}

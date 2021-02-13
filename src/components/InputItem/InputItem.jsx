@@ -1,4 +1,7 @@
-import React from 'react';
+import {
+  React,
+  useState,
+} from 'react';
 import {
   TextField,
   Button,
@@ -7,63 +10,66 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import styles from './InputItem.module.css';
 import PropTypes from 'prop-types';
 
-class InputItem extends React.Component {
-  state = {
-    inputValue: '',
-    errorStatus: false,
-    helperText: ' ',
-  }
+const InputItem = ({
+  onClickAddItem,
+}) => {
+  const [
+    inputValue,
+    setInputValue,
+  ] = useState('');
 
-  onButtonClick = () => {
-    this.setState({
-      inputValue: '',
-      errorStatus: false,
-      helperText: ' ',
-    });
+  const [
+    errorStatus,
+    setErrorStatus,
+  ] = useState(false);
 
-    if (this.state.inputValue) {
-      this.props.onClickAddItem(this.state.inputValue);
+  const [
+    helperText,
+    setHelperText,
+  ] = useState(' ');
+
+  const onButtonClick = () => {
+    setInputValue('');
+
+    if (inputValue) {
+      onClickAddItem(inputValue);
+      setErrorStatus(false);
+      setHelperText(' ');
     } else {
-      this.setState({
-        errorStatus: true,
-        helperText: 'Нузно заполнить поле',
-      });
+      setErrorStatus(true);
+      setHelperText('Нужно заполнить поле');
     }
-  }
+  };
 
-  pressEnterToSubmit = event => {
+  const pressEnterToSubmit = event => {
     if (event.code === 'Enter') {
-      this.onButtonClick();
+      onButtonClick();
     }
-  }
+  };
 
-  render () {
-    return (<div className={styles.wrapper}>
-      <TextField
-        error={this.state.errorStatus}
-        helperText={this.state.helperText}
-        className={styles.textField}
-        fullWidth={true}
-        id="outlined-basic"
-        label="Добавить дело"
-        margin="dense"
-        value={this.state.inputValue}
-        variant="outlined"
-        onChange={event => this.setState({
-          inputValue: event.target.value.toUpperCase(),
-        })}
-        onKeyDown={event => this.pressEnterToSubmit(event)}
-      />
-      <Button
-        className={styles.button}
-        color="primary"
-        onClick={this.onButtonClick}
-      >
-        <PostAddIcon fontSize="default" />
-      </Button>
-    </div>);
-  }
-}
+  return (<div className={styles.wrapper}>
+    <TextField
+      error={errorStatus}
+      helperText={helperText}
+      className={styles.textField}
+      fullWidth={true}
+      id="outlined-basic"
+      label="Добавить дело"
+      margin="dense"
+      value={inputValue}
+      variant="outlined"
+      onChange={event => setInputValue(event.target.value.toUpperCase())}
+      onKeyDown={event => pressEnterToSubmit(event)}
+    />
+    <Button
+      className={styles.button}
+      color="primary"
+      onClick={onButtonClick}
+    >
+      <PostAddIcon fontSize="default" />
+    </Button>
+  </div>);
+};
 
 InputItem.propTypes = {
   className: PropTypes.string,

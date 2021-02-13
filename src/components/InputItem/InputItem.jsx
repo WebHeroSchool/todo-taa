@@ -14,30 +14,41 @@ const InputItem = ({
   onClickAddItem,
 }) => {
   const [
-    inputValue,
-    setInputValue,
-  ] = useState('');
-
-  const [
-    errorStatus,
-    setErrorStatus,
-  ] = useState(false);
-
-  const [
-    helperText,
-    setHelperText,
-  ] = useState(' ');
+    state,
+    setState,
+  ] = useState(
+    {
+      textField: {
+        inputValue: '',
+        errorStatus: false,
+        helperText: ' ',
+      },
+    }
+  );
 
   const onButtonClick = () => {
-    setInputValue('');
+    setState(
+      {
+        textField: {
+          inputValue: '',
+          errorStatus: false,
+          helperText: ' ',
+        },
+      }
+    );
 
-    if (inputValue) {
-      onClickAddItem(inputValue);
-      setErrorStatus(false);
-      setHelperText(' ');
+    if (state.textField.inputValue) {
+      onClickAddItem(state.textField.inputValue);
     } else {
-      setErrorStatus(true);
-      setHelperText('Нужно заполнить поле');
+      setState(
+        {
+          textField: {
+            inputValue: '',
+            errorStatus: true,
+            helperText: 'Нужно заполнить поле',
+          },
+        }
+      );
     }
   };
 
@@ -49,16 +60,26 @@ const InputItem = ({
 
   return (<div className={styles.wrapper}>
     <TextField
-      error={errorStatus}
-      helperText={helperText}
+      error={state.textField.errorStatus}
+      helperText={state.textField.helperText}
       className={styles.textField}
       fullWidth={true}
       id="outlined-basic"
       label="Добавить дело"
       margin="dense"
-      value={inputValue}
+      value={state.textField.inputValue}
       variant="outlined"
-      onChange={event => setInputValue(event.target.value.toUpperCase())}
+      onChange={
+        event => {
+          const newState = {
+            textField: {
+              inputValue: event.target.value.toUpperCase(),
+            },
+          };
+
+          setState(newState);
+        }
+      }
       onKeyDown={event => pressEnterToSubmit(event)}
     />
     <Button

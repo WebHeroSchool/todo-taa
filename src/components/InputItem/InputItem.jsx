@@ -69,6 +69,8 @@ const InputItem = ({
       variant="outlined"
       onChange={
         event => {
+          setErrorStatus(false);
+          setHelperText(' ');
           setInputvalue(event.target.value.toUpperCase());
         }
       }

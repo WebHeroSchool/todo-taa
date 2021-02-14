@@ -13,42 +13,40 @@ import PropTypes from 'prop-types';
 const InputItem = ({
   onClickAddItem,
 }) => {
+  const initialState = {
+    textField: {
+      inputValue: '',
+      errorStatus: false,
+      helperText: ' ',
+    },
+  };
+
   const [
-    state,
-    setState,
-  ] = useState(
-    {
-      textField: {
-        inputValue: '',
-        errorStatus: false,
-        helperText: ' ',
-      },
-    }
-  );
+    inputValue,
+    setInputvalue,
+  ] = useState(initialState.textField.inputValue);
+
+  const [
+    errorStatus,
+    setErrorStatus,
+  ] = useState(initialState.textField.errorStatus);
+
+  const [
+    helperText,
+    setHelperText,
+  ] = useState(initialState.textField.helperText);
 
   const onButtonClick = () => {
-    setState(
-      {
-        textField: {
-          inputValue: '',
-          errorStatus: false,
-          helperText: ' ',
-        },
-      }
-    );
+    setInputvalue('');
+    setErrorStatus(false);
+    setHelperText(' ');
 
-    if (state.textField.inputValue) {
-      onClickAddItem(state.textField.inputValue);
+    if (inputValue) {
+      onClickAddItem(inputValue);
     } else {
-      setState(
-        {
-          textField: {
-            inputValue: '',
-            errorStatus: true,
-            helperText: 'Нужно заполнить поле',
-          },
-        }
-      );
+      setInputvalue('');
+      setErrorStatus(true);
+      setHelperText('Нужно заполнить поле');
     }
   };
 
@@ -60,24 +58,18 @@ const InputItem = ({
 
   return (<div className={styles.wrapper}>
     <TextField
-      error={state.textField.errorStatus}
-      helperText={state.textField.helperText}
+      error={errorStatus}
+      helperText={helperText}
       className={styles.textField}
       fullWidth={true}
       id="outlined-basic"
       label="Добавить дело"
       margin="dense"
-      value={state.textField.inputValue}
+      value={inputValue}
       variant="outlined"
       onChange={
         event => {
-          const newState = {
-            textField: {
-              inputValue: event.target.value.toUpperCase(),
-            },
-          };
-
-          setState(newState);
+          setInputvalue(event.target.value.toUpperCase());
         }
       }
       onKeyDown={event => pressEnterToSubmit(event)}

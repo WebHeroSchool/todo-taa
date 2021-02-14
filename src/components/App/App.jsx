@@ -15,34 +15,39 @@ import PropTypes from 'prop-types';
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
 const App = () => {
+  const initialState = {
+    items: [
+      {
+        value: 'Разобраться с пропсами',
+        isDone: false,
+        id: 1,
+      },
+      {
+        value: 'Сделать комит',
+        isDone: true,
+        id: 2,
+      },
+      {
+        value: 'Сдать задание на проверку',
+        isDone: false,
+        id: 3,
+      },
+    ],
+    count: 3,
+  };
+
   const [
-    state,
-    setState,
-  ] = useState(
-    {
-      items: [
-        {
-          value: 'Разобраться с пропсами',
-          isDone: false,
-          id: 1,
-        },
-        {
-          value: 'Сделать комит',
-          isDone: true,
-          id: 2,
-        },
-        {
-          value: 'Сдать задание на проверку',
-          isDone: false,
-          id: 3,
-        },
-      ],
-      count: 3,
-    }
-  );
+    items,
+    setItems,
+  ] = useState(initialState.items);
+
+  const [
+    count,
+    setCount,
+  ] = useState(initialState.count);
 
   const onClickIsDone = id => {
-    const newItemList = state.items.map(item => {
+    const newItemList = items.map(item => {
       const newItem = {
         ...item,
       };
@@ -54,39 +59,28 @@ const App = () => {
       return newItem;
     });
 
-    const newState = {
-      items: newItemList,
-      count: state.count + 1,
-    };
-
-    setState(newState);
+    setItems(newItemList);
   };
 
   const onClickDelete = id => {
-    const newItemList = state.items.filter(item => item.id !== id);
+    const newItemList = items.filter(item => item.id !== id);
 
-    const newState = {
-      items: newItemList,
-      count: state.count + 1,
-    };
-
-    setState(newState);
+    setItems(newItemList);
+    setCount(count => count - 1);
   };
 
   const onClickAddItem = value => {
-    const newState = {
-      items: [
-        {
-          value,
-          isDone: false,
-          id: state.count + 1,
-        },
-        ...state.items,
-      ],
-      count: state.count + 1,
-    };
+    const newItems = [
+      {
+        value,
+        isDone: false,
+        id: count + 1,
+      },
+      ...items,
+    ];
 
-    setState(newState);
+    setItems(newItems);
+    setCount(count => count + 1);
   };
 
   return (<Paper className={styles.paper} elevation={3} >
@@ -94,14 +88,14 @@ const App = () => {
       {title}
       <InputItem onClickAddItem={onClickAddItem} />
       <ItemList
-        items={state.items}
+        items={items}
         onClickIsDone={onClickIsDone}
         onClickDelete={onClickDelete}
       />
     </div>
     <Divider />
     <div className={styles.indent}>
-      <Footer count={state.count} />
+      <Footer count={count} />
     </div>
   </Paper>);
 };

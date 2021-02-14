@@ -1,4 +1,7 @@
-import React from 'react';
+import {
+  React,
+  useState,
+} from 'react';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
@@ -11,8 +14,8 @@ import PropTypes from 'prop-types';
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
-class App extends React.Component {
-  state = {
+const App = () => {
+  const initialState = {
     items: [
       {
         value: 'Разобраться с пропсами',
@@ -31,10 +34,20 @@ class App extends React.Component {
       },
     ],
     count: 3,
-  }
+  };
 
-  onClickIsDone = id => {
-    const newItemList = this.state.items.map(item => {
+  const [
+    items,
+    setItems,
+  ] = useState(initialState.items);
+
+  const [
+    count,
+    setCount,
+  ] = useState(initialState.count);
+
+  const onClickIsDone = id => {
+    const newItemList = items.map(item => {
       const newItem = {
         ...item,
       };
@@ -46,51 +59,46 @@ class App extends React.Component {
       return newItem;
     });
 
-    this.setState({
-      items: newItemList,
-    });
-  }
+    setItems(newItemList);
+  };
 
-  onClickDelete = id => {
-    const newItemList = this.state.items.filter(item => item.id !== id);
+  const onClickDelete = id => {
+    const newItemList = items.filter(item => item.id !== id);
 
-    this.setState({
-      items: newItemList,
-    });
-  }
+    setItems(newItemList);
+    setCount(count => count - 1);
+  };
 
-  onClickAddItem = value => {
-    this.setState({
-      items: [
-        {
-          value,
-          isDone: false,
-          id: this.state.count + 1,
-        },
-        ...this.state.items,
-      ],
-      count: this.state.count + 1,
-    });
-  }
+  const onClickAddItem = value => {
+    const newItems = [
+      {
+        value,
+        isDone: false,
+        id: count + 1,
+      },
+      ...items,
+    ];
 
-  render () {
-    return (<Paper className={styles.paper} elevation={3} >
-      <div className={styles.indent}>
-        {title}
-        <InputItem onClickAddItem={this.onClickAddItem} />
-        <ItemList
-          items={this.state.items}
-          onClickIsDone={this.onClickIsDone}
-          onClickDelete={this.onClickDelete}
-        />
-      </div>
-      <Divider />
-      <div className={styles.indent}>
-        <Footer count={this.state.count} />
-      </div>
-    </Paper>);
-  }
-}
+    setItems(newItems);
+    setCount(count => count + 1);
+  };
+
+  return (<Paper className={styles.paper} elevation={3} >
+    <div className={styles.indent}>
+      {title}
+      <InputItem onClickAddItem={onClickAddItem} />
+      <ItemList
+        items={items}
+        onClickIsDone={onClickIsDone}
+        onClickDelete={onClickDelete}
+      />
+    </div>
+    <Divider />
+    <div className={styles.indent}>
+      <Footer count={count} />
+    </div>
+  </Paper>);
+};
 
 App.propTypes = {
   className: PropTypes.string,

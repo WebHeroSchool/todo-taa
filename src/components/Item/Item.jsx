@@ -1,4 +1,7 @@
-import React from 'react';
+import {
+  React,
+  useEffect,
+} from 'react';
 import classnames from 'classnames';
 import styles from './Item.module.css';
 import {
@@ -9,53 +12,50 @@ import {
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
-class Item extends React.Component {
-  componentDidMount () {
-    this.timerId = setInterval(() => console.log('timer'), 1000);
-  }
 
-  componentWillUnmount () {
-    clearInterval(this.timerId);
-  }
+const Item = ({
+  id,
+  value,
+  isDone,
+  onClickIsDone,
+  onClickDelete,
+}) => {
+  useEffect(() => {
+    console.log('mounting');
+  }), [];
 
-  render () {
-    const {
-      id,
-      value,
-      isDone,
-      onClickIsDone,
-      onClickDelete,
-    } = this.props;
+  useEffect(() => {
+    console.log('update');
+  });
 
-    return (<div className = {styles.itemWrap}>
-      <span className = {
-        classnames({
-          [styles.item]: true,
-          [styles.done]: isDone,
-        })
-      }>
-        <FormControlLabel
-          control={
-            <Checkbox
-              onChange={() => onClickIsDone(id)}
-              checked={isDone}
-              name={`checked ${value.toString()}`}
-            />
-          }
-          label={ value }
-        />
-        <Button
-          className={styles.deleteBtn}
-          variant="contained"
-          color="secondary"
-          onClick={() => onClickDelete(id)}
-        >
-          <DeleteForeverTwoToneIcon fontSize="default" />
-        </Button>
-      </span>
-    </div>);
-  }
-}
+  return (<div className = {styles.itemWrap}>
+    <span className = {
+      classnames({
+        [styles.item]: true,
+        [styles.done]: isDone,
+      })
+    }>
+      <FormControlLabel
+        control={
+          <Checkbox
+            onChange={() => onClickIsDone(id)}
+            checked={isDone}
+            name={`checked ${value.toString()}`}
+          />
+        }
+        label={ value }
+      />
+      <Button
+        className={styles.deleteBtn}
+        variant="contained"
+        color="secondary"
+        onClick={() => onClickDelete(id)}
+      >
+        <DeleteForeverTwoToneIcon fontSize="default" />
+      </Button>
+    </span>
+  </div>);
+};
 
 Item.propTypes = {
   className: PropTypes.string,

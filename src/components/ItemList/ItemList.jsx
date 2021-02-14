@@ -19,7 +19,7 @@ const ItemList = ({
 </ul>
 );
 
-Item.propTypes = {
+ItemList.propTypes = {
   className: PropTypes.string,
   items: PropTypes.array,
   onClickIsDone: PropTypes.func,

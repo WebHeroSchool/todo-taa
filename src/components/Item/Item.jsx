@@ -12,6 +12,7 @@ import {
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
+
 const Item = ({
   id,
   value,
@@ -20,9 +21,12 @@ const Item = ({
   onClickDelete,
 }) => {
   useEffect(() => {
-    console.log('useEffect first timer here.');
-  },
-  []);
+    console.log('mounting');
+  }), [];
+
+  useEffect(() => {
+    console.log('update');
+  });
 
   return (<div className = {styles.itemWrap}>
     <span className = {

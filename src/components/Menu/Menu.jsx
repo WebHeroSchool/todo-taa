@@ -13,6 +13,7 @@ import {
   ListItemText,
 } from '@material-ui/core';
 
+
 const Menu = () => {
   const [
     selectedIndex,
@@ -28,7 +29,7 @@ const Menu = () => {
     <Paper className={styles.menu} elevation={3} >
       <MenuList>
 
-        <Link to='/'>
+        <Link className={styles.link} to='/'>
           <ListItem
             button
             selected={selectedIndex === 1}
@@ -38,7 +39,7 @@ const Menu = () => {
           </ListItem>
         </Link>
 
-        <Link to='/todo'>
+        <Link className={styles.link} to='/todo'>
           <ListItem
             button
             selected={selectedIndex === 2}
@@ -48,7 +49,7 @@ const Menu = () => {
           </ListItem>
         </Link>
 
-        <Link to='/contacts'>
+        <Link className={styles.link} to='/contacts'>
           <ListItem
             button
             selected={selectedIndex === 3}

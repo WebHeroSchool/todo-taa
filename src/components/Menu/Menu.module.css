@@ -1,3 +1,7 @@
 .menu {
   width: 16%;
 }
+
+.link {
+  text-decoration: none;
+}

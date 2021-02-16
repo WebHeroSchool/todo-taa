@@ -1,115 +1,31 @@
-import {
-  React,
-  useState,
-} from 'react';
-import InputItem from '../InputItem/InputItem';
-import ItemList from '../ItemList/ItemList';
-import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import {
-  Paper,
-  Divider,
-} from '@material-ui/core';
-import PropTypes from 'prop-types';
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
-const title = (<h1 className={ styles.title }>TO DO:</h1>);
+import Menu from '../Menu/Menu';
+import About from '../About/About';
+import Todo from '../Todo/Todo';
+import Contacts from '../Contacts/Contacts';
 
-const App = () => {
-  const initialState = {
-    items: [
-      {
-        value: 'Разобраться с пропсами',
-        isDone: false,
-        id: 1,
-      },
-      {
-        value: 'Сделать комит',
-        isDone: true,
-        id: 2,
-      },
-      {
-        value: 'Сдать задание на проверку',
-        isDone: false,
-        id: 3,
-      },
-    ],
-    count: 3,
-  };
 
-  const [
-    items,
-    setItems,
-  ] = useState(initialState.items);
+const App = () => (
+  <Router>
+    <div className={styles.body}>
 
-  const [
-    count,
-    setCount,
-  ] = useState(initialState.count);
+      <div className={styles.appWrapper}>
 
-  const onClickIsDone = id => {
-    const newItemList = items.map(item => {
-      const newItem = {
-        ...item,
-      };
+        <Menu />
 
-      if (item.id === id) {
-        newItem.isDone = !item.isDone;
-      }
+        <Route path='/' exact component={About} />
+        <Route path='/todo' component={Todo} />
+        <Route path='/contacts' component={Contacts} />
 
-      return newItem;
-    });
+      </div>
 
-    setItems(newItemList);
-  };
-
-  const onClickDelete = id => {
-    const newItemList = items.filter(item => item.id !== id);
-
-    setItems(newItemList);
-    setCount(count => count - 1);
-  };
-
-  const onClickAddItem = value => {
-    const newItems = [
-      {
-        value,
-        isDone: false,
-        id: count + 1,
-      },
-      ...items,
-    ];
-
-    setItems(newItems);
-    setCount(count => count + 1);
-  };
-
-  return (<Paper className={styles.paper} elevation={3} >
-    <div className={styles.indent}>
-      {title}
-      <InputItem onClickAddItem={onClickAddItem} />
-      <ItemList
-        items={items}
-        onClickIsDone={onClickIsDone}
-        onClickDelete={onClickDelete}
-      />
     </div>
-    <Divider />
-    <div className={styles.indent}>
-      <Footer count={count} />
-    </div>
-  </Paper>);
-};
-
-App.propTypes = {
-  className: PropTypes.string,
-};
-
-InputItem.propTypes = {
-  onClickAddItem: PropTypes.func,
-};
-
-ItemList.propTypes = {
-  items: PropTypes.array,
-};
+  </Router>
+);
 
 export default App;

@@ -16,21 +16,13 @@
     font-style: normal;
 }
 
-body {
+.body {
   font-family: montserrat;
-}
-
-.indent {
-  padding: .5em 1em;
-  margin: 0;
-}
-
-.title {
-  font-weight: 700;
-  margin: 0;
-}
-
-.paper {
+  width: 46em;
   margin: auto;
-  width: 38em;
+}
+
+.appWrapper {
+  display: flex;
+  justify-content: center;
 }

@@ -1,3 +1,4 @@
+import store from '../../store/store';
 import {
   React,
   useState,
@@ -16,36 +17,36 @@ const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
 
 const Todo = () => {
-  const initialState = {
-    items: [
-      {
-        value: 'Разобраться с пропсами',
-        isDone: false,
-        id: 1,
-      },
-      {
-        value: 'Сделать комит',
-        isDone: true,
-        id: 2,
-      },
-      {
-        value: 'Сдать задание на проверку',
-        isDone: false,
-        id: 3,
-      },
-    ],
-    count: 3,
-  };
+  // const initialState = {
+  //   items: [
+  //     {
+  //       value: 'Разобраться с пропсами',
+  //       isDone: false,
+  //       id: 1,
+  //     },
+  //     {
+  //       value: 'Сделать комит',
+  //       isDone: true,
+  //       id: 2,
+  //     },
+  //     {
+  //       value: 'Сдать задание на проверку',
+  //       isDone: false,
+  //       id: 3,
+  //     },
+  //   ],
+  //   count: 3,
+  // };
 
   const [
     items,
     setItems,
-  ] = useState(initialState.items);
+  ] = useState(store.getState().items);
 
   const [
     count,
     setCount,
-  ] = useState(initialState.count);
+  ] = useState(store.getState().count);
 
   const onClickIsDone = id => {
     const newItemList = items.map(item => {
@@ -63,12 +64,12 @@ const Todo = () => {
     setItems(newItemList);
   };
 
-  const onClickDelete = id => {
-    const newItemList = items.filter(item => item.id !== id);
+  // const onClickDelete = id => {
+  //   const newItemList = items.filter(item => item.id !== id);
 
-    setItems(newItemList);
-    setCount(count => count - 1);
-  };
+  //   setItems(newItemList);
+  //   setCount(count => count - 1);
+  // };
 
   const onClickAddItem = value => {
     const newItems = [

@@ -1,7 +1,3 @@
-import {
-  React,
-  useEffect,
-} from 'react';
 import classnames from 'classnames';
 import styles from './Item.module.css';
 import {
@@ -12,23 +8,14 @@ import {
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
-
 const Item = ({
   id,
   value,
   isDone,
   onClickIsDone,
   onClickDelete,
-}) => {
-  useEffect(() => {
-    console.log('mounting');
-  }), [];
-
-  useEffect(() => {
-    console.log('update');
-  });
-
-  return (<div className = {styles.itemWrap}>
+}) => (
+  <div className = {styles.itemWrap}>
     <span className = {
       classnames({
         [styles.item]: true,
@@ -49,13 +36,14 @@ const Item = ({
         className={styles.deleteBtn}
         variant="contained"
         color="secondary"
-        onClick={() => onClickDelete(id)}
+        onClick={onClickDelete(id)}
       >
         <DeleteForeverTwoToneIcon fontSize="default" />
       </Button>
     </span>
-  </div>);
-};
+  </div>
+);
+
 
 Item.propTypes = {
   className: PropTypes.string,

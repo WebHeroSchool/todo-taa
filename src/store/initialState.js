@@ -18,3 +18,5 @@ const initialState = {
   ],
   count: 3,
 };
+
+export default initialState;

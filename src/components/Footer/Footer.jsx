@@ -1,3 +1,6 @@
+import {
+  connect,
+} from 'react-redux';
 import FilterListItems from '../FilterListItems/FilterListItems';
 import {
   Button,
@@ -23,8 +26,11 @@ Footer.defaultProps = {
 };
 
 Footer.propTypes = {
-  className: PropTypes.string,
   count: PropTypes.number.isRequired,
 };
 
-export default Footer;
+export default connect(
+  state => ({
+    count: state.todos.count,
+  }),
+)(Footer);

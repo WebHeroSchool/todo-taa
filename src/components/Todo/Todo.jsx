@@ -6,16 +6,17 @@ import {
   Paper,
   Divider,
 } from '@material-ui/core';
+import withStore from '../hoc/withStore';
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
-
+const ItemListWithStore = withStore(ItemList);
 
 const Todo = () => (
   <Paper className={styles.paper} elevation={3} >
     <div className={styles.indent}>
       {title}
       <InputItem />
-      <ItemList />
+      <ItemListWithStore />
     </div>
     <Divider />
     <div className={styles.indent}>

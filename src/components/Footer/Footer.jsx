@@ -10,16 +10,18 @@ import PropTypes from 'prop-types';
 
 const Footer = ({
   count,
-}) => (<div className={styles.footer}>
-  Кол-во дел: {count}
-  <FilterListItems />
-  <Button
-    variant="outlined"
-    color="secondary"
-    size="small">
-    <span className={styles.buttonText}>Очистить выполненные</span>
-  </Button>
-</div>);
+}) => (
+  <div className={styles.footer}>
+    Кол-во дел: {count}
+    <FilterListItems />
+    <Button
+      variant="outlined"
+      color="secondary"
+      size="small">
+      <span className={styles.buttonText}>Очистить выполненные</span>
+    </Button>
+  </div>
+);
 
 Footer.defaultProps = {
   count: 0,

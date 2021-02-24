@@ -1,4 +1,14 @@
 const todosActions = dispatch => ({
+  onClickAddItem: value => dispatch({
+    type: 'CREATE_ITEM',
+    payload: value,
+  }),
+
+  setInputvalue: value => dispatch({
+    type: 'UPDATE_VALUE',
+    payload: value,
+  }),
+
   onClickIsDone: id => dispatch({
     type: 'UPDATE_ITEM',
     payload: id,

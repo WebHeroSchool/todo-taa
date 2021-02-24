@@ -1,8 +1,4 @@
-import {
-  React,
-  useState,
-} from 'react';
-// import textFieldActions from '../../store/actions/textFieldActions';
+import todosActions from '../../store/actions/todosActions';
 import {
   connect,
 } from 'react-redux';
@@ -15,58 +11,16 @@ import styles from './InputItem.module.css';
 import PropTypes from 'prop-types';
 
 const InputItem = ({
-  // inputValue,
-  // setInputvalue,
-  // onClickAddItem,
-}) => {
-  console.log('hello');
-  // const initialState = {
-  //   textField: {
-  //     inputValue: '',
-  //     errorStatus: false,
-  //     helperText: ' ',
-  //   },
-  // };
-
-  const [
-    inputValue,
-    setInputvalue,
-  ] = useState('');
-
-  // const [
-  //   errorStatus,
-  //   setErrorStatus,
-  // ] = useState(initialState.textField.errorStatus);
-
-  // const [
-  //   helperText,
-  //   setHelperText,
-  // ] = useState(initialState.textField.helperText);
-
-  // const onButtonClick = () => {
-  //   setInputvalue('');
-  //   setErrorStatus(false);
-  //   setHelperText(' ');
-
-  //   if (inputValue) {
-  //     onClickAddItem(inputValue);
-  //   } else {
-  //     setInputvalue('');
-  //     setErrorStatus(true);
-  //     setHelperText('Нужно заполнить поле');
-  //   }
-  // };
-
-  // const pressEnterToSubmit = event => {
-  //   if (event.code === 'Enter') {
-  //     onButtonClick();
-  //   }
-  // };
-
-  return (<div className={styles.wrapper}>
+  inputValue,
+  setInputvalue,
+  errorStatus,
+  helperText,
+  onClickAddItem,
+}) => (
+  <div className={styles.wrapper}>
     <TextField
-      // error={'errorStatus'}
-      // helperText={'helperText'}
+      error={errorStatus}
+      helperText={helperText}
       className={styles.textField}
       fullWidth={true}
       id="outlined-basic"
@@ -79,23 +33,35 @@ const InputItem = ({
           setInputvalue(event.target.value.toUpperCase());
         }
       }
-      onKeyDown={{/* event => pressEnterToSubmit(event) */}}
+      onKeyDown={
+        event => {
+          if (event.code === 'Enter') {
+            onClickAddItem(inputValue);
+          }
+        }
+      }
     />
     <Button
       className={styles.button}
       color="primary"
-      onClick={{/* onButtonClick */}}
+      onClick={ () => onClickAddItem(inputValue) }
     >
       <PostAddIcon fontSize="default" />
     </Button>
-  </div>);
-};
+  </div>
+);
 
 InputItem.propTypes = {
-  className: PropTypes.string,
+  inputValue: PropTypes.string,
+  setInputvalue: PropTypes.func,
 };
 
+
 export default connect(
-  null,
-  // textFieldActions,
+  store => ({
+    inputValue: store.todos.textField.inputValue,
+    errorStatus: store.todos.textField.errorStatus,
+    helperText: store.todos.textField.helperText,
+  }),
+  todosActions,
 )(InputItem);

@@ -1,7 +1,8 @@
-import todosActions from '../../store/actions/todosActions';
 import {
   connect,
 } from 'react-redux';
+import setInputvalue from '../../store/actions/setInputvalue';
+import onClickAddItem from '../../store/actions/onClickAddItem';
 import {
   TextField,
   Button,
@@ -63,5 +64,8 @@ export default connect(
     errorStatus: store.todos.textField.errorStatus,
     helperText: store.todos.textField.helperText,
   }),
-  todosActions,
+  {
+    setInputvalue,
+    onClickAddItem,
+  },
 )(InputItem);

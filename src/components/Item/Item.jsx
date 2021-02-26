@@ -1,4 +1,5 @@
-import todosActions from '../../store/actions/todosActions';
+import onClickIsDone from '../../store/actions/onClickIsDone';
+import onClickDelete from '../../store/actions/onClickDelete';
 import {
   connect,
 } from 'react-redux';
@@ -57,5 +58,8 @@ Item.propTypes = {
 
 export default connect(
   null,
-  todosActions,
+  {
+    onClickIsDone,
+    onClickDelete,
+  },
 )(Item);

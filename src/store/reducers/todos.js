@@ -27,7 +27,7 @@ const initialState = {
 const todos = (state = initialState, action) => {
   switch (action.type) {
   case 'CREATE_ITEM': {
-    if (action.payload) {
+    if (action.payload.trim()) {
       const newItemList = [
         {
           value: action.payload,

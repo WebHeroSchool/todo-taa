@@ -34,6 +34,12 @@ const ItemListWithStore = connect(
   },
 )(ItemList);
 
+const FooterWithStore = connect(
+  state => ({
+    count: state.todos.count,
+  }),
+)(Footer);
+
 
 const Todo = () => (
   <Paper className={styles.paper} elevation={3} >
@@ -44,7 +50,7 @@ const Todo = () => (
     </div>
     <Divider />
     <div className={styles.indent}>
-      <Footer />
+      <FooterWithStore />
     </div>
   </Paper>
 );

@@ -7,15 +7,40 @@ import {
   Divider,
 } from '@material-ui/core';
 
+import {
+  connect,
+} from 'react-redux';
+import onClickAddItem from '../../store/actions/onClickAddItem';
+import onClickIsDone from '../../store/actions/onClickIsDone';
+import onClickDelete from '../../store/actions/onClickDelete';
+
+
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
+
+const InputItemWithStore = connect(
+  null,
+  {
+    onClickAddItem,
+  },
+)(InputItem);
+
+const ItemListWithStore = connect(
+  state => ({
+    items: state.todos.items,
+  }),
+  {
+    onClickIsDone,
+    onClickDelete,
+  },
+)(ItemList);
 
 
 const Todo = () => (
   <Paper className={styles.paper} elevation={3} >
     <div className={styles.indent}>
       {title}
-      <InputItem />
-      <ItemList />
+      <InputItemWithStore />
+      <ItemListWithStore />
     </div>
     <Divider />
     <div className={styles.indent}>

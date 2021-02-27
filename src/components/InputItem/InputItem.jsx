@@ -1,8 +1,4 @@
 import {
-  connect,
-} from 'react-redux';
-import onClickAddItem from '../../store/actions/onClickAddItem';
-import {
   TextField,
   Button,
 } from '@material-ui/core';
@@ -42,7 +38,7 @@ const InputItem = ({
     setHelperText(' ');
   };
 
-  const submitDataToStore = () => {
+  const submitData = () => {
     onClickAddItem(inputValue);
     setInputvalue('');
   };
@@ -70,7 +66,7 @@ const InputItem = ({
           event => {
             if (event.code === 'Enter') {
               if (inputValue.trim()) {
-                submitDataToStore();
+                submitData();
               } else {
                 addErrorStatus();
               }
@@ -84,7 +80,7 @@ const InputItem = ({
         onClick={
           () => {
             if (inputValue.trim()) {
-              submitDataToStore();
+              submitData();
             } else {
               addErrorStatus();
             }
@@ -103,9 +99,4 @@ InputItem.propTypes = {
 };
 
 
-export default connect(
-  null,
-  {
-    onClickAddItem,
-  },
-)(InputItem);
+export default InputItem;

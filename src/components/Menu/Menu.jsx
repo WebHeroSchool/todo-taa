@@ -30,7 +30,7 @@ const Menu = () => {
             <ListItem
               button
               selected={selectedIndex === 1}
-              onClick={setSelectedIndex(1)}
+              onClick={() => setSelectedIndex(1)}
             >
               <ListItemText primary="Обо мне" />
             </ListItem>
@@ -40,7 +40,7 @@ const Menu = () => {
             <ListItem
               button
               selected={selectedIndex === 2}
-              onClick={setSelectedIndex(2)}
+              onClick={() => setSelectedIndex(2)}
             >
               <ListItemText primary="Дела" />
             </ListItem>
@@ -50,7 +50,7 @@ const Menu = () => {
             <ListItem
               button
               selected={selectedIndex === 3}
-              onClick={setSelectedIndex(3)}
+              onClick={() => setSelectedIndex(3)}
             >
               <ListItemText primary="Контакты" />
             </ListItem>

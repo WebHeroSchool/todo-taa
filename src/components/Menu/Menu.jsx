@@ -2,16 +2,13 @@ import {
   React,
   useState,
 } from 'react';
-import {
-  Link,
-} from 'react-router-dom';
 import styles from './Menu.module.css';
 import {
   Paper,
   MenuList,
-  ListItem,
-  ListItemText,
 } from '@material-ui/core';
+
+import AppLink from '../AppLink/AppLink';
 
 
 const Menu = () => {
@@ -26,35 +23,32 @@ const Menu = () => {
       <MenuList>
         <nav>
 
-          <Link className={styles.link} to='/'>
-            <ListItem
-              button
-              selected={selectedIndex === 1}
-              onClick={() => setSelectedIndex(1)}
-            >
-              <ListItemText primary="Обо мне" />
-            </ListItem>
-          </Link>
+          <AppLink
+            className={styles.link}
+            to="/"
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+            selected={1}
+            primary="Обо мне"
+          />
 
-          <Link className={styles.link} to='/todo'>
-            <ListItem
-              button
-              selected={selectedIndex === 2}
-              onClick={() => setSelectedIndex(2)}
-            >
-              <ListItemText primary="Дела" />
-            </ListItem>
-          </Link>
+          <AppLink
+            className={styles.link}
+            to="/todo"
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+            selected={2}
+            primary="Дела"
+          />
 
-          <Link className={styles.link} to='/contacts'>
-            <ListItem
-              button
-              selected={selectedIndex === 3}
-              onClick={() => setSelectedIndex(3)}
-            >
-              <ListItemText primary="Контакты" />
-            </ListItem>
-          </Link>
+          <AppLink
+            className={styles.link}
+            to="/contacts"
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+            selected={3}
+            primary="Контакты"
+          />
 
         </nav>
       </MenuList>

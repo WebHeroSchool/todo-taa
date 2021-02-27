@@ -1,7 +1,3 @@
-import todosActions from '../../store/actions/todosActions';
-import {
-  connect,
-} from 'react-redux';
 import classnames from 'classnames';
 import styles from './Item.module.css';
 import {
@@ -13,35 +9,29 @@ import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
 
-const Item = ({
-  id,
-  value,
-  isDone,
-  onClickIsDone,
-  onClickDelete,
-}) => (
+const Item = props => (
   <div className = {styles.itemWrap}>
     <span className = {
       classnames({
         [styles.item]: true,
-        [styles.done]: isDone,
+        [styles.done]: props.isDone,
       })
     }>
       <FormControlLabel
         control={
           <Checkbox
-            onChange={() => onClickIsDone(id)}
-            checked={isDone}
-            name={`checked ${value.toString()}`}
+            onChange={() => props.onClickIsDone(props.id)}
+            checked={props.isDone}
+            name={`checked ${props.value.toString()}`}
           />
         }
-        label={ value }
+        label={ props.value }
       />
       <Button
         className={styles.deleteBtn}
         variant="contained"
         color="secondary"
-        onClick={() => onClickDelete(id)}
+        onClick={() => props.onClickDelete(props.id)}
       >
         <DeleteForeverTwoToneIcon fontSize="default" />
       </Button>
@@ -53,9 +43,8 @@ Item.propTypes = {
   id: PropTypes.number,
   value: PropTypes.string,
   isDone: PropTypes.bool,
+  onClickIsDone: PropTypes.func,
+  onClickDelete: PropTypes.func,
 };
 
-export default connect(
-  null,
-  todosActions,
-)(Item);
+export default Item;

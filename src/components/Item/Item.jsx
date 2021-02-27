@@ -20,7 +20,7 @@ const Item = props => (
       <FormControlLabel
         control={
           <Checkbox
-            onChange={() => props.onClickIsDone(props.id)}
+            onChange={() => props.updateItem(props.id)}
             checked={props.isDone}
             name={`checked ${props.value.toString()}`}
           />
@@ -31,7 +31,7 @@ const Item = props => (
         className={styles.deleteBtn}
         variant="contained"
         color="secondary"
-        onClick={() => props.onClickDelete(props.id)}
+        onClick={() => props.deleteItem(props.id)}
       >
         <DeleteForeverTwoToneIcon fontSize="default" />
       </Button>
@@ -43,8 +43,8 @@ Item.propTypes = {
   id: PropTypes.number,
   value: PropTypes.string,
   isDone: PropTypes.bool,
-  onClickIsDone: PropTypes.func,
-  onClickDelete: PropTypes.func,
+  updateItem: PropTypes.func,
+  deleteItem: PropTypes.func,
 };
 
 export default Item;

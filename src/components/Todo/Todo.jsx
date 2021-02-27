@@ -10,9 +10,9 @@ import {
 import {
   connect,
 } from 'react-redux';
-import onClickAddItem from '../../store/actions/onClickAddItem';
-import onClickIsDone from '../../store/actions/onClickIsDone';
-import onClickDelete from '../../store/actions/onClickDelete';
+import createItem from '../../store/actions/createItem';
+import updateItem from '../../store/actions/updateItem';
+import deleteItem from '../../store/actions/deleteItem';
 
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
@@ -20,7 +20,7 @@ const title = (<h1 className={ styles.title }>TO DO:</h1>);
 const InputItemWithStore = connect(
   null,
   {
-    onClickAddItem,
+    createItem,
   },
 )(InputItem);
 
@@ -29,8 +29,8 @@ const ItemListWithStore = connect(
     items: state.todos.items,
   }),
   {
-    onClickIsDone,
-    onClickDelete,
+    updateItem,
+    deleteItem,
   },
 )(ItemList);
 

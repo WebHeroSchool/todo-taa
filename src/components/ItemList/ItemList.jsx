@@ -13,8 +13,8 @@ const ItemList = props => {
             id={item.id}
             value={item.value}
             isDone={item.isDone}
-            onClickIsDone={props.onClickIsDone}
-            onClickDelete={props.onClickDelete}
+            updateItem={props.updateItem}
+            deleteItem={props.deleteItem}
           />
         </li>
       )
@@ -31,8 +31,8 @@ const ItemList = props => {
 
 ItemList.propTypes = {
   items: PropTypes.array,
-  onClickIsDone: PropTypes.func,
-  onClickDelete: PropTypes.func,
+  updateItem: PropTypes.func,
+  deleteItem: PropTypes.func,
 };
 
 

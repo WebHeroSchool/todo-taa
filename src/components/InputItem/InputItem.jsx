@@ -11,7 +11,7 @@ import {
 
 
 const InputItem = ({
-  onClickAddItem,
+  createItem,
 }) => {
   const [
     inputValue,
@@ -39,7 +39,7 @@ const InputItem = ({
   };
 
   const submitData = () => {
-    onClickAddItem(inputValue);
+    createItem(inputValue);
     setInputvalue('');
   };
 

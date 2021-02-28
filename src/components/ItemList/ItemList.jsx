@@ -2,37 +2,28 @@ import Item from '../Item/Item';
 import styles from './ItemList.module.css';
 import PropTypes from 'prop-types';
 
-
-const ItemList = props => {
-  const mapItems = (items, ReturnableComponent) => (
-    items.map(
-      item => (
-        <li key={item.id.toString()}>
-          <ReturnableComponent
-            id={item.id}
-            value={item.value}
-            isDone={item.isDone}
-            updateItem={props.updateItem}
-            deleteItem={props.deleteItem}
-          />
-        </li>
-      )
-    )
-  );
-
-  return (
-    <ul className={ styles.list }>
-      { mapItems(props.items, Item) }
-    </ul>
-  );
-};
-
+const ItemList = ({
+  items,
+  updateItem,
+  deleteItem,
+}) => (<ul className={ styles.list }>
+  {items.map(item => <li key={item.id.toString()}>
+    <Item
+      id={item.id}
+      value={item.value}
+      isDone={item.isDone}
+      updateItem={updateItem}
+      deleteItem={deleteItem}
+    />
+  </li>)}
+</ul>
+);
 
 ItemList.propTypes = {
+  className: PropTypes.string,
   items: PropTypes.array,
-  updateItem: PropTypes.func,
-  deleteItem: PropTypes.func,
+  onClickIsDone: PropTypes.func,
+  onClickDelete: PropTypes.func,
 };
-
 
 export default ItemList;

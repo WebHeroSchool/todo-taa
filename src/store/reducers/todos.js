@@ -1,9 +1,4 @@
 const initialState = {
-  textField: {
-    inputValue: '',
-    errorStatus: false,
-    helperText: ' ',
-  },
   items: [
     {
       value: 'Разобраться с пропсами',
@@ -24,10 +19,11 @@ const initialState = {
   count: 3,
 };
 
+
 const todos = (state = initialState, action) => {
   switch (action.type) {
   case 'CREATE_ITEM': {
-    if (action.payload) {
+    if (action.payload.trim()) {
       const newItemList = [
         {
           value: action.payload,
@@ -40,37 +36,13 @@ const todos = (state = initialState, action) => {
 
       return {
         ...state,
-        textField: {
-          inputValue: '',
-          helperText: ' ',
-        },
         items: [
           ...newItemList,
         ],
         count: newCount,
       };
-      break;
     }
 
-    return {
-      ...state,
-      textField: {
-        errorStatus: true,
-        helperText: 'Нужно заполнить поле',
-      },
-    };
-    break;
-  }
-
-
-  case 'UPDATE_VALUE': {
-    return {
-      ...state,
-      textField: {
-        inputValue: action.payload,
-        helperText: ' ',
-      },
-    };
     break;
   }
 

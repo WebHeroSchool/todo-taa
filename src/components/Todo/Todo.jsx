@@ -6,21 +6,51 @@ import {
   Paper,
   Divider,
 } from '@material-ui/core';
-import withStore from '../hoc/withStore';
+
+import {
+  connect,
+} from 'react-redux';
+import createItem from '../../store/actions/createItem';
+import updateItem from '../../store/actions/updateItem';
+import deleteItem from '../../store/actions/deleteItem';
+
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
-const ItemListWithStore = withStore(ItemList);
+
+const InputItemWithStore = connect(
+  null,
+  {
+    createItem,
+  },
+)(InputItem);
+
+const ItemListWithStore = connect(
+  state => ({
+    items: state.todos.items,
+  }),
+  {
+    updateItem,
+    deleteItem,
+  },
+)(ItemList);
+
+const FooterWithStore = connect(
+  state => ({
+    count: state.todos.count,
+  }),
+)(Footer);
+
 
 const Todo = () => (
   <Paper className={styles.paper} elevation={3} >
     <div className={styles.indent}>
       {title}
-      <InputItem />
+      <InputItemWithStore />
       <ItemListWithStore />
     </div>
     <Divider />
     <div className={styles.indent}>
-      <Footer />
+      <FooterWithStore />
     </div>
   </Paper>
 );

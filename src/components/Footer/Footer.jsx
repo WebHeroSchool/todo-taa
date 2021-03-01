@@ -1,6 +1,3 @@
-import {
-  connect,
-} from 'react-redux';
 import FilterListItems from '../FilterListItems/FilterListItems';
 import {
   Button,
@@ -8,11 +5,9 @@ import {
 import styles from './Footer.module.css';
 import PropTypes from 'prop-types';
 
-const Footer = ({
-  count,
-}) => (
+const Footer = props => (
   <div className={styles.footer}>
-    Кол-во дел: {count}
+    Кол-во дел: {props.count}
     <FilterListItems />
     <Button
       variant="outlined"
@@ -31,8 +26,4 @@ Footer.propTypes = {
   count: PropTypes.number.isRequired,
 };
 
-export default connect(
-  state => ({
-    count: state.todos.count,
-  }),
-)(Footer);
+export default Footer;

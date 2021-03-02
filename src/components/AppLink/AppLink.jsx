@@ -11,8 +11,8 @@ const AppLink = props => (
   <Link className={props.className} to={props.to}>
     <ListItem
       button
-      selected={props.selectedIndex === props.selected}
-      onClick={() => props.setSelectedIndex(props.selected)}
+      selected={props.selectedIndex === props.primary}
+      onClick={() => props.setSelectedIndex(props.primary)}
     >
       <ListItemText primary={props.primary} />
     </ListItem>

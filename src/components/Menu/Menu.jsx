@@ -28,7 +28,6 @@ const Menu = () => {
             to="/"
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
-            selected={1}
             primary="Обо мне"
           />
 
@@ -37,7 +36,6 @@ const Menu = () => {
             to="/todo"
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
-            selected={2}
             primary="Дела"
           />
 
@@ -46,7 +44,6 @@ const Menu = () => {
             to="/contacts"
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
-            selected={3}
             primary="Контакты"
           />
 

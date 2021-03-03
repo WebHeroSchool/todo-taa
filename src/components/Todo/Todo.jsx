@@ -18,44 +18,35 @@ import updateItem from '../../store/actions/updateItem';
 import deleteItem from '../../store/actions/deleteItem';
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
+const TodoItemWithItemList = withItemList(TodoItem);
 
-const InputItemWithStore = connect(
-  null,
-  {
-    createItem,
-  },
-)(InputItem);
-
-const ItemListWithStore = connect(
-  state => ({
-    items: state.todos.items,
-  }),
-  {
-    updateItem,
-    deleteItem,
-  },
-)(withItemList(TodoItem));
-
-const FooterWithStore = connect(
-  state => ({
-    count: state.todos.count,
-  }),
-)(Footer);
-
-
-const Todo = () => (
+const Todo = props => (
   <Paper className={styles.paper} elevation={3} >
     <div className={styles.indent}>
       {title}
-      <InputItemWithStore />
-      <ItemListWithStore />
+      <InputItem createItem={ props.createItem } />
+      <TodoItemWithItemList
+        items={ props.items }
+        updateItem={ props.updateItem }
+        deleteItem={ props.deleteItem }
+      />
     </div>
     <Divider />
     <div className={styles.indent}>
-      <FooterWithStore />
+      <Footer count={ props.count } />
     </div>
   </Paper>
 );
 
 
-export default Todo;
+export default connect(
+  state => ({
+    items: state.todos.items,
+    count: state.todos.count,
+  }),
+  {
+    createItem,
+    updateItem,
+    deleteItem,
+  },
+)(Todo);

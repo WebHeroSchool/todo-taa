@@ -1,11 +1,14 @@
-import InputItem from '../InputItem/InputItem';
-import ItemList from '../ItemList/ItemList';
-import Footer from '../Footer/Footer';
 import styles from './Todo.module.css';
+
+import InputItem from '../InputItem/InputItem';
+import Footer from '../Footer/Footer';
 import {
   Paper,
   Divider,
 } from '@material-ui/core';
+
+import TodoItem from '../TodoItem/TodoItem';
+import withItemList from '../hoc/withItemList/withItemList';
 
 import {
   connect,
@@ -13,7 +16,6 @@ import {
 import createItem from '../../store/actions/createItem';
 import updateItem from '../../store/actions/updateItem';
 import deleteItem from '../../store/actions/deleteItem';
-
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
@@ -32,7 +34,7 @@ const ItemListWithStore = connect(
     updateItem,
     deleteItem,
   },
-)(ItemList);
+)(withItemList(TodoItem));
 
 const FooterWithStore = connect(
   state => ({

@@ -1,8 +1,7 @@
-import Item from '../Item/Item';
-import styles from './ItemList.module.css';
+import styles from './withItemList.module.css';
 import PropTypes from 'prop-types';
 
-const ItemList = ({
+const withItemList = Component => ({
   items,
   updateItem,
   deleteItem,
@@ -10,7 +9,7 @@ const ItemList = ({
   <ul className={ styles.list }>
     {items.map(item => (
       <li key={item.id.toString()}>
-        <Item
+        <Component
           id={item.id}
           value={item.value}
           isDone={item.isDone}
@@ -22,11 +21,11 @@ const ItemList = ({
   </ul>
 );
 
-ItemList.propTypes = {
+withItemList.propTypes = {
   className: PropTypes.string,
   items: PropTypes.array,
   onClickIsDone: PropTypes.func,
   onClickDelete: PropTypes.func,
 };
 
-export default ItemList;
+export default withItemList;

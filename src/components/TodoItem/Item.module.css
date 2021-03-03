@@ -3,15 +3,18 @@
   color: #000000de;
   display: flex;
   justify-content: space-between;
-  margin: .8em;
-  padding: .4em;
-}
-
-.item:hover {
-  cursor: pointer;
 }
 
 .done {
   color: #0000004e;
   text-decoration: line-through;
+}
+
+.deleteBtn {
+  opacity: 0;
+  transition: opacity .4s ease-out !important;
+}
+
+.item:hover .deleteBtn {
+  opacity: 1;
 }

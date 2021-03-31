@@ -15,7 +15,7 @@ const Todo = props => (
   <Paper className={styles.paper} elevation={3} >
     <div className={styles.indent}>
       {title}
-      <InputItemContainer createItem={ props.createItem } />
+      <InputItemContainer />
       <ItemList {...props} />
     </div>
     <Divider />

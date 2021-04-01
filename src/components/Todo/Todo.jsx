@@ -1,8 +1,8 @@
 import styles from './Todo.module.css';
 
 import InputItemContainer from '../InputItem/InputItemContainer';
-import ItemList from '../ItemList/ItemList';
-import Footer from '../Footer/Footer';
+import ItemListContainer from '../ItemList/ItemListContainer';
+import FooterContainer from '../Footer/FooterContainer';
 import {
   Paper,
   Divider,
@@ -11,16 +11,16 @@ import {
 
 const title = (<h1 className={ styles.title }>TO DO:</h1>);
 
-const Todo = props => (
+const Todo = () => (
   <Paper className={styles.paper} elevation={3} >
     <div className={styles.indent}>
       {title}
       <InputItemContainer />
-      <ItemList {...props} />
+      <ItemListContainer />
     </div>
     <Divider />
     <div className={styles.indent}>
-      <Footer count={ props.count } />
+      <FooterContainer />
     </div>
   </Paper>
 );

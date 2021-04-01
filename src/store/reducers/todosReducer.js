@@ -1,3 +1,13 @@
+import {
+  CREATE_ITEM,
+} from '../actions/createItemAction';
+import {
+  UPDATE_ITEM,
+} from '../actions/updateItemAction';
+import {
+  DELETE_ITEM,
+} from '../actions/deleteItemAction';
+
 const initialState = {
   items: [
     {
@@ -20,9 +30,9 @@ const initialState = {
 };
 
 
-const todos = (state = initialState, action) => {
+export const todosReducer = (state = initialState, action) => {
   switch (action.type) {
-  case 'CREATE_ITEM': {
+  case CREATE_ITEM: {
     if (action.payload.trim()) {
       const newItemList = [
         {
@@ -47,7 +57,7 @@ const todos = (state = initialState, action) => {
   }
 
 
-  case 'UPDATE_ITEM': {
+  case UPDATE_ITEM: {
     const newItemList = state.items.map(item => {
       const newItem = {
         ...item,
@@ -70,7 +80,7 @@ const todos = (state = initialState, action) => {
   }
 
 
-  case 'DELETE_ITEM': {
+  case DELETE_ITEM: {
     const newItemList = state.items.filter(item => item.id !== action.payload);
     const newCount = --state.count;
 
@@ -91,5 +101,3 @@ const todos = (state = initialState, action) => {
     };
   };
 };
-
-export default todos;

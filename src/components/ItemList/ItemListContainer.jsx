@@ -1,8 +1,12 @@
 import {
   connect,
 } from 'react-redux';
-import updateItem from '../../store/actions/updateItem';
-import deleteItem from '../../store/actions/deleteItem';
+import {
+  updateItem,
+} from '../../store/actions/updateItemAction';
+import {
+  deleteItem,
+} from '../../store/actions/deleteItemAction';
 
 import ItemList from './ItemList';
 

@@ -9,9 +9,7 @@ import {
 import InputItem from './InputItem';
 
 
-const InputItemContainer = ({
-  createItem,
-}) => {
+const InputItemContainer = props => {
   const [
     inputValue,
     setInputvalue,
@@ -38,7 +36,7 @@ const InputItemContainer = ({
   };
 
   const submitData = () => {
-    createItem(inputValue);
+    props.createItem(inputValue);
     setInputvalue('');
   };
 
@@ -67,13 +65,9 @@ const InputItemContainer = ({
 
   return (
     <InputItem
-      inputValue={ inputValue }
-      setInputvalue={ setInputvalue }
-      helperText={ helperText }
       errorStatus={ errorStatus }
-      addErrorStatus={ addErrorStatus }
-      removeErrorStatus={ removeErrorStatus }
-      submitData={ submitData }
+      helperText={ helperText }
+      inputValue={ inputValue }
       onChangeTextField={ onChangeTextField }
       onKeyDownTextField={ onKeyDownTextField }
       onClickButton={ onClickButton }

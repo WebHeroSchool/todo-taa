@@ -1,6 +1,6 @@
 import styles from './ItemList.module.css';
 
-import TodoItem from '../TodoItem/TodoItem';
+import TodoItemContainer from '../TodoItem/TodoItemContainer';
 
 
 const ItemList = props => (
@@ -8,11 +8,7 @@ const ItemList = props => (
     {props.items.map(
       item => (
         <li key={item.id.toString()}>
-          <TodoItem
-            {...item}
-            updateItem={ props.updateItem }
-            deleteItem={ props.deleteItem }
-          />
+          <TodoItemContainer { ...item } />
         </li>
       )
     )}

@@ -19,18 +19,18 @@ const TodoItem = props => (
     <FormControlLabel
       control={
         <Checkbox
-          onChange={() => props.updateItem(props.id)}
-          checked={props.isDone}
-          name={`checked ${props.value.toString()}`}
+          onChange={ props.onChangeCheckbox }
+          checked={ props.isDone }
+          name={ `checked ${props.value.toString()}` }
         />
       }
       label={ props.value }
     />
     <Button
-      className={styles.deleteBtn}
+      className={ styles.deleteBtn }
       variant="contained"
       color="secondary"
-      onClick={() => props.deleteItem(props.id)}
+      onClick={ props.onClickButton }
     >
       <DeleteForeverTwoToneIcon fontSize="default" />
     </Button>

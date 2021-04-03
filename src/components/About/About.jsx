@@ -1,16 +1,15 @@
-import {
-  Paper,
-} from '@material-ui/core';
-import styles from './About.module.css';
+import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
+import withIndent from '../hoc/withIndent/withIndent';
 
-const title = (<h1 className={ styles.title }>Обо мне:</h1>);
+import Title from '../Title/Title';
+
 
 const About = () => (
-  <Paper className={styles.paper} elevation={3} >
-    <div className={styles.indent}>
-      {title}
-    </div>
-  </Paper>
+  withMyPaperLayer(
+    () => withIndent([
+      () => <Title titleValue={ 'Обо мне:' }/>,
+    ]),
+  )
 );
 
 export default About;

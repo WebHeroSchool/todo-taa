@@ -1,3 +1,5 @@
+import styles from './AppLink.module.css';
+
 import {
   Link,
 } from 'react-router-dom';
@@ -8,7 +10,7 @@ import {
 
 
 const AppLink = props => (
-  <Link className={props.className} to={props.to}>
+  <Link className={styles.link} to={props.to}>
     <ListItem
       button
       selected={props.selectedIndex === props.primary}

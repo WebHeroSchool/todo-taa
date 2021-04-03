@@ -1,8 +1,9 @@
+import styles from './Menu.module.css';
+
 import {
   React,
   useState,
 } from 'react';
-import styles from './Menu.module.css';
 import {
   Paper,
   MenuList,
@@ -24,7 +25,6 @@ const Menu = () => {
         <nav>
 
           <AppLink
-            className={styles.link}
             to="/"
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
@@ -32,7 +32,6 @@ const Menu = () => {
           />
 
           <AppLink
-            className={styles.link}
             to="/todo"
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
@@ -40,7 +39,6 @@ const Menu = () => {
           />
 
           <AppLink
-            className={styles.link}
             to="/contacts"
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}

@@ -3,10 +3,11 @@ import {
 } from '@material-ui/core';
 import styles from './withMyPaperLayer.module.css';
 
+import mappedComponents from '../../../utils/mappedComponents';
 
-const withMyPaperLayer = WrappedComponent => (
+const withMyPaperLayer = WrappedComponents => (
   <Paper className={styles.paper} elevation={3} >
-    <WrappedComponent />
+    { mappedComponents(WrappedComponents) }
   </Paper>
 );
 

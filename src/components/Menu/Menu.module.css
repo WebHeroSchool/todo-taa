@@ -1,8 +1,9 @@
 .menu {
+  height: 100%;
   width: 16%;
 }
 
 .link {
-  text-decoration: unset;
   color: unset;
+  text-decoration: unset;
 }

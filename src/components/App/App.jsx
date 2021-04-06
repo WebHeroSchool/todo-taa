@@ -7,7 +7,7 @@ import {
 import Menu from '../Menu/Menu';
 import About from '../About/About';
 import Todo from '../Todo/Todo';
-import Contacts from '../Contacts/Contacts';
+import ContactsContainer from '../Contacts/ContactsContainer';
 
 
 const App = () => (
@@ -20,7 +20,7 @@ const App = () => (
 
         <Route path='/' exact component={About} />
         <Route path='/todo' component={Todo} />
-        <Route path='/contacts' component={Contacts} />
+        <Route path='/contacts' component={ContactsContainer} />
 
       </div>
 

@@ -18,9 +18,7 @@ const ContactsContainer = props => {
       fetch('https://api.github.com/users/chiga2030')
         .then(data => data.json())
         .then(data => props.readContacts({
-          name: data.name,
-          login: data.login,
-          location: data.location,
+          ...data,
         }));
     }, 1000);
   }, []);

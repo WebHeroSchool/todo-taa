@@ -2,29 +2,26 @@ import {
   connect,
 } from 'react-redux';
 import {
-  readContacts,
+  readContacts as setState,
 } from '../../store/actions/readContactsAction';
 
 import Contacts from './Contacts';
 
-import {
-  useEffect,
-} from 'react';
+import withFetch from '../hoc/withFetch/withFetch';
+
+const url = 'https://api.github.com/users/chiga2030';
+
+const ContactsWithFetch = props => withFetch(Contacts, {
+  ...props,
+});
 
 
-const ContactsContainer = props => {
-  useEffect(() => {
-    setTimeout(() => {
-      fetch('https://api.github.com/users/chiga2030')
-        .then(data => data.json())
-        .then(data => props.readContacts({
-          ...data,
-        }));
-    }, 1000);
-  }, []);
-
-  return <Contacts { ...props } />;
-};
+const ContactsContainer = props => (
+  <ContactsWithFetch
+    url={ url }
+    { ...props }
+  />
+);
 
 
 export default connect(
@@ -32,6 +29,6 @@ export default connect(
     contacts: state.contacts,
   }),
   {
-    readContacts,
+    setState,
   },
 )(ContactsContainer);

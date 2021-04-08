@@ -15,6 +15,8 @@ const Contacts = props => (
         <br/>
         Адрес: { props.contacts.location || 'loading...' }
         <br/>
+        Twitter: { props.contacts.twitter_username || 'loading...' }
+        <br/>
       </div>,
     ]),
   )

@@ -8,9 +8,7 @@ const withFetch = (Component, props) => {
     setTimeout(() => {
       fetch(props.url)
         .then(data => data.json())
-        .then(data => props.setState({
-          ...data,
-        }));
+        .then(data => props.setState(data));
     }, 1000);
   }, []);
 

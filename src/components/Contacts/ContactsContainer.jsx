@@ -2,8 +2,8 @@ import {
   connect,
 } from 'react-redux';
 import {
-  readContacts as setState,
-} from '../../store/actions/readContactsAction';
+  readDataApi as setState,
+} from '../../store/actions/readDataApiAction';
 
 import Contacts from './Contacts';
 

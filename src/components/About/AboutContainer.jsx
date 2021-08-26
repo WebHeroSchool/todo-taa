@@ -2,7 +2,7 @@ import {
   connect,
 } from 'react-redux';
 import {
-  updateStore as setState,
+  updateAboutStore as setState,
 } from '../../store/actions/updateStore';
 
 import About from './About';

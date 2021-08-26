@@ -9,13 +9,13 @@ const Contacts = props => (
     () => withIndent([
       () => <Title titleValue={ 'Контакты:' }/>,
       () => <div>
-        Имя: { props.contacts.name || 'loading...' }
+        Имя: { props.contacts.items.name || 'loading...' }
         <br/>
-        Nickname: { props.contacts.login || 'loading...' }
+        Nickname: { props.contacts.items.login || 'loading...' }
         <br/>
-        Адрес: { props.contacts.location || 'loading...' }
+        Адрес: { props.contacts.items.location || 'loading...' }
         <br/>
-        Twitter: { props.contacts.twitter_username || 'loading...' }
+        Twitter: { props.contacts.items.twitter_username || 'loading...' }
         <br/>
       </div>,
     ]),

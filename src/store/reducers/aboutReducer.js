@@ -1,5 +1,5 @@
 import {
-  UPDATE_STORE,
+  UPDATE_ABOUT_STORE,
 } from '../actions/updateStore';
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 
 export const aboutReducer = (state = initialState, action) => {
   switch (action.type) {
-  case UPDATE_STORE: {
+  case UPDATE_ABOUT_STORE: {
     const newStore = [
       ...action.payload,
     ];

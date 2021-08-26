@@ -1,5 +1,5 @@
 import {
-  UPDATE_STORE,
+  UPDATE_CONTACTS_STORE,
 } from '../actions/updateStore';
 
 const initialState = {
@@ -9,16 +9,14 @@ const initialState = {
 
 export const contactsReducer = (state = initialState, action) => {
   switch (action.type) {
-  case UPDATE_STORE: {
-    const newContactsList = [
+  case UPDATE_CONTACTS_STORE: {
+    const newContactsList = {
       ...action.payload,
-    ];
+    };
 
     return {
       ...state,
-      items: [
-        ...newContactsList,
-      ],
+      items: newContactsList,
     };
 
     break;

@@ -10,7 +10,7 @@ const About = props => (
       () => <Title titleValue={ 'Обо мне:' }/>,
       () => <ol>
         {
-          props.state.map(
+          props.about.items.map(
             item => (
               <li key={item.id}>
                 { item.name }

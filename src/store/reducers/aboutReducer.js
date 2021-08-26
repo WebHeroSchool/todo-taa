@@ -7,17 +7,17 @@ const initialState = {
 };
 
 
-export const contactsReducer = (state = initialState, action) => {
+export const aboutReducer = (state = initialState, action) => {
   switch (action.type) {
   case UPDATE_STORE: {
-    const newContactsList = [
+    const newStore = [
       ...action.payload,
     ];
 
     return {
       ...state,
       items: [
-        ...newContactsList,
+        ...newStore,
       ],
     };
 

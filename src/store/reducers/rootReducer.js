@@ -3,6 +3,9 @@ import {
 } from 'redux';
 
 import {
+  aboutReducer as about,
+} from './aboutReducer';
+import {
   todosReducer as todos,
 } from './todosReducer';
 import {
@@ -11,6 +14,7 @@ import {
 
 
 export default combineReducers({
+  about,
   todos,
   contacts,
 });

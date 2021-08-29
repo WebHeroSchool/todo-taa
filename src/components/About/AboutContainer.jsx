@@ -16,7 +16,7 @@ import About from './About';
 
 import withFetch from '../hoc/withFetch/withFetch';
 
-const url = 'https://ithub.com/users/chiga2030/repos';
+const url = 'https://api.github.com/users/chiga2030/repos';
 
 
 const AboutWithFetch = props => withFetch(About, {

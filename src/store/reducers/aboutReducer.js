@@ -12,7 +12,7 @@ import {
 const initialState = {
   items: [],
   isLoading: true,
-  isFetchError: false,
+  fetchReposFailure: false,
   errorMessage: '',
 };
 
@@ -29,6 +29,7 @@ export const aboutReducer = (state = initialState, action) => {
       items: [
         ...newStore,
       ],
+      fetchReposFailure: false,
     };
 
     break;
@@ -52,7 +53,7 @@ export const aboutReducer = (state = initialState, action) => {
 
     return {
       ...state,
-      isFetchError: true,
+      fetchReposFailure: true,
       errorMessage: newStore,
     };
 

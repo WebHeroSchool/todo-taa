@@ -15,20 +15,26 @@ const About = props => (
 
       withMyPaperLayer(
         withIndent([
-          <Title titleValue={ 'Мои репозитории:' }/>,
-          <ol>
-            {
-              props.about.items.map(
-                item => (
-                  <li key={item.id}>
-                    <a href={ item.html_url } target="_blank">
-                      { item.name }
-                    </a>
-                  </li>
-                )
-              )
+          <Title
+            titleValue={
+              props.about.fetchReposFailure ? 'Ошибка:' : 'Мои репозитории:'
             }
-          </ol>,
+          />,
+          props.about.fetchReposFailure ?
+            <p>{ props.about.errorMessage }</p> :
+            <ol>
+              {
+                props.about.items.map(
+                  item => (
+                    <li key={item.id}>
+                      <a href={ item.html_url } target="_blank">
+                        { item.name }
+                      </a>
+                    </li>
+                  )
+                )
+              }
+            </ol>,
         ]),
       )
     }

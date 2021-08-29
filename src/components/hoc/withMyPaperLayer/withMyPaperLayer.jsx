@@ -7,7 +7,7 @@ import mappedComponents from '../../../utils/mappedComponents';
 
 const withMyPaperLayer = WrappedComponents => (
   <Paper className={styles.paper} elevation={3} >
-    { mappedComponents(WrappedComponents) }
+    { mappedComponents(() => WrappedComponents) }
   </Paper>
 );
 

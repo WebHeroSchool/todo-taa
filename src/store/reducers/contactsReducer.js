@@ -1,9 +1,13 @@
 import {
   UPDATE_CONTACTS_STORE,
 } from '../actions/updateStore';
+import {
+  SET_CONTACTS_ISLOADING,
+} from '../actions/setIsLoading';
 
 const initialState = {
   items: [],
+  isLoading: true,
 };
 
 
@@ -17,6 +21,18 @@ export const contactsReducer = (state = initialState, action) => {
     return {
       ...state,
       items: newContactsList,
+    };
+
+    break;
+  }
+
+
+  case SET_CONTACTS_ISLOADING: {
+    const newStore = action.payload;
+
+    return {
+      ...state,
+      isLoading: newStore,
     };
 
     break;

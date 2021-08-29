@@ -1,9 +1,19 @@
 import {
   UPDATE_ABOUT_STORE,
 } from '../actions/updateStore';
+import {
+  SET_ABOUT_ISLOADING,
+} from '../actions/setIsLoading';
+import {
+  FETCH_ABOUT_ERROR,
+} from '../actions/fetchError';
+
 
 const initialState = {
   items: [],
+  isLoading: true,
+  isFetchError: false,
+  errorMessage: '',
 };
 
 
@@ -19,6 +29,31 @@ export const aboutReducer = (state = initialState, action) => {
       items: [
         ...newStore,
       ],
+    };
+
+    break;
+  }
+
+
+  case SET_ABOUT_ISLOADING: {
+    const newStore = action.payload;
+
+    return {
+      ...state,
+      isLoading: newStore,
+    };
+
+    break;
+  }
+
+
+  case FETCH_ABOUT_ERROR: {
+    const newStore = action.payload;
+
+    return {
+      ...state,
+      isFetchError: true,
+      errorMessage: newStore,
     };
 
     break;

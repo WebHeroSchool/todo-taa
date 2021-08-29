@@ -5,7 +5,7 @@ import mappedComponents from '../../../utils/mappedComponents';
 
 const withIndent = WrappedComponents => (
   <div className={styles.indent}>
-    { mappedComponents(WrappedComponents) }
+    { mappedComponents(() => WrappedComponents) }
   </div>
 );
 

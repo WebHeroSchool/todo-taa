@@ -13,14 +13,14 @@ import {
 const Todo = () => (
   withMyPaperLayer(
     [
-      () => withIndent([
-        () => <Title titleValue={ 'TO DO:' } />,
-        InputItemContainer,
-        ItemListContainer,
+      withIndent([
+        <Title titleValue={ 'TO DO:' } />,
+        <InputItemContainer />,
+        <ItemListContainer />,
       ]),
-      Divider,
-      () => withIndent([
-        FooterContainer,
+      <Divider />,
+      withIndent([
+        <FooterContainer />,
       ]),
     ]
   )

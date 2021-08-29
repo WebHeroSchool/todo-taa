@@ -8,7 +8,11 @@ const withFetch = (Component, props) => {
     setTimeout(() => {
       fetch(props.url)
         .then(data => data.json())
-        .then(data => props.setState(data));
+        .then(data => console.log(data))
+        .then(data => props.setState(data))
+        .then(() => props.setIsLoading(false))
+        .catch(data => props.setFetchError(data.toString()))
+        .then(() => props.setIsLoading(false));
     }, 1000);
   }, []);
 

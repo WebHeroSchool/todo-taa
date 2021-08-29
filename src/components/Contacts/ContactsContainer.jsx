@@ -1,9 +1,13 @@
 import {
   connect,
 } from 'react-redux';
+
 import {
   updateContactsStore as setState,
 } from '../../store/actions/updateStore';
+import {
+  setContactsIsLoading as setIsLoading,
+} from '../../store/actions/setIsLoading';
 
 import Contacts from './Contacts';
 
@@ -31,5 +35,6 @@ export default connect(
   }),
   {
     setState,
+    setIsLoading,
   },
 )(ContactsContainer);

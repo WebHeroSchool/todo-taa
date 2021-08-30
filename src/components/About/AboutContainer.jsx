@@ -1,56 +1,42 @@
-import {
-  connect,
-} from 'react-redux';
+// import {
+//   Divider,
+// } from '@material-ui/core';
 
-import {
-  updateMyReposStore as setState,
-} from '../../store/actions/updateStore';
-import {
-  setMyReposIsLoading as setIsLoading,
-} from '../../store/actions/setIsLoading';
-import {
-  setMyReposIsError as setFetchError,
-} from '../../store/actions/fetchError';
+import ContactsContainer from '../Contacts/ContactsContainer';
+import MyReposContainer from '../MyRepos/MyReposContainer';
 
-import MyRepos from '../MyRepos/MyRepos';
-
-import withFetch from '../hoc/withFetch/withFetch';
 import withIndent from '../hoc/withIndent/withIndent';
 import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 
-const url = 'https://api.github.com/users/chiga2030/repos';
 
-const Test = () => (<p>Test</p>);
-
-const MyReposWithFetch = props => withFetch(MyRepos, {
-  ...props,
-});
-const MyReposWithIdent = props => withIndent([
-  MyReposWithFetch,
-  Test,
+const ContactsWithIdent = props => withIndent([
+  ContactsContainer,
 ], {
   ...props,
 });
-const MyReposWithMyPaperLayer = props => withMyPaperLayer(MyReposWithIdent, {
+const MyReposWithIdent = props => withIndent([
+  MyReposContainer,
+], {
   ...props,
 });
 
 
-const MyReposContainer = props => (
-  <MyReposWithMyPaperLayer
-    url={ url }
-    { ...props }
-  />
+const AboutWithIdent = props => withIndent([
+  ContactsWithIdent,
+  // Divider,
+  MyReposWithIdent,
+], {
+  ...props,
+});
+
+
+const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {
+  ...props,
+});
+
+const About = () => (
+  <AboutWithMyPaperLayer />
 );
 
 
-export default connect(
-  state => ({
-    repos: state.repos,
-  }),
-  {
-    setState,
-    setIsLoading,
-    setFetchError,
-  },
-)(MyReposContainer);
+export default About;

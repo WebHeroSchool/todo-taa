@@ -1,6 +1,6 @@
 .indent {
   box-sizing: border-box;
-  height: 100%;
+  height: auto;
   margin: 0;
   padding: .5em 1em;
 }

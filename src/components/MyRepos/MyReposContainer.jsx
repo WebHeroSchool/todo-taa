@@ -3,38 +3,41 @@ import {
 } from 'react-redux';
 
 import {
-  updateContactsStore as setState,
+  updateMyReposStore as setState,
 } from '../../store/actions/updateStore';
 import {
-  setContactsIsLoading as setIsLoading,
+  setMyReposIsLoading as setIsLoading,
 } from '../../store/actions/setIsLoading';
 import {
-  setContactsIsError as setFetchError,
+  setMyReposIsError as setFetchError,
 } from '../../store/actions/fetchError';
 
-import Contacts from './Contacts';
+import MyRepos from '../MyRepos/MyRepos';
 
 import withFetch from '../hoc/withFetch/withFetch';
 // import withIndent from '../hoc/withIndent/withIndent';
 // import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 
-const url = 'https://api.github.com/users/chiga2030';
+const url = 'https://api.github.com/users/chiga2030/repos';
 
 
-const ContactsWithFetch = props => withFetch(Contacts, {
+const MyReposWithFetch = props => withFetch(MyRepos, {
   ...props,
 });
-// const ContactsWithIdent = props => withIndent(ContactsWithFetch, {
+
+
+// const MyReposWithIdent = props => withIndent([
+//   MyReposWithFetch,
+// ], {
 //   ...props,
 // });
-// const ContactsWithMyPaperLayer = props => withMyPaperLayer(
-// ContactsWithIdent, {
+// const MyReposWithMyPaperLayer = props => withMyPaperLayer(MyReposWithIdent, {
 //   ...props,
 // });
 
 
-const ContactsContainer = props => (
-  <ContactsWithFetch
+const MyReposContainer = props => (
+  <MyReposWithFetch
     url={ url }
     { ...props }
   />
@@ -44,10 +47,11 @@ const ContactsContainer = props => (
 export default connect(
   state => ({
     contacts: state.contacts,
+    repos: state.repos,
   }),
   {
     setState,
     setIsLoading,
     setFetchError,
   },
-)(ContactsContainer);
+)(MyReposContainer);

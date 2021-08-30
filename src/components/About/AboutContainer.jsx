@@ -20,11 +20,15 @@ import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 
 const url = 'https://api.github.com/users/chiga2030/repos';
 
+const Test = () => (<p>Test</p>);
 
 const AboutWithFetch = props => withFetch(About, {
   ...props,
 });
-const AboutWithIdent = props => withIndent(AboutWithFetch, {
+const AboutWithIdent = props => withIndent([
+  AboutWithFetch,
+  Test,
+], {
   ...props,
 });
 const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {

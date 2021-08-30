@@ -1,9 +1,16 @@
 import styles from './withIndent.module.css';
 
+import toArray from '../../../utils/toArray';
 
 const withIndent = (WrappedComponent, props) => (
   <div className={styles.indent}>
-    <WrappedComponent {...props} />
+    {
+      toArray(WrappedComponent).map(
+        (Component, index) => (
+          <Component {...props} key={index} />
+        )
+      )
+    }
   </div>
 );
 

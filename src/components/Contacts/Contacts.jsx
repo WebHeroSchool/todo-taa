@@ -1,6 +1,8 @@
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
 
+import styles from './Contacts.module.css';
+
 
 const Contacts = props => (
   props.contacts.isLoading ?
@@ -11,16 +13,12 @@ const Contacts = props => (
       }/>
       {props.contacts.fetchReposFailure ?
         <p>{ props.contacts.errorMessage }</p> :
-        <div>
-          Имя: { props.contacts.items.name }
-          <br/>
-          Nickname: { props.contacts.items.login }
-          <br/>
-          Адрес: { props.contacts.items.location }
-          <br/>
-          Twitter: { props.contacts.items.twitter_username }
-          <br/>
-        </div>
+        <ul className={styles.list}>
+          <li>Имя: { props.contacts.items.name }</li>
+          <li>Nickname: { props.contacts.items.login }</li>
+          <li>Адрес: { props.contacts.items.location }</li>
+          <li>Twitter: @{ props.contacts.items.twitter_username }</li>
+        </ul>
       }
     </>
 );

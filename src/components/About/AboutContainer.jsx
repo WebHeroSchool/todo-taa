@@ -1,6 +1,6 @@
-// import {
-//   Divider,
-// } from '@material-ui/core';
+import {
+  Divider,
+} from '@material-ui/core';
 
 import ContactsContainer from '../Contacts/ContactsContainer';
 import MyReposContainer from '../MyRepos/MyReposContainer';
@@ -23,7 +23,7 @@ const MyReposWithIdent = props => withIndent([
 
 const AboutWithIdent = props => withIndent([
   ContactsWithIdent,
-  // Divider,
+  Divider,
   MyReposWithIdent,
 ], {
   ...props,

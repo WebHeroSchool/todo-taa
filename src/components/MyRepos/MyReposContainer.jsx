@@ -15,8 +15,7 @@ import {
 import MyRepos from '../MyRepos/MyRepos';
 
 import withFetch from '../hoc/withFetch/withFetch';
-// import withIndent from '../hoc/withIndent/withIndent';
-// import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
+
 
 const url = 'https://api.github.com/users/chiga2030/repos';
 
@@ -24,16 +23,6 @@ const url = 'https://api.github.com/users/chiga2030/repos';
 const MyReposWithFetch = props => withFetch(MyRepos, {
   ...props,
 });
-
-
-// const MyReposWithIdent = props => withIndent([
-//   MyReposWithFetch,
-// ], {
-//   ...props,
-// });
-// const MyReposWithMyPaperLayer = props => withMyPaperLayer(MyReposWithIdent, {
-//   ...props,
-// });
 
 
 const MyReposContainer = props => (

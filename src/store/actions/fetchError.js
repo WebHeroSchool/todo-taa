@@ -1,8 +1,8 @@
-export const FETCH_ABOUT_ERROR = 'FETCH_ABOUT_ERROR';
+export const FETCH_MYREPOS_ERROR = 'FETCH_ABOUT_ERROR';
 export const FETCH_CONTACTS_ERROR = 'FETCH_CONTACTS_ERROR';
 
-export const setAboutIsError = message => ({
-  type: FETCH_ABOUT_ERROR,
+export const setMyReposIsError = message => ({
+  type: FETCH_MYREPOS_ERROR,
   payload: message,
 });
 

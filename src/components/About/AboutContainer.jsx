@@ -3,16 +3,16 @@ import {
 } from 'react-redux';
 
 import {
-  updateAboutStore as setState,
+  updateMyReposStore as setState,
 } from '../../store/actions/updateStore';
 import {
-  setAboutIsLoading as setIsLoading,
+  setMyReposIsLoading as setIsLoading,
 } from '../../store/actions/setIsLoading';
 import {
-  setAboutIsError as setFetchError,
+  setMyReposIsError as setFetchError,
 } from '../../store/actions/fetchError';
 
-import About from './About';
+import MyRepos from '../MyRepos/MyRepos';
 
 import withFetch from '../hoc/withFetch/withFetch';
 import withIndent from '../hoc/withIndent/withIndent';
@@ -22,22 +22,22 @@ const url = 'https://api.github.com/users/chiga2030/repos';
 
 const Test = () => (<p>Test</p>);
 
-const AboutWithFetch = props => withFetch(About, {
+const MyReposWithFetch = props => withFetch(MyRepos, {
   ...props,
 });
-const AboutWithIdent = props => withIndent([
-  AboutWithFetch,
+const MyReposWithIdent = props => withIndent([
+  MyReposWithFetch,
   Test,
 ], {
   ...props,
 });
-const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {
+const MyReposWithMyPaperLayer = props => withMyPaperLayer(MyReposWithIdent, {
   ...props,
 });
 
 
-const AboutContainer = props => (
-  <AboutWithMyPaperLayer
+const MyReposContainer = props => (
+  <MyReposWithMyPaperLayer
     url={ url }
     { ...props }
   />
@@ -46,11 +46,11 @@ const AboutContainer = props => (
 
 export default connect(
   state => ({
-    about: state.about,
+    repos: state.repos,
   }),
   {
     setState,
     setIsLoading,
     setFetchError,
   },
-)(AboutContainer);
+)(MyReposContainer);

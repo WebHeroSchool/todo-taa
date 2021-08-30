@@ -3,8 +3,8 @@ import {
 } from 'redux';
 
 import {
-  aboutReducer as about,
-} from './aboutReducer';
+  myReposReducer as repos,
+} from './myReposReducer';
 import {
   todosReducer as todos,
 } from './todosReducer';
@@ -14,7 +14,7 @@ import {
 
 
 export default combineReducers({
-  about,
+  repos,
   todos,
   contacts,
 });

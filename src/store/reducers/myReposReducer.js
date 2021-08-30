@@ -1,11 +1,11 @@
 import {
-  UPDATE_ABOUT_STORE,
+  UPDATE_MYREPOS_STORE,
 } from '../actions/updateStore';
 import {
-  SET_ABOUT_ISLOADING,
+  SET_MYREPOS_ISLOADING,
 } from '../actions/setIsLoading';
 import {
-  FETCH_ABOUT_ERROR,
+  FETCH_MYREPOS_ERROR,
 } from '../actions/fetchError';
 
 
@@ -17,9 +17,9 @@ const initialState = {
 };
 
 
-export const aboutReducer = (state = initialState, action) => {
+export const myReposReducer = (state = initialState, action) => {
   switch (action.type) {
-  case UPDATE_ABOUT_STORE: {
+  case UPDATE_MYREPOS_STORE: {
     const newStore = [
       ...action.payload,
     ];
@@ -36,7 +36,7 @@ export const aboutReducer = (state = initialState, action) => {
   }
 
 
-  case SET_ABOUT_ISLOADING: {
+  case SET_MYREPOS_ISLOADING: {
     const newStore = action.payload;
 
     return {
@@ -48,7 +48,7 @@ export const aboutReducer = (state = initialState, action) => {
   }
 
 
-  case FETCH_ABOUT_ERROR: {
+  case FETCH_MYREPOS_ERROR: {
     const newStore = action.payload;
 
     return {

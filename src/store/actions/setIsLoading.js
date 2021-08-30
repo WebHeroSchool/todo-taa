@@ -1,8 +1,8 @@
-export const SET_ABOUT_ISLOADING = 'SET_ABOUT_ISLOADING';
+export const SET_MYREPOS_ISLOADING = 'SET_MYREPOS_ISLOADING';
 export const SET_CONTACTS_ISLOADING = 'SET_CONTACTS_ISLOADING';
 
-export const setAboutIsLoading = isStatus => ({
-  type: SET_ABOUT_ISLOADING,
+export const setMyReposIsLoading = isStatus => ({
+  type: SET_MYREPOS_ISLOADING,
   payload: isStatus,
 });
 

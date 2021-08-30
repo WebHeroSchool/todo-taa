@@ -15,6 +15,8 @@ import {
 import About from './About';
 
 import withFetch from '../hoc/withFetch/withFetch';
+import withIndent from '../hoc/withIndent/withIndent';
+import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 
 const url = 'https://api.github.com/users/chiga2030/repos';
 
@@ -22,10 +24,16 @@ const url = 'https://api.github.com/users/chiga2030/repos';
 const AboutWithFetch = props => withFetch(About, {
   ...props,
 });
+const AboutWithIdent = props => withIndent(AboutWithFetch, {
+  ...props,
+});
+const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {
+  ...props,
+});
 
 
 const AboutContainer = props => (
-  <AboutWithFetch
+  <AboutWithMyPaperLayer
     url={ url }
     { ...props }
   />

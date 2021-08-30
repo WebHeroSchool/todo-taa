@@ -1,4 +1,3 @@
-import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 import withIndent from '../hoc/withIndent/withIndent';
 
 import Title from '../Title/Title';
@@ -10,20 +9,16 @@ import {
 } from '@material-ui/core';
 
 
+const FooterWithIdent = () => withIndent(FooterContainer);
+
 const Todo = () => (
-  withMyPaperLayer(
-    [
-      withIndent([
-        <Title titleValue={ 'TO DO:' } />,
-        <InputItemContainer />,
-        <ItemListContainer />,
-      ]),
-      <Divider />,
-      withIndent([
-        <FooterContainer />,
-      ]),
-    ]
-  )
+  <>
+    <Title titleValue={ 'TO DO:' } />
+    <InputItemContainer />
+    <ItemListContainer />
+    <Divider />
+    <FooterWithIdent />
+  </>
 );
 
 

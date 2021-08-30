@@ -4,10 +4,16 @@ import {
 import {
   SET_CONTACTS_ISLOADING,
 } from '../actions/setIsLoading';
+import {
+  FETCH_CONTACTS_ERROR,
+} from '../actions/fetchError';
+
 
 const initialState = {
   items: [],
   isLoading: true,
+  fetchReposFailure: false,
+  errorMessage: '',
 };
 
 
@@ -21,6 +27,7 @@ export const contactsReducer = (state = initialState, action) => {
     return {
       ...state,
       items: newContactsList,
+      fetchReposFailure: false,
     };
 
     break;
@@ -33,6 +40,19 @@ export const contactsReducer = (state = initialState, action) => {
     return {
       ...state,
       isLoading: newStore,
+    };
+
+    break;
+  }
+
+
+  case FETCH_CONTACTS_ERROR: {
+    const newStore = action.payload;
+
+    return {
+      ...state,
+      fetchReposFailure: true,
+      errorMessage: newStore,
     };
 
     break;

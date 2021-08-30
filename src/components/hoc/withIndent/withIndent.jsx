@@ -1,11 +1,9 @@
 import styles from './withIndent.module.css';
 
-import mappedComponents from '../../../utils/mappedComponents';
 
-
-const withIndent = WrappedComponents => (
+const withIndent = (WrappedComponent, props) => (
   <div className={styles.indent}>
-    { mappedComponents(() => WrappedComponents) }
+    <WrappedComponent {...props} />
   </div>
 );
 

@@ -6,7 +6,7 @@ import {
 
 import Menu from '../Menu/Menu';
 import AboutContainer from '../About/AboutContainer';
-import Todo from '../Todo/Todo';
+import TodoContainer from '../Todo/TodoContainer';
 import ContactsContainer from '../Contacts/ContactsContainer';
 
 
@@ -19,7 +19,7 @@ const App = () => (
         <Menu />
 
         <Route path='/' exact component={AboutContainer} />
-        <Route path='/todo' component={Todo} />
+        <Route path='/todo' component={TodoContainer} />
         <Route path='/contacts' component={ContactsContainer} />
 
       </div>

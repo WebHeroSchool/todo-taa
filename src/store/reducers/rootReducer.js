@@ -9,6 +9,9 @@ import {
   todosReducer as todos,
 } from './todosReducer';
 import {
+  filterReducer as filter,
+} from './filterReducer';
+import {
   contactsReducer as contacts,
 } from './contactsReducer';
 
@@ -16,5 +19,6 @@ import {
 export default combineReducers({
   repos,
   todos,
+  filter,
   contacts,
 });

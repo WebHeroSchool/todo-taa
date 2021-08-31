@@ -1,8 +1,4 @@
 import {
-  React,
-  useState,
-} from 'react';
-import {
   TextField,
   Button,
 } from '@material-ui/core';
@@ -10,84 +6,36 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import styles from './InputItem.module.css';
 import PropTypes from 'prop-types';
 
-const InputItem = ({
-  onClickAddItem,
-}) => {
-  const initialState = {
-    textField: {
-      inputValue: '',
-      errorStatus: false,
-      helperText: ' ',
-    },
-  };
 
-  const [
-    inputValue,
-    setInputvalue,
-  ] = useState(initialState.textField.inputValue);
-
-  const [
-    errorStatus,
-    setErrorStatus,
-  ] = useState(initialState.textField.errorStatus);
-
-  const [
-    helperText,
-    setHelperText,
-  ] = useState(initialState.textField.helperText);
-
-  const onButtonClick = () => {
-    setInputvalue('');
-    setErrorStatus(false);
-    setHelperText(' ');
-
-    if (inputValue) {
-      onClickAddItem(inputValue);
-    } else {
-      setInputvalue('');
-      setErrorStatus(true);
-      setHelperText('Нужно заполнить поле');
-    }
-  };
-
-  const pressEnterToSubmit = event => {
-    if (event.code === 'Enter') {
-      onButtonClick();
-    }
-  };
-
-  return (<div className={styles.wrapper}>
+const InputItem = props => (
+  <div className={styles.wrapper}>
     <TextField
-      error={errorStatus}
-      helperText={helperText}
+      error={ props.errorStatus }
+      helperText={ props.helperText }
       className={styles.textField}
       fullWidth={true}
       id="outlined-basic"
       label="Добавить дело"
       margin="dense"
-      value={inputValue}
+      value={ props.inputValue }
       variant="outlined"
-      onChange={
-        event => {
-          setErrorStatus(false);
-          setHelperText(' ');
-          setInputvalue(event.target.value.toUpperCase());
-        }
-      }
-      onKeyDown={event => pressEnterToSubmit(event)}
+      onChange={ props.onChangeTextField }
+      onKeyDown={props.onKeyDownTextField}
     />
     <Button
       className={styles.button}
       color="primary"
-      onClick={onButtonClick}
+      onClick={ props.onClickButton }
     >
       <PostAddIcon fontSize="default" />
     </Button>
-  </div>);
-};
+  </div>
+);
 
 InputItem.propTypes = {
-  className: PropTypes.string,
+  inputValue: PropTypes.string,
+  setInputvalue: PropTypes.func,
 };
+
 
 export default InputItem;

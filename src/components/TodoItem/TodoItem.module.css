@@ -15,6 +15,6 @@
   transition: opacity .4s ease-out !important;
 }
 
-.itemWrap:hover .deleteBtn {
+.item:hover .deleteBtn {
   opacity: 1;
 }

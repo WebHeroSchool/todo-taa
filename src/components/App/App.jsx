@@ -5,9 +5,9 @@ import {
 } from 'react-router-dom';
 
 import Menu from '../Menu/Menu';
-import About from '../About/About';
-import Todo from '../Todo/Todo';
-import Contacts from '../Contacts/Contacts';
+import AboutContainer from '../About/AboutContainer';
+import TodoContainer from '../Todo/TodoContainer';
+import ContactsContainer from '../Contacts/ContactsContainer';
 
 
 const App = () => (
@@ -18,9 +18,9 @@ const App = () => (
 
         <Menu />
 
-        <Route path='/' exact component={About} />
-        <Route path='/todo' component={Todo} />
-        <Route path='/contacts' component={Contacts} />
+        <Route path='/' exact component={AboutContainer} />
+        <Route path='/todo' component={TodoContainer} />
+        <Route path='/contacts' component={ContactsContainer} />
 
       </div>
 

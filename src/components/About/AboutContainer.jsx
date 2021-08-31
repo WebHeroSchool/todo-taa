@@ -34,9 +34,9 @@ const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {
   ...props,
 });
 
-const About = () => (
+const AboutContainer = () => (
   <AboutWithMyPaperLayer />
 );
 
 
-export default About;
+export default AboutContainer;

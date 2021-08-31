@@ -1,4 +1,5 @@
-import FilterListItems from '../FilterListItems/FilterListItems';
+import FilterListItemsContainer from
+  '../FilterListItems/FilterListItemsContainer';
 import {
   Button,
 } from '@material-ui/core';
@@ -8,7 +9,7 @@ import PropTypes from 'prop-types';
 const Footer = props => (
   <div className={styles.footer}>
     Кол-во дел: {props.count}
-    <FilterListItems />
+    <FilterListItemsContainer />
     <Button
       variant="outlined"
       color="secondary"

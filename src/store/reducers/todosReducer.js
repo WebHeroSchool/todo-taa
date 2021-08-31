@@ -10,6 +10,13 @@ import {
 import {
   SET_ACTIVE_FILTER,
 } from '../actions/todo/setActiveFilter';
+import {
+  SET_COMPLITED_FILTER,
+} from '../actions/todo/setComplitedFilter';
+import {
+  SET_ALL_FILTER,
+} from '../actions/todo/setAllFilter';
+
 
 const initialState = {
   items: [
@@ -33,6 +40,7 @@ const initialState = {
     },
   ],
   count: 3,
+  isFilter: 'all',
 };
 
 
@@ -45,6 +53,7 @@ export const todosReducer = (state = initialState, action) => {
           value: action.payload,
           isDone: false,
           id: Date.now(),
+          isFilter: (state.isFilter === 'active' || state.isFilter === 'all'),
         },
         ...state.items,
       ];
@@ -71,6 +80,7 @@ export const todosReducer = (state = initialState, action) => {
 
       if (item.id === action.payload) {
         newItem.isDone = !item.isDone;
+        newItem.isFilter = state.isFilter !== 'all' ? !item.isFilter : true;
       }
 
       return newItem;
@@ -101,6 +111,29 @@ export const todosReducer = (state = initialState, action) => {
   }
 
 
+  case SET_ALL_FILTER: {
+    const newItems = state.items.map(
+      item => ({
+        ...item,
+        isFilter: true,
+      })
+    );
+    const newIsFilter = action.payload;
+
+
+    return {
+      ...state,
+      items: [
+        ...newItems,
+      ],
+      isFilter: newIsFilter,
+    };
+
+
+    break;
+  }
+
+
   case SET_ACTIVE_FILTER: {
     const newItems = state.items.map(
       item => {
@@ -115,12 +148,44 @@ export const todosReducer = (state = initialState, action) => {
         };
       }
     );
+    const newIsFilter = action.payload;
+
 
     return {
       ...state,
       items: [
         ...newItems,
       ],
+      isFilter: newIsFilter,
+    };
+
+
+    break;
+  }
+
+
+  case SET_COMPLITED_FILTER: {
+    const newItems = state.items.map(
+      item => {
+        if (item.isDone) {
+          return {
+            ...item,
+            isFilter: true,
+          };
+        } return {
+          ...item,
+          isFilter: false,
+        };
+      }
+    );
+    const newIsFilter = action.payload;
+
+    return {
+      ...state,
+      items: [
+        ...newItems,
+      ],
+      isFilter: newIsFilter,
     };
 
 

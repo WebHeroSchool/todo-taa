@@ -5,7 +5,7 @@ import TodoItemContainer from '../TodoItem/TodoItemContainer';
 
 const ItemList = props => (
   <ul className={ styles.list }>
-    {props.items.map(
+    {props.items.filter(item => item.isFilter).map(
       item => (
         <li key={item.id.toString()}>
           <TodoItemContainer { ...item } />

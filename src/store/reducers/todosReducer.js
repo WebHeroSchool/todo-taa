@@ -7,6 +7,9 @@ import {
 import {
   DELETE_ITEM,
 } from '../actions/deleteItemAction';
+import {
+  SET_ACTIVE_FILTER,
+} from '../actions/todo/setActiveFilter';
 
 const initialState = {
   items: [
@@ -14,16 +17,19 @@ const initialState = {
       value: 'Разобраться с пропсами',
       isDone: false,
       id: 1,
+      isFilter: true,
     },
     {
       value: 'Сделать комит',
       isDone: true,
       id: 2,
+      isFilter: true,
     },
     {
       value: 'Сдать задание на проверку',
       isDone: false,
       id: 3,
+      isFilter: true,
     },
   ],
   count: 3,
@@ -91,6 +97,33 @@ export const todosReducer = (state = initialState, action) => {
       ],
       count: newCount,
     };
+    break;
+  }
+
+
+  case SET_ACTIVE_FILTER: {
+    const newItems = state.items.map(
+      item => {
+        if (item.isDone) {
+          return {
+            ...item,
+            isFilter: false,
+          };
+        } return {
+          ...item,
+          isFilter: true,
+        };
+      }
+    );
+
+    return {
+      ...state,
+      items: [
+        ...newItems,
+      ],
+    };
+
+
     break;
   }
 

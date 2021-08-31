@@ -5,8 +5,8 @@ import {
 import FilterListItems from './FilterListItems';
 
 import {
-  setFilter,
-} from '../../store/actions/todo/setFilter';
+  setActiveFilter,
+} from '../../store/actions/todo/setActiveFilter';
 
 
 const FilterListItemsContainer = props => (
@@ -17,6 +17,6 @@ const FilterListItemsContainer = props => (
 export default connect(
   null,
   {
-    setFilter,
+    setActiveFilter,
   },
 )(FilterListItemsContainer);

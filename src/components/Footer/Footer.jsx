@@ -13,7 +13,9 @@ const Footer = props => (
     <Button
       variant="outlined"
       color="secondary"
-      size="small">
+      size="small"
+      onClick={() => props.onClearCompleted()}
+    >
       <span className={styles.buttonText}>Очистить выполненные</span>
     </Button>
   </div>

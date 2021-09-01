@@ -11,6 +11,7 @@ import {
   SET_ALL_FILTER,
   SET_ACTIVE_FILTER,
   SET_COMPLITED_FILTER,
+  ON_CLEAR_COMPLETED,
 } from '../actions/todo/setFilters';
 
 
@@ -182,6 +183,23 @@ export const todosReducer = (state = initialState, action) => {
         ...newItems,
       ],
       isFilter: newIsFilter,
+    };
+
+
+    break;
+  }
+
+
+  case ON_CLEAR_COMPLETED: {
+    const newItems = state.items.filter(
+      item => !item.isDone);
+
+    return {
+      ...state,
+      items: [
+        ...newItems,
+      ],
+      count: newItems.length,
     };
 
 

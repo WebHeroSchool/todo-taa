@@ -6,13 +6,9 @@ import FilterListItems from './FilterListItems';
 
 import {
   setAllFilter,
-} from '../../store/actions/todo/setAllFilter';
-import {
   setActiveFilter,
-} from '../../store/actions/todo/setActiveFilter';
-import {
   setComplitedFilter,
-} from '../../store/actions/todo/setComplitedFilter';
+} from '../../store/actions/todo/setFilters';
 
 const FilterListItemsContainer = props => (
   <FilterListItems {...props} />

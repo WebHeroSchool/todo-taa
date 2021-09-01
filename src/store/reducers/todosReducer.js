@@ -8,14 +8,10 @@ import {
   DELETE_ITEM,
 } from '../actions/deleteItemAction';
 import {
-  SET_ACTIVE_FILTER,
-} from '../actions/todo/setActiveFilter';
-import {
-  SET_COMPLITED_FILTER,
-} from '../actions/todo/setComplitedFilter';
-import {
   SET_ALL_FILTER,
-} from '../actions/todo/setAllFilter';
+  SET_ACTIVE_FILTER,
+  SET_COMPLITED_FILTER,
+} from '../actions/todo/setFilters';
 
 
 const initialState = {

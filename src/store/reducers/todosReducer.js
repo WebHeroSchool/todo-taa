@@ -16,27 +16,8 @@ import {
 
 
 const initialState = {
-  items: [
-    {
-      value: 'Разобраться с пропсами',
-      isDone: false,
-      id: 1,
-      isFilter: true,
-    },
-    {
-      value: 'Сделать комит',
-      isDone: true,
-      id: 2,
-      isFilter: true,
-    },
-    {
-      value: 'Сдать задание на проверку',
-      isDone: false,
-      id: 3,
-      isFilter: true,
-    },
-  ],
-  count: 3,
+  items: JSON.parse(localStorage.getItem('itemList')),
+  count: JSON.parse(localStorage.getItem('count')),
   isFilter: 'all',
 };
 
@@ -55,6 +36,9 @@ export const todosReducer = (state = initialState, action) => {
         ...state.items,
       ];
       const newCount = ++state.count;
+
+      localStorage.setItem('itemList', JSON.stringify(newItemList));
+      localStorage.setItem('count', JSON.stringify(newItemList.length));
 
       return {
         ...state,
@@ -96,6 +80,9 @@ export const todosReducer = (state = initialState, action) => {
   case DELETE_ITEM: {
     const newItemList = state.items.filter(item => item.id !== action.payload);
     const newCount = --state.count;
+
+    localStorage.setItem('itemList', JSON.stringify(newItemList));
+    localStorage.setItem('count', JSON.stringify(newItemList.length));
 
     return {
       ...state,
@@ -191,15 +178,18 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case ON_CLEAR_COMPLETED: {
-    const newItems = state.items.filter(
+    const newItemList = state.items.filter(
       item => !item.isDone);
+
+    localStorage.setItem('itemList', JSON.stringify(newItemList));
+    localStorage.setItem('count', JSON.stringify(newItemList.length));
 
     return {
       ...state,
       items: [
-        ...newItems,
+        ...newItemList,
       ],
-      count: newItems.length,
+      count: newItemList.length,
     };
 
 

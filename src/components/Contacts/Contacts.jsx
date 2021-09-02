@@ -1,5 +1,6 @@
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
+import Subtitle from '../Subtitle/Subtitle';
 
 import styles from './Contacts.module.css';
 
@@ -21,11 +22,11 @@ const Contacts = props => (
 
           <div className={ styles.contactsWrapper }>
             <Title titleValue={ props.contacts.items.name }/>
-            <p>{ props.contacts.items.bio }</p>
-            <p>E-mail: { props.contacts.items.email }</p>
-            <p>Nickname: { props.contacts.items.login }</p>
-            <p>Адрес: { props.contacts.items.location }</p>
+            <Subtitle subtitleValue={ props.contacts.items.bio }/>
+            <p>tkachuk.ant@mail.ru</p>
+            <p>+7(926)265-4213</p>
             <p>Twitter: @{ props.contacts.items.twitter_username }</p>
+            <p>{ props.contacts.items.location }</p>
           </div>
         }
 

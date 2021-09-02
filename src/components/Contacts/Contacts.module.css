@@ -1,5 +1,6 @@
 .contactsInner {
   display: flex;
+  justify-content: space-between;
 }
 
 .avatar {
@@ -7,4 +8,8 @@
   border-radius: 1vw;
   height: fit-content;
   align-self: center;
+}
+
+.contactsWrapper {
+  width: 35vw;
 }

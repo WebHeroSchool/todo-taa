@@ -59,6 +59,7 @@ export const todosReducer = (state = initialState, action) => {
         ...item,
       };
 
+
       if (item.id === action.payload) {
         newItem.isDone = !item.isDone;
         newItem.isFilter = state.isFilter !== 'all' ? !item.isFilter : true;
@@ -66,6 +67,8 @@ export const todosReducer = (state = initialState, action) => {
 
       return newItem;
     });
+
+    localStorage.setItem('itemList', JSON.stringify(newItemList));
 
     return {
       ...state,

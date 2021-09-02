@@ -31,7 +31,6 @@ const FilterListItems = props => {
         aria-label="text alignment"
       >
         <ToggleButton
-          color="primary"
           value="left"
           aria-label="left aligned"
           className={styles.buttonText}

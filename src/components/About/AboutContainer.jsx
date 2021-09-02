@@ -17,20 +17,20 @@ const MyReposWithIdent = props => withIndent([
 });
 
 
-const AboutWithIdent = props => withIndent([
-  ContactsWithIdent,
-  MyReposWithIdent,
-], {
+const ContactsWithMyPaperLayer = props => withMyPaperLayer(ContactsWithIdent, {
+  ...props,
+});
+const MyReposWithMyPaperLayer = props => withMyPaperLayer(MyReposWithIdent, {
   ...props,
 });
 
-
-const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {
-  ...props,
-});
 
 const AboutContainer = () => (
-  <AboutWithMyPaperLayer />
+  <>
+    <ContactsWithMyPaperLayer />
+    <br />
+    <MyReposWithMyPaperLayer />
+  </>
 );
 
 

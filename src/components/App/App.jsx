@@ -18,9 +18,11 @@ const App = () => (
 
         <Menu />
 
-        <Route path='/' exact component={AboutContainer} />
-        <Route path='/todo' component={TodoContainer} />
-        <Route path='/contacts' component={ContactsContainer} />
+        <div className={styles.routeWrapper}>
+          <Route path='/' exact component={AboutContainer} />
+          <Route path='/todo' component={TodoContainer} />
+          <Route path='/contacts' component={ContactsContainer} />
+        </div>
 
       </div>
 

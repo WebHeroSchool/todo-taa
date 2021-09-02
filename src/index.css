@@ -1,0 +1,26 @@
+:root {
+  --main-text-color: #1c154e;
+  --additional-text-color: #999999;
+  --unchoiced-text-color: #a7a2cb;
+  --placeholder-text-color: #d0d3e2;
+  --stroke-color: #e1e3ee;
+  --additional-bg-color: #f4f5fa;
+  --shadow-color: #e2e7ff;
+  --main-button-color: #23c967;
+  --disabled-button-color: #d0d3e2;
+  --text-button-color: #fff;
+  --additional-button-color: #ea717f;
+}
+
+body {
+  background: var(--additional-bg-color);
+  color: var(--main-text-color);
+  font-family: roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

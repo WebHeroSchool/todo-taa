@@ -1,4 +1,5 @@
 .paper {
   margin: 0 auto;
   width: 38em;
+  color: var(--main-text-color) !important;
 }

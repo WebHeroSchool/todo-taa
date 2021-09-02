@@ -27,7 +27,7 @@ const InputItem = props => (
       color="primary"
       onClick={ props.onClickButton }
     >
-      <PostAddIcon fontSize="default" />
+      <PostAddIcon fontSize="medium" />
     </Button>
   </div>
 );

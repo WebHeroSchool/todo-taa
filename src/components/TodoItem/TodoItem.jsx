@@ -32,7 +32,7 @@ const TodoItem = props => (
       color="secondary"
       onClick={ props.onClickButton }
     >
-      <DeleteForeverTwoToneIcon fontSize="default" />
+      <DeleteForeverTwoToneIcon fontSize="medium" />
     </Button>
   </span>
 );

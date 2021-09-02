@@ -16,7 +16,9 @@ import {
 
 
 const initialState = {
-  items: JSON.parse(localStorage.getItem('itemList')),
+  items: localStorage.getItem('itemList') ?
+    JSON.parse(localStorage.getItem('itemList')) :
+    [],
   count: JSON.parse(localStorage.getItem('count')),
   isFilter: 'all',
 };

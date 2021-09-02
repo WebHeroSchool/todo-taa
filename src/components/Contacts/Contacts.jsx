@@ -8,18 +8,28 @@ const Contacts = props => (
   props.contacts.isLoading ?
     <Loader /> :
     <>
-      <Title titleValue={
-        props.contacts.fetchReposFailure ? 'Ошибка:' : 'Контакты:'
-      }/>
-      {props.contacts.fetchReposFailure ?
-        <p>{ props.contacts.errorMessage }</p> :
-        <ul className={styles.list}>
-          <li>Имя: { props.contacts.items.name }</li>
-          <li>Nickname: { props.contacts.items.login }</li>
-          <li>Адрес: { props.contacts.items.location }</li>
-          <li>Twitter: @{ props.contacts.items.twitter_username }</li>
-        </ul>
-      }
+      <div className={ styles.contactsInner }>
+
+        <img
+          className={ styles.avatar }
+          src={ props.contacts.items.avatar_url }
+          alt="user avatar"
+        />
+
+        {props.contacts.fetchReposFailure ?
+          <p>{ props.contacts.errorMessage }</p> :
+
+          <div className={ styles.contactsWrapper }>
+            <Title titleValue={ props.contacts.items.name }/>
+            <p>{ props.contacts.items.bio }</p>
+            <p>E-mail: { props.contacts.items.email }</p>
+            <p>Nickname: { props.contacts.items.login }</p>
+            <p>Адрес: { props.contacts.items.location }</p>
+            <p>Twitter: @{ props.contacts.items.twitter_username }</p>
+          </div>
+        }
+
+      </div>
     </>
 );
 

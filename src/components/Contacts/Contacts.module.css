@@ -1,3 +1,10 @@
-.list {
-  list-style-type: none;
+.contactsInner {
+  display: flex;
+}
+
+.avatar {
+  width: 16vw;
+  border-radius: 1vw;
+  height: fit-content;
+  align-self: center;
 }

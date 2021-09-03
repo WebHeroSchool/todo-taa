@@ -1,17 +1,15 @@
 .contactsInner {
   display: flex;
-  justify-content: space-between;
 }
 
 .avatar {
-  width: 16vw;
+  width: 10rem;
   border-radius: 1vw;
-  height: fit-content;
   align-self: center;
+  margin-right: 2rem;
 }
 
 .contactsWrapper {
-  width: 35vw;
   align-self: center;
 }
 
@@ -25,9 +23,24 @@
 .contactData {
   display: flex;
   align-items: center;
+  margin: 0 0 .5vw;
+}
+
+.contactData a {
+  text-decoration: none;
+  color: var(--additional-text-color);
 }
 
 .icon {
   margin-right: .5vw;
   fill: var(--additional-text-color);
+}
+
+.iconWithMiddleMargin {
+  margin-right: 1vw;
+}
+
+.networks {
+  display: flex;
+  justify-content: flex-end;
 }

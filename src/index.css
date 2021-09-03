@@ -10,6 +10,8 @@
   --disabled-button-color: #d0d3e2;
   --text-button-color: #fff;
   --additional-button-color: #ea717f;
+
+  --font-size-medium:  .8rem;
 }
 
 body {
@@ -18,5 +20,11 @@ body {
   font-family: roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 2rem;
+  margin: 2vw;
+}
+
+svg,
+path {
+  fill: inherit;
+  stroke: inherit;
 }

@@ -12,4 +12,22 @@
 
 .contactsWrapper {
   width: 35vw;
+  align-self: center;
+}
+
+.content {
+  font-size: var(--font-size-medium);
+  font-weight: 400;
+  font-family: roboto, sans-serif;
+  color: var(--additional-text-color);
+}
+
+.contactData {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: .5vw;
+  fill: var(--additional-text-color);
 }

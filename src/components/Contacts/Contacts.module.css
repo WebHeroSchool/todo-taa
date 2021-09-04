@@ -14,30 +14,10 @@
 }
 
 .content {
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-small);
   font-weight: 400;
   font-family: roboto, sans-serif;
   color: var(--additional-text-color);
-}
-
-.contactData {
-  display: flex;
-  align-items: center;
-  margin: 0 0 .5vw;
-}
-
-.contactData a {
-  text-decoration: none;
-  color: var(--additional-text-color);
-}
-
-.icon {
-  margin-right: .5vw;
-  fill: var(--additional-text-color);
-}
-
-.iconWithMiddleMargin {
-  margin-right: 1vw;
 }
 
 .networks {

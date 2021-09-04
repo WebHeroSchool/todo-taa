@@ -6,11 +6,7 @@ const MyRepos = props => (
   props.repos.isLoading ?
     <Loader /> :
     <>
-      <Title
-        titleValue={
-          props.repos.fetchReposFailure ? 'Ошибка:' : 'Мои репозитории:'
-        }
-      />
+      <Title variant="h2" titleValue="Репозитории на github.com" />
       {props.repos.fetchReposFailure ?
         <p>{ props.repos.errorMessage }</p> :
         <ol>

@@ -11,7 +11,10 @@
   --text-button-color: #fff;
   --additional-button-color: #ea717f;
 
-  --font-size-medium:  .8rem;
+  --font-size-large:  1.8rem;
+  --font-size-prelarge:  1.5rem;
+  --font-size-medium:  1rem;
+  --font-size-small:  .8rem;
 }
 
 body {

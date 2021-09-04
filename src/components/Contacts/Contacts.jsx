@@ -24,10 +24,10 @@ const Contacts = props => (
         />
 
         {props.contacts.fetchReposFailure ?
-          <p>{ props.contacts.errorMessage }</p> :
+          <p>Fetch error: { props.contacts.errorMessage }</p> :
 
           <div className={ styles.contactsWrapper }>
-            <Title titleValue={ props.contacts.items.name }/>
+            <Title variant="h1" titleValue={ props.contacts.items.name } />
 
             <div className={ styles.content }>
               <p>{ props.contacts.items.bio }</p>

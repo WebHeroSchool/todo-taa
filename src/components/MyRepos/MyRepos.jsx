@@ -17,9 +17,6 @@ const ErrorMessagesWithMargin = props => withMargin(
 const MyRepos = props => {
   if (props.repos.isLoading) {
     return <Loader />;
-  } else if (props.repos.fetchReposFailure &&
-    props.repos.errorType === 'unknow') {
-    return <p>{ props.repos.errorMessage }</p>;
   } return (
     <>
       <TitleWithIndent variant="h2" titleValue="Репозитории на github.com" />

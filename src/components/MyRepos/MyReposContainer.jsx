@@ -17,7 +17,7 @@ import MyRepos from '../MyRepos/MyRepos';
 import withFetch from '../hoc/withFetch/withFetch';
 
 
-const url = 'https://api.github.com/users/6thSense/repos';
+const url = 'https://api.github.com/users/chiga2030/repos';
 
 
 const MyReposWithFetch = props => withFetch(MyRepos, {

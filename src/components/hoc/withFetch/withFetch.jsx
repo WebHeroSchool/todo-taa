@@ -9,16 +9,16 @@ const withFetch = (Component, props) => {
       fetch(props.url)
         .then(data => data.json())
         .then(data => {
-          if (data.message) {
+          if (data.message === 'Not Found') {
             props.setFetchError(data.message);
           } else if (data.length === 0) {
-            props.setFetchError('empty', null);
+            props.setFetchError('empty');
           } else {
             props.setState(data);
           }
         })
         .then(() => props.setIsLoading(false))
-        .catch(data => props.setFetchError('unknow', data.toString()))
+        .catch(data => props.setFetchError('fetch error', data))
         .then(() => props.setIsLoading(false));
     }, 1000);
   }, []);

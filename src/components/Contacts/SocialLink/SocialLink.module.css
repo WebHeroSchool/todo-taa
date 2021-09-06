@@ -1,16 +1,16 @@
 .contactData {
   display: flex;
   align-items: center;
-  margin: 0 0 .5vw;
+  margin: 0 0 .2rem;
   text-decoration: none;
   color: var(--additional-text-color);
 }
 
 .icon {
-  margin-right: .5vw;
+  margin-right: .4rem;
   fill: var(--additional-text-color);
 }
 
 .iconWithMiddleMargin {
-  margin-right: 1vw;
+  margin-right: .5rem;
 }

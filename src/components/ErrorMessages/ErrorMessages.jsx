@@ -1,25 +1,33 @@
 import styles from './ErrorMessages.module.css';
 
+const errorsState = {
+  empty: {
+    errorText: 'Репозитории отсутствуют',
+    errorDescription: (
+      <>Добавьте как минимум один репозиторий на <a
+        href="https://github.com" target="blank">github.com</a></>),
+  },
+  'Not Found': {
+    errorText: 'Пользователь не найден',
+    errorDescription: 'Не могу найти данного пользователя',
+  },
+};
+
 const ErrorMessages = ({
   errorType,
 }) => {
-  let errorMessage;
-  if (errorType === 'empty') {
-    errorMessage = (
-      <>
-        <p className={ styles.errorText }>Репозитории отсутствуют</p>
-        <p className={ styles.errorDescription }>
-          <small>
-            Добавьте как минимум один репозиторий на <a
-              href="https://github.com"
-              target="blank">
-              github.com
-            </a>
-          </small>
-        </p>
-      </>
-    );
-  }
+  const errorMessage = (
+    <>
+      <p className={ styles.errorText }>
+        { errorsState.[errorType].errorText }
+      </p>
+      <p className={ styles.errorDescription }>
+        <small>
+          { errorsState.[errorType].errorDescription }
+        </small>
+      </p>
+    </>
+  );
 
   return (
     <div className={ styles.windowWrapper }>

@@ -11,12 +11,14 @@ const withFetch = (Component, props) => {
         .then(data => {
           if (data.message) {
             props.setFetchError(data.message);
+          } else if (data.length === 0) {
+            props.setFetchError('empty', null);
           } else {
             props.setState(data);
           }
         })
         .then(() => props.setIsLoading(false))
-        .catch(data => props.setFetchError(data.toString()))
+        .catch(data => props.setFetchError('unknow', data.toString()))
         .then(() => props.setIsLoading(false));
     }, 1000);
   }, []);

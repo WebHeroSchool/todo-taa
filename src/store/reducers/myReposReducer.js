@@ -13,6 +13,7 @@ const initialState = {
   items: [],
   isLoading: true,
   fetchReposFailure: false,
+  errorType: '',
   errorMessage: '',
 };
 
@@ -49,12 +50,14 @@ export const myReposReducer = (state = initialState, action) => {
 
 
   case FETCH_MY_REPOS_ERROR: {
-    const newStore = action.payload;
+    const newErrorType = action.payload.type;
+    const newErrorMessage = action.payload.message;
 
     return {
       ...state,
       fetchReposFailure: true,
-      errorMessage: newStore,
+      errorType: newErrorType,
+      errorMessage: newErrorMessage,
     };
 
     break;

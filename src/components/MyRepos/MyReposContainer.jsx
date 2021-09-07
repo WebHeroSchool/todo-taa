@@ -31,6 +31,7 @@ const MyReposWithFetch = props => withFetch(MyRepos, {
 const MyReposContainer = props => (
   <MyReposWithFetch
     url={ url }
+    error={ props.repos.fetchReposFailure }
     { ...props }
   />
 );

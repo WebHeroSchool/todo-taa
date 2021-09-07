@@ -12,7 +12,7 @@ import {
 const initialState = {
   items: [],
   isLoading: true,
-  fetchReposFailure: false,
+  fetchContactsFailure: false,
   errorMessage: '',
 };
 
@@ -27,7 +27,7 @@ export const contactsReducer = (state = initialState, action) => {
     return {
       ...state,
       items: newContactsList,
-      fetchReposFailure: false,
+      fetchContactsFailure: false,
     };
 
     break;
@@ -51,7 +51,7 @@ export const contactsReducer = (state = initialState, action) => {
 
     return {
       ...state,
-      fetchReposFailure: true,
+      fetchContactsFailure: true,
       errorMessage: newStore,
     };
 

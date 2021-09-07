@@ -36,6 +36,7 @@ const ContactsContainer = props => (
 export default connect(
   state => ({
     contacts: state.contacts,
+    fetch: state.fetch,
   }),
   {
     setState,

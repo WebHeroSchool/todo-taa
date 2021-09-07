@@ -19,8 +19,6 @@ const withFetch = (Component, props) => {
           props.setState(data);
         }
       })
-      .then(props.setIsLoading(false))
-      // .then(() => setTimeout(() => props.setIsLoading(false), 1000))
       .catch(data => props.setFetchError('fetch error', data))
       .then(() => setTimeout(() => props.setIsLoading(false), 1000));
   }, [

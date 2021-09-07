@@ -11,9 +11,12 @@ import {
 import {
   setMyReposIsError as setFetchError,
 } from '../../store/actions/fetchError';
+import {
+  refreshFetchData,
+} from '../../store/actions/refreshFetchData';
+
 
 import MyRepos from '../MyRepos/MyRepos';
-
 import withFetch from '../hoc/withFetch/withFetch';
 
 
@@ -37,10 +40,12 @@ export default connect(
   state => ({
     contacts: state.contacts,
     repos: state.repos,
+    fetch: state.fetch,
   }),
   {
     setState,
     setIsLoading,
     setFetchError,
+    refreshFetchData,
   },
 )(MyReposContainer);

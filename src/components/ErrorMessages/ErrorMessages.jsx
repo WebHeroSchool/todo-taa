@@ -20,7 +20,7 @@ const ErrorMessages = ({
       errorDescription: (
         <>Попробуйте <a
           href="#"
-          onClick={() => props.onRefresh(!props.refresh)}
+          onClick={() => props.refreshFetchData()}
         >загрузить</a> ещё раз</>),
     },
   };

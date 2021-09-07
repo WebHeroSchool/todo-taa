@@ -1,15 +1,9 @@
 import {
   useEffect,
-  useState,
 } from 'react';
 
 
 const withFetch = (Component, props) => {
-  const [
-    refresh,
-    onRefresh,
-  ] = useState(false);
-
   useEffect(() => {
     props.setIsLoading(true);
     setTimeout(() => {
@@ -29,16 +23,12 @@ const withFetch = (Component, props) => {
         .then(() => props.setIsLoading(false));
     }, 1000);
   }, [
-    refresh,
+    props.fetch.isRefresh,
   ]);
 
 
   return (
-    <Component
-      refresh={ refresh }
-      onRefresh={ onRefresh }
-      { ...props }
-    />
+    <Component { ...props } />
   );
 };
 

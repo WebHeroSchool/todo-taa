@@ -23,6 +23,7 @@ const MyRepos = props => {
       {props.repos.errorType ?
         <ErrorMessagesWithMargin
           errorType={props.repos.errorType}
+          { ...props }
         /> :
         <ol>
           {

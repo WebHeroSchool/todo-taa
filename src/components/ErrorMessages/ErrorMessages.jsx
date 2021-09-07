@@ -2,6 +2,7 @@ import styles from './ErrorMessages.module.css';
 
 const ErrorMessages = ({
   errorType,
+  ...props
 }) => {
   const errorsState = {
     empty: {
@@ -18,7 +19,9 @@ const ErrorMessages = ({
       errorText: 'Что-то пошло не так...',
       errorDescription: (
         <>Попробуйте <a
-          href="#">загрузить</a> ещё раз</>),
+          href="#"
+          onClick={() => props.onRefresh(!props.refresh)}
+        >загрузить</a> ещё раз</>),
     },
   };
 

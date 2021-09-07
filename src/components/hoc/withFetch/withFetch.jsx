@@ -1,10 +1,17 @@
 import {
   useEffect,
+  useState,
 } from 'react';
 
 
 const withFetch = (Component, props) => {
+  const [
+    refresh,
+    onRefresh,
+  ] = useState(false);
+
   useEffect(() => {
+    props.setIsLoading(true);
     setTimeout(() => {
       fetch(props.url)
         .then(data => data.json())
@@ -21,11 +28,17 @@ const withFetch = (Component, props) => {
         .catch(data => props.setFetchError('fetch error', data))
         .then(() => props.setIsLoading(false));
     }, 1000);
-  }, []);
+  }, [
+    refresh,
+  ]);
 
 
   return (
-    <Component { ...props } />
+    <Component
+      refresh={ refresh }
+      onRefresh={ onRefresh }
+      { ...props }
+    />
   );
 };
 

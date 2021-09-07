@@ -12,9 +12,9 @@ import styles from './Contacts.module.css';
 
 
 const Contacts = props => {
-  if (props.contacts.isLoading || props.contacts.fetchReposFailure) {
+  if (props.contacts.isLoading || props.contacts.fetchContactsFailure) {
     return <Loader />;
-  } else if (props.contacts.fetchReposFailure) {
+  } else if (props.contacts.fetchContactsFailure) {
     <p>Fetch error: { props.contacts.errorMessage }</p>;
   } return (
     <>

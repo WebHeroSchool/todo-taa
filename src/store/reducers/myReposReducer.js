@@ -32,7 +32,6 @@ export const myReposReducer = (state = initialState, action) => {
       ],
       fetchReposFailure: false,
       errorType: '',
-
     };
 
     break;

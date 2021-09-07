@@ -9,7 +9,10 @@ export const setMyReposIsError = (type, message) => ({
   },
 });
 
-export const setContactsIsError = message => ({
+export const setContactsIsError = (type, message) => ({
   type: FETCH_CONTACTS_ERROR,
-  payload: message,
+  payload: {
+    type: type,
+    message: message,
+  },
 });

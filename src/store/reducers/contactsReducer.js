@@ -13,6 +13,7 @@ const initialState = {
   items: [],
   isLoading: true,
   fetchContactsFailure: false,
+  errorType: '',
   errorMessage: '',
 };
 
@@ -28,6 +29,7 @@ export const contactsReducer = (state = initialState, action) => {
       ...state,
       items: newContactsList,
       fetchContactsFailure: false,
+      errorType: '',
     };
 
     break;
@@ -47,12 +49,15 @@ export const contactsReducer = (state = initialState, action) => {
 
 
   case FETCH_CONTACTS_ERROR: {
-    const newStore = action.payload;
+    const newErrorType = action.payload.type;
+    const newErrorMessage = action.payload.message;
+
 
     return {
       ...state,
       fetchContactsFailure: true,
-      errorMessage: newStore,
+      errorType: newErrorType,
+      errorMessage: newErrorMessage,
     };
 
     break;

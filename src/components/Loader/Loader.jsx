@@ -1,11 +1,9 @@
 import styles from './Loader.module.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import loaderImg from './img/loader.svg';
 
 const Loader = () => (
-  <>
-    <img src={loaderImg} className={styles.loader} alt="loader" />
-  </>
+  <CircularProgress className={ styles.loader } color="secondary" />
 );
 
 

@@ -1,0 +1,20 @@
+.margin {
+  margin-right: .4rem;
+}
+
+.language {
+  font-size: var(--font-size-small);
+  color: var(--additional-text-color);
+}
+
+.JavaScript-color {
+  fill: #ffc700;
+}
+
+.HTML-color {
+  fill: #e00000;
+}
+
+.CSS-color {
+  fill: #0094ff;
+}

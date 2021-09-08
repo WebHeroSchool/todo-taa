@@ -2,11 +2,25 @@
   display: flex;
 }
 
+.avatarContainer {
+  width: 17.5rem;
+  height: 11rem;
+  display: flex;
+  align-content: stretch;
+  align-items: center;
+  margin-right: 2rem;
+}
+
 .avatar {
-  width: 11rem;
+  display: none;
+  width: 100%;
   border-radius: 1vw;
   align-self: center;
   margin-right: 2rem;
+}
+
+.visible {
+  display: block;
 }
 
 .contactsWrapper {

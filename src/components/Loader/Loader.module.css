@@ -1,6 +1,4 @@
 .loader {
-  width: 5em;
   position: relative;
-  top: calc(50% - 5vw);
-  left: calc(50% - 5vw);
+  left: calc(50% - 20px);
 }

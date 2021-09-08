@@ -10,8 +10,17 @@ import twitterIcon from './images/twitter.svg';
 
 import styles from './Contacts.module.css';
 
+import {
+  useState,
+} from 'react';
+import classNames from 'classnames';
 
 const Contacts = props => {
+  const [
+    avatarIsLoad,
+    setAvatarIsLoad,
+  ] = useState(false);
+
   if (props.contacts.isLoading || props.contacts.fetchContactsFailure) {
     return <Loader />;
   } else if (props.contacts.fetchContactsFailure) {
@@ -20,11 +29,18 @@ const Contacts = props => {
     <>
       <div className={ styles.contactsInner }>
 
-        <img
-          className={ styles.avatar }
-          src={ props.contacts.items.avatar_url }
-          alt="user avatar"
-        />
+        <div className={ styles.avatarContainer }>
+          <img
+            className={ classNames({
+              [styles.avatar]: true,
+              [styles.visible]: avatarIsLoad,
+            }) }
+            src={ props.contacts.items.avatar_url }
+            alt="user avatar"
+            onLoad={() => setAvatarIsLoad(true)}
+          />
+          { (!avatarIsLoad) ? <Loader /> : false }
+        </div>
         <div className={ styles.contactsWrapper }>
           <Title variant="h1" titleValue={ props.contacts.items.name } />
 

@@ -1,9 +1,11 @@
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
 import ErrorMessages from '../ErrorMessages/ErrorMessages';
+import RepoItem from '../RepoItem/RepoItem';
 
 import withMargin from '../hoc/withMargin/withMargin';
 import withIndent from '../hoc/withIndent/withIndent';
+import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 
 
 const TitleWithMargin = props => withMargin(Title, 'medium', props);
@@ -13,6 +15,8 @@ const ErrorMessagesWithMargin = props => withMargin(
   'large',
   props,
 );
+
+const RepoItemWithMyPaperLayer = props => withMyPaperLayer(RepoItem, props);
 
 const MyRepos = props => {
   if (props.repos.isLoading) {
@@ -25,19 +29,11 @@ const MyRepos = props => {
           errorType={props.repos.errorType}
           { ...props }
         /> :
-        <ol>
-          {
-            props.repos.items.map(
-              item => (
-                <li key={item.id}>
-                  <a href={ item.html_url } target="_blank">
-                    { item.name }
-                  </a>
-                </li>
-              )
-            )
-          }
-        </ol>
+        props.repos.items.map(
+          item => (
+            <RepoItemWithMyPaperLayer key={item.id} item={ item } />
+          )
+        )
       }
     </>
   );

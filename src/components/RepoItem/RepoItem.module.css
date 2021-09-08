@@ -1,0 +1,19 @@
+.itemWrapper {
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.repoName {
+  font-size: var(--font-size-post-small);
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--main-text-color);
+  margin-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  height: 1,5rem;
+}

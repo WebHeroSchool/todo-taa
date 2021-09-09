@@ -9,14 +9,23 @@ const RepoItem = ({
       { item.name }
     </a>
     <div className={ styles.footer }>
-      {item.language ? <FooterItem
-        type="language"
-        value={ item.language
-        } /> : false}
-      {item.stargazers_count ? <FooterItem
-        type="star"
-        value={ item.stargazers_count
-        } /> : false}
+      <span className={ styles.repoInfo }>
+        {item.language ? <FooterItem
+          type="language"
+          value={ item.language
+          } /> : false}
+        {item.stargazers_count ? <FooterItem
+          type="star"
+          value={ item.stargazers_count
+          } /> : false}
+        {item.forks_count ? <FooterItem
+          type="fork"
+          value={ item.forks_count
+          } /> : false}
+      </span>
+      <span className={ styles.lastUodate }>
+        { item.updated_at }
+      </span>
     </div>
   </div>
 );

@@ -2,36 +2,36 @@ import styles from './FooterItem.module.css';
 import classNames from 'classnames';
 
 import {
-  ReactSVG,
-} from 'react-svg';
+  ReactComponent as EllipseImg,
+} from './images/ellipse.svg';
+import {
+  ReactComponent as StarImg,
+} from './images/star.svg';
+import {
+  ReactComponent as ForkImg,
+} from './images/fork.svg';
 
-import ellipseImg from './images/ellipse.svg';
-import starImg from './images/star.svg';
-
-
-const state = {
-  src: {
-    language: ellipseImg,
-    star: starImg,
-  },
-};
 
 const FooterItem = ({
   type,
   value,
-}) => (
-  <>
-    <ReactSVG
-      className={ classNames(
-        styles.margin,
-        styles[`${value}-color`],
-      ) }
-      src={ state.src[type] }
-      wrapper="span"
-    />
-    <span className={ styles.language }>{ value }</span>
-  </>
-);
+}) => {
+  const style = classNames(
+    styles.footerItem,
+    styles.margin,
+    {
+      [styles[`${value}-color`]]: type === 'language',
+    },
+  );
 
+  return (
+    <span className={ style }>
+      {type === 'language' ? <EllipseImg /> : false}
+      {type === 'star' ? <StarImg /> : false}
+      {type === 'fork' ? <ForkImg /> : false}
+      <span>{ value }</span>
+    </span>
+  );
+};
 
 export default FooterItem;

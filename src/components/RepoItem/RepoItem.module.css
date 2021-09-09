@@ -14,6 +14,15 @@
 
 .footer {
   display: flex;
-  align-items: center;
-  height: 1,5rem;
+  font-size: var(--font-size-small);
+  color: var(--additional-text-color);
+}
+
+.repoInfo {
+  display: flex;
+  width: 100%;
+}
+
+.lastUodate {
+  width: 12rem;
 }

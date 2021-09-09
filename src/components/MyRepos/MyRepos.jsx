@@ -1,3 +1,5 @@
+import styles from './MyRepos.module.css';
+
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
 import ErrorMessages from '../ErrorMessages/ErrorMessages';
@@ -29,11 +31,13 @@ const MyRepos = props => {
           errorType={props.repos.errorType}
           { ...props }
         /> :
-        props.repos.items.map(
-          item => (
-            <RepoItemWithMyPaperLayer key={item.id} item={ item } />
-          )
-        )
+        <div className={ styles.reposWrapper }>
+          {props.repos.items.map(
+            item => (
+              <RepoItemWithMyPaperLayer key={item.id} item={ item } />
+            )
+          )}
+        </div>
       }
     </>
   );

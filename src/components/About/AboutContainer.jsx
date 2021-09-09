@@ -1,3 +1,5 @@
+import styles from './About.module.css';
+
 import ContactsContainer from '../Contacts/ContactsContainer';
 import MyReposContainer from '../MyRepos/MyReposContainer';
 
@@ -29,7 +31,7 @@ const AboutContainer = () => (
   <>
     <ContactsWithMyPaperLayer />
     <br />
-    <MyReposWithMyPaperLayer />
+    <MyReposWithMyPaperLayer className={styles.reposLayer} />
   </>
 );
 

@@ -2,13 +2,22 @@ import {
   useEffect,
 } from 'react';
 
+const ak = 'dXNlcm5hbWU6Z2hwX0lsZTVHbWJSWkN4SVdNTjdtR01sVWtENlJYd3oxWTJGSDR4Nw';
+const auth = `Basic ${ak}`;
 
 const withFetch = (Component, props) => {
   useEffect(() => {
     if (props.error) {
       props.setIsLoading(true);
     };
-    fetch(props.url)
+    fetch(props.url,
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': auth,
+        },
+      }
+    )
       .then(data => data.json())
       .then(data => {
         if (data.message === 'Not Found') {

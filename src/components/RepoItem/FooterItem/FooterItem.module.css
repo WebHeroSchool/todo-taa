@@ -1,10 +1,18 @@
+.footerItem {
+  display: flex;
+  align-items: center;
+  fill: var(--additional-text-color);
+}
+
 .margin {
+  margin-right: 1.2rem;
+}
+
+.margin svg {
   margin-right: .4rem;
 }
 
 .language {
-  font-size: var(--font-size-small);
-  color: var(--additional-text-color);
 }
 
 .JavaScript-color {

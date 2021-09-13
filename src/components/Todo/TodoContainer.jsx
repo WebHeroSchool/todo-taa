@@ -1,3 +1,7 @@
+import {
+  connect,
+} from 'react-redux';
+
 import Todo from './Todo';
 import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 import withIndent from '../hoc/withIndent/withIndent';
@@ -11,9 +15,13 @@ const TodoWithMyPaperLayer = props => withMyPaperLayer(TodoWithIndent, {
 });
 
 
-const TodoContainer = () => (
-  <TodoWithMyPaperLayer />
+const TodoContainer = props => (
+  <TodoWithMyPaperLayer { ...props } />
 );
 
 
-export default TodoContainer;
+export default connect(
+  state => ({
+    count: state.todos.count,
+  })
+)(TodoContainer);

@@ -23,6 +23,10 @@ const ErrorMessages = ({
           onClick={() => props.refreshFetchData()}
         >загрузить</a> ещё раз</>),
     },
+    'empty todoList': {
+      errorText: 'Вы ещё не добавили ни одной задачи',
+      errorDescription: 'Сделайте это прямо сейчас!',
+    },
   };
 
 

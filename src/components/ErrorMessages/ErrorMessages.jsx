@@ -27,6 +27,10 @@ const ErrorMessages = ({
       errorText: 'Вы ещё не добавили ни одной задачи',
       errorDescription: 'Сделайте это прямо сейчас!',
     },
+    'empty filter': {
+      errorText: 'Нет задач в этом списке',
+      errorDescription: 'Проверьте активные или выполненые',
+    },
   };
 
 

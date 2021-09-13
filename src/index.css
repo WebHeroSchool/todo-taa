@@ -28,9 +28,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 2vw;
 }
-
-svg,
-path {
-  fill: inherit;
-  stroke: inherit;
-}

@@ -1,4 +1,7 @@
 import styles from './ErrorMessages.module.css';
+import {
+  ReactComponent as BackgroundImg,
+} from './images/background.svg';
 
 const ErrorMessages = ({
   errorType,
@@ -36,7 +39,7 @@ const ErrorMessages = ({
 
   return (
     <div className={ styles.windowWrapper }>
-      <div className={ styles.background } />
+      <BackgroundImg className={ styles.background } />
       <div className={ styles.errorMessage }>
         <p className={ styles.errorText }>
           { errorsState.[errorType].errorText }

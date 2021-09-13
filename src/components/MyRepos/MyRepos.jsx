@@ -32,11 +32,19 @@ const MyRepos = props => {
           { ...props }
         /> :
         <div className={ styles.reposWrapper }>
-          {props.repos.items.map(
-            item => (
-              <RepoItemWithMyPaperLayer key={item.id} item={ item } />
-            )
-          )}
+          <div className={ styles.noScrollWrapper } onScroll={
+            event => console.log(Math.floor(event.target.scrollTop * 100 /
+              (event.target.scrollHeight - event.target.offsetHeight)))
+          }>
+            {props.repos.items.map(
+              item => (
+                <RepoItemWithMyPaperLayer key={item.id} item={ item } />
+              )
+            )}
+          </div>
+          <div className={ styles.scrollbar }>
+            <div className={ styles.thumb }></div>
+          </div>
         </div>
       }
     </>

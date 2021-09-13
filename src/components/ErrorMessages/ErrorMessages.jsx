@@ -1,4 +1,7 @@
 import styles from './ErrorMessages.module.css';
+import {
+  ReactComponent as BackgroundImg,
+} from './images/background.svg';
 
 const ErrorMessages = ({
   errorType,
@@ -23,12 +26,20 @@ const ErrorMessages = ({
           onClick={() => props.refreshFetchData()}
         >загрузить</a> ещё раз</>),
     },
+    'empty todoList': {
+      errorText: 'Вы ещё не добавили ни одной задачи',
+      errorDescription: 'Сделайте это прямо сейчас!',
+    },
+    'empty filter': {
+      errorText: 'Нет задач в этом списке',
+      errorDescription: 'Проверьте активные или выполненые',
+    },
   };
 
 
   return (
     <div className={ styles.windowWrapper }>
-      <div className={ styles.background } />
+      <BackgroundImg className={ styles.background } />
       <div className={ styles.errorMessage }>
         <p className={ styles.errorText }>
           { errorsState.[errorType].errorText }

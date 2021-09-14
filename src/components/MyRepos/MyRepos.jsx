@@ -21,6 +21,12 @@ const ErrorMessagesWithMargin = props => withMargin(
 const RepoItemWithMyPaperLayer = props => withMyPaperLayer(RepoItem, props);
 
 const MyRepos = props => {
+  const stopMovePosition = event => {
+    console.log(event);
+    console.log(Math.floor(event.target.scrollTop * 100 /
+    (event.target.scrollHeight - event.target.offsetHeight)));
+  };
+
   if (props.repos.isLoading) {
     return <Loader />;
   } return (
@@ -32,10 +38,15 @@ const MyRepos = props => {
           { ...props }
         /> :
         <div className={ styles.reposWrapper }>
-          <div className={ styles.noScrollWrapper } onScroll={
-            event => console.log(Math.floor(event.target.scrollTop * 100 /
-              (event.target.scrollHeight - event.target.offsetHeight)))
-          }>
+          <div className={ styles.noScrollWrapper }
+            onScroll={
+              event => console.log(Math.floor(event.target.scrollTop * 100 /
+                (event.target.scrollHeight - event.target.offsetHeight)))
+            }
+            onMouseUp={
+              event => stopMovePosition(event)
+            }
+          >
             {props.repos.items.map(
               item => (
                 <RepoItemWithMyPaperLayer key={item.id} item={ item } />

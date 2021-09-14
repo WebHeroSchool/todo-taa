@@ -21,10 +21,9 @@ const ErrorMessagesWithMargin = props => withMargin(
 const RepoItemWithMyPaperLayer = props => withMyPaperLayer(RepoItem, props);
 
 const MyRepos = props => {
-  const stopMovePosition = event => {
-    console.log(event);
-    console.log(Math.floor(event.target.scrollTop * 100 /
-    (event.target.scrollHeight - event.target.offsetHeight)));
+  const upHandler = event => {
+    console.log(Math.floor(event.currentTarget.scrollTop * 100 /
+    (event.currentTarget.scrollHeight - event.currentTarget.offsetHeight)));
   };
 
   if (props.repos.isLoading) {
@@ -43,9 +42,7 @@ const MyRepos = props => {
               event => console.log(Math.floor(event.target.scrollTop * 100 /
                 (event.target.scrollHeight - event.target.offsetHeight)))
             }
-            onMouseUp={
-              event => stopMovePosition(event)
-            }
+            onTouchEnd={upHandler}
           >
             {props.repos.items.map(
               item => (

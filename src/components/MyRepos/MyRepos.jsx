@@ -9,6 +9,10 @@ import withMargin from '../hoc/withMargin/withMargin';
 import withIndent from '../hoc/withIndent/withIndent';
 import withMyPaperLayer from '../hoc/withMyPaperLayer/withMyPaperLayer';
 
+import {
+  useState,
+  useEffect,
+} from 'react';
 
 const TitleWithMargin = props => withMargin(Title, 'medium', props);
 const TitleWithIndent = props => withIndent(TitleWithMargin, props);
@@ -21,10 +25,25 @@ const ErrorMessagesWithMargin = props => withMargin(
 const RepoItemWithMyPaperLayer = props => withMyPaperLayer(RepoItem, props);
 
 const MyRepos = props => {
-  const upHandler = event => {
-    console.log(Math.floor(event.currentTarget.scrollTop * 100 /
-    (event.currentTarget.scrollHeight - event.currentTarget.offsetHeight)));
-  };
+  const [
+    scrollPosition,
+    setScrollPosition,
+  ] = useState(0);
+
+  useEffect(
+    () => {
+      const elem = document.getElementById('thumb');
+      elem.style.transform = `translateY(${scrollPosition}rem)`;
+    }, [
+      scrollPosition,
+    ]
+  );
+
+  const onSizeScrollMove = event => setScrollPosition(
+    Math.floor(event.currentTarget.scrollTop * 100 /
+    (event.currentTarget.scrollHeight - event.currentTarget.offsetHeight)) / 5
+  );
+
 
   if (props.repos.isLoading) {
     return <Loader />;
@@ -38,11 +57,8 @@ const MyRepos = props => {
         /> :
         <div className={ styles.reposWrapper }>
           <div className={ styles.noScrollWrapper }
-            onScroll={
-              event => console.log(Math.floor(event.target.scrollTop * 100 /
-                (event.target.scrollHeight - event.target.offsetHeight)))
-            }
-            onTouchEnd={upHandler}
+            onScroll={ onSizeScrollMove }
+            onTouchEnd={ onSizeScrollMove }
           >
             {props.repos.items.map(
               item => (
@@ -51,7 +67,7 @@ const MyRepos = props => {
             )}
           </div>
           <div className={ styles.scrollbar }>
-            <div className={ styles.thumb }></div>
+            <div id="thumb" className={ styles.thumb }></div>
           </div>
         </div>
       }

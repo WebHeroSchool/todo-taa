@@ -30,5 +30,6 @@
 @media (hover: none) {
   .noScrollWrapper {
     width: 100%;
+    padding-right: 1%;
   }
 }

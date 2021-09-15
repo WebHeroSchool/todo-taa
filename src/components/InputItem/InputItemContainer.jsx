@@ -43,9 +43,12 @@ const InputItemContainer = props => {
   };
 
   const onChangeTextField = event => {
-    const regexp = /^[\W0-9]/;
-    if (regexp.test(event.target.value)) {
+    const textOnly = /^[0-9\/*\@#$%^&-+]/;
+    const length = /[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{20}/;
+    if (textOnly.test(event.target.value)) {
       return addErrorStatus('Должно начинаться с прописи');
+    } else if (length.test(event.target.value)) {
+      return addErrorStatus('Слишком длинное слово');
     }
     setInputvalue(event.target.value.toUpperCase());
     removeErrorStatus();
@@ -55,6 +58,7 @@ const InputItemContainer = props => {
     if (event.code === 'Enter' || event.code === 'NumpadEnter') {
       if (inputValue.trim()) {
         submitData();
+        removeErrorStatus();
       } else {
         addErrorStatus();
       }

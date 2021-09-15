@@ -1,5 +1,6 @@
 import withIndent from '../hoc/withIndent/withIndent';
 import withMargin from '../hoc/withMargin/withMargin';
+import withScrollBar from '../hoc/withScrollBar/withScrollBar';
 
 import Title from '../Title/Title';
 import InputItemContainer from '../InputItem/InputItemContainer';
@@ -17,6 +18,8 @@ const ErrorMessagesWithMargin = props => withMargin(
   'large',
   props,
 );
+const ItemListContainerWithScrollbar = props => withScrollBar(
+  ItemListContainer, props);
 
 const Todo = ({
   count,
@@ -26,7 +29,7 @@ const Todo = ({
     <InputItemContainer />
     {
       count > 0 ?
-        <ItemListContainer /> :
+        <ItemListContainerWithScrollbar /> :
         <ErrorMessagesWithMargin errorType="empty todoList" />
     }
     <Divider />

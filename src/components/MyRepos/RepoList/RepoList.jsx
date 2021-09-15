@@ -1,4 +1,4 @@
-import RepoItem from '../../RepoItem/RepoItem';
+import RepoItem from '../RepoItem/RepoItem';
 
 import withMyPaperLayer from '../../hoc/withMyPaperLayer/withMyPaperLayer';
 

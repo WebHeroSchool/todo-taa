@@ -27,9 +27,9 @@ const InputItemContainer = props => {
     setErrorStatus,
   ] = useState(false);
 
-  const addErrorStatus = () => {
+  const addErrorStatus = (text = 'Нужно заполнить поле') => {
     setErrorStatus(true);
-    setHelperText('Нужно заполнить поле');
+    setHelperText(text);
   };
 
   const removeErrorStatus = () => {
@@ -43,6 +43,10 @@ const InputItemContainer = props => {
   };
 
   const onChangeTextField = event => {
+    const regexp = /^[\W0-9]/;
+    if (regexp.test(event.target.value)) {
+      return addErrorStatus('Должно начинаться с прописи');
+    }
     setInputvalue(event.target.value.toUpperCase());
     removeErrorStatus();
   };

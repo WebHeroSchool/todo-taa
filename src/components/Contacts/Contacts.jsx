@@ -48,8 +48,8 @@ const Contacts = props => {
             <p>{ props.contacts.items.bio }</p>
             <SocialLink
               iconSrc={ emailIcon }
-              linkTo="tkachuk.ant@mail.ru"
-              linkValue="tkachuk.ant@mail.ru"
+              linkTo={ props.contacts.items.email }
+              linkValue={ props.contacts.items.email }
               isEmail={true}
             />
             <SocialLink

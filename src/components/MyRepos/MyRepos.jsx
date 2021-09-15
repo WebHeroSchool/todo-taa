@@ -34,7 +34,8 @@ const MyRepos = props => {
     () => {
       if (window.thumb) {
         window.thumb.style.transform =
-        `translateY(${scrollPosition}rem)`;
+        `translateY(${scrollPosition === 20 ?
+          scrollPosition - 1 : scrollPosition}rem)`;
       }
     }, [
       scrollPosition,

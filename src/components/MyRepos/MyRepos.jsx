@@ -32,8 +32,10 @@ const MyRepos = props => {
 
   useEffect(
     () => {
-      const elem = document.getElementById('thumb');
-      elem.style.transform = `translateY(${scrollPosition}rem)`;
+      if (window.thumb) {
+        window.thumb.style.transform =
+        `translateY(${scrollPosition}rem)`;
+      }
     }, [
       scrollPosition,
     ]

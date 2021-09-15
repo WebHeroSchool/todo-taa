@@ -48,7 +48,7 @@ const InputItemContainer = props => {
   };
 
   const onKeyDownTextField = event => {
-    if (event.code === 'Enter') {
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
       if (inputValue.trim()) {
         submitData();
       } else {

@@ -8,6 +8,27 @@ import {
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 
+let prevent = false;
+let timer;
+
+const onSingleClickHandler = handler => {
+  timer = setTimeout(
+    () => {
+      if (!prevent) {
+        handler();
+      }
+    }, 200);
+};
+
+const onDoubleClickHandler = handler => {
+  clearTimeout(timer);
+  prevent = true;
+  handler();
+  setTimeout(() => {
+    prevent = false;
+  }, 200);
+};
+
 
 const TodoItem = props => (
   <span className = {
@@ -22,12 +43,20 @@ const TodoItem = props => (
           style={{
             alignSelf: 'flex-start',
           }}
-          onChange={ props.onChangeCheckbox }
+          onClick={ () => onSingleClickHandler(props.onChangeCheckbox) }
           checked={ props.isDone }
           name={ `checked ${props.value.toString()}` }
         />
       }
-      label={ props.value }
+      label={
+        <span
+          contentEditable={ props.isEditable }
+          suppressContentEditableWarning={ true }
+          onDoubleClick={ () => onDoubleClickHandler(props.onEditItem) }
+        >
+          { props.value }
+        </span>
+      }
     />
     <Button
       className={ styles.deleteBtn }

@@ -18,7 +18,7 @@ const ItemList = props => {
       <ul className={ styles.list }>
         {list.map(
           item => (
-            <li key={item.id.toString()}>
+            <li className={ styles.listItem } key={item.id.toString()}>
               <TodoItemContainer { ...item } />
             </li>
           )

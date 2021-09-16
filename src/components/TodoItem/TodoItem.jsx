@@ -19,6 +19,9 @@ const TodoItem = props => (
     <FormControlLabel
       control={
         <Checkbox
+          style={{
+            alignSelf: 'flex-start',
+          }}
           onChange={ props.onChangeCheckbox }
           checked={ props.isDone }
           name={ `checked ${props.value.toString()}` }

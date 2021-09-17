@@ -8,6 +8,9 @@ import {
   DELETE_ITEM,
 } from '../actions/deleteItemAction';
 import {
+  EDIT_ITEM,
+} from '../actions/editItemAction';
+import {
   SET_ALL_FILTER,
   SET_ACTIVE_FILTER,
   SET_COMPLITED_FILTER,
@@ -63,7 +66,7 @@ export const todosReducer = (state = initialState, action) => {
       };
 
 
-      if (item.id === action.payload) {
+      if (item.id === action.payload && !item.isEditable) {
         newItem.isDone = !item.isDone;
         newItem.isFilter = state.isFilter !== 'all' ? !item.isFilter : true;
       }
@@ -96,6 +99,31 @@ export const todosReducer = (state = initialState, action) => {
         ...newItemList,
       ],
       count: newCount,
+    };
+    break;
+  }
+
+
+  case EDIT_ITEM: {
+    const newItemList = state.items.map(item => {
+      const newItem = {
+        ...item,
+      };
+
+
+      if (item.id === action.payload) {
+        newItem.isEditable = !item.isEditable;
+      }
+
+      return newItem;
+    });
+
+
+    return {
+      ...state,
+      items: [
+        ...newItemList,
+      ],
     };
     break;
   }

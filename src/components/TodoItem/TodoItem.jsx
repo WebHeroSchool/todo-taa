@@ -6,9 +6,18 @@ import {
 } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
+import {
+  useEffect,
+} from 'react';
 
 
 const TodoItem = props => {
+  useEffect(() => {
+    document.getElementById(String(props.id)).focus();
+  }, [
+    props.isEditable,
+  ]);
+
   const onClick = () => {
     let time;
     let timerId;
@@ -25,6 +34,7 @@ const TodoItem = props => {
         if ((Date.now() - time) < delay) {
           clearTimeout(timerId);
           onDoubleClickHandler();
+          console.log(document.getElementById(String(props.id)));
         };
         time = null;
       }
@@ -53,9 +63,11 @@ const TodoItem = props => {
           onChange={ props.onChangeCheckbox }
         />
         <span
+          id={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
           onClick={ onHandleClick }
+          onBlur={ props.onUpdateItemValue }
         >
           { props.value }
         </span>

@@ -19,6 +19,7 @@ const TodoItemContainer = props => (
     onChangeCheckbox ={ () => props.updateItem(props.id) }
     onClickButton = { () => props.deleteItem(props.id) }
     onEditItem = { () => props.editItem(props.id) }
+    onUpdateItemValue = { () => console.log('updated') }
   />
 );
 

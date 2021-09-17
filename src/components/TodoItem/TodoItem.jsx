@@ -2,32 +2,10 @@ import classnames from 'classnames';
 import styles from './TodoItem.module.css';
 import {
   Button,
-  FormControlLabel,
   Checkbox,
 } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
-
-// let prevent = false;
-// let timer;
-
-// const onSingleClickHandler = handler => {
-//   timer = setTimeout(
-//     () => {
-//       if (!prevent) {
-//         handler();
-//       }
-//     }, 200);
-// };
-
-// const onDoubleClickHandler = handler => {
-//   clearTimeout(timer);
-//   prevent = true;
-//   handler();
-//   setTimeout(() => {
-//     prevent = false;
-//   }, 200);
-// };
 
 
 const TodoItem = props => {
@@ -57,7 +35,7 @@ const TodoItem = props => {
 
   const onSingleClickHandler = () => props.onChangeCheckbox();
   const onDoubleClickHandler = () => props.onEditItem();
-  console.log();
+
   return (
     <span className = {
       classnames({
@@ -65,26 +43,23 @@ const TodoItem = props => {
         [styles.done]: props.isDone,
       })
     }>
-      <FormControlLabel
-        control={
-          <Checkbox
-            style={{
-              alignSelf: 'flex-start',
-            }}
-            checked={ props.isDone }
-            name={ `checked ${props.value.toString()}` }
-          />
-        }
-        label={
-          <span
-            contentEditable={ props.isEditable }
-            suppressContentEditableWarning={ true }
-          >
-            { props.value }
-          </span>
-        }
-        onClick={ () => onHandleClick() }
-      />
+      <span>
+        <Checkbox
+          style={{
+            alignSelf: 'flex-start',
+          }}
+          checked={ props.isDone }
+          name={ `checked ${props.value.toString()}` }
+          onChange={ props.onChangeCheckbox }
+        />
+        <span
+          contentEditable={ props.isEditable }
+          suppressContentEditableWarning={ true }
+          onClick={ onHandleClick }
+        >
+          { props.value }
+        </span>
+      </span>
       <Button
         className={ styles.deleteBtn }
         variant="contained"

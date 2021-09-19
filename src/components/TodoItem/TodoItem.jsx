@@ -34,7 +34,6 @@ const TodoItem = props => {
         if ((Date.now() - time) < delay) {
           clearTimeout(timerId);
           onDoubleClickHandler();
-          console.log(document.getElementById(String(props.id)));
         };
         time = null;
       }
@@ -68,8 +67,7 @@ const TodoItem = props => {
           suppressContentEditableWarning={ true }
           onClick={ onHandleClick }
           onBlur={ event => {
-            console.log(event);
-            props.onUpdateItemValue(props.id, event.target.innerText);
+            props.onUpdateItemValue(props.id, event.target.innerText, true);
           }
           }
         >

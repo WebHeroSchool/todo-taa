@@ -112,7 +112,10 @@ export const todosReducer = (state = initialState, action) => {
 
 
       if (item.id === action.payload.id) {
-        newItem.isEditable = !item.isEditable;
+        newItem.isEditable = true;
+        if (action.payload.save) {
+          newItem.isEditable = false;
+        }
         newItem.value = action.payload.value;
       }
 

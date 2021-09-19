@@ -37,10 +37,12 @@ const withScrollBar = (Component, props) => {
 
   useEffect(() => {
     setComponentScroll(
-      document.getElementById('noScroll').firstElementChild.scrollHeight
+      document.getElementById('noScroll').scrollHeight
     );
-    console.log(componentScroll);
-  });
+    console.log('componentScroll ', componentScroll);
+  }, [
+    props,
+  ]);
 
 
   return (
@@ -53,7 +55,7 @@ const withScrollBar = (Component, props) => {
       </div>
       <div className={ classNames({
         [styles.scrollbar]: true,
-        [styles.hideScrollbar]: componentScroll < 390,
+        [styles.hideScrollbar]: componentScroll < 400,
       }) }>
         <div id="thumb" className={ styles.thumb }></div>
       </div>

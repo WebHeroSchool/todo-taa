@@ -10,6 +10,7 @@ import {
 } from '../actions/updateItemAction';
 import {
   DELETE_ITEM,
+  deleteItem,
 } from '../actions/deleteItemAction';
 import {
   EDIT_ITEM,
@@ -120,6 +121,12 @@ export const todosReducer = (state = initialState, action) => {
         if (action.payload.save) {
           newItem.isEditable = false;
         }
+        if (item.id === action.payload.id &&
+          action.payload.save &&
+          !toTrimSpaces(action.payload.value)) {
+          return deleteItem(item.id);
+        }
+
         newItem.value = toTrimSpaces(action.payload.value).toUpperCase();
       }
 

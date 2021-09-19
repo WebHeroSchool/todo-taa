@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.itemValue {
+  width: 90%;
+}
+
 .done {
   color: #0000004e;
   text-decoration: line-through;

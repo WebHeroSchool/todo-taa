@@ -62,6 +62,7 @@ const TodoItem = props => {
       />
       <div className={ styles.itemValueWrapper }>
         <span
+          className={ styles.itemValue }
           id={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }

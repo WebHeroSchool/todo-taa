@@ -14,6 +14,12 @@
 
 .itemValue {
   width: 90%;
+  padding: 0 .3rem;
+}
+
+.editError {
+  border: 2px solid #ff0000;
+  border-radius: .3rem;
 }
 
 .done {

@@ -6,6 +6,12 @@
   width: 95%;
 }
 
+.itemValueWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .done {
   color: #0000004e;
   text-decoration: line-through;

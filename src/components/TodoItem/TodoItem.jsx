@@ -52,15 +52,15 @@ const TodoItem = props => {
         [styles.done]: props.isDone,
       })
     }>
-      <span>
-        <Checkbox
-          style={{
-            alignSelf: 'flex-start',
-          }}
-          checked={ props.isDone }
-          name={ `checked ${props.value.toString()}` }
-          onChange={ props.onChangeCheckbox }
-        />
+      <Checkbox
+        style={{
+          alignSelf: 'flex-start',
+        }}
+        checked={ props.isDone }
+        name={ `checked ${props.value.toString()}` }
+        onChange={ props.onChangeCheckbox }
+      />
+      <div className={ styles.itemValueWrapper }>
         <span
           id={ props.id }
           contentEditable={ props.isEditable }
@@ -73,7 +73,7 @@ const TodoItem = props => {
         >
           { props.value }
         </span>
-      </span>
+      </div>
       <Button
         className={ styles.deleteBtn }
         variant="contained"

@@ -1,4 +1,8 @@
 import {
+  toTrimSpaces,
+} from '../../utils/toTrimSpaces';
+
+import {
   CREATE_ITEM,
 } from '../actions/createItemAction';
 import {
@@ -30,10 +34,10 @@ const initialState = {
 export const todosReducer = (state = initialState, action) => {
   switch (action.type) {
   case CREATE_ITEM: {
-    if (action.payload.trim()) {
+    if (action.payload) {
       const newItemList = [
         {
-          value: action.payload,
+          value: toTrimSpaces(action.payload),
           isDone: false,
           id: Date.now(),
           isFilter: (state.isFilter === 'active' || state.isFilter === 'all'),
@@ -116,7 +120,7 @@ export const todosReducer = (state = initialState, action) => {
         if (action.payload.save) {
           newItem.isEditable = false;
         }
-        newItem.value = action.payload.value;
+        newItem.value = toTrimSpaces(action.payload.value).toUpperCase();
       }
 
       return newItem;

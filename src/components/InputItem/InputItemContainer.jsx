@@ -56,7 +56,7 @@ const InputItemContainer = props => {
 
   const onKeyDownTextField = event => {
     if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-      if (inputValue.trim()) {
+      if (inputValue) {
         submitData();
         removeErrorStatus();
       } else {
@@ -66,7 +66,7 @@ const InputItemContainer = props => {
   };
 
   const onClickButton = () => {
-    if (inputValue.trim()) {
+    if (inputValue) {
       submitData();
     } else {
       addErrorStatus();

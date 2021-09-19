@@ -67,7 +67,11 @@ const TodoItem = props => {
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
           onClick={ onHandleClick }
-          onBlur={ props.onUpdateItemValue }
+          onBlur={ event => {
+            console.log(event);
+            props.onUpdateItemValue(props.id, event.target.innerText);
+          }
+          }
         >
           { props.value }
         </span>

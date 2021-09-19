@@ -111,13 +111,15 @@ export const todosReducer = (state = initialState, action) => {
       };
 
 
-      if (item.id === action.payload) {
+      if (item.id === action.payload.id) {
         newItem.isEditable = !item.isEditable;
+        newItem.value = action.payload.value;
       }
 
       return newItem;
     });
 
+    localStorage.setItem('itemList', JSON.stringify(newItemList));
 
     return {
       ...state,

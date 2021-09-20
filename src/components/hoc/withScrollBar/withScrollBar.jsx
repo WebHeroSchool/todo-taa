@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import {
   useState,
   useEffect,
+  useRef,
 } from 'react';
 
 
@@ -14,9 +15,13 @@ const withScrollBar = (Component, props) => {
   ] = useState(0);
 
   const [
-    componentScroll,
-    setComponentScroll,
-  ] = useState(0);
+    isScroll,
+    setIsScroll,
+  ] = useState(false);
+
+
+  const wrapperEl = useRef(null);
+  const noScrollEl = useRef(null);
 
   useEffect(
     () => {
@@ -36,26 +41,27 @@ const withScrollBar = (Component, props) => {
   );
 
   useEffect(() => {
-    setComponentScroll(
-      document.getElementById('noScroll').scrollHeight
-    );
-    console.log('componentScroll ', componentScroll);
+    setTimeout(() => {
+      setIsScroll(
+        wrapperEl.current.clientWidth === noScrollEl.current.clientWidth
+      );
+    }, 0);
   }, [
     props,
   ]);
 
 
   return (
-    <div className={ styles.contentWrapper }>
-      <div id="noScroll" className={ styles.noScrollWrapper }
+    <div ref={ wrapperEl } className={ styles.contentWrapper }>
+      <div ref={ noScrollEl } className={ styles.noScrollWrapper }
         onScroll={ onSizeScrollMove }
         onTouchEnd={ onSizeScrollMove }
       >
-        <Component {...props}/>
+        <Component { ...props } />
       </div>
       <div className={ classNames({
         [styles.scrollbar]: true,
-        [styles.hideScrollbar]: componentScroll < 400,
+        [styles.hideScrollbar]: !isScroll,
       }) }>
         <div id="thumb" className={ styles.thumb }></div>
       </div>

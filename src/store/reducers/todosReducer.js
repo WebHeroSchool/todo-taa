@@ -109,6 +109,8 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case EDIT_ITEM: {
+    const length = /[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{20}/;
+
     const newItemList = state.items.map(item => {
       const newItem = {
         ...item,
@@ -116,7 +118,8 @@ export const todosReducer = (state = initialState, action) => {
 
       if (item.id === action.payload.id &&
         action.payload.save &&
-        !toTrimSpaces(action.payload.value)) {
+        (!toTrimSpaces(action.payload.value) ||
+        length.test(action.payload.value))) {
         newItem.editError = true;
       } else if (item.id === action.payload.id) {
         newItem.isEditable = true;

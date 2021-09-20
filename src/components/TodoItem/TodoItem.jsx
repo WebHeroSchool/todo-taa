@@ -8,10 +8,19 @@ import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 import {
   useEffect,
+  useState,
+  useRef,
 } from 'react';
 
 
 const TodoItem = props => {
+  const itemEl = useRef(null);
+
+  const [
+    inputValue,
+    setInputvalue,
+  ] = useState('');
+
   useEffect(() => {
     document.getElementById(String(props.id)).focus();
   }, [
@@ -62,6 +71,7 @@ const TodoItem = props => {
       />
       <div className={ styles.itemValueWrapper }>
         <span
+          ref={ itemEl }
           className={ classnames({
             [styles.itemValue]: true,
             [styles.editError]: props.editError,
@@ -76,13 +86,13 @@ const TodoItem = props => {
           }
           }
           onKeyDown={ event => {
+            setInputvalue(props.value);
             if (event.code === 'Enter' || event.code === 'NumpadEnter') {
               props.onUpdateItemValue(props.id, event.target.innerText, true);
             } else if (event.code === 'Escape') {
-              props.onUpdateItemValue(props.id,
-                'подставить сюда значение из локал стейта', true);
+              itemEl.current.textContent = inputValue;
+              props.onUpdateItemValue(props.id, inputValue, true);
             }
-            console.log(event);
           } }
         >
           { props.value }

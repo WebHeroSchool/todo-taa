@@ -67,6 +67,7 @@ const TodoItem = props => {
             [styles.editError]: props.editError,
           }) }
           id={ props.id }
+          key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
           onClick={ onHandleClick }
@@ -74,6 +75,15 @@ const TodoItem = props => {
             props.onUpdateItemValue(props.id, event.target.innerText, true);
           }
           }
+          onKeyDown={ event => {
+            if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+              props.onUpdateItemValue(props.id, event.target.innerText, true);
+            } else if (event.code === 'Escape') {
+              props.onUpdateItemValue(props.id,
+                'подставить сюда значение из локал стейта', true);
+            }
+            console.log(event);
+          } }
         >
           { props.value }
         </span>

@@ -54,6 +54,16 @@ const TodoItem = props => {
   const onSingleClickHandler = () => props.onChangeCheckbox();
   const onDoubleClickHandler = () => props.onEditItem();
 
+  const pressKeyValidate = event => {
+    setInputvalue(props.value);
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      props.onUpdateItemValue(props.id, event.target.innerText, true);
+    } else if (event.code === 'Escape') {
+      itemEl.current.textContent = inputValue;
+      props.onUpdateItemValue(props.id, inputValue, true);
+    }
+  };
+
   return (
     <span className = {
       classnames({
@@ -85,15 +95,7 @@ const TodoItem = props => {
             props.onUpdateItemValue(props.id, event.target.innerText, true);
           }
           }
-          onKeyDown={ event => {
-            setInputvalue(props.value);
-            if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-              props.onUpdateItemValue(props.id, event.target.innerText, true);
-            } else if (event.code === 'Escape') {
-              itemEl.current.textContent = inputValue;
-              props.onUpdateItemValue(props.id, inputValue, true);
-            }
-          } }
+          onKeyDown={ pressKeyValidate }
         >
           { props.value }
         </span>

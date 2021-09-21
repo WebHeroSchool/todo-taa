@@ -46,6 +46,8 @@ const withScrollBar = (Component, props) => {
         wrapperEl.current.clientWidth === noScrollEl.current.clientWidth
       );
     }, 0);
+    console.log(wrapperEl.current.clientWidth);
+    console.log(noScrollEl.current.clientWidth);
   }, [
     props,
   ]);

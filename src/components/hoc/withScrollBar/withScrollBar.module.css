@@ -1,12 +1,12 @@
 .contentWrapper {
-  width: 100%;
+  width: 35.6rem;
   overflow: hidden;
   position: relative;
 }
 
 .noScrollWrapper {
   height: 24.5rem;
-  width: 102.7%;
+  width: 36.7rem;
   overflow: auto;
 }
 

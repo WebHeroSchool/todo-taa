@@ -38,7 +38,7 @@ const InputItemContainer = props => {
   };
 
   const submitData = () => {
-    props.createItem(inputValue);
+    props.createItem(inputValue.toUpperCase());
     setInputvalue('');
   };
 
@@ -50,7 +50,7 @@ const InputItemContainer = props => {
     } else if (length.test(event.target.value)) {
       return addErrorStatus('Слишком длинное слово');
     }
-    setInputvalue(event.target.value.toUpperCase());
+    setInputvalue(event.target.value);
     removeErrorStatus();
   };
 

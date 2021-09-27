@@ -8,7 +8,7 @@ import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 import {
   useEffect,
-  // useState,
+  useState,
   useRef,
 } from 'react';
 import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
@@ -17,10 +17,10 @@ import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
 const TodoItem = props => {
   const itemEl = useRef(null);
 
-  // const [
-  //   inputValue,
-  //   setInputvalue,
-  // ] = useState('');
+  const [
+    inputValue,
+    setInputvalue,
+  ] = useState(props.value);
 
   useEffect(() => {
     document.getElementById(String(props.id)).focus();
@@ -64,8 +64,10 @@ const TodoItem = props => {
           onClick={ onHandleClick }
           contentEditable={ true }
           onInput={ () => {
-            props.editItem(props.id, itemEl.current.textContent);
+            setInputvalue(itemEl.current.textContent);
+            console.log(inputValue);
           } }
+          onBlur={ () => props.onEditItem(props.id, inputValue) }
         >
           { props.value }
         </span>

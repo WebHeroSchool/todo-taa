@@ -18,6 +18,7 @@ const TodoItemContainer = props => (
     { ...props }
     onChangeCheckbox ={ () => props.toggleItem(props.id) }
     onClickButton = { () => props.deleteItem(props.id) }
+    onEditItem = { props.editItem }
   />
 );
 

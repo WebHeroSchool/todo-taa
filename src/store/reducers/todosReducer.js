@@ -109,9 +109,6 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case EDIT_ITEM: {
-    console.log('EDIT_ITEM');
-    console.log(action.payload);
-
     const newItemList = state.items.map(item => {
       const newItem = {
         ...item,
@@ -124,13 +121,15 @@ export const todosReducer = (state = initialState, action) => {
       return newItem;
     });
 
-    // return {
-    //   ...state,
-    //   items: [
-    //     ...newItemList,
-    //   ],
-    //   count: newCount,
-    // };
+
+    localStorage.setItem('itemList', JSON.stringify(newItemList));
+
+    return {
+      ...state,
+      items: [
+        ...newItemList,
+      ],
+    };
 
     return {
       ...state,

@@ -115,7 +115,8 @@ export const todosReducer = (state = initialState, action) => {
       };
 
       if (item.id === action.payload.id) {
-        newItem.value = action.payload.value;
+        newItem.value = action.payload.value.toUpperCase();
+        newItem.isEditable = !item.isEditable;
       }
 
       return newItem;

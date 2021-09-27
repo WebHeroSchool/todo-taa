@@ -12,6 +12,9 @@ import {
   DELETE_ITEM,
 } from '../actions/deleteItemAction';
 import {
+  EDIT_ITEM,
+} from '../actions/todo/editItemAction';
+import {
   SET_ALL_FILTER,
   SET_ACTIVE_FILTER,
   SET_COMPLITED_FILTER,
@@ -100,6 +103,40 @@ export const todosReducer = (state = initialState, action) => {
         ...newItemList,
       ],
       count: newCount,
+    };
+    break;
+  }
+
+
+  case EDIT_ITEM: {
+    console.log('EDIT_ITEM');
+    console.log(action.payload);
+
+    const newItemList = state.items.map(item => {
+      const newItem = {
+        ...item,
+      };
+
+      if (item.id === action.payload.id) {
+        newItem.value = action.payload.value;
+      }
+
+      return newItem;
+    });
+
+    // return {
+    //   ...state,
+    //   items: [
+    //     ...newItemList,
+    //   ],
+    //   count: newCount,
+    // };
+
+    return {
+      ...state,
+      items: [
+        ...newItemList,
+      ],
     };
     break;
   }

@@ -8,7 +8,7 @@ import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import PropTypes from 'prop-types';
 import {
   useEffect,
-  useState,
+  // useState,
   useRef,
 } from 'react';
 import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
@@ -17,10 +17,10 @@ import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
 const TodoItem = props => {
   const itemEl = useRef(null);
 
-  const [
-    inputValue,
-    setInputvalue,
-  ] = useState('');
+  // const [
+  //   inputValue,
+  //   setInputvalue,
+  // ] = useState('');
 
   useEffect(() => {
     document.getElementById(String(props.id)).focus();
@@ -34,15 +34,6 @@ const TodoItem = props => {
     () => console.log('double click'),
   );
 
-  const pressKeyValidate = event => {
-    setInputvalue(props.value);
-    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-      props.onUpdateItemValue(props.id, event.target.innerText, true);
-    } else if (event.code === 'Escape') {
-      itemEl.current.textContent = inputValue;
-      props.onUpdateItemValue(props.id, inputValue, true);
-    }
-  };
 
   return (
     <span className = {
@@ -71,11 +62,10 @@ const TodoItem = props => {
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
           onClick={ onHandleClick }
-          onBlur={ event => {
-            props.onUpdateItemValue(props.id, event.target.innerText, true);
-          }
-          }
-          onKeyDown={ pressKeyValidate }
+          contentEditable={ true }
+          onInput={ () => {
+            props.editItem(props.id, itemEl.current.textContent);
+          } }
         >
           { props.value }
         </span>

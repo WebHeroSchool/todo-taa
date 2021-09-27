@@ -7,6 +7,9 @@ import {
 import {
   deleteItem,
 } from '../../store/actions/deleteItemAction';
+import {
+  editItem,
+} from '../../store/actions/todo/editItemAction';
 import TodoItem from './TodoItem';
 
 
@@ -23,5 +26,6 @@ export default connect(
   {
     updateItem,
     deleteItem,
+    editItem,
   },
 )(TodoItemContainer);

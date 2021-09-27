@@ -6,8 +6,8 @@ import {
   CREATE_ITEM,
 } from '../actions/createItemAction';
 import {
-  UPDATE_ITEM,
-} from '../actions/updateItemAction';
+  TOGGLE_ITEM,
+} from '../actions/todo/toggleItemAction';
 import {
   DELETE_ITEM,
 } from '../actions/deleteItemAction';
@@ -63,7 +63,7 @@ export const todosReducer = (state = initialState, action) => {
   }
 
 
-  case UPDATE_ITEM: {
+  case TOGGLE_ITEM: {
     const newItemList = state.items.map(item => {
       const newItem = {
         ...item,

@@ -2,8 +2,8 @@ import {
   connect,
 } from 'react-redux';
 import {
-  updateItem,
-} from '../../store/actions/updateItemAction';
+  toggleItem,
+} from '../../store/actions/todo/toggleItemAction';
 import {
   deleteItem,
 } from '../../store/actions/deleteItemAction';
@@ -16,7 +16,7 @@ import TodoItem from './TodoItem';
 const TodoItemContainer = props => (
   <TodoItem
     { ...props }
-    onChangeCheckbox ={ () => props.updateItem(props.id) }
+    onChangeCheckbox ={ () => props.toggleItem(props.id) }
     onClickButton = { () => props.deleteItem(props.id) }
   />
 );
@@ -24,7 +24,7 @@ const TodoItemContainer = props => (
 export default connect(
   null,
   {
-    updateItem,
+    toggleItem,
     deleteItem,
     editItem,
   },

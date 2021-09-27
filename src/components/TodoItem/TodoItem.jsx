@@ -87,7 +87,7 @@ TodoItem.propTypes = {
   id: PropTypes.number,
   value: PropTypes.string,
   isDone: PropTypes.bool,
-  updateItem: PropTypes.func,
+  toggleItem: PropTypes.func,
   deleteItem: PropTypes.func,
 };
 

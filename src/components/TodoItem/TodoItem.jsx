@@ -31,7 +31,7 @@ const TodoItem = props => {
 
   const onHandleClick = onSingleDoubleClick(
     () => props.onChangeCheckbox(),
-    () => console.log('double click'),
+    () => props.onEditItem(props.id, inputValue),
   );
 
 
@@ -62,10 +62,8 @@ const TodoItem = props => {
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
           onClick={ onHandleClick }
-          contentEditable={ true }
           onInput={ () => {
             setInputvalue(itemEl.current.textContent);
-            console.log(inputValue);
           } }
           onBlur={ () => props.onEditItem(props.id, inputValue) }
         >

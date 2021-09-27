@@ -12,9 +12,6 @@ import {
   DELETE_ITEM,
 } from '../actions/deleteItemAction';
 import {
-  EDIT_ITEM,
-} from '../actions/editItemAction';
-import {
   SET_ALL_FILTER,
   SET_ACTIVE_FILTER,
   SET_COMPLITED_FILTER,
@@ -103,44 +100,6 @@ export const todosReducer = (state = initialState, action) => {
         ...newItemList,
       ],
       count: newCount,
-    };
-    break;
-  }
-
-
-  case EDIT_ITEM: {
-    const length = /[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{20}/;
-
-    const newItemList = state.items.map(item => {
-      const newItem = {
-        ...item,
-      };
-
-      if (item.id === action.payload.id &&
-        action.payload.save &&
-        (!toTrimSpaces(action.payload.value) ||
-        length.test(action.payload.value))) {
-        newItem.editError = true;
-      } else if (item.id === action.payload.id) {
-        newItem.isEditable = true;
-        if (action.payload.save) {
-          newItem.isEditable = false;
-          newItem.editError = false;
-        }
-
-        newItem.value = toTrimSpaces(action.payload.value).toUpperCase();
-      }
-
-      return newItem;
-    });
-
-    localStorage.setItem('itemList', JSON.stringify(newItemList));
-
-    return {
-      ...state,
-      items: [
-        ...newItemList,
-      ],
     };
     break;
   }

@@ -11,6 +11,7 @@ import {
   useState,
   useRef,
 } from 'react';
+import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
 
 
 const TodoItem = props => {
@@ -27,32 +28,11 @@ const TodoItem = props => {
     props.isEditable,
   ]);
 
-  const onClick = () => {
-    let time;
-    let timerId;
-    const delay = 200;
 
-    return function () {
-      if (!time) {
-        time = Date.now();
-        timerId = setTimeout(() => {
-          onSingleClickHandler();
-          time = null;
-        }, delay);
-      } else if (time) {
-        if ((Date.now() - time) < delay) {
-          clearTimeout(timerId);
-          onDoubleClickHandler();
-        };
-        time = null;
-      }
-    };
-  };
-
-  const onHandleClick = onClick();
-
-  const onSingleClickHandler = () => props.onChangeCheckbox();
-  const onDoubleClickHandler = () => props.onEditItem();
+  const onHandleClick = onSingleDoubleClick(
+    () => props.onChangeCheckbox(),
+    () => console.log('double click'),
+  );
 
   const pressKeyValidate = event => {
     setInputvalue(props.value);

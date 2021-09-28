@@ -60,6 +60,12 @@ const TodoItem = props => {
             setInputvalue(itemEl.current.textContent);
           } }
           onBlur={ () => props.onEditItem(props.id, inputValue) }
+          onKeyDown={ event => {
+            if (event.code === 'Enter' ||
+                event.code === 'NumpadEnter') {
+              props.onEditItem(props.id, inputValue);
+            }
+          } }
         >
           { props.value }
         </span>

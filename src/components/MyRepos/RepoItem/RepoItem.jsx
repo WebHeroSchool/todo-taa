@@ -8,6 +8,10 @@ const RepoItem = ({
     <a href={ item.html_url } className={styles.repoName} target="blank">
       { item.name }
     </a>
+    { item.description ?
+      <p className={ styles.description }>
+        { item.description }
+      </p> : false }
     <div className={ styles.footer }>
       <span className={ styles.repoInfo }>
         {item.language ? <FooterItem

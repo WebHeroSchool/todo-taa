@@ -45,10 +45,7 @@ const TodoItem = props => {
       <div className={ styles.itemValueWrapper }>
         <span
           ref={ itemEl }
-          className={ classnames({
-            [styles.itemValue]: true,
-            [styles.editError]: props.editError,
-          }) }
+          className={ styles.itemValue }
           key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }

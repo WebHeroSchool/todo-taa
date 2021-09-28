@@ -23,11 +23,6 @@
   cursor: pointer;
 }
 
-.editError {
-  border: 2px solid #ff0000;
-  border-radius: .3rem;
-}
-
 .done {
   color: #0000004e;
   text-decoration: line-through;

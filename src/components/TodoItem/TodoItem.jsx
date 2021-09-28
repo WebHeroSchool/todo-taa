@@ -59,6 +59,9 @@ const TodoItem = props => {
             if (event.code === 'Enter' ||
                 event.code === 'NumpadEnter') {
               props.onEditItem(props.id, inputValue);
+            } else if (event.code === 'Escape') {
+              itemEl.current.textContent = props.value;
+              props.onEditItem(props.id, props.value);
             }
           } }
         >

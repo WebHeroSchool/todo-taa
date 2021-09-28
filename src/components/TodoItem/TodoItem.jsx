@@ -74,7 +74,7 @@ const TodoItem = props => {
         className={ styles.deleteBtn }
         variant="contained"
         color="secondary"
-        onClick={ props.onClickButton }
+        onClick={ props.onDeleteItem }
       >
         <DeleteForeverTwoToneIcon fontSize="medium" />
       </Button>

@@ -5,7 +5,6 @@ import {
   Checkbox,
 } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
-import PropTypes from 'prop-types';
 import {
   useEffect,
   useState,
@@ -82,13 +81,5 @@ const TodoItem = props => {
   );
 };
 
-
-TodoItem.propTypes = {
-  id: PropTypes.number,
-  value: PropTypes.string,
-  isDone: PropTypes.bool,
-  toggleItem: PropTypes.func,
-  deleteItem: PropTypes.func,
-};
 
 export default TodoItem;

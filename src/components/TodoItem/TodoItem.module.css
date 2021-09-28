@@ -9,12 +9,14 @@
 .itemValueWrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
 }
 
 .itemValue {
   width: 90%;
   padding: 0 .3rem;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }
 
 .itemValue:hover {

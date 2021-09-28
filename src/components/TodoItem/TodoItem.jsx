@@ -56,9 +56,7 @@ const TodoItem = props => {
             () => props.onChangeCheckbox(),
             () => props.onEditItem(props.id, inputValue),
           ) }
-          onInput={ () => {
-            setInputvalue(itemEl.current.textContent);
-          } }
+          onInput={ () => setInputvalue(itemEl.current.textContent) }
           onBlur={ () => props.onEditItem(props.id, inputValue) }
           onKeyDown={ event => {
             if (event.code === 'Enter' ||

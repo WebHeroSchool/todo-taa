@@ -115,7 +115,7 @@ export const todosReducer = (state = initialState, action) => {
       };
 
       if (item.id === action.payload.id) {
-        newItem.value = action.payload.value.toUpperCase();
+        newItem.value = toTrimSpaces(action.payload.value.toUpperCase());
         newItem.isEditable = !item.isEditable;
       }
 

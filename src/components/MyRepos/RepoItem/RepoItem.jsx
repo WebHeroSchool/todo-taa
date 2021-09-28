@@ -5,9 +5,15 @@ const RepoItem = ({
   item,
 }) => (
   <div className={ styles.itemWrapper }>
-    <a href={ item.html_url } className={styles.repoName} target="blank">
-      { item.name }
-    </a>
+    <div className={ styles.header }>
+      <a href={ item.html_url } className={ styles.repoName } target="blank">
+        { item.name }
+      </a>
+      { item.homepage ?
+        <a href={ item.homepage } className={ styles.viewDemo } target="blank">
+          view demo
+        </a> : false }
+    </div>
     { item.description ?
       <p className={ styles.description }>
         { item.description }

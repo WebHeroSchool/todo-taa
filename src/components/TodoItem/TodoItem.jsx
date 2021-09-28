@@ -49,7 +49,6 @@ const TodoItem = props => {
             [styles.itemValue]: true,
             [styles.editError]: props.editError,
           }) }
-          id={ props.id }
           key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }

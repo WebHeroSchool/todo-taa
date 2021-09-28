@@ -4,7 +4,6 @@ import {
 } from '@material-ui/core';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import styles from './InputItem.module.css';
-import PropTypes from 'prop-types';
 
 
 const InputItem = props => (
@@ -31,11 +30,6 @@ const InputItem = props => (
     </Button>
   </div>
 );
-
-InputItem.propTypes = {
-  inputValue: PropTypes.string,
-  setInputvalue: PropTypes.func,
-};
 
 
 export default InputItem;

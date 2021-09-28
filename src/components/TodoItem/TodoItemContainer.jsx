@@ -11,6 +11,7 @@ import {
   editItem,
 } from '../../store/actions/todo/editItemAction';
 import TodoItem from './TodoItem';
+import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
 
 
 const TodoItemContainer = props => (
@@ -19,6 +20,7 @@ const TodoItemContainer = props => (
     onChangeCheckbox ={ () => props.toggleItem(props.id) }
     onDeleteItem = { () => props.deleteItem(props.id) }
     onEditItem = { props.editItem }
+    onSingleDoubleClick = { onSingleDoubleClick }
   />
 );
 

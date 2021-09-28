@@ -10,7 +10,6 @@ import {
   useState,
   useRef,
 } from 'react';
-import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
 
 
 const TodoItem = props => {
@@ -22,16 +21,10 @@ const TodoItem = props => {
   ] = useState(props.value);
 
   useEffect(() => {
-    document.getElementById(String(props.id)).focus();
+    itemEl.current.focus();
   }, [
     props.isEditable,
   ]);
-
-
-  const onHandleClick = onSingleDoubleClick(
-    () => props.onChangeCheckbox(),
-    () => props.onEditItem(props.id, inputValue),
-  );
 
 
   return (
@@ -60,7 +53,10 @@ const TodoItem = props => {
           key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
-          onClick={ onHandleClick }
+          onClick={ props.onSingleDoubleClick(
+            () => props.onChangeCheckbox(),
+            () => props.onEditItem(props.id, inputValue),
+          ) }
           onInput={ () => {
             setInputvalue(itemEl.current.textContent);
           } }

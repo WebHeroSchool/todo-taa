@@ -39,5 +39,6 @@
 }
 
 .lastUodate {
-  width: 12rem;
+  width: 100%;
+  text-align: end;
 }

@@ -34,7 +34,7 @@ const RepoItem = ({
           } /> : false}
       </span>
       <span className={ styles.lastUodate }>
-        { item.updated_at }
+        last update: { new Date(item.updated_at).toLocaleDateString('ru-RU') }
       </span>
     </div>
   </div>

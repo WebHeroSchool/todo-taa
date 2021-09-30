@@ -2,6 +2,8 @@ import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
 import ErrorMessages from '../ErrorMessages/ErrorMessages';
 import RepoList from './RepoList/RepoList';
+import Pagination from './Pagination/Pagination';
+
 
 import withMargin from '../hoc/withMargin/withMargin';
 import withIndent from '../hoc/withIndent/withIndent';
@@ -31,6 +33,7 @@ const MyRepos = props => {
         /> :
         <RepoListWithScrollBar {...props}/>
       }
+      <Pagination />
     </>
   );
 };

@@ -32,6 +32,7 @@ const withFetch = (Component, props) => {
       .then(() => setTimeout(() => props.setIsLoading(false), 1000));
   }, [
     props.fetch.isRefresh,
+    props.url,
   ]);
 
 

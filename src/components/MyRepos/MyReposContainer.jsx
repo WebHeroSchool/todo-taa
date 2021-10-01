@@ -14,13 +14,14 @@ import {
 import {
   refreshFetchData,
 } from '../../store/actions/refreshFetchData';
+import {
+  useState,
+  useEffect,
+} from 'react';
 
 
 import MyRepos from '../MyRepos/MyRepos';
 import withFetch from '../hoc/withFetch/withFetch';
-
-
-const url = 'https://api.github.com/users/chiga2030/repos';
 
 
 const MyReposWithFetch = props => withFetch(MyRepos, {
@@ -28,13 +29,29 @@ const MyReposWithFetch = props => withFetch(MyRepos, {
 });
 
 
-const MyReposContainer = props => (
-  <MyReposWithFetch
-    url={ url }
-    error={ props.repos.fetchReposFailure }
-    { ...props }
-  />
-);
+const MyReposContainer = props => {
+  useEffect(() => setUrl(page));
+  const [
+    page,
+    setPage,
+  ] = useState(1);
+
+  const [
+    url,
+    setUrl,
+  ] = useState(
+    `https://api.github.com/users/chiga2030/repos?per_page=6&page=${page}`);
+
+
+  return (
+    <MyReposWithFetch
+      url={ url }
+      setPage={ setPage }
+      error={ props.repos.fetchReposFailure }
+      { ...props }
+    />
+  );
+};
 
 
 export default connect(

@@ -3,28 +3,34 @@ import {
   useState,
 } from 'react';
 
-const getPages = (current, length) => {
-  console.log(current);
-  const result = new Array(+length);
+const pages = [
+  1,
+  2,
+  3,
+  4,
+  5,
+];
 
-  result[0] = 1;
-  result[length - 1] = length;
-  for (let index = 2; index < 5; index++) {
-    console.log(length - index);
-    if ((length - current) < 7) {
-      result[index] = '...';
-    } else {
-      result[index] = index;
-    }
-  }
+// const getPages = (current, length) => {
+//   console.log(current);
+//   const result = new Array(+length);
+
+//   result[0] = 1;
+//   result[length - 1] = length;
+//   for (let index = 2; index < 5; index++) {
+//     console.log(length - index);
+//     if ((length - current) < 7) {
+//       result[index] = '...';
+//     } else {
+//       result[index] = index;
+//     }
+//   }
 
 
-  return result;
-};
+//   return result;
+// };
 
-const Pagination = ({
-  length,
-}) => {
+const Pagination = () => {
   const [
     activePage,
     setActivePage,
@@ -38,15 +44,15 @@ const Pagination = ({
         onClick={ () => setActivePage(activePage - 1) }
       />
       {
-        getPages(activePage, length).map(item => (
+        pages.map((page, index) => (
           <input
-            key={ item }
+            key={ index }
             type="button"
-            value={ item }
-            onClick={ () => setActivePage(item) }
-            className={ activePage === item ? styles.active : '' }
-          />
-        ))
+            value={ page }
+            onClick={ () => setActivePage(page) }
+            className={ activePage === page ? styles.active : '' }
+          />)
+        )
       }
       <input
         type="button"

@@ -33,7 +33,7 @@ const MyRepos = props => {
         /> :
         <RepoListWithScrollBar {...props}/>
       }
-      <Pagination />
+      <Pagination length="47" />
     </>
   );
 };

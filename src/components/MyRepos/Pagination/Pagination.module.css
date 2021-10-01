@@ -7,5 +7,12 @@
 
 .pagination input {
   font-size: 1rem;
-  color: var(--main-text-color);;
+  color: var(--main-text-color);
+  margin: 0 .2rem;
+}
+
+.pagination .active {
+  color: #900;
+  margin: 0 .8rem;
+  font-weight: bold;
 }

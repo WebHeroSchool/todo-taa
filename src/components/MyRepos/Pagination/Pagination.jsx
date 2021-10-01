@@ -1,26 +1,61 @@
 import styles from './Pagination.module.css';
+import {
+  useState,
+} from 'react';
 
-const getPagesNum = length => {
-  const result = new Array(Number(length));
-  for (let index = 0; index < result.length; index++) {
-    result[index] = index + 1;
-  };
+const getPages = (current, length) => {
+  console.log(current);
+  const result = new Array(+length);
+
+  result[0] = 1;
+  result[length - 1] = length;
+  for (let index = 2; index < 5; index++) {
+    console.log(length - index);
+    if ((length - current) < 7) {
+      result[index] = '...';
+    } else {
+      result[index] = index;
+    }
+  }
+
+
   return result;
 };
 
 const Pagination = ({
   length,
-}) => (
-  <div className={ styles.pagination }>
-    <input type="button" value="<" />
-    {
-      getPagesNum(length).map(item => (
-        <input key={item} type="button" value={item} />
-      ))
-    }
-    <input type="button" value=">" />
-  </div>
-);
+}) => {
+  const [
+    activePage,
+    setActivePage,
+  ] = useState(1);
+
+  return (
+    <div className={ styles.pagination } >
+      <input
+        type="button"
+        value="<"
+        onClick={ () => setActivePage(activePage - 1) }
+      />
+      {
+        getPages(activePage, length).map(item => (
+          <input
+            key={ item }
+            type="button"
+            value={ item }
+            onClick={ () => setActivePage(item) }
+            className={ activePage === item ? styles.active : '' }
+          />
+        ))
+      }
+      <input
+        type="button"
+        value=">"
+        onClick={ () => setActivePage(activePage + 1) }
+      />
+    </div>
+  );
+};
 
 
 export default Pagination;

@@ -31,9 +31,14 @@ const MyRepos = props => {
           errorType={props.repos.errorType}
           { ...props }
         /> :
-        <RepoListWithScrollBar {...props}/>
+        <>
+          <RepoListWithScrollBar {...props}/>
+          <Pagination
+            length={ Math.ceil(props.contacts.items.public_repos / 6) }
+            setPage={ props.setPage }
+          />
+        </>
       }
-      <Pagination length="8" setPage={ props.setPage } />
     </>
   );
 };

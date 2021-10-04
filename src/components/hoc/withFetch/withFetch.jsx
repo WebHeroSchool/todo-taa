@@ -29,7 +29,7 @@ const withFetch = (Component, props) => {
         }
       })
       .catch(data => props.setFetchError('fetch error', data))
-      .then(() => setTimeout(() => props.setIsLoading(false), 1000));
+      .then(() => props.setIsLoading(false));
   }, [
     props.fetch.isRefresh,
     props.url,

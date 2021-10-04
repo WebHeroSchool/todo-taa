@@ -1,63 +1,92 @@
 import styles from './Pagination.module.css';
 import {
   useState,
+  useEffect,
 } from 'react';
 
-const pages = [
-  1,
-  2,
-  3,
-  4,
-  5,
-];
+const pages = (length, current) => {
+  const result = [];
 
-// const getPages = (current, length) => {
-//   console.log(current);
-//   const result = new Array(+length);
+  if (current >= 3) {
+    result[0] = 1;
+  }
 
-//   result[0] = 1;
-//   result[length - 1] = length;
-//   for (let index = 2; index < 5; index++) {
-//     console.log(length - index);
-//     if ((length - current) < 7) {
-//       result[index] = '...';
-//     } else {
-//       result[index] = index;
-//     }
-//   }
+  if (current - result[0] >= 3) {
+    result[current - 2] = '...';
+  }
+
+  if (current > 1) {
+    result[current - 1] = current - 1;
+  }
+
+  result[current] = current;
+
+  if (current < length) {
+    result[current + 1] = current + 1;
+  }
+
+  if (length - current >= 4) {
+    result[current + 2] = '...';
+  } else {
+    if (current < length - 1) {
+      result[current + 2] = current + 2;
+    }
+  }
+
+  result[length] = length;
+
+  return result;
+};
 
 
-//   return result;
-// };
-
-const Pagination = () => {
+const Pagination = props => {
   const [
     activePage,
     setActivePage,
   ] = useState(1);
 
+  useEffect(() => props.setPage(activePage), [
+    activePage,
+  ]);
+
   return (
     <div className={ styles.pagination } >
       <input
         type="button"
+        key="<"
         value="<"
-        onClick={ () => setActivePage(activePage - 1) }
+        onClick={ () => {
+          if (activePage > 1) {
+            setActivePage(activePage - 1);
+          }
+        } }
       />
       {
-        pages.map((page, index) => (
+        pages(props.length, activePage).map((page, index) => (
           <input
             key={ index }
             type="button"
             value={ page }
-            onClick={ () => setActivePage(page) }
+            onClick={ () => {
+              if (page !== '...') {
+                setActivePage(page);
+              } else {
+                setActivePage(index);
+              }
+            } }
             className={ activePage === page ? styles.active : '' }
           />)
         )
       }
       <input
         type="button"
+        key=">"
         value=">"
-        onClick={ () => setActivePage(activePage + 1) }
+        onClick={ () => {
+          if (activePage < props.length) {
+            setActivePage(activePage + 1);
+          }
+        } }
       />
     </div>
   );

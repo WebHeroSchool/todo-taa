@@ -30,18 +30,24 @@ const MyReposWithFetch = props => withFetch(MyRepos, {
 
 
 const MyReposContainer = props => {
-  useEffect(() => setUrl(page));
   const [
     page,
     setPage,
   ] = useState(1);
 
+  const myUrl =
+  `https://api.github.com/users/chiga2030/repos?per_page=6&page=${page}`;
+
   const [
     url,
     setUrl,
-  ] = useState(
-    `https://api.github.com/users/chiga2030/repos?per_page=6&page=${page}`);
+  ] = useState(myUrl);
 
+  useEffect(() => {
+    setUrl(myUrl);
+  }, [
+    page,
+  ]);
 
   return (
     <MyReposWithFetch

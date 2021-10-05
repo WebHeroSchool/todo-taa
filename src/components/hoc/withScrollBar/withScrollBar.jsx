@@ -25,6 +25,7 @@ const withScrollBar = (Component, props, items = 0) => {
 
   useEffect(
     () => {
+      console.log(scrollPosition);
       if (window.thumb) {
         window.thumb.style.transform =
         `translateY(${scrollPosition === 20 ?
@@ -44,8 +45,8 @@ const withScrollBar = (Component, props, items = 0) => {
   );
 
   const onSizeScrollMove = event => setScrollPosition(
-    Math.floor(event.currentTarget.scrollTop * 100 /
-    (event.currentTarget.scrollHeight - event.currentTarget.offsetHeight)) / 5
+    Math.floor(event.currentTarget.scrollTop /
+    (event.currentTarget.scrollHeight - event.currentTarget.offsetHeight) * 20)
   );
 
   useEffect(() => {

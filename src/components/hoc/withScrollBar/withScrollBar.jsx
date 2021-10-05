@@ -25,7 +25,6 @@ const withScrollBar = (Component, props, items = 0) => {
 
   useEffect(
     () => {
-      console.log(scrollPosition);
       if (window.thumb) {
         window.thumb.style.transform =
         `translateY(${scrollPosition === 20 ?

@@ -1,12 +1,12 @@
 .contentWrapper {
-  width: 35.6rem;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
 
 .noScrollWrapper {
   height: 25rem;
-  width: 36.55rem;
+  width: 103%;
   overflow: auto;
 }
 
@@ -32,6 +32,9 @@
 @media (hover: none) {
   .noScrollWrapper {
     width: 100%;
-    padding-right: 2%;
+  }
+
+  .scrollbar {
+    visibility: hidden;
   }
 }

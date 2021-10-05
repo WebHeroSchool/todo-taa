@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 
-const withScrollBar = (Component, props) => {
+const withScrollBar = (Component, props, items = 0) => {
   const [
     scrollPosition,
     setScrollPosition,
@@ -39,7 +39,7 @@ const withScrollBar = (Component, props) => {
     () => {
       setScrollPosition(0);
     }, [
-      props.repos.items.length,
+      items.length,
     ]
   );
 
@@ -51,7 +51,7 @@ const withScrollBar = (Component, props) => {
   useEffect(() => {
     setTimeout(() => {
       setIsScroll(
-        wrapperEl.current.clientWidth === noScrollEl.current.clientWidth
+        noScrollEl.current.clientWidth - wrapperEl.current.clientWidth <= 2
       );
     }, 0);
   }, [

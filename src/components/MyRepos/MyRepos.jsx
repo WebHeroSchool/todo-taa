@@ -17,7 +17,11 @@ const ErrorMessagesWithMargin = props => withMargin(
   'large',
   props,
 );
-const RepoListWithScrollBar = props => withScrollBar(RepoList, props);
+const RepoListWithScrollBar = props => withScrollBar(
+  RepoList,
+  props,
+  props.repos.items
+);
 
 
 const MyRepos = props => {

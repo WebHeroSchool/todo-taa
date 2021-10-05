@@ -42,8 +42,6 @@ const withScrollBar = (Component, props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log('wrapper: ', wrapperEl.current.clientWidth);
-      console.log('element: ', noScrollEl.current.clientWidth);
       setIsScroll(
         wrapperEl.current.clientWidth === noScrollEl.current.clientWidth
       );

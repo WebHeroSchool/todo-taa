@@ -13,8 +13,8 @@
 .scrollbar {
   width: 0.4rem;
   position: absolute;
-  top: 0;
   right: 0;
+  top: 0;
 }
 
 .hideScrollbar {
@@ -28,6 +28,10 @@
   background: var(--additional-text-color);
   transition: transform .1s linear;
 }
+
+/*.toTop {
+  transform: translateY(100px);
+}*/
 
 @media (hover: none) {
   .noScrollWrapper {

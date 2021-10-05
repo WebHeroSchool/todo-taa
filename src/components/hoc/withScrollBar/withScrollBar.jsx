@@ -35,6 +35,14 @@ const withScrollBar = (Component, props) => {
     ]
   );
 
+  useEffect(
+    () => {
+      setScrollPosition(0);
+    }, [
+      props.repos.items.length,
+    ]
+  );
+
   const onSizeScrollMove = event => setScrollPosition(
     Math.floor(event.currentTarget.scrollTop * 100 /
     (event.currentTarget.scrollHeight - event.currentTarget.offsetHeight)) / 5
@@ -55,7 +63,6 @@ const withScrollBar = (Component, props) => {
     <div ref={ wrapperEl } className={ styles.contentWrapper }>
       <div ref={ noScrollEl } className={ styles.noScrollWrapper }
         onScroll={ onSizeScrollMove }
-        onTouchEnd={ onSizeScrollMove }
       >
         <Component { ...props } />
       </div>

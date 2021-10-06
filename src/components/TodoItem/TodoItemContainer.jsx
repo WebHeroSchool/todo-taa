@@ -25,10 +25,9 @@ const TodoItemContainer = props => (
 );
 
 export default connect(
-  null,
-  {
+  null, {
     toggleItem,
     deleteItem,
     editItem,
-  },
+  }
 )(TodoItemContainer);

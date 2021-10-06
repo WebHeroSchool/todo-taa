@@ -12,6 +12,11 @@ import {
 } from 'react';
 
 
+const dragStartHandler = (event, item) => {
+  console.log(event);
+  console.log(item);
+};
+
 const TodoItem = props => {
   const itemEl = useRef(null);
 
@@ -28,12 +33,14 @@ const TodoItem = props => {
 
 
   return (
-    <span className = {
-      classnames({
+    <span
+      className = { classnames({
         [styles.item]: true,
         [styles.done]: props.isDone,
-      })
-    }>
+      }) }
+      draggable={ true }
+      onDragStart={ event => dragStartHandler(event, props.id) }
+    >
       <Checkbox
         style={{
           alignSelf: 'flex-start',

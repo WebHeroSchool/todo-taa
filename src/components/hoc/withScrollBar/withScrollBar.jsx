@@ -48,9 +48,9 @@ const withScrollBar = (Component, props, items = 0) => {
   );
 
   useEffect(() => {
-    setIsScroll(
+    setTimeout(() => setIsScroll(
       noScrollEl.current.scrollHeight > wrapperEl.current.clientHeight
-    );
+    ), 0);
   }, [
     props,
   ]);

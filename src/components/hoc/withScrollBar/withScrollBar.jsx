@@ -22,14 +22,13 @@ const withScrollBar = (Component, props, items = 0) => {
 
   const wrapperEl = useRef(null);
   const noScrollEl = useRef(null);
+  const thumb = useRef(null);
 
   useEffect(
     () => {
-      if (window.thumb) {
-        window.thumb.style.transform =
-        `translateY(${scrollPosition === 20 ?
-          scrollPosition - 1 : scrollPosition}rem)`;
-      }
+      thumb.current.style.transform =
+      `translateY(${scrollPosition === 20 ?
+        scrollPosition - 1 : scrollPosition}rem)`;
     }, [
       scrollPosition,
     ]
@@ -49,19 +48,21 @@ const withScrollBar = (Component, props, items = 0) => {
   );
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsScroll(
-        noScrollEl.current.clientWidth - wrapperEl.current.clientWidth <= 2
-      );
-    }, 0);
+    setIsScroll(
+      noScrollEl.current.scrollHeight > wrapperEl.current.clientHeight
+    );
   }, [
     props,
   ]);
 
 
   return (
-    <div ref={ wrapperEl } className={ styles.contentWrapper }>
-      <div ref={ noScrollEl } className={ styles.noScrollWrapper }
+    <div ref={ wrapperEl } className={ classNames({
+      [styles.contentWrapper]: true,
+    }) }>
+      <div
+        ref={ noScrollEl }
+        className={ styles.noScrollWrapper }
         onScroll={ onSizeScrollMove }
       >
         <Component { ...props } />
@@ -70,7 +71,7 @@ const withScrollBar = (Component, props, items = 0) => {
         [styles.scrollbar]: true,
         [styles.hideScrollbar]: !isScroll,
       }) }>
-        <div id="thumb" className={ styles.thumb }></div>
+        <div ref={ thumb } className={ styles.thumb }></div>
       </div>
     </div>
   );

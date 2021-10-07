@@ -12,10 +12,22 @@ import {
 } from 'react';
 
 
-const dragStartHandler = (event, item) => {
-  console.log(event);
-  console.log(item);
+const dragStartHandler = (event, itemOrder) => {
+  console.log('event start');
+  console.log('drag item order: ', itemOrder);
 };
+
+const dragEndHandler = setOrderItems => {
+  setOrderItems();
+  console.log('end');
+};
+
+const dragEnterHandler = event => {
+  event.stopPropagation();
+  event.preventDefault();
+  console.log('enter: ', event.target);
+};
+
 
 const TodoItem = props => {
   const itemEl = useRef(null);
@@ -31,6 +43,11 @@ const TodoItem = props => {
     props.isEditable,
   ]);
 
+  const [
+    currentItem,
+    // setCurrentItem,
+  ] = useState(props.order);
+
 
   return (
     <span
@@ -39,7 +56,9 @@ const TodoItem = props => {
         [styles.done]: props.isDone,
       }) }
       draggable={ true }
-      onDragStart={ event => dragStartHandler(event, props.id) }
+      onDragStart={ event => dragStartHandler(event, currentItem) }
+      onDragEnd={ () => dragEndHandler(() => props.setOrderItems(currentItem)) }
+      onDragEnter={ event => dragEnterHandler(event) }
     >
       <Checkbox
         style={{

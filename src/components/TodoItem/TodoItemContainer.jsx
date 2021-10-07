@@ -5,6 +5,9 @@ import {
   toggleItem,
 } from '../../store/actions/todo/toggleItemAction';
 import {
+  setOrderItems,
+} from '../../store/actions/todo/setFilters';
+import {
   deleteItem,
 } from '../../store/actions/deleteItemAction';
 import {
@@ -29,5 +32,6 @@ export default connect(
     toggleItem,
     deleteItem,
     editItem,
+    setOrderItems,
   }
 )(TodoItemContainer);

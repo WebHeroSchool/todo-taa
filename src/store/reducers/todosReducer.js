@@ -19,6 +19,7 @@ import {
   SET_ACTIVE_FILTER,
   SET_COMPLITED_FILTER,
   ON_CLEAR_COMPLETED,
+  SET_ORDER_ITEMS,
 } from '../actions/todo/setFilters';
 
 
@@ -36,14 +37,15 @@ export const todosReducer = (state = initialState, action) => {
   case CREATE_ITEM: {
     if (action.payload) {
       const newItemList = [
+        ...state.items,
         {
           value: toTrimSpaces(action.payload),
           isDone: false,
           id: Date.now(),
           isFilter: (state.isFilter === 'active' || state.isFilter === 'all'),
           isEditable: false,
+          order: state.count + 1,
         },
-        ...state.items,
       ];
       const newCount = ++state.count;
 
@@ -239,6 +241,17 @@ export const todosReducer = (state = initialState, action) => {
       count: newItemList.length,
     };
 
+
+    break;
+  }
+
+
+  case SET_ORDER_ITEMS: {
+    console.log('payload: ', action.payload);
+
+    return {
+      ...state,
+    };
 
     break;
   }

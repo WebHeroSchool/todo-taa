@@ -17,15 +17,10 @@ const dragStartHandler = (event, itemOrder) => {
   console.log('drag item order: ', itemOrder);
 };
 
-const dragEndHandler = setOrderItems => {
-  setOrderItems();
-  console.log('end');
-};
-
-const dragEnterHandler = event => {
-  event.stopPropagation();
-  event.preventDefault();
-  console.log('enter: ', event.target);
+const dragEndHandler = (setOrderItems, dragItem, coverItem) => {
+  setOrderItems(dragItem, coverItem);
+  console.log('dragItem: ', dragItem);
+  console.log('coverItem: ', coverItem);
 };
 
 
@@ -44,9 +39,13 @@ const TodoItem = props => {
   ]);
 
   const [
-    currentItem,
-    // setCurrentItem,
+    dragItem,
+    // setdragItem,
   ] = useState(props.order);
+  const [
+    coverItem,
+    setCoverItem,
+  ] = useState(0);
 
 
   return (
@@ -56,9 +55,19 @@ const TodoItem = props => {
         [styles.done]: props.isDone,
       }) }
       draggable={ true }
-      onDragStart={ event => dragStartHandler(event, currentItem) }
-      onDragEnd={ () => dragEndHandler(() => props.setOrderItems(currentItem)) }
-      onDragEnter={ event => dragEnterHandler(event) }
+      onDragStart={ event => dragStartHandler(event, dragItem) }
+      onDragEnd={ event => {
+        dragEndHandler(
+          props.setOrderItems,
+          dragItem,
+          coverItem,
+        );
+        console.log(event);
+      } }
+      onDragEnter={ () => {
+        setCoverItem(props.order);
+        console.log(coverItem);
+      } }
     >
       <Checkbox
         style={{

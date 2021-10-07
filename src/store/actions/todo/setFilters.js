@@ -26,7 +26,10 @@ export const onClearCompleted = () => ({
   type: ON_CLEAR_COMPLETED,
 });
 
-export const setOrderItems = order => ({
+export const setOrderItems = (orderOfDrag, orderOfCover) => ({
   type: SET_ORDER_ITEMS,
-  payload: order,
+  payload: {
+    orderOfDrag,
+    orderOfCover,
+  },
 });

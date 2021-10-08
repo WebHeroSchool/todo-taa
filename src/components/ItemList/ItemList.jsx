@@ -22,14 +22,12 @@ const ItemList = props => {
 
   const handleDragStart = item => {
     setCurrentItem(item);
-    console.log(item);
   };
   const handleDragOver = event => {
     event.preventDefault();
   };
   const handleDrop = (event, item) => {
     event.preventDefault();
-    console.log(item);
     props.setOrderItems(currentItem, item);
   };
 
@@ -47,7 +45,7 @@ const ItemList = props => {
               draggable={ true }
               onDragStart={ () => handleDragStart(item.order) }
               onDragOver={event => handleDragOver(event)}
-              onDrop={event => handleDrop(event, `cover: ${item.order}`)}
+              onDrop={event => handleDrop(event, item.order)}
             >
               <TodoItemContainer { ...item } />
             </li>

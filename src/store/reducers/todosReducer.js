@@ -248,17 +248,21 @@ export const todosReducer = (state = initialState, action) => {
 
   case SET_ORDER_ITEMS: {
     const newItemList = state.items.map(item => {
-      if (item.order === action.payload.orderOfDrag) {
+      if (item.order === action.payload.orderOfDrag &&
+        item.order > action.payload.orderOfCover) {
         item.order = action.payload.orderOfCover;
-      } else if (item.order >= action.payload.orderOfCover &&
+      } else if (item.order === action.payload.orderOfDrag &&
+        item.order < action.payload.orderOfCover) {
+        item.order = action.payload.orderOfCover - 1;
+      } else if (action.payload.orderOfDrag > action.payload.orderOfCover &&
+        item.order >= action.payload.orderOfCover &&
         item.order <= action.payload.orderOfDrag) {
         item.order++;
+      } else if (action.payload.orderOfDrag < action.payload.orderOfCover &&
+        item.order < action.payload.orderOfCover &&
+        item.order > 0) {
+        item.order--;
       }
-      // if (item.order > ) {}
-
-      // else if (item.order === action.payload.orderOfDrag) {
-      //   item.order = action.payload.orderOfCover;
-      // };
 
 
       return item;

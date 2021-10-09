@@ -260,6 +260,7 @@ export const todosReducer = (state = initialState, action) => {
         item.order++;
       } else if (action.payload.orderOfDrag < action.payload.orderOfCover &&
         item.order < action.payload.orderOfCover &&
+        item.order > action.payload.orderOfDrag &&
         item.order > 0) {
         item.order--;
       }

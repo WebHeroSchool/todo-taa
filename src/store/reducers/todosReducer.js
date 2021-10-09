@@ -44,7 +44,7 @@ export const todosReducer = (state = initialState, action) => {
           id: Date.now(),
           isFilter: (state.isFilter === 'active' || state.isFilter === 'all'),
           isEditable: false,
-          order: state.count + 1,
+          order: state.count,
         },
       ];
       const newCount = ++state.count;
@@ -248,11 +248,19 @@ export const todosReducer = (state = initialState, action) => {
 
   case SET_ORDER_ITEMS: {
     const newItemList = state.items.map(item => {
-      if (item.order === action.payload.orderOfCover) {
-        item.order = action.payload.orderOfDrag;
-      } else if (item.order === action.payload.orderOfDrag) {
+      if (item.order === action.payload.orderOfDrag) {
         item.order = action.payload.orderOfCover;
-      };
+      } else if (item.order >= action.payload.orderOfCover &&
+        item.order <= action.payload.orderOfDrag) {
+        item.order++;
+      }
+      // if (item.order > ) {}
+
+      // else if (item.order === action.payload.orderOfDrag) {
+      //   item.order = action.payload.orderOfCover;
+      // };
+
+
       return item;
     });
 

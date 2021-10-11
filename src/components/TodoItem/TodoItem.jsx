@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './TodoItem.module.css';
 import {
   Button,
@@ -27,40 +27,41 @@ const TodoItem = props => {
   ]);
 
   const [
-    isGap,
-    setIsGap,
+    isDrag,
+    setIsDrag,
   ] = useState(false);
 
 
-  const handleDragStart = item => {
-    props.setCurrentItem(item);
+  const handleDragStart = () => {
+    props.setCurrentItem(props.order);
   };
-  const handleDragEnter = () => {
-    console.log('enter');
-    setIsGap(true);
-    console.log(isGap);
+  const handleDragEnd = () => {
+    setIsDrag(false);
+  };
+  const handleDragLeave = () => {
+    setIsDrag(false);
   };
   const handleDragOver = () => {
-    // event.preventDefault();
-    setIsGap(false);
-  };
-  const handleDrop = (event, item) => {
     event.preventDefault();
-    props.setOrderItems(props.currentItem, item);
+    setIsDrag(true);
+  };
+  const handleDrop = () => {
+    props.setOrderItems(props.currentItem, props.order);
+    setIsDrag(false);
   };
 
   return (
     <li
-      className = { classnames({
+      className = { classNames({
         [styles.item]: true,
         [styles.done]: props.isDone,
-        [styles.gap]: isGap,
       }) }
       draggable={ true }
-      onDragEnter={ handleDragEnter }
-      onDragOver={ event => handleDragOver(event) }
-      onDragStart={ () => handleDragStart(props.order) }
-      onDrop={ event => handleDrop(event, props.order) }
+      onDragEnd={ handleDragEnd }
+      onDragLeave={ handleDragLeave }
+      onDragOver={ handleDragOver }
+      onDragStart={ handleDragStart }
+      onDrop={ handleDrop }
     >
       <Checkbox
         style={{
@@ -70,10 +71,17 @@ const TodoItem = props => {
         name={ `checked ${props.value.toString()}` }
         onChange={ props.onChangeCheckbox }
       />
-      <div className={ styles.itemValueWrapper }>
+      <div
+        className={ styles.itemValueWrapper }
+        onDragLeave={ event => event.stopPropagation() }
+        onDragEnter={ event => event.stopPropagation() }
+      >
         <span
           ref={ itemEl }
-          className={ styles.itemValue }
+          className={ classNames({
+            [styles.itemValue]: true,
+            [styles.isDrag]: isDrag,
+          }) }
           key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }

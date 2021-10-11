@@ -93,7 +93,13 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case DELETE_ITEM: {
-    const newItemList = state.items.filter(item => item.id !== action.payload);
+    const newItemList = state.items.filter((item, index) => {
+      if (item.id !== action.payload) {
+        item.order = index;
+      }
+      return item.id !== action.payload;
+    });
+
     const newCount = --state.count;
 
     localStorage.setItem('itemList', JSON.stringify(newItemList));

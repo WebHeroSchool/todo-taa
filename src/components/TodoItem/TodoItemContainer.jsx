@@ -12,6 +12,9 @@ import {
 } from '../../store/actions/todo/editItemAction';
 import TodoItem from './TodoItem';
 import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
+import {
+  setOrderItems,
+} from '../../store/actions/todo/setFilters';
 
 
 const TodoItemContainer = props => (
@@ -29,5 +32,6 @@ export default connect(
     toggleItem,
     deleteItem,
     editItem,
+    setOrderItems,
   }
 )(TodoItemContainer);

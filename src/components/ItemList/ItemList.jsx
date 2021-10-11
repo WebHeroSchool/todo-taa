@@ -14,22 +14,10 @@ const ItemList = props => {
     props,
   );
 
-
   const [
     currentItem,
     setCurrentItem,
   ] = useState(0);
-
-  const handleDragStart = item => {
-    setCurrentItem(item);
-  };
-  const handleDragOver = event => {
-    event.preventDefault();
-  };
-  const handleDrop = (event, item) => {
-    event.preventDefault();
-    props.setOrderItems(currentItem, item);
-  };
 
 
   const list = props.items.filter(item => item.isFilter);
@@ -39,16 +27,12 @@ const ItemList = props => {
       <ul className={ styles.list }>
         {list.map(
           item => (
-            <li
-              className={ styles.listItem }
-              key={item.id.toString()}
-              draggable={ true }
-              onDragStart={ () => handleDragStart(item.order) }
-              onDragOver={event => handleDragOver(event)}
-              onDrop={event => handleDrop(event, item.order)}
-            >
-              <TodoItemContainer { ...item } />
-            </li>
+            <TodoItemContainer
+              key={ item.id.toString() }
+              currentItem={ currentItem }
+              setCurrentItem ={ setCurrentItem }
+              { ...item }
+            />
           )
         )}
       </ul>

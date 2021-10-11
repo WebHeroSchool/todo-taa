@@ -4,6 +4,12 @@
   display: flex;
   justify-content: space-between;
   width: 95%;
+  margin-bottom: 1rem;
+  transition: transform, linear, 1s;
+}
+
+.gap {
+  transform: translateY(30px);
 }
 
 .itemValueWrapper {

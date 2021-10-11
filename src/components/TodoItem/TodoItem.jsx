@@ -26,13 +26,41 @@ const TodoItem = props => {
     props.isEditable,
   ]);
 
+  const [
+    isGap,
+    setIsGap,
+  ] = useState(false);
+
+
+  const handleDragStart = item => {
+    props.setCurrentItem(item);
+  };
+  const handleDragEnter = () => {
+    console.log('enter');
+    setIsGap(true);
+    console.log(isGap);
+  };
+  const handleDragOver = () => {
+    // event.preventDefault();
+    setIsGap(false);
+  };
+  const handleDrop = (event, item) => {
+    event.preventDefault();
+    props.setOrderItems(props.currentItem, item);
+  };
 
   return (
-    <span
+    <li
       className = { classnames({
         [styles.item]: true,
         [styles.done]: props.isDone,
+        [styles.gap]: isGap,
       }) }
+      draggable={ true }
+      onDragEnter={ handleDragEnter }
+      onDragOver={ event => handleDragOver(event) }
+      onDragStart={ () => handleDragStart(props.order) }
+      onDrop={ event => handleDrop(event, props.order) }
     >
       <Checkbox
         style={{
@@ -76,7 +104,7 @@ const TodoItem = props => {
       >
         <DeleteForeverTwoToneIcon fontSize="medium" />
       </Button>
-    </span>
+    </li>
   );
 };
 

@@ -29,6 +29,11 @@
   cursor: pointer;
 }
 
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
 .done {
   color: #0000004e;
   text-decoration: line-through;

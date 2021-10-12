@@ -14,6 +14,7 @@ import {
 
 const TodoItem = props => {
   const itemEl = useRef(null);
+  const listEl = useRef(null);
 
   const [
     inputValue,
@@ -30,34 +31,55 @@ const TodoItem = props => {
     isDrag,
     setIsDrag,
   ] = useState(false);
+  // const [
+  //   isOver,
+  //   setIsOver,
+  // ] = useState(false);
 
 
   const handleDragStart = () => {
     props.setCurrentItem(props.order);
+    props.setCurrentHeight(listEl.current.clientHeight);
   };
   const handleDragEnd = () => {
     setIsDrag(false);
+    // listEl.current.style.height = 'auto';
+  };
+  const handleDragEnter = () => {
+    console.log('enter');
+    console.log(listEl);
+    // listEl.current.style.height = `${props.currentHeight +
+    // listEl.current.clientHeight}px`;
+
+    // setIsOver(true);
   };
   const handleDragLeave = () => {
     setIsDrag(false);
+    // listEl.current.style.height = 'auto';
   };
   const handleDragOver = () => {
     event.preventDefault();
-    setIsDrag(true);
+    if (props.order !== props.currentItem) {
+      setIsDrag(true);
+    }
   };
   const handleDrop = () => {
     props.setOrderItems(props.currentItem, props.order);
     setIsDrag(false);
+    // listEl.current.style.height = 'auto';
   };
 
   return (
     <li
+      ref={ listEl }
       className = { classNames({
         [styles.item]: true,
         [styles.done]: props.isDone,
+        [styles.animation]: isDrag,
       }) }
       draggable={ true }
       onDragEnd={ handleDragEnd }
+      onDragEnter={ handleDragEnter }
       onDragLeave={ handleDragLeave }
       onDragOver={ handleDragOver }
       onDragStart={ handleDragStart }
@@ -73,8 +95,6 @@ const TodoItem = props => {
       />
       <div
         className={ styles.itemValueWrapper }
-        onDragLeave={ event => event.stopPropagation() }
-        onDragEnter={ event => event.stopPropagation() }
       >
         <span
           ref={ itemEl }

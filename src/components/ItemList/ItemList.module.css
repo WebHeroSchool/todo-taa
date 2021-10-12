@@ -1,5 +1,6 @@
 .list {
   list-style: none;
-  margin: 0 0 2em;
-  height: 18.2rem;
+  margin: 0;
+  height: auto;
+  overflow-x: hidden;
 }

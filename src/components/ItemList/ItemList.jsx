@@ -18,6 +18,10 @@ const ItemList = props => {
     currentItem,
     setCurrentItem,
   ] = useState(0);
+  const [
+    currentHeight,
+    setCurrentHeight,
+  ] = useState(0);
 
 
   const list = props.items.filter(item => item.isFilter);
@@ -30,7 +34,9 @@ const ItemList = props => {
             <TodoItemContainer
               key={ item.id.toString() }
               currentItem={ currentItem }
-              setCurrentItem ={ setCurrentItem }
+              setCurrentItem={ setCurrentItem }
+              currentHeight={ currentHeight }
+              setCurrentHeight={ setCurrentHeight }
               { ...item }
             />
           )

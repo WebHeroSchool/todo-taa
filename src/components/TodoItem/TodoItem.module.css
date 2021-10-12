@@ -1,10 +1,12 @@
 .item {
-  align-items: center;
+  align-content: stretch;
   color: #000000de;
   display: flex;
   justify-content: space-between;
   width: 95%;
+  max-height: 100%;
   margin-bottom: 1rem;
+  transition: transform, linear, 1s;
 }
 
 .isDrag {
@@ -15,14 +17,21 @@
   display: flex;
   flex-direction: column;
   width: 80%;
+  background: aqua;
+}
+
+.animation {
+  transform: translate(30px, 10px) scale(1.1);
 }
 
 .itemValue {
   width: 90%;
+  display: flex;
+  align-items: center;
+  height: 100%;
   padding: 0 .3rem;
   text-overflow: ellipsis;
   overflow-x: hidden;
-  transition: transform, linear, .2s;
 }
 
 .itemValue:hover {
@@ -36,6 +45,7 @@
 
 .deleteBtn {
   opacity: 0;
+  height: 100%;
   transition: opacity .4s ease-out !important;
 }
 

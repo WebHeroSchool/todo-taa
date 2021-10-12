@@ -93,10 +93,13 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case DELETE_ITEM: {
+    let indexForDelete = 0;
     const newItemList = state.items.filter((item, index) => {
-      if (item.id !== action.payload) {
-        item.order = index;
+      if (item.id === action.payload) {
+        indexForDelete = -1;
       }
+      item.order = index + indexForDelete;
+
       return item.id !== action.payload;
     });
 

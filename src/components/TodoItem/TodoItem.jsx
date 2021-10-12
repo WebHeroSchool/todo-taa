@@ -31,10 +31,6 @@ const TodoItem = props => {
     isDrag,
     setIsDrag,
   ] = useState(false);
-  // const [
-  //   isOver,
-  //   setIsOver,
-  // ] = useState(false);
 
 
   const handleDragStart = () => {
@@ -43,19 +39,11 @@ const TodoItem = props => {
   };
   const handleDragEnd = () => {
     setIsDrag(false);
-    // listEl.current.style.height = 'auto';
   };
   const handleDragEnter = () => {
-    console.log('enter');
-    console.log(listEl);
-    // listEl.current.style.height = `${props.currentHeight +
-    // listEl.current.clientHeight}px`;
-
-    // setIsOver(true);
   };
   const handleDragLeave = () => {
     setIsDrag(false);
-    // listEl.current.style.height = 'auto';
   };
   const handleDragOver = () => {
     event.preventDefault();
@@ -66,7 +54,6 @@ const TodoItem = props => {
   const handleDrop = () => {
     props.setOrderItems(props.currentItem, props.order);
     setIsDrag(false);
-    // listEl.current.style.height = 'auto';
   };
 
   return (

@@ -6,18 +6,17 @@
   width: 95%;
   max-height: 100%;
   margin-bottom: 1rem;
-  transition: transform, linear, 1s;
+  transition: transform, linear, .2s;
 }
 
 .isDrag {
-  background: red;
+  box-shadow: 0 8px 8px -4px #223c5033;
 }
 
 .itemValueWrapper {
   display: flex;
   flex-direction: column;
   width: 80%;
-  background: aqua;
 }
 
 .animation {

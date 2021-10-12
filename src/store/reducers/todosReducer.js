@@ -236,8 +236,15 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case ON_CLEAR_COMPLETED: {
+    let indexCount = 0;
     const newItemList = state.items.filter(
-      item => !item.isDone);
+      item => {
+        if (!item.isDone) {
+          item.order = indexCount;
+          indexCount++;
+        }
+        return !item.isDone;
+      });
 
     localStorage.setItem('itemList', JSON.stringify(newItemList));
     localStorage.setItem('count', JSON.stringify(newItemList.length));

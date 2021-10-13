@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 85%;
+  margin: 0 auto 1rem;
+}
+
+.sortButton {
+  display: flex;
+  align-items: center;
+  margin-right: .5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.buttonImage {
+  height: 1.6rem;
+  width: 1.6rem;
+  fill: var(--main-text-color);
+  stroke: var(--main-text-color);
+}
+
+.buttonImage:hover {
+  fill: var(--additional-button-color);
+  stroke: var(--additional-button-color);
+}
+
+.buttonImage:active {
+  transform: translate(.1rem, .1rem);
+}
+
+.active {
+  fill: var(--active-button-color);
+  stroke: var(--active-button-color);
+}

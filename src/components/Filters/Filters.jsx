@@ -1,3 +1,5 @@
+import styles from './Filters.module.css';
+
 import {
   ReactComponent as ReverseSvg,
 } from './images/reverse.svg';
@@ -12,12 +14,18 @@ import {
 } from './images/cancel.svg';
 
 const Filters = () => (
-  <>
-    <AlphaSvg />
-    <DateSvg />
-    <ReverseSvg />
+  <div className={ styles.wrapper }>
+    <button className={ styles.sortButton } >
+      <AlphaSvg className={ styles.buttonImage } />
+    </button>
+    <button className={ styles.sortButton } >
+      <DateSvg className={ styles.buttonImage } />
+    </button>
+    <button className={ styles.sortButton } >
+      <ReverseSvg className={ styles.buttonImage } />
+    </button>
     <CancelSvg />
-  </>
+  </div>
 );
 
 

@@ -4,6 +4,7 @@ import withScrollBar from '../hoc/withScrollBar/withScrollBar';
 
 import Title from '../Title/Title';
 import InputItemContainer from '../InputItem/InputItemContainer';
+import Filters from '../Filters/Filters';
 import ItemListContainer from '../ItemList/ItemListContainer';
 import FooterContainer from '../Footer/FooterContainer';
 import {
@@ -27,6 +28,7 @@ const Todo = ({
   <>
     <Title titleValue={ 'TO DO:' } />
     <InputItemContainer />
+    <Filters />
     {
       count > 0 ?
         <ItemListContainerWithScrollbar /> :

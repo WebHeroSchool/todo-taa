@@ -93,7 +93,16 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case DELETE_ITEM: {
-    const newItemList = state.items.filter(item => item.id !== action.payload);
+    let indexForDelete = 0;
+    const newItemList = state.items.filter((item, index) => {
+      if (item.id === action.payload) {
+        indexForDelete = -1;
+      }
+      item.order = index + indexForDelete;
+
+      return item.id !== action.payload;
+    });
+
     const newCount = --state.count;
 
     localStorage.setItem('itemList', JSON.stringify(newItemList));
@@ -227,8 +236,15 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case ON_CLEAR_COMPLETED: {
+    let indexCount = 0;
     const newItemList = state.items.filter(
-      item => !item.isDone);
+      item => {
+        if (!item.isDone) {
+          item.order = indexCount;
+          indexCount++;
+        }
+        return !item.isDone;
+      });
 
     localStorage.setItem('itemList', JSON.stringify(newItemList));
     localStorage.setItem('count', JSON.stringify(newItemList.length));

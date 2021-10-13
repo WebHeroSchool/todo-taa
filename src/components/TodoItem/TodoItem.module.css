@@ -1,15 +1,16 @@
 .item {
-  align-items: center;
+  align-content: stretch;
   color: #000000de;
   display: flex;
   justify-content: space-between;
   width: 95%;
+  max-height: 100%;
   margin-bottom: 1rem;
-  transition: transform, linear, 1s;
+  transition: transform, linear, .2s;
 }
 
-.gap {
-  transform: translateY(30px);
+.isDrag {
+  box-shadow: 0 8px 8px -4px #223c5033;
 }
 
 .itemValueWrapper {
@@ -18,8 +19,15 @@
   width: 80%;
 }
 
+.animation {
+  transform: translate(30px, 10px) scale(1.1);
+}
+
 .itemValue {
   width: 90%;
+  display: flex;
+  align-items: center;
+  height: 100%;
   padding: 0 .3rem;
   text-overflow: ellipsis;
   overflow-x: hidden;
@@ -41,6 +49,7 @@
 
 .deleteBtn {
   opacity: 0;
+  height: 100%;
   transition: opacity .4s ease-out !important;
 }
 

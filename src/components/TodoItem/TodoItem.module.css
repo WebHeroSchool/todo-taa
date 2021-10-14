@@ -19,8 +19,12 @@
   width: 80%;
 }
 
-.animation {
-  transform: translate(30px, 10px) scale(1.1);
+.toUpAnimation {
+  transform: translate(2rem, -.6rem) scale(1.1);
+}
+
+.toBottomAnimation {
+  transform: translate(2rem, .6rem) scale(1.1);
 }
 
 .itemValue {

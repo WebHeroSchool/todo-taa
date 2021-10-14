@@ -31,7 +31,14 @@ const TodoItem = props => {
     isDrag,
     setIsDrag,
   ] = useState(false);
-
+  const [
+    toUpAnimation,
+    setToUpAnimation,
+  ] = useState(false);
+  const [
+    toBottomAnimation,
+    setToBottomAnimation,
+  ] = useState(false);
 
   const handleDragStart = () => {
     props.setCurrentItem(props.order);
@@ -40,20 +47,24 @@ const TodoItem = props => {
   const handleDragEnd = () => {
     setIsDrag(false);
   };
-  const handleDragEnter = () => {
-  };
   const handleDragLeave = () => {
     setIsDrag(false);
+    setToUpAnimation(false);
+    setToBottomAnimation(false);
   };
   const handleDragOver = () => {
     event.preventDefault();
     if (props.order !== props.currentItem) {
       setIsDrag(true);
+      setToUpAnimation(props.order < props.currentItem);
+      setToBottomAnimation(props.order > props.currentItem);
     }
   };
   const handleDrop = () => {
     props.setOrderItems(props.currentItem, props.order);
     setIsDrag(false);
+    setToUpAnimation(false);
+    setToBottomAnimation(false);
   };
 
   return (
@@ -62,11 +73,11 @@ const TodoItem = props => {
       className = { classNames({
         [styles.item]: true,
         [styles.done]: props.isDone,
-        [styles.animation]: isDrag,
+        [styles.toUpAnimation]: toUpAnimation,
+        [styles.toBottomAnimation]: toBottomAnimation,
       }) }
       draggable={ true }
       onDragEnd={ handleDragEnd }
-      onDragEnter={ handleDragEnter }
       onDragLeave={ handleDragLeave }
       onDragOver={ handleDragOver }
       onDragStart={ handleDragStart }

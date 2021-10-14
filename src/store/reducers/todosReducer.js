@@ -37,7 +37,6 @@ export const todosReducer = (state = initialState, action) => {
   case CREATE_ITEM: {
     if (action.payload) {
       const newItemList = [
-        ...state.items,
         {
           value: toTrimSpaces(action.payload),
           isDone: false,
@@ -46,6 +45,7 @@ export const todosReducer = (state = initialState, action) => {
           isEditable: false,
           order: state.count,
         },
+        ...state.items,
       ];
       const newCount = ++state.count;
 
@@ -264,36 +264,29 @@ export const todosReducer = (state = initialState, action) => {
 
   case SET_ORDER_ITEMS: {
     const newItemList = state.items.map(item => {
-      if (item.order === action.payload.orderOfDrag &&
-        item.order > action.payload.orderOfCover) {
+      if (item.order === action.payload.orderOfDrag) {
         item.order = action.payload.orderOfCover;
-      } else if (item.order === action.payload.orderOfDrag &&
-        item.order < action.payload.orderOfCover) {
-        item.order = action.payload.orderOfCover - 1;
-      } else if (action.payload.orderOfDrag > action.payload.orderOfCover &&
-        item.order >= action.payload.orderOfCover &&
-        item.order <= action.payload.orderOfDrag) {
+      } else if (item.order < action.payload.orderOfDrag &&
+        item.order >= action.payload.orderOfCover) {
         item.order++;
-      } else if (action.payload.orderOfDrag < action.payload.orderOfCover &&
-        item.order < action.payload.orderOfCover &&
-        item.order > action.payload.orderOfDrag &&
-        item.order > 0) {
+      } else if (item.order > action.payload.orderOfDrag &&
+        item.order <= action.payload.orderOfCover) {
         item.order--;
       }
-
 
       return item;
     });
 
     newItemList.sort((current, next) => {
-      if (current.order > next.order) {
+      if (current.order < next.order) {
         return 1;
       };
-      if (current.order < next.order) {
+      if (current.order > next.order) {
         return -1;
       };
       return 0;
     });
+
 
     localStorage.setItem('itemList', JSON.stringify(newItemList));
 

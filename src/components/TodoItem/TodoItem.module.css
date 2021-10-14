@@ -11,6 +11,8 @@
 
 .isDrag {
   box-shadow: 0 8px 8px -4px #223c5033;
+  border: 1px dotted var(--active-button-color);
+  border-radius: 0.3rem;
 }
 
 .itemValueWrapper {

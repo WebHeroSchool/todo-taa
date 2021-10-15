@@ -23,15 +23,15 @@
 }
 
 .buttonImage:hover {
-  fill: var(--additional-button-color);
-  stroke: var(--additional-button-color);
+  fill: var(--active-button-color);
+  stroke: var(--active-button-color);
 }
 
-.buttonImage:active {
+.sortButton:active .buttonImage {
   transform: translate(.1rem, .1rem);
 }
 
 .active {
-  fill: var(--active-button-color);
-  stroke: var(--active-button-color);
+  fill: var(--additional-button-color);
+  stroke: var(--additional-button-color);
 }

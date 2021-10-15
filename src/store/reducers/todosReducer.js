@@ -20,6 +20,7 @@ import {
   SET_COMPLITED_FILTER,
   ON_CLEAR_COMPLETED,
   SET_ORDER_ITEMS,
+  FILTER,
 } from '../actions/todo/setFilters';
 
 
@@ -289,6 +290,30 @@ export const todosReducer = (state = initialState, action) => {
 
 
     localStorage.setItem('itemList', JSON.stringify(newItemList));
+
+    return {
+      ...state,
+      items: [
+        ...newItemList,
+      ],
+    };
+
+    break;
+  }
+
+
+  case FILTER: {
+    console.log(action.payload);
+    const newItemList = state.items.sort((current, next) => {
+      if (current.value > next.value) {
+        return 1;
+      };
+      if (current.value < next.value) {
+        return -1;
+      };
+      return 0;
+    });
+
 
     return {
       ...state,

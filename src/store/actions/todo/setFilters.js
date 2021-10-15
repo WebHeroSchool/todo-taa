@@ -3,6 +3,7 @@ export const SET_ACTIVE_FILTER = 'SET_ACTIVE_FILTER';
 export const SET_COMPLITED_FILTER = 'SET_COMPLITED_FILTER';
 export const ON_CLEAR_COMPLETED = 'ON_CLEAR_COMPLETED';
 export const SET_ORDER_ITEMS = 'SET_ORDER_ITEMS';
+export const FILTER = 'FILTER';
 
 
 export const setAllFilter = () => ({
@@ -32,4 +33,9 @@ export const setOrderItems = (orderOfDrag, orderOfCover) => ({
     orderOfDrag,
     orderOfCover,
   },
+});
+
+export const filterBy = by => ({
+  type: FILTER,
+  payload: by,
 });

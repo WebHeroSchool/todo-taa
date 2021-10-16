@@ -1,7 +1,7 @@
-export const FILTER = 'FILTER';
+export const SORT = 'SORT';
 
 
-export const filterBy = by => ({
-  type: FILTER,
+export const sortBy = by => ({
+  type: SORT,
   payload: by,
 });

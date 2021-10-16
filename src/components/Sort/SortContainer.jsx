@@ -2,7 +2,7 @@ import {
   connect,
 } from 'react-redux';
 import {
-  filterBy,
+  sortBy,
 } from '../../store/actions/todo/sort';
 
 import Sort from './Sort';
@@ -18,6 +18,6 @@ export default connect(
     itemList: state.todos.items,
   }),
   {
-    filterBy,
+    sortBy,
   },
 )(SortContainer);

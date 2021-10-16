@@ -1,4 +1,4 @@
-import styles from './Filters.module.css';
+import styles from './Sort.module.css';
 import classNames from 'classnames';
 
 import {
@@ -20,7 +20,7 @@ import {
 } from 'react';
 
 
-const initialFilters = [
+const initialSort = [
   {
     'icon': AlphaSvg,
     'isActive': false,
@@ -41,10 +41,10 @@ const initialFilters = [
   },
 ];
 
-const Filters = props => {
+const Sort = props => {
   const onClickHandler = (id, type) => {
-    setFilters(
-      filters.map(item => {
+    setSort(
+      sort.map(item => {
         if (item.icon === id && type !== 'cancel' && type !== 'reverse') {
           item.isActive = true;
         } else if (type !== 'reverse') {
@@ -58,11 +58,11 @@ const Filters = props => {
   };
 
   const [
-    filters,
-    setFilters,
-  ] = useState(initialFilters);
+    sort,
+    setSort,
+  ] = useState(initialSort);
 
-  useEffect(() => filters.forEach(item => item.isActive = false),
+  useEffect(() => sort.forEach(item => item.isActive = false),
     [
       props.itemList,
     ]);
@@ -70,7 +70,7 @@ const Filters = props => {
   return (
     <div className={ styles.wrapper }>
       {
-        filters.map((Button, index) => (
+        sort.map((Button, index) => (
           <button
             key={ index }
             className={ styles.sortButton }
@@ -88,4 +88,4 @@ const Filters = props => {
 };
 
 
-export default Filters;
+export default Sort;

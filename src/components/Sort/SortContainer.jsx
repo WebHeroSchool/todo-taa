@@ -5,11 +5,11 @@ import {
   filterBy,
 } from '../../store/actions/todo/setFilters';
 
-import Filters from './Filters';
+import Sort from './Sort';
 
 
-const FiltersContainer = props => (
-  <Filters { ...props } />
+const SortContainer = props => (
+  <Sort { ...props } />
 );
 
 
@@ -20,4 +20,4 @@ export default connect(
   {
     filterBy,
   },
-)(FiltersContainer);
+)(SortContainer);

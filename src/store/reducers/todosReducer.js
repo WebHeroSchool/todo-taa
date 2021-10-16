@@ -23,7 +23,7 @@ import {
   SET_ORDER_ITEMS,
 } from '../actions/todo/setFilters';
 import {
-  SORT,
+  SORT_BY,
 } from '../actions/todo/sort';
 
 
@@ -303,7 +303,7 @@ export const todosReducer = (state = initialState, action) => {
   }
 
 
-  case SORT: {
+  case SORT_BY: {
     console.log('rudusser say: ', action.payload);
     const newItemList = state.items.sort((current, next) => {
       if (current.value > next.value) {

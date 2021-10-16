@@ -54,7 +54,7 @@ const Sort = props => {
         return item;
       })
     );
-    props.filterBy(type);
+    props.sortBy(type);
   };
 
   const [

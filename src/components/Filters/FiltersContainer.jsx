@@ -14,7 +14,9 @@ const FiltersContainer = props => (
 
 
 export default connect(
-  null,
+  state => ({
+    itemList: state.todos.items,
+  }),
   {
     filterBy,
   },

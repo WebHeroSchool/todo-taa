@@ -1,6 +1,7 @@
 import {
   toTrimSpaces,
 } from '../../utils/toTrimSpaces';
+import getTodoItemsFromStorage from '../../utils/getTodoItemsFromStorage';
 
 import {
   CREATE_ITEM,
@@ -25,9 +26,7 @@ import {
 
 
 const initialState = {
-  items: localStorage.getItem('itemList') ?
-    JSON.parse(localStorage.getItem('itemList')) :
-    [],
+  items: getTodoItemsFromStorage(),
   count: JSON.parse(localStorage.getItem('count')),
   isFilter: 'all',
 };
@@ -46,7 +45,7 @@ export const todosReducer = (state = initialState, action) => {
           isEditable: false,
           order: state.count,
         },
-        ...state.items,
+        ...getTodoItemsFromStorage(),
       ];
       const newCount = ++state.count;
 
@@ -303,7 +302,7 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case FILTER: {
-    console.log(action.payload);
+    console.log('rudusser say: ', action.payload);
     const newItemList = state.items.sort((current, next) => {
       if (current.value > next.value) {
         return 1;

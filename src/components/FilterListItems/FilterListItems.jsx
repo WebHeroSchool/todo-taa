@@ -7,8 +7,6 @@ import {
   ToggleButtonGroup,
 } from '@material-ui/lab';
 
-import PropTypes from 'prop-types';
-
 
 const FilterListItems = props => {
   const [
@@ -59,9 +57,5 @@ const FilterListItems = props => {
   );
 };
 
-
-FilterListItems.propTypes = {
-  className: PropTypes.string,
-};
 
 export default FilterListItems;

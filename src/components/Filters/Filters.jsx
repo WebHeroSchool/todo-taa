@@ -16,6 +16,7 @@ import {
 
 import {
   useState,
+  useEffect,
 } from 'react';
 
 
@@ -32,8 +33,11 @@ const initialFilters = [
   },
   {
     'icon': ReverseSvg,
-    'isActive': false,
     'type': 'reverse',
+  },
+  {
+    'icon': CancelSvg,
+    'type': 'cancel',
   },
 ];
 
@@ -41,9 +45,9 @@ const Filters = props => {
   const onClickHandler = (id, type) => {
     setFilters(
       filters.map(item => {
-        if (item.icon === id) {
+        if (item.icon === id && type !== 'cancel' && type !== 'reverse') {
           item.isActive = true;
-        } else {
+        } else if (type !== 'reverse') {
           item.isActive = false;
         }
 
@@ -57,6 +61,11 @@ const Filters = props => {
     filters,
     setFilters,
   ] = useState(initialFilters);
+
+  useEffect(() => filters.forEach(item => item.isActive = false),
+    [
+      props.itemList,
+    ]);
 
   return (
     <div className={ styles.wrapper }>
@@ -74,7 +83,6 @@ const Filters = props => {
           </button>
         ))
       }
-      <CancelSvg />
     </div>
   );
 };

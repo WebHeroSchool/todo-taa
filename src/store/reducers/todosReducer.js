@@ -21,8 +21,10 @@ import {
   SET_COMPLITED_FILTER,
   ON_CLEAR_COMPLETED,
   SET_ORDER_ITEMS,
-  FILTER,
 } from '../actions/todo/setFilters';
+import {
+  FILTER,
+} from '../actions/todo/sort';
 
 
 const initialState = {

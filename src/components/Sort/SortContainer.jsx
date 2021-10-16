@@ -3,7 +3,7 @@ import {
 } from 'react-redux';
 import {
   filterBy,
-} from '../../store/actions/todo/setFilters';
+} from '../../store/actions/todo/sort';
 
 import Sort from './Sort';
 

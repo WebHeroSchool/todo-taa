@@ -28,7 +28,7 @@ import {
 const initialState = {
   items: getTodoItemsFromStorage(),
   count: JSON.parse(localStorage.getItem('count')),
-  isFilter: 'all',
+  filter: 'all',
 };
 
 
@@ -41,7 +41,7 @@ export const todosReducer = (state = initialState, action) => {
           value: toTrimSpaces(action.payload),
           isDone: false,
           id: Date.now(),
-          isFilter: (state.isFilter === 'active' || state.isFilter === 'all'),
+          filter: (state.filter === 'active' || state.filter === 'all'),
           isEditable: false,
           order: state.count,
         },
@@ -74,7 +74,7 @@ export const todosReducer = (state = initialState, action) => {
 
       if (item.id === action.payload && !item.isEditable) {
         newItem.isDone = !item.isDone;
-        newItem.isFilter = state.isFilter !== 'all' ? !item.isFilter : true;
+        newItem.filter = state.filter !== 'all' ? !item.filter : true;
       }
 
       return newItem;
@@ -157,10 +157,10 @@ export const todosReducer = (state = initialState, action) => {
     const newItems = state.items.map(
       item => ({
         ...item,
-        isFilter: true,
+        filter: true,
       })
     );
-    const newIsFilter = action.payload;
+    const newFilter = action.payload;
 
 
     return {
@@ -168,7 +168,7 @@ export const todosReducer = (state = initialState, action) => {
       items: [
         ...newItems,
       ],
-      isFilter: newIsFilter,
+      filter: newFilter,
     };
 
 
@@ -182,15 +182,15 @@ export const todosReducer = (state = initialState, action) => {
         if (item.isDone) {
           return {
             ...item,
-            isFilter: false,
+            filter: false,
           };
         } return {
           ...item,
-          isFilter: true,
+          filter: true,
         };
       }
     );
-    const newIsFilter = action.payload;
+    const newFilter = action.payload;
 
 
     return {
@@ -198,7 +198,7 @@ export const todosReducer = (state = initialState, action) => {
       items: [
         ...newItems,
       ],
-      isFilter: newIsFilter,
+      filter: newFilter,
     };
 
 
@@ -212,22 +212,22 @@ export const todosReducer = (state = initialState, action) => {
         if (item.isDone) {
           return {
             ...item,
-            isFilter: true,
+            filter: true,
           };
         } return {
           ...item,
-          isFilter: false,
+          filter: false,
         };
       }
     );
-    const newIsFilter = action.payload;
+    const newFilter = action.payload;
 
     return {
       ...state,
       items: [
         ...newItems,
       ],
-      isFilter: newIsFilter,
+      filter: newFilter,
     };
 
 

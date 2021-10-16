@@ -24,7 +24,7 @@ const ItemList = props => {
   ] = useState(0);
 
 
-  const list = props.items.filter(item => item.isFilter);
+  const list = props.items.filter(item => item.filter);
 
   if (list.length > 0) {
     return (

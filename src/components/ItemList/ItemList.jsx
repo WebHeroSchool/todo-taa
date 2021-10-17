@@ -28,7 +28,7 @@ const ItemList = props => {
 
   if (list.length > 0) {
     return (
-      <ul className={ styles.list }>
+      <ul className={ styles.list } >
         {list.map(
           item => (
             <TodoItemContainer

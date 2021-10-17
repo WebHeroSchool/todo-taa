@@ -24,6 +24,7 @@ import {
 } from '../actions/todo/setFilters';
 import {
   SORT_BY,
+  SET_SORT,
 } from '../actions/todo/sort';
 
 
@@ -297,6 +298,18 @@ export const todosReducer = (state = initialState, action) => {
       items: [
         ...newItemList,
       ],
+    };
+
+    break;
+  }
+
+
+  case SET_SORT: {
+    const newIsSort = action.payload;
+
+    return {
+      ...state,
+      isSort: newIsSort,
     };
 
     break;

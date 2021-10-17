@@ -16,11 +16,11 @@ import {
 
 import {
   useState,
-  useEffect,
+  // useEffect,
 } from 'react';
 
 
-const initialSort = [
+const initialSortList = [
   {
     'icon': AlphaSvg,
     'isActive': false,
@@ -41,40 +41,20 @@ const initialSort = [
   },
 ];
 
-const Sort = props => {
-  const onClickHandler = (id, type) => {
-    setSort(
-      sort.map(item => {
-        if (item.icon === id && type !== 'cancel' && type !== 'reverse') {
-          item.isActive = true;
-        } else if (type !== 'reverse') {
-          item.isActive = false;
-        }
 
-        return item;
-      })
-    );
-    props.sortBy(type);
-  };
-
+const Sort = () => {
   const [
-    sort,
-    setSort,
-  ] = useState(initialSort);
-
-  useEffect(() => sort.forEach(item => item.isActive = false),
-    [
-      props.itemList,
-    ]);
+    sortList,
+    // setSortList,
+  ] = useState(initialSortList);
 
   return (
     <div className={ styles.wrapper }>
       {
-        sort.map((Button, index) => (
+        sortList.map((Button, index) => (
           <button
             key={ index }
             className={ styles.sortButton }
-            onClick={ () => onClickHandler(Button.icon, Button.type) }
           >
             <Button.icon className={ classNames({
               [styles.buttonImage]: true,

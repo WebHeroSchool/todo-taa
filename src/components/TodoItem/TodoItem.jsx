@@ -76,7 +76,7 @@ const TodoItem = props => {
         [styles.toUpAnimation]: toUpAnimation,
         [styles.toBottomAnimation]: toBottomAnimation,
       }) }
-      draggable={ true }
+      draggable={ !props.isSort }
       onDragEnd={ handleDragEnd }
       onDragLeave={ handleDragLeave }
       onDragOver={ handleDragOver }
@@ -99,6 +99,7 @@ const TodoItem = props => {
           className={ classNames({
             [styles.itemValue]: true,
             [styles.isDrag]: isDrag,
+            [styles.unselectable]: props.isSort,
           }) }
           key={ props.id }
           contentEditable={ props.isEditable }

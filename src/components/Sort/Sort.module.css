@@ -22,7 +22,7 @@
   stroke: var(--main-text-color);
 }
 
-.buttonImage:hover {
+.sortButton:hover .buttonImage {
   fill: var(--active-button-color);
   stroke: var(--active-button-color);
 }

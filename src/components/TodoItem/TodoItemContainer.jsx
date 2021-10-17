@@ -28,7 +28,10 @@ const TodoItemContainer = props => (
 );
 
 export default connect(
-  null, {
+  state => ({
+    isSort: state.todos.isSort,
+  }),
+  {
     toggleItem,
     deleteItem,
     editItem,

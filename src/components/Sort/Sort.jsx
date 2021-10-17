@@ -16,7 +16,6 @@ import {
 
 import {
   useState,
-  // useEffect,
 } from 'react';
 
 
@@ -45,8 +44,28 @@ const initialSortList = [
 const Sort = () => {
   const [
     sortList,
-    // setSortList,
+    setSortList,
   ] = useState(initialSortList);
+
+  const onClickHandler = inputType => {
+    const newSortList = sortList.map(item => {
+      if (inputType === 'alphabet' || inputType === 'date') {
+        if (item.type === inputType) {
+          item.isActive = true;
+        } else {
+          item.isActive = false;
+        }
+      } else if (item.type === 'reverse' && inputType === 'reverse') {
+        item.isActive = !item.isActive;
+      } else if (inputType === 'cancel') {
+        item.isActive = false;
+      }
+
+      return item;
+    });
+
+    setSortList(newSortList);
+  };
 
   return (
     <div className={ styles.wrapper }>
@@ -55,6 +74,7 @@ const Sort = () => {
           <button
             key={ index }
             className={ styles.sortButton }
+            onClick={ () => onClickHandler(Button.type) }
           >
             <Button.icon className={ classNames({
               [styles.buttonImage]: true,

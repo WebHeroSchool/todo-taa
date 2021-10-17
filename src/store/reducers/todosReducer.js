@@ -32,6 +32,7 @@ const initialState = {
   items: getTodoItemsFromStorage(),
   count: JSON.parse(localStorage.getItem('count')),
   filter: 'all',
+  isSort: false,
 };
 
 

@@ -15,6 +15,5 @@ const ItemListContainer = props => (
 export default connect(
   state => ({
     items: state.todos.items,
-    isSort: state.todos.isSort,
   })
 )(ItemListContainer);

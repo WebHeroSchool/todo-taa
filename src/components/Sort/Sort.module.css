@@ -27,11 +27,21 @@
   stroke: var(--active-button-color);
 }
 
-.sortButton:active .buttonImage {
+.sortButton:active {
   transform: translate(.1rem, .1rem);
 }
 
 .active {
   fill: var(--additional-button-color);
   stroke: var(--additional-button-color);
+}
+
+.disabled:hover .buttonImage {
+  fill: var(--main-text-color);
+  stroke: var(--main-text-color);
+  cursor: not-allowed;
+}
+
+.disabled:active {
+  transform: none;
 }

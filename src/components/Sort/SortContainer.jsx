@@ -3,6 +3,7 @@ import {
 } from 'react-redux';
 import {
   sortBy,
+  setSort,
 } from '../../store/actions/todo/sort';
 
 import Sort from './Sort';
@@ -16,8 +17,10 @@ const SortContainer = props => (
 export default connect(
   state => ({
     itemList: state.todos.items,
+    isSort: state.todos.isSort,
   }),
   {
     sortBy,
+    setSort,
   },
 )(SortContainer);

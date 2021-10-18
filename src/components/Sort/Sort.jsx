@@ -41,7 +41,7 @@ const initialSortList = [
 ];
 
 
-const Sort = () => {
+const Sort = props => {
   const [
     sortList,
     setSortList,
@@ -65,6 +65,11 @@ const Sort = () => {
     });
 
     setSortList(newSortList);
+    if (inputType === 'cancel') {
+      props.setSort(false);
+    } else {
+      props.setSort(true);
+    }
   };
 
   return (
@@ -73,7 +78,10 @@ const Sort = () => {
         sortList.map((Button, index) => (
           <button
             key={ index }
-            className={ styles.sortButton }
+            className={ classNames({
+              [styles.sortButton]: true,
+              [styles.disabled]: !props.isSort && Button.type === 'cancel',
+            }) }
             onClick={ () => onClickHandler(Button.type) }
           >
             <Button.icon className={ classNames({

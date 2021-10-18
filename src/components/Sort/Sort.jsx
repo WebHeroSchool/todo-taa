@@ -16,6 +16,7 @@ import {
 
 import {
   useState,
+  useEffect,
 } from 'react';
 
 
@@ -46,6 +47,17 @@ const Sort = props => {
     sortList,
     setSortList,
   ] = useState(initialSortList);
+
+  useEffect(() => {
+    sortList.forEach(item => item.isActive = false);
+
+    const newSortList = [
+      ...sortList,
+    ];
+    setSortList(newSortList);
+  }, [
+    props.itemList.length,
+  ]);
 
   const onClickHandler = inputType => {
     const newSortList = sortList.map(item => {

@@ -7,9 +7,11 @@ import {
 import {
   Paper,
   MenuList,
+  Divider,
 } from '@material-ui/core';
 
 import AppLink from '../AppLink/AppLink';
+import Label from '../Label/Label';
 
 
 const Menu = () => {
@@ -38,15 +40,12 @@ const Menu = () => {
             primary="Дела"
           />
 
-          <AppLink
-            to="/contacts"
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-            primary="Контакты"
-          />
-
         </nav>
       </MenuList>
+
+      <Divider />
+
+      <Label />
     </Paper>
   );
 };

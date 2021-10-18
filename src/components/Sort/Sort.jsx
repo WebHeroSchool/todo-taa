@@ -49,11 +49,10 @@ const Sort = props => {
   ] = useState(initialSortList);
 
   useEffect(() => {
-    sortList.forEach(item => item.isActive = false);
-
-    const newSortList = [
-      ...sortList,
-    ];
+    const newSortList = sortList.map(item => {
+      item.isActive = false;
+      return item;
+    });
     setSortList(newSortList);
   }, [
     props.itemList.length,

@@ -318,7 +318,6 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case SORT_BY: {
-    console.log('rudusser say: ', action.payload);
     let newItemList;
 
     if (action.payload === 'alphabet') {

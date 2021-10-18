@@ -27,8 +27,7 @@ const withScrollBar = (Component, props, items = 0) => {
   useEffect(
     () => {
       thumb.current.style.transform =
-      `translateY(${scrollPosition === 20 ?
-        scrollPosition - 1 : scrollPosition}rem)`;
+      `translateY(${scrollPosition}rem)`;
     }, [
       scrollPosition,
     ]

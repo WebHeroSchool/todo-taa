@@ -54,6 +54,7 @@ const Sort = props => {
       return item;
     });
     setSortList(newSortList);
+    props.setSort(false);
   }, [
     props.itemList.length,
   ]);

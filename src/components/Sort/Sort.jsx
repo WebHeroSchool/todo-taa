@@ -70,6 +70,7 @@ const Sort = props => {
     } else {
       props.setSort(true);
     }
+    props.sortBy(inputType);
   };
 
   return (

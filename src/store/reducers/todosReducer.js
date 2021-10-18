@@ -319,15 +319,37 @@ export const todosReducer = (state = initialState, action) => {
 
   case SORT_BY: {
     console.log('rudusser say: ', action.payload);
-    const newItemList = state.items.sort((current, next) => {
-      if (current.value > next.value) {
-        return 1;
-      };
-      if (current.value < next.value) {
-        return -1;
-      };
-      return 0;
-    });
+    let newItemList;
+
+    if (action.payload === 'alphabet') {
+      newItemList = state.items.sort((current, next) => {
+        if (current.value > next.value) {
+          return 1;
+        };
+        if (current.value < next.value) {
+          return -1;
+        };
+        return 0;
+      });
+    } else if (action.payload === 'date') {
+      newItemList = state.items.sort((current, next) => {
+        if (current.id > next.id) {
+          return 1;
+        };
+        if (current.id < next.id) {
+          return -1;
+        };
+        return 0;
+      });
+    } else if (action.payload === 'reverse') {
+      newItemList = [
+        ...state.items.reverse(),
+      ];
+    } else {
+      newItemList = [
+        ...getTodoItemsFromStorage(),
+      ];
+    }
 
 
     return {

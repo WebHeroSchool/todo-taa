@@ -24,8 +24,7 @@ const Menu = () => {
   return (
     <Paper className={styles.menu} elevation={3} >
       <MenuList>
-        <nav>
-
+        <nav className={ styles.menuList }>
           <AppLink
             to="/"
             selectedIndex={selectedIndex}
@@ -39,11 +38,10 @@ const Menu = () => {
             setSelectedIndex={setSelectedIndex}
             primary="Дела"
           />
-
         </nav>
       </MenuList>
 
-      <Divider />
+      <Divider className={ styles.divider } />
 
       <Label />
     </Paper>

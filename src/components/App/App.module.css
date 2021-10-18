@@ -4,13 +4,19 @@
   margin: auto;
 }
 
+
 .appWrapper {
   display: flex;
   justify-content: center;
 }
-
 .routeWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .appWrapper {
+    flex-direction: column;
+  }
 }

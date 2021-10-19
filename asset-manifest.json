@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "//webheroschool.github.io/todo-taa/static/css/main.2131b96b.chunk.css",
+    "main.js": "//webheroschool.github.io/todo-taa/static/js/main.d99fc5d6.chunk.js",
+    "main.js.map": "//webheroschool.github.io/todo-taa/static/js/main.d99fc5d6.chunk.js.map",
+    "runtime-main.js": "//webheroschool.github.io/todo-taa/static/js/runtime-main.e9b1a1a3.js",
+    "runtime-main.js.map": "//webheroschool.github.io/todo-taa/static/js/runtime-main.e9b1a1a3.js.map",
+    "static/js/2.27090c9f.chunk.js": "//webheroschool.github.io/todo-taa/static/js/2.27090c9f.chunk.js",
+    "static/js/2.27090c9f.chunk.js.map": "//webheroschool.github.io/todo-taa/static/js/2.27090c9f.chunk.js.map",
+    "index.html": "//webheroschool.github.io/todo-taa/index.html",
+    "static/css/main.2131b96b.chunk.css.map": "//webheroschool.github.io/todo-taa/static/css/main.2131b96b.chunk.css.map",
+    "static/js/2.27090c9f.chunk.js.LICENSE.txt": "//webheroschool.github.io/todo-taa/static/js/2.27090c9f.chunk.js.LICENSE.txt",
+    "static/media/alpha-desc.790ec247.svg": "//webheroschool.github.io/todo-taa/static/media/alpha-desc.790ec247.svg",
+    "static/media/background.e92191a4.svg": "//webheroschool.github.io/todo-taa/static/media/background.e92191a4.svg",
+    "static/media/cancel.ab15af38.svg": "//webheroschool.github.io/todo-taa/static/media/cancel.ab15af38.svg",
+    "static/media/date-desc.6370afaa.svg": "//webheroschool.github.io/todo-taa/static/media/date-desc.6370afaa.svg",
+    "static/media/ellipse.935b3a24.svg": "//webheroschool.github.io/todo-taa/static/media/ellipse.935b3a24.svg",
+    "static/media/email.7b9d4650.svg": "//webheroschool.github.io/todo-taa/static/media/email.7b9d4650.svg",
+    "static/media/fork.a232545d.svg": "//webheroschool.github.io/todo-taa/static/media/fork.a232545d.svg",
+    "static/media/github.263c290c.svg": "//webheroschool.github.io/todo-taa/static/media/github.263c290c.svg",
+    "static/media/label.d302981c.svg": "//webheroschool.github.io/todo-taa/static/media/label.d302981c.svg",
+    "static/media/linkedin.9a8d66dd.svg": "//webheroschool.github.io/todo-taa/static/media/linkedin.9a8d66dd.svg",
+    "static/media/reverse.520c5235.svg": "//webheroschool.github.io/todo-taa/static/media/reverse.520c5235.svg",
+    "static/media/fonts.css": "//webheroschool.github.io/todo-taa/static/media/roboto-regular.e78f66c1.woff",
+    "static/media/star.5aa1e7be.svg": "//webheroschool.github.io/todo-taa/static/media/star.5aa1e7be.svg",
+    "static/media/telegram.28c56b46.svg": "//webheroschool.github.io/todo-taa/static/media/telegram.28c56b46.svg",
+    "static/media/twitter.e8c74bf2.svg": "//webheroschool.github.io/todo-taa/static/media/twitter.e8c74bf2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9b1a1a3.js",
+    "static/js/2.27090c9f.chunk.js",
+    "static/css/main.2131b96b.chunk.css",
+    "static/js/main.d99fc5d6.chunk.js"
+  ]
+}

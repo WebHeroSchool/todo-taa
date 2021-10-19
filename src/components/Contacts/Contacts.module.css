@@ -42,7 +42,11 @@
 
 @media (max-width: 768px) {
   .avatar {
-    width: 22.5vw;
+    width: 11rem;
+  }
+
+  .avatarContainer {
+    margin-right: 1rem;
   }
 }
 
@@ -52,8 +56,13 @@
   }
 
   .avatarContainer {
-    margin-right: 0;
-    width: 36vw;
-    height: 22vw;
+    width: 12rem;
+    height: 100%;
+  }
+}
+
+@media (max-width: 490px) {
+  .bio {
+    margin: .5em 0;
   }
 }

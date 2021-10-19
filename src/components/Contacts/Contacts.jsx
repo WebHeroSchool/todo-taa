@@ -45,7 +45,7 @@ const Contacts = props => {
           <Title variant="h1" titleValue={ props.contacts.items.name } />
 
           <div className={ styles.content }>
-            <p>{ props.contacts.items.bio }</p>
+            <p className={ styles.bio }>{ props.contacts.items.bio }</p>
             <SocialLink
               iconSrc={ emailIcon }
               linkTo={ props.contacts.items.email }

@@ -16,7 +16,6 @@
   width: 100%;
   border-radius: 1vw;
   align-self: center;
-  margin-right: 2rem;
 }
 
 .visible {
@@ -43,6 +42,18 @@
 
 @media (max-width: 768px) {
   .avatar {
-    width: 92%;
+    width: 22.5vw;
+  }
+}
+
+@media (max-width: 580px) {
+  .avatar {
+    width: 8rem;
+  }
+
+  .avatarContainer {
+    margin-right: 0;
+    width: 36vw;
+    height: 22vw;
   }
 }

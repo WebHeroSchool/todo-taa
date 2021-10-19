@@ -39,9 +39,3 @@
     visibility: hidden;
   }
 }
-
-@media (max-width: 768px) {
-  .noScrollWrapper {
-    height: 37.2rem;
-  }
-}

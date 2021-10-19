@@ -29,3 +29,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 2vw;
 }
+
+
+@media (max-width: 580px) {
+  :root {
+    --font-size-large:  1.3rem;
+  }
+}

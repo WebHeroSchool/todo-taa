@@ -9,6 +9,8 @@
   font-size: 1rem;
   color: var(--main-text-color);
   margin: 0 .2rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .pagination .active {

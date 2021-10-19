@@ -16,7 +16,13 @@
 }
 
 @media (max-width: 768px) {
+  .body {
+    max-width: 100%;
+
+  }
   .appWrapper {
     flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%;
   }
 }

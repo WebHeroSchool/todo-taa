@@ -39,3 +39,10 @@
   display: flex;
   justify-content: flex-end;
 }
+
+
+@media (max-width: 768px) {
+  .avatar {
+    width: 92%;
+  }
+}

@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,

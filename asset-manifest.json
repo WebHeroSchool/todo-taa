@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/todo-taa/static/css/main.96e0b8d7.chunk.css",
-    "main.js": "/todo-taa/static/js/main.5108a3ca.chunk.js",
-    "main.js.map": "/todo-taa/static/js/main.5108a3ca.chunk.js.map",
+    "main.css": "/todo-taa/static/css/main.82adbf28.chunk.css",
+    "main.js": "/todo-taa/static/js/main.bcf3572e.chunk.js",
+    "main.js.map": "/todo-taa/static/js/main.bcf3572e.chunk.js.map",
     "runtime-main.js": "/todo-taa/static/js/runtime-main.a08cf6ae.js",
     "runtime-main.js.map": "/todo-taa/static/js/runtime-main.a08cf6ae.js.map",
-    "static/js/2.84396bc8.chunk.js": "/todo-taa/static/js/2.84396bc8.chunk.js",
-    "static/js/2.84396bc8.chunk.js.map": "/todo-taa/static/js/2.84396bc8.chunk.js.map",
+    "static/js/2.d88accff.chunk.js": "/todo-taa/static/js/2.d88accff.chunk.js",
+    "static/js/2.d88accff.chunk.js.map": "/todo-taa/static/js/2.d88accff.chunk.js.map",
     "index.html": "/todo-taa/index.html",
-    "static/css/main.96e0b8d7.chunk.css.map": "/todo-taa/static/css/main.96e0b8d7.chunk.css.map",
-    "static/js/2.84396bc8.chunk.js.LICENSE.txt": "/todo-taa/static/js/2.84396bc8.chunk.js.LICENSE.txt",
+    "static/css/main.82adbf28.chunk.css.map": "/todo-taa/static/css/main.82adbf28.chunk.css.map",
+    "static/js/2.d88accff.chunk.js.LICENSE.txt": "/todo-taa/static/js/2.d88accff.chunk.js.LICENSE.txt",
     "static/media/alpha-desc.3547ea22.svg": "/todo-taa/static/media/alpha-desc.3547ea22.svg",
     "static/media/background.e92191a4.svg": "/todo-taa/static/media/background.e92191a4.svg",
     "static/media/cancel.1605a419.svg": "/todo-taa/static/media/cancel.1605a419.svg",
     "static/media/date-desc.17a2670f.svg": "/todo-taa/static/media/date-desc.17a2670f.svg",
     "static/media/ellipse.27313c47.svg": "/todo-taa/static/media/ellipse.27313c47.svg",
     "static/media/email.7744e64b.svg": "/todo-taa/static/media/email.7744e64b.svg",
+    "static/media/emailRound.b51fd56b.svg": "/todo-taa/static/media/emailRound.b51fd56b.svg",
     "static/media/fork.ffe3c8e9.svg": "/todo-taa/static/media/fork.ffe3c8e9.svg",
     "static/media/github.9e58d4ec.svg": "/todo-taa/static/media/github.9e58d4ec.svg",
     "static/media/label.8e93648a.svg": "/todo-taa/static/media/label.8e93648a.svg",
@@ -24,12 +25,13 @@
     "static/media/fonts.css": "/todo-taa/static/media/roboto-regular.e78f66c1.woff",
     "static/media/star.1ab14bc8.svg": "/todo-taa/static/media/star.1ab14bc8.svg",
     "static/media/telegram.7cd22cf9.svg": "/todo-taa/static/media/telegram.7cd22cf9.svg",
+    "static/media/telegramRound.408c7955.svg": "/todo-taa/static/media/telegramRound.408c7955.svg",
     "static/media/twitter.2d04f043.svg": "/todo-taa/static/media/twitter.2d04f043.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a08cf6ae.js",
-    "static/js/2.84396bc8.chunk.js",
-    "static/css/main.96e0b8d7.chunk.css",
-    "static/js/main.5108a3ca.chunk.js"
+    "static/js/2.d88accff.chunk.js",
+    "static/css/main.82adbf28.chunk.css",
+    "static/js/main.bcf3572e.chunk.js"
   ]
 }

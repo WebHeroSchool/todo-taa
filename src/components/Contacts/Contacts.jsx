@@ -3,7 +3,9 @@ import Title from '../Title/Title';
 import SocialLink from './SocialLink/SocialLink';
 
 import emailIcon from './images/email.svg';
+import emailRoundIcon from './images/emailRound.svg';
 import telegramIcon from './images/telegram.svg';
+import telegramRoundIcon from './images/telegramRound.svg';
 import githubIcon from './images/github.svg';
 import linkedinIcon from './images/linkedin.svg';
 import twitterIcon from './images/twitter.svg';
@@ -42,7 +44,9 @@ const Contacts = props => {
           { (!avatarIsLoad) ? <Loader /> : false }
         </div>
         <div className={ styles.contactsWrapper }>
-          <Title variant="h1" titleValue={ props.contacts.items.name } />
+          <div className={ styles.titleWrapper }>
+            <Title variant="h1" titleValue={ props.contacts.items.name } />
+          </div>
 
           <div className={ styles.content }>
             <p className={ styles.bio }>{ props.contacts.items.bio }</p>
@@ -60,6 +64,19 @@ const Contacts = props => {
           </div>
 
           <div className={ styles.networks }>
+            <div className={ styles.hidenLinks }>
+              <SocialLink
+                iconSrc={ emailRoundIcon }
+                linkTo={ props.contacts.items.email }
+                isEmail={true}
+                isWithMiddleMargin={ true }
+              />
+              <SocialLink
+                iconSrc={ telegramRoundIcon }
+                linkTo={ `tg://resolve?domain=${props.contacts.items.login}` }
+                isWithMiddleMargin={ true }
+              />
+            </div>
             <SocialLink
               iconSrc={ githubIcon }
               linkTo={ props.contacts.items.html_url }

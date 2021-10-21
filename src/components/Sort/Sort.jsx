@@ -88,6 +88,15 @@ const Sort = props => {
   return (
     <div className={ styles.wrapper }>
       {
+        props.isSort ?
+          <span className={ classNames(
+            styles.infoMessage,
+            styles.manualDenied,
+          ) }>
+            перетаскивание списка запрещено
+          </span> : <span>Сортировать по:</span>
+      }
+      {
         sortList.map((Button, index) => (
           <button
             key={ index }

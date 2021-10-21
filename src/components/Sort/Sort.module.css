@@ -1,9 +1,18 @@
 .wrapper {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: flex-end;
   width: 85%;
   margin: 0 auto 1rem;
+}
+
+.infoMessage {
+  font-size: .9rem;
+  font-style: italic;
+}
+
+.manualDenied {
+  color: var(--active-button-color);
 }
 
 .sortButton {

@@ -27,6 +27,7 @@ const Pagination = props => {
             setActivePage(activePage - 1);
           }
         } }
+        disabled={ activePage === 1 }
       />
       {
         createPagination(props.length, activePage).map((page, index) => (
@@ -54,6 +55,7 @@ const Pagination = props => {
             setActivePage(activePage + 1);
           }
         } }
+        disabled={ activePage === props.length }
       />
     </div>
   );

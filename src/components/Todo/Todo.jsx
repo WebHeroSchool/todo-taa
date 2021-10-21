@@ -28,10 +28,12 @@ const Todo = ({
   <>
     <Title titleValue={ 'TO DO:' } />
     <InputItemContainer />
-    <SortContainer />
     {
       count > 0 ?
-        <ItemListContainerWithScrollbar /> :
+        <>
+          <SortContainer />
+          <ItemListContainerWithScrollbar />
+        </> :
         <ErrorMessagesWithMargin errorType="empty todoList" />
     }
     <Divider />

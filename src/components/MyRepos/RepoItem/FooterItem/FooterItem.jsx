@@ -26,7 +26,8 @@ const FooterItem = ({
 
   return (
     <span className={ style }>
-      {type === 'language' ? <EllipseImg /> : false}
+      {type === 'language' ? <span className={ styles.circulSvg }>
+        <EllipseImg /></span> : false}
       {type === 'star' ? <StarImg /> : false}
       {type === 'fork' ? <ForkImg /> : false}
       <span>{ value }</span>

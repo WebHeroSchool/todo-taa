@@ -8,11 +8,8 @@
   margin-right: 1.2rem;
 }
 
-.margin svg {
+.circulSvg {
   margin-right: .4rem;
-}
-
-.language {
 }
 
 .JavaScript-color {
@@ -25,4 +22,15 @@
 
 .CSS-color {
   fill: #0094ff;
+}
+
+
+@media (max-width: 370px) {
+  .circulSvg {
+    display: none;
+  }
+
+  .margin {
+    margin-right: 1rem;
+  }
 }

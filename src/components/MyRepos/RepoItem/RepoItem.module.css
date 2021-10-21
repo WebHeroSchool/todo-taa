@@ -38,7 +38,15 @@
   width: 100%;
 }
 
-.lastUodate {
+.lastUpdate {
   width: 100%;
   text-align: end;
+}
+
+
+@media (max-width:  480px) {
+  .lastUpdate {
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -88,4 +88,14 @@
   .hidenLinks {
     display: flex;
   }
+
+  .networks {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 359px) {
+  .avatar {
+    width: 6rem;
+  }
 }

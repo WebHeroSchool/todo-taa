@@ -33,8 +33,9 @@ const RepoItem = ({
           value={ item.forks_count
           } /> : false}
       </span>
-      <span className={ styles.lastUodate }>
-        last update: { new Date(item.updated_at).toLocaleDateString('ru-RU') }
+      <span className={ styles.lastUpdate }>
+        <span>last update: </span>
+        { new Date(item.updated_at).toLocaleDateString('ru-RU') }
       </span>
     </div>
   </div>

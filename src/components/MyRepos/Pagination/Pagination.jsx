@@ -4,6 +4,9 @@ import {
   useEffect,
 } from 'react';
 import createPagination from '../../../utils/createPagination';
+import {
+  Button,
+} from '@material-ui/core';
 
 
 const Pagination = props => {
@@ -16,25 +19,30 @@ const Pagination = props => {
     activePage,
   ]);
 
+  const style = {
+    minWidth: 40,
+  };
+
   return (
     <div className={ styles.pagination } >
-      <input
-        type="button"
+      <Button
         key="<"
-        value="<"
         onClick={ () => {
           if (activePage > 1) {
             setActivePage(activePage - 1);
           }
         } }
         disabled={ activePage === 1 }
-      />
+        variant="outlined"
+        style={ style }
+      >
+        &lt;
+      </Button>
       {
         createPagination(props.length, activePage).map((page, index) => (
-          <input
+          <Button
             key={ index }
             type="button"
-            value={ page }
             onClick={ () => {
               if (page !== '...') {
                 setActivePage(page);
@@ -43,20 +51,26 @@ const Pagination = props => {
               }
             } }
             className={ activePage === page ? styles.active : '' }
-          />)
+            variant="outlined"
+            style={ style }
+          >
+            { page }
+          </Button>)
         )
       }
-      <input
-        type="button"
+      <Button
         key=">"
-        value=">"
         onClick={ () => {
           if (activePage < props.length) {
             setActivePage(activePage + 1);
           }
         } }
         disabled={ activePage === props.length }
-      />
+        variant="outlined"
+        style={ style }
+      >
+        &gt;
+      </Button>
     </div>
   );
 };

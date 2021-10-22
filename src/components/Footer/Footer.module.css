@@ -7,3 +7,38 @@
 .buttonText {
   font-size: .8em;
 }
+
+.countWrapper {
+  width: 30%;
+}
+
+.buttonsWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+@media (max-width: 639px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .countWrapper {
+    height: 2rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 499px) {
+  .buttonsWrapper {
+    width: auto;
+    margin: auto;
+    flex-direction: column;
+  }
+
+  .deleteButton {
+    width: 100%;
+    height: 2rem;
+  }
+}

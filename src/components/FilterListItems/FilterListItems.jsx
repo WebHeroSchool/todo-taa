@@ -20,13 +20,14 @@ const FilterListItems = props => {
 
 
   return (
-    <div className={styles.filtrWrapper}>
+    <div className={styles.filterWrapper}>
       <ToggleButtonGroup
         size="small"
         value={alignment}
         exclusive
         onChange={handleAlignment}
         aria-label="text alignment"
+        fullWidth={ true }
       >
         <ToggleButton
           value="left"

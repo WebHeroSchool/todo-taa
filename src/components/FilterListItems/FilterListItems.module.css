@@ -1,9 +1,12 @@
-.filterWrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 16em;
-}
 
 .buttonText {
   font-size: .8em !important;
+}
+
+
+@media (max-width: 499px) {
+  .filterWrapper {
+    margin-bottom: .5rem;
+    align-self: center;
+  }
 }

@@ -10,16 +10,21 @@ const Footer = ({
   ...props
 }) => (
   <div className={ styles.footer }>
-    Кол-во дел: { count ? count : 0 }
-    <FilterListItemsContainer />
-    <Button
-      variant="outlined"
-      color="secondary"
-      size="small"
-      onClick={ () => props.onClearCompleted() }
-    >
-      <span className={ styles.buttonText }>Очистить выполненные</span>
-    </Button>
+    <span className={ styles.countWrapper }>
+      Кол-во дел: { count ? count : 0 }
+    </span>
+    <span className={ styles.buttonsWrapper }>
+      <FilterListItemsContainer />
+      <Button
+        className={ styles.deleteButton }
+        variant="outlined"
+        color="secondary"
+        size="small"
+        onClick={ () => props.onClearCompleted() }
+      >
+        <span className={ styles.buttonText }>Очистить выполненные</span>
+      </Button>
+    </span>
   </div>
 );
 

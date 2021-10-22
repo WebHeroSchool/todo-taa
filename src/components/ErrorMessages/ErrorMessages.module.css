@@ -12,6 +12,7 @@
 .errorText {
   font-size: var(--font-size-post-medium);
   margin-bottom: .2vw;
+  text-align: center;
 }
 
 .errorDescription {

@@ -27,7 +27,6 @@ const FilterListItems = props => {
         exclusive
         onChange={handleAlignment}
         aria-label="text alignment"
-        fullWidth={ true }
       >
         <ToggleButton
           value="left"

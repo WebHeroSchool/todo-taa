@@ -9,6 +9,11 @@
 .infoMessage {
   font-size: .9rem;
   font-style: italic;
+  text-align: right;
+}
+
+.infoMargin {
+  margin-right: .5rem;
 }
 
 .manualDenied {
@@ -22,6 +27,10 @@
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.buttonsWrapper {
+  display: flex;
 }
 
 .buttonImage {
@@ -59,5 +68,15 @@
 @media (max-width: 768px) {
   .wrapper {
     width: 100%;
+  }
+}
+
+@media (max-width: 449px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .infoMargin {
+    margin: 0 1.5rem .5rem 0;
   }
 }

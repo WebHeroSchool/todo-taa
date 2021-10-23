@@ -72,3 +72,10 @@
 .item:hover .deleteBtn {
   opacity: 1;
 }
+
+
+@media (max-width: 519px) {
+  .item {
+    width: 100%;
+  }
+}

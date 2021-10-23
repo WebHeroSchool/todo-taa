@@ -4,3 +4,9 @@
   height: auto;
   overflow-x: hidden;
 }
+
+@media (max-width: 519px) {
+  .list {
+    padding: 0;
+  }
+}

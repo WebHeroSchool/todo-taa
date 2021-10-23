@@ -92,27 +92,30 @@ const Sort = props => {
           <span className={ classNames(
             styles.infoMessage,
             styles.manualDenied,
+            styles.infoMargin,
           ) }>
             перетаскивание списка запрещено
-          </span> : <span>Сортировать по:</span>
+          </span> : <span className={ styles.infoMargin }>Сортировать по:</span>
       }
-      {
-        sortList.map((Button, index) => (
-          <button
-            key={ index }
-            className={ classNames({
-              [styles.sortButton]: true,
-              [styles.disabled]: !props.isSort && Button.type === 'cancel',
-            }) }
-            onClick={ () => onClickHandler(Button.type) }
-          >
-            <Button.icon className={ classNames({
-              [styles.buttonImage]: true,
-              [styles.active]: Button.isActive,
-            }) } />
-          </button>
-        ))
-      }
+      <span className={ styles.buttonsWrapper }>
+        {
+          sortList.map((Button, index) => (
+            <button
+              key={ index }
+              className={ classNames({
+                [styles.sortButton]: true,
+                [styles.disabled]: !props.isSort && Button.type === 'cancel',
+              }) }
+              onClick={ () => onClickHandler(Button.type) }
+            >
+              <Button.icon className={ classNames({
+                [styles.buttonImage]: true,
+                [styles.active]: Button.isActive,
+              }) } />
+            </button>
+          ))
+        }
+      </span>
     </div>
   );
 };

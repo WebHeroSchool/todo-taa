@@ -3,18 +3,45 @@
   display: flex;
   justify-content: center;
   padding: 1rem 0;
-}
-
-.pagination input {
   font-size: 1rem;
   color: var(--main-text-color);
-  margin: 0 .2rem;
-  width: 2rem;
-  height: 2rem;
 }
 
-.pagination .active {
-  color: #900;
-  margin: 0 .8rem;
+.active {
+  color: #900 !important;
+  margin: 0 .8rem  !important;
   font-weight: bold;
+}
+
+.button {
+  min-width: 3rem !important;
+}
+
+
+@media (max-width: 420px) {
+  .button {
+    min-width: 2.4rem !important;
+  }
+
+  .active {
+    margin: 0 .4rem !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .button {
+    min-width: 2.2rem !important;
+  }
+}
+
+@media (max-width: 370px) {
+  .button {
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .button {
+    min-width: 2rem !important;
+  }
 }

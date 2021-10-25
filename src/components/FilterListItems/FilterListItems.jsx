@@ -15,7 +15,9 @@ const FilterListItems = props => {
   ] = useState('left');
 
   const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
+    if (newAlignment !== null) {
+      return setAlignment(newAlignment);
+    };
   };
 
 

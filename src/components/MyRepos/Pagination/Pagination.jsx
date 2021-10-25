@@ -1,4 +1,5 @@
 import styles from './Pagination.module.css';
+import classNames from 'classnames';
 import {
   useState,
   useEffect,
@@ -19,9 +20,6 @@ const Pagination = props => {
     activePage,
   ]);
 
-  const style = {
-    minWidth: 40,
-  };
 
   return (
     <div className={ styles.pagination } >
@@ -34,7 +32,7 @@ const Pagination = props => {
         } }
         disabled={ activePage === 1 }
         variant="outlined"
-        style={ style }
+        className={ styles.button }
       >
         &lt;
       </Button>
@@ -50,9 +48,11 @@ const Pagination = props => {
                 setActivePage(index);
               }
             } }
-            className={ activePage === page ? styles.active : '' }
+            className={ classNames({
+              [styles.button]: true,
+              [styles.active]: activePage === page,
+            }) }
             variant="outlined"
-            style={ style }
           >
             { page }
           </Button>)
@@ -67,7 +67,7 @@ const Pagination = props => {
         } }
         disabled={ activePage === props.length }
         variant="outlined"
-        style={ style }
+        className={ styles.button }
       >
         &gt;
       </Button>

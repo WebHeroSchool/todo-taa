@@ -7,7 +7,7 @@ import FilterListItems from './FilterListItems';
 import {
   setAllFilter,
   setActiveFilter,
-  setComplitedFilter,
+  setCompletedFilter,
 } from '../../store/actions/todo/setFilters';
 
 const FilterListItemsContainer = props => (
@@ -20,6 +20,6 @@ export default connect(
   {
     setAllFilter,
     setActiveFilter,
-    setComplitedFilter,
+    setCompletedFilter,
   },
 )(FilterListItemsContainer);

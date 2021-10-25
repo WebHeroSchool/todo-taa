@@ -1,6 +1,6 @@
 export const SET_ALL_FILTER = 'SET_ALL_FILTER';
 export const SET_ACTIVE_FILTER = 'SET_ACTIVE_FILTER';
-export const SET_COMPLITED_FILTER = 'SET_COMPLITED_FILTER';
+export const SET_COMPLETED_FILTER = 'SET_COMPLETED_FILTER';
 export const ON_CLEAR_COMPLETED = 'ON_CLEAR_COMPLETED';
 export const SET_ORDER_ITEMS = 'SET_ORDER_ITEMS';
 
@@ -17,9 +17,9 @@ export const setActiveFilter = () => ({
 });
 
 
-export const setComplitedFilter = () => ({
-  type: SET_COMPLITED_FILTER,
-  payload: 'complite',
+export const setCompletedFilter = () => ({
+  type: SET_COMPLETED_FILTER,
+  payload: 'complete',
 });
 
 export const onClearCompleted = () => ({

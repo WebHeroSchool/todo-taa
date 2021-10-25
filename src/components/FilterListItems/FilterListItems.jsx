@@ -48,7 +48,7 @@ const FilterListItems = props => {
           value="right"
           aria-label="right aligned"
           className={styles.buttonText}
-          onClick={() => props.setComplitedFilter()}
+          onClick={() => props.setCompletedFilter()}
         >
           Выполненные
         </ToggleButton>

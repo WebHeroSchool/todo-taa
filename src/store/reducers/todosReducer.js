@@ -18,7 +18,7 @@ import {
 import {
   SET_ALL_FILTER,
   SET_ACTIVE_FILTER,
-  SET_COMPLITED_FILTER,
+  SET_COMPLETED_FILTER,
   ON_CLEAR_COMPLETED,
   SET_ORDER_ITEMS,
 } from '../actions/todo/setFilters';
@@ -210,7 +210,7 @@ export const todosReducer = (state = initialState, action) => {
   }
 
 
-  case SET_COMPLITED_FILTER: {
+  case SET_COMPLETED_FILTER: {
     const newItems = state.items.map(
       item => {
         if (item.isDone) {

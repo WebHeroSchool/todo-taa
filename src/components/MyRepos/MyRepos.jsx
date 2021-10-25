@@ -38,7 +38,8 @@ const MyRepos = props => {
         <>
           <RepoListWithScrollBar {...props}/>
           <Pagination
-            length={ Math.ceil(props.contacts.items.public_repos / 6) }
+            length={ Math.ceil(
+              props.contacts.items.public_repos / props.perPage) }
             setPage={ props.setPage }
           />
         </>

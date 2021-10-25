@@ -30,13 +30,25 @@ const MyReposWithFetch = props => withFetch(MyRepos, {
 
 
 const MyReposContainer = props => {
+  useEffect(() => {
+    if (document.documentElement.offsetWidth > 480) {
+      return setPerPage(6);
+    };
+  }, []);
+
+  const [
+    perPage,
+    setPerPage,
+  ] = useState(3);
+
   const [
     page,
     setPage,
   ] = useState(1);
 
   const myUrl =
-  `https://api.github.com/users/chiga2030/repos?per_page=6&page=${page}`;
+  `https://api.github.com/users/chiga2030/repos?per_page=${
+    perPage}&page=${page}`;
 
   const [
     url,
@@ -47,6 +59,7 @@ const MyReposContainer = props => {
     setUrl(myUrl);
   }, [
     page,
+    perPage,
   ]);
 
   return (
@@ -54,6 +67,7 @@ const MyReposContainer = props => {
       url={ url }
       setPage={ setPage }
       error={ props.repos.fetchReposFailure }
+      perPage={ perPage }
       { ...props }
     />
   );

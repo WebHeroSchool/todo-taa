@@ -107,6 +107,7 @@ const Sort = props => {
                 [styles.disabled]: !props.isSort && Button.type === 'cancel',
               }) }
               onClick={ () => onClickHandler(Button.type) }
+              disabled={ !props.isSort && Button.type === 'cancel' }
             >
               <Button.icon className={ classNames({
                 [styles.buttonImage]: true,

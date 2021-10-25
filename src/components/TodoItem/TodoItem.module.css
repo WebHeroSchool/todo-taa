@@ -30,7 +30,8 @@
 }
 
 .itemValue {
-  width: 90%;
+  max-width: 90%;
+  width: fit-content;
   display: flex;
   align-items: center;
   height: 100%;

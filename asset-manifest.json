@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/todo-taa/static/css/main.243b57d6.chunk.css",
+    "main.css": "/todo-taa/static/css/main.b992464a.chunk.css",
     "main.js": "/todo-taa/static/js/main.d8653754.chunk.js",
     "main.js.map": "/todo-taa/static/js/main.d8653754.chunk.js.map",
     "runtime-main.js": "/todo-taa/static/js/runtime-main.a08cf6ae.js",
@@ -8,7 +8,7 @@
     "static/js/2.4743e670.chunk.js": "/todo-taa/static/js/2.4743e670.chunk.js",
     "static/js/2.4743e670.chunk.js.map": "/todo-taa/static/js/2.4743e670.chunk.js.map",
     "index.html": "/todo-taa/index.html",
-    "static/css/main.243b57d6.chunk.css.map": "/todo-taa/static/css/main.243b57d6.chunk.css.map",
+    "static/css/main.b992464a.chunk.css.map": "/todo-taa/static/css/main.b992464a.chunk.css.map",
     "static/js/2.4743e670.chunk.js.LICENSE.txt": "/todo-taa/static/js/2.4743e670.chunk.js.LICENSE.txt",
     "static/media/alpha-desc.790ec247.svg": "/todo-taa/static/media/alpha-desc.790ec247.svg",
     "static/media/background.e92191a4.svg": "/todo-taa/static/media/background.e92191a4.svg",
@@ -31,7 +31,7 @@
   "entrypoints": [
     "static/js/runtime-main.a08cf6ae.js",
     "static/js/2.4743e670.chunk.js",
-    "static/css/main.243b57d6.chunk.css",
+    "static/css/main.b992464a.chunk.css",
     "static/js/main.d8653754.chunk.js"
   ]
 }

@@ -27,9 +27,15 @@ import {
   SET_SORT,
 } from '../actions/todo/sort';
 
+import {
+  allFilter,
+  activeFilter,
+  completedFilter,
+} from '../../utils/filters';
+
 
 const initialState = {
-  items: getTodoItemsFromStorage(),
+  items: getTodoItemsFromStorage().map(item => allFilter(item)),
   count: JSON.parse(localStorage.getItem('count')),
   filter: 'all',
   isSort: false,
@@ -159,11 +165,7 @@ export const todosReducer = (state = initialState, action) => {
 
   case SET_ALL_FILTER: {
     const newItems = state.items.map(
-      item => ({
-        ...item,
-        filter: true,
-      })
-    );
+      item => allFilter(item));
     const newFilter = action.payload;
 
 
@@ -182,18 +184,7 @@ export const todosReducer = (state = initialState, action) => {
 
   case SET_ACTIVE_FILTER: {
     const newItems = state.items.map(
-      item => {
-        if (item.isDone) {
-          return {
-            ...item,
-            filter: false,
-          };
-        } return {
-          ...item,
-          filter: true,
-        };
-      }
-    );
+      item => activeFilter(item));
     const newFilter = action.payload;
 
 
@@ -211,19 +202,7 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case SET_COMPLETED_FILTER: {
-    const newItems = state.items.map(
-      item => {
-        if (item.isDone) {
-          return {
-            ...item,
-            filter: true,
-          };
-        } return {
-          ...item,
-          filter: false,
-        };
-      }
-    );
+    const newItems = state.items.map(item => completedFilter(item));
     const newFilter = action.payload;
 
     return {
@@ -345,11 +324,19 @@ export const todosReducer = (state = initialState, action) => {
         ...state.items.reverse(),
       ];
     } else {
+      let filter;
+      if (state.filter === 'all') {
+        filter = allFilter;
+      } else if (state.filter === 'active') {
+        filter = activeFilter;
+      } else if (state.filter === 'complete') {
+        filter = completedFilter;
+      };
+
       newItemList = [
         ...getTodoItemsFromStorage(),
-      ];
+      ].map(item => filter(item));
     }
-
 
     return {
       ...state,

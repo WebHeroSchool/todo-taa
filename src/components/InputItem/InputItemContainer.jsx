@@ -27,9 +27,9 @@ const InputItemContainer = props => {
     setErrorStatus,
   ] = useState(false);
 
-  const addErrorStatus = () => {
+  const addErrorStatus = (text = 'Нужно заполнить поле') => {
     setErrorStatus(true);
-    setHelperText('Нужно заполнить поле');
+    setHelperText(text);
   };
 
   const removeErrorStatus = () => {
@@ -38,19 +38,27 @@ const InputItemContainer = props => {
   };
 
   const submitData = () => {
-    props.createItem(inputValue);
+    props.createItem(inputValue.toUpperCase());
     setInputvalue('');
   };
 
   const onChangeTextField = event => {
-    setInputvalue(event.target.value.toUpperCase());
+    const textOnly = /^[0-9\/*\@#$%^&-+]/;
+    const length = /[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{20}/;
+    if (textOnly.test(event.target.value)) {
+      return addErrorStatus('Должно начинаться с прописи');
+    } else if (length.test(event.target.value)) {
+      return addErrorStatus('Слишком длинное слово');
+    }
+    setInputvalue(event.target.value);
     removeErrorStatus();
   };
 
   const onKeyDownTextField = event => {
-    if (event.code === 'Enter') {
-      if (inputValue.trim()) {
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      if (inputValue) {
         submitData();
+        removeErrorStatus();
       } else {
         addErrorStatus();
       }
@@ -58,7 +66,7 @@ const InputItemContainer = props => {
   };
 
   const onClickButton = () => {
-    if (inputValue.trim()) {
+    if (inputValue) {
       submitData();
     } else {
       addErrorStatus();

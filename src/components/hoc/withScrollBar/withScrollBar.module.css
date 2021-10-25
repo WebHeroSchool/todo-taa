@@ -1,0 +1,41 @@
+.contentWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.noScrollWrapper {
+  height: 26rem;
+  width: 103%;
+  overflow-y: scroll;
+}
+
+.scrollbar {
+  width: 0.4rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.hideScrollbar {
+  visibility: hidden;
+}
+
+.thumb {
+  width: 100%;
+  height: 5rem;
+  border-radius: 1rem;
+  background: var(--additional-text-color);
+  transition: transform .1s linear;
+}
+
+
+@media (hover: none) {
+  .noScrollWrapper {
+    width: 100%;
+  }
+
+  .scrollbar {
+    visibility: hidden;
+  }
+}

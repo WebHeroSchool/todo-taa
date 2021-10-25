@@ -1,6 +1,4 @@
-import {
-  Divider,
-} from '@material-ui/core';
+import styles from './About.module.css';
 
 import ContactsContainer from '../Contacts/ContactsContainer';
 import MyReposContainer from '../MyRepos/MyReposContainer';
@@ -21,21 +19,20 @@ const MyReposWithIdent = props => withIndent([
 });
 
 
-const AboutWithIdent = props => withIndent([
-  ContactsWithIdent,
-  Divider,
-  MyReposWithIdent,
-], {
+const ContactsWithMyPaperLayer = props => withMyPaperLayer(ContactsWithIdent, {
+  ...props,
+});
+const MyReposWithMyPaperLayer = props => withMyPaperLayer(MyReposWithIdent, {
   ...props,
 });
 
-
-const AboutWithMyPaperLayer = props => withMyPaperLayer(AboutWithIdent, {
-  ...props,
-});
 
 const AboutContainer = () => (
-  <AboutWithMyPaperLayer />
+  <>
+    <ContactsWithMyPaperLayer />
+    <br />
+    <MyReposWithMyPaperLayer className={styles.reposLayer} />
+  </>
 );
 
 

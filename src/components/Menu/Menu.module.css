@@ -7,3 +7,22 @@
   color: unset;
   text-decoration: unset;
 }
+
+@media (max-width: 768px) {
+  .menu {
+    width: 95%;
+    margin: 0 auto 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menuList {
+    display: flex;
+    padding: 0 1rem;
+  }
+
+  .divider {
+    display: none;
+  }
+}

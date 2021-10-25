@@ -1,4 +1,13 @@
 .title {
   font-weight: 700;
+  font-family: roboto, sans-serif;
   margin: 0;
+}
+
+.h1 {
+  font-size: var(--font-size-large);
+}
+
+.h2 {
+  font-size: var(--font-size-meduim);
 }

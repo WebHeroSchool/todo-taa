@@ -11,10 +11,14 @@ import {
 import {
   contactsReducer as contacts,
 } from './contactsReducer';
+import {
+  fetchReducer as fetch,
+} from './fetchReducer';
 
 
 export default combineReducers({
   repos,
   todos,
   contacts,
+  fetch,
 });

@@ -1,11 +1,11 @@
 import {
-  UPDATE_MYREPOS_STORE,
+  UPDATE_MY_REPOS_STORE,
 } from '../actions/updateStore';
 import {
-  SET_MYREPOS_ISLOADING,
+  SET_MY_REPOS_ISLOADING,
 } from '../actions/setIsLoading';
 import {
-  FETCH_MYREPOS_ERROR,
+  FETCH_MY_REPOS_ERROR,
 } from '../actions/fetchError';
 
 
@@ -13,13 +13,14 @@ const initialState = {
   items: [],
   isLoading: true,
   fetchReposFailure: false,
+  errorType: '',
   errorMessage: '',
 };
 
 
 export const myReposReducer = (state = initialState, action) => {
   switch (action.type) {
-  case UPDATE_MYREPOS_STORE: {
+  case UPDATE_MY_REPOS_STORE: {
     const newStore = [
       ...action.payload,
     ];
@@ -30,13 +31,14 @@ export const myReposReducer = (state = initialState, action) => {
         ...newStore,
       ],
       fetchReposFailure: false,
+      errorType: '',
     };
 
     break;
   }
 
 
-  case SET_MYREPOS_ISLOADING: {
+  case SET_MY_REPOS_ISLOADING: {
     const newStore = action.payload;
 
     return {
@@ -48,13 +50,15 @@ export const myReposReducer = (state = initialState, action) => {
   }
 
 
-  case FETCH_MYREPOS_ERROR: {
-    const newStore = action.payload;
+  case FETCH_MY_REPOS_ERROR: {
+    const newErrorType = action.payload.type;
+    const newErrorMessage = action.payload.message;
 
     return {
       ...state,
       fetchReposFailure: true,
-      errorMessage: newStore,
+      errorType: newErrorType,
+      errorMessage: newErrorMessage,
     };
 
     break;

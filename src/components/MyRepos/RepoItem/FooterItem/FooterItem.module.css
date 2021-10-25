@@ -1,0 +1,36 @@
+.footerItem {
+  display: flex;
+  align-items: center;
+  fill: var(--additional-text-color);
+}
+
+.margin {
+  margin-right: 1.2rem;
+}
+
+.circulSvg {
+  margin-right: .4rem;
+}
+
+.JavaScript-color {
+  fill: #ffc700;
+}
+
+.HTML-color {
+  fill: #e00000;
+}
+
+.CSS-color {
+  fill: #0094ff;
+}
+
+
+@media (max-width: 370px) {
+  .circulSvg {
+    display: none;
+  }
+
+  .margin {
+    margin-right: 1rem;
+  }
+}

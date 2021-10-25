@@ -1,0 +1,82 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 85%;
+  margin: 0 auto 1rem;
+}
+
+.infoMessage {
+  font-size: .9rem;
+  font-style: italic;
+  text-align: right;
+}
+
+.infoMargin {
+  margin-right: .5rem;
+}
+
+.manualDenied {
+  color: var(--active-button-color);
+}
+
+.sortButton {
+  display: flex;
+  align-items: center;
+  margin-right: .5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.buttonsWrapper {
+  display: flex;
+}
+
+.buttonImage {
+  height: 1.6rem;
+  width: 1.6rem;
+  fill: var(--main-text-color);
+  stroke: var(--main-text-color);
+}
+
+.sortButton:hover .buttonImage {
+  fill: var(--active-button-color);
+  stroke: var(--active-button-color);
+}
+
+.sortButton:active {
+  transform: translate(.1rem, .1rem);
+}
+
+.active {
+  fill: var(--additional-button-color);
+  stroke: var(--additional-button-color);
+}
+
+.disabled:hover .buttonImage {
+  fill: var(--main-text-color);
+  stroke: var(--main-text-color);
+  cursor: not-allowed;
+}
+
+.disabled:active {
+  transform: none;
+}
+
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 449px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .infoMargin {
+    margin: 0 1.5rem .5rem 0;
+  }
+}

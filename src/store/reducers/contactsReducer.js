@@ -12,7 +12,8 @@ import {
 const initialState = {
   items: [],
   isLoading: true,
-  fetchReposFailure: false,
+  fetchContactsFailure: false,
+  errorType: '',
   errorMessage: '',
 };
 
@@ -27,7 +28,8 @@ export const contactsReducer = (state = initialState, action) => {
     return {
       ...state,
       items: newContactsList,
-      fetchReposFailure: false,
+      fetchContactsFailure: false,
+      errorType: '',
     };
 
     break;
@@ -47,12 +49,15 @@ export const contactsReducer = (state = initialState, action) => {
 
 
   case FETCH_CONTACTS_ERROR: {
-    const newStore = action.payload;
+    const newErrorType = action.payload.type;
+    const newErrorMessage = action.payload.message;
+
 
     return {
       ...state,
-      fetchReposFailure: true,
-      errorMessage: newStore,
+      fetchContactsFailure: true,
+      errorType: newErrorType,
+      errorMessage: newErrorMessage,
     };
 
     break;

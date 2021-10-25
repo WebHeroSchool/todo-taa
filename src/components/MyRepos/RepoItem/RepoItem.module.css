@@ -1,0 +1,52 @@
+.itemWrapper {
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.viewDemo {
+  font-size: .8rem;
+  color: var(--main-text-color);
+}
+
+.repoName {
+  font-size: var(--font-size-post-small);
+  font-weight: 500;
+  color: var(--main-text-color);
+  margin-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.description {
+  margin: 0 0 .4rem 0;
+  font-size: 0.8rem;
+  color: var(--additional-text-color);
+}
+
+.footer {
+  display: flex;
+  font-size: var(--font-size-small);
+  color: var(--additional-text-color);
+}
+
+.repoInfo {
+  display: flex;
+  width: 100%;
+}
+
+.lastUpdate {
+  width: 100%;
+  text-align: end;
+}
+
+
+@media (max-width:  480px) {
+  .lastUpdate {
+    display: flex;
+    flex-direction: column;
+  }
+}

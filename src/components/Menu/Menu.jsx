@@ -7,9 +7,11 @@ import {
 import {
   Paper,
   MenuList,
+  Divider,
 } from '@material-ui/core';
 
 import AppLink from '../AppLink/AppLink';
+import Label from '../Label/Label';
 
 
 const Menu = () => {
@@ -22,8 +24,7 @@ const Menu = () => {
   return (
     <Paper className={styles.menu} elevation={3} >
       <MenuList>
-        <nav>
-
+        <nav className={ styles.menuList }>
           <AppLink
             to="/"
             selectedIndex={selectedIndex}
@@ -37,16 +38,12 @@ const Menu = () => {
             setSelectedIndex={setSelectedIndex}
             primary="Дела"
           />
-
-          <AppLink
-            to="/contacts"
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-            primary="Контакты"
-          />
-
         </nav>
       </MenuList>
+
+      <Divider className={ styles.divider } />
+
+      <Label />
     </Paper>
   );
 };

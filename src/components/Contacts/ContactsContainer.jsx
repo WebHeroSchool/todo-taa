@@ -16,8 +16,7 @@ import Contacts from './Contacts';
 
 import withFetch from '../hoc/withFetch/withFetch';
 
-
-const url = 'https://api.github.com/users/chiga2030';
+const url = `https://api.github.com/users/chiga2030`;
 
 
 const ContactsWithFetch = props => withFetch(Contacts, {
@@ -36,6 +35,7 @@ const ContactsContainer = props => (
 export default connect(
   state => ({
     contacts: state.contacts,
+    fetch: state.fetch,
   }),
   {
     setState,

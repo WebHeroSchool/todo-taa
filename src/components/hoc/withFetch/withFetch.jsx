@@ -2,24 +2,38 @@ import {
   useEffect,
 } from 'react';
 
+const ak = 'dXNlcm5hbWU6Z2hwX0lsZTVHbWJSWkN4SVdNTjdtR01sVWtENlJYd3oxWTJGSDR4Nw';
+const auth = `Basic ${ak}`;
 
 const withFetch = (Component, props) => {
   useEffect(() => {
-    setTimeout(() => {
-      fetch(props.url)
-        .then(data => data.json())
-        .then(data => {
-          if (data.message) {
-            props.setFetchError(data.message);
-          } else {
-            props.setState(data);
-          }
-        })
-        .then(() => props.setIsLoading(false))
-        .catch(data => props.setFetchError(data.toString()))
-        .then(() => props.setIsLoading(false));
-    }, 1000);
-  }, []);
+    if (props.error) {
+      props.setIsLoading(true);
+    };
+    fetch(props.url,
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': auth,
+        },
+      }
+    )
+      .then(data => data.json())
+      .then(data => {
+        if (data.message === 'Not Found') {
+          props.setFetchError(data.message);
+        } else if (data.length === 0) {
+          props.setFetchError('empty');
+        } else {
+          props.setState(data);
+        }
+      })
+      .catch(data => props.setFetchError('fetch error', data))
+      .then(() => props.setIsLoading(false));
+  }, [
+    props.fetch.isRefresh,
+    props.url,
+  ]);
 
 
   return (

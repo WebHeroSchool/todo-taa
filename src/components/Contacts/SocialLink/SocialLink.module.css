@@ -1,0 +1,16 @@
+.contactData {
+  display: flex;
+  align-items: center;
+  margin: 0 0 .2rem;
+  text-decoration: none;
+  color: var(--additional-text-color);
+}
+
+.icon {
+  margin-right: .4rem;
+  fill: var(--additional-text-color);
+}
+
+.iconWithMiddleMargin {
+  margin-right: .5rem;
+}

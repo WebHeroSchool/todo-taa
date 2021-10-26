@@ -7,7 +7,8 @@ import {
 } from '../../store/actions/updateStore';
 import {
   setMyReposIsLoading as setIsLoading,
-} from '../../store/actions/setIsLoading';
+  setIsSubLoading,
+} from '../../store/actions/repos/setIsLoading';
 import {
   setMyReposIsError as setFetchError,
 } from '../../store/actions/fetchError';
@@ -68,6 +69,7 @@ const MyReposContainer = props => {
       setPage={ setPage }
       error={ props.repos.fetchReposFailure }
       perPage={ perPage }
+      setIsSubLoading={ setIsSubLoading }
       { ...props }
     />
   );
@@ -79,10 +81,12 @@ export default connect(
     contacts: state.contacts,
     repos: state.repos,
     fetch: state.fetch,
+    isSubLoading: state.repos.isSubLoading,
   }),
   {
     setState,
     setIsLoading,
+    setIsSubLoading,
     setFetchError,
     refreshFetchData,
   },

@@ -29,6 +29,7 @@ const Pagination = props => {
           if (activePage > 1) {
             setActivePage(activePage - 1);
           }
+          props.setIsSubLoading(true);
         } }
         disabled={ activePage === 1 }
         variant="outlined"
@@ -47,6 +48,7 @@ const Pagination = props => {
               } else {
                 setActivePage(index);
               }
+              props.setIsSubLoading(true);
             } }
             className={ classNames({
               [styles.button]: true,
@@ -64,6 +66,7 @@ const Pagination = props => {
           if (activePage < props.length) {
             setActivePage(activePage + 1);
           }
+          props.setIsSubLoading(true);
         } }
         disabled={ activePage === props.length }
         variant="outlined"

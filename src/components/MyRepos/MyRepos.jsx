@@ -9,6 +9,10 @@ import withMargin from '../hoc/withMargin/withMargin';
 import withIndent from '../hoc/withIndent/withIndent';
 import withScrollBar from '../hoc/withScrollBar/withScrollBar';
 
+import {
+  useEffect,
+} from 'react';
+
 
 const TitleWithMargin = props => withMargin(Title, 'medium', props);
 const TitleWithIndent = props => withIndent(TitleWithMargin, props);
@@ -25,6 +29,10 @@ const RepoListWithScrollBar = props => withScrollBar(
 
 
 const MyRepos = props => {
+  useEffect(() => props.setIsSubLoading(false), [
+    props.repos.items,
+  ]);
+
   if (props.repos.isLoading) {
     return <Loader />;
   } return (
@@ -36,14 +44,12 @@ const MyRepos = props => {
           { ...props }
         /> :
         <>
-          {
-            props.isSubLoading ? <Loader /> :
-              <RepoListWithScrollBar {...props}/>
-          }
+          <RepoListWithScrollBar {...props}/>
           <Pagination
             length={ Math.ceil(
               props.contacts.items.public_repos / props.perPage) }
             setPage={ props.setPage }
+            { ...props }
           />
         </>
       }

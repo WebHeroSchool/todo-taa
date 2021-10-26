@@ -7,7 +7,7 @@ import {
 } from '../../store/actions/updateStore';
 import {
   setMyReposIsLoading as setIsLoading,
-} from '../../store/actions/setIsLoading';
+} from '../../store/actions/repos/setIsLoading';
 import {
   setMyReposIsError as setFetchError,
 } from '../../store/actions/fetchError';

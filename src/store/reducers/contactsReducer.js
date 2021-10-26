@@ -3,7 +3,7 @@ import {
 } from '../actions/updateStore';
 import {
   SET_CONTACTS_ISLOADING,
-} from '../actions/setIsLoading';
+} from '../actions/repos/setIsLoading';
 import {
   FETCH_CONTACTS_ERROR,
 } from '../actions/fetchError';

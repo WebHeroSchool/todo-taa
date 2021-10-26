@@ -3,7 +3,7 @@ import {
 } from '../actions/updateStore';
 import {
   SET_MY_REPOS_ISLOADING,
-} from '../actions/setIsLoading';
+} from '../actions/repos/setIsLoading';
 import {
   FETCH_MY_REPOS_ERROR,
 } from '../actions/fetchError';

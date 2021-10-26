@@ -7,7 +7,7 @@ import {
 } from '../../store/actions/updateStore';
 import {
   setContactsIsLoading as setIsLoading,
-} from '../../store/actions/setIsLoading';
+} from '../../store/actions/repos/setIsLoading';
 import {
   setContactsIsError as setFetchError,
 } from '../../store/actions/fetchError';

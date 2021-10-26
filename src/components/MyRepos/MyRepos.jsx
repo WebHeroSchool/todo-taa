@@ -4,9 +4,6 @@ import ErrorMessages from '../ErrorMessages/ErrorMessages';
 import RepoList from './RepoList/RepoList';
 import Pagination from './Pagination/Pagination';
 
-import {
-  useState,
-} from 'react';
 
 import withMargin from '../hoc/withMargin/withMargin';
 import withIndent from '../hoc/withIndent/withIndent';
@@ -28,9 +25,6 @@ const RepoListWithScrollBar = props => withScrollBar(
 
 
 const MyRepos = props => {
-  const [
-    isSubLoading,
-  ] = useState(true);
   if (props.repos.isLoading) {
     return <Loader />;
   } return (
@@ -43,7 +37,8 @@ const MyRepos = props => {
         /> :
         <>
           {
-            isSubLoading ? <Loader /> : <RepoListWithScrollBar {...props}/>
+            props.isSubLoading ? <Loader /> :
+              <RepoListWithScrollBar {...props}/>
           }
           <Pagination
             length={ Math.ceil(

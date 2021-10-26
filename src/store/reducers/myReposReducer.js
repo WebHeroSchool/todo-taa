@@ -3,6 +3,7 @@ import {
 } from '../actions/updateStore';
 import {
   SET_MY_REPOS_ISLOADING,
+  SET_IS_SUB_LOADING,
 } from '../actions/repos/setIsLoading';
 import {
   FETCH_MY_REPOS_ERROR,
@@ -12,6 +13,7 @@ import {
 const initialState = {
   items: [],
   isLoading: true,
+  isSubLoading: true,
   fetchReposFailure: false,
   errorType: '',
   errorMessage: '',
@@ -44,6 +46,20 @@ export const myReposReducer = (state = initialState, action) => {
     return {
       ...state,
       isLoading: newStore,
+    };
+
+    break;
+  }
+
+
+  case SET_IS_SUB_LOADING: {
+    const newStore = action.payload;
+    console.log('ololo');
+    console.log(action.payload);
+
+    return {
+      ...state,
+      isSubLoading: newStore,
     };
 
     break;

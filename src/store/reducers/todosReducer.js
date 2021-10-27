@@ -153,12 +153,6 @@ export const todosReducer = (state = initialState, action) => {
       ],
     };
 
-    return {
-      ...state,
-      items: [
-        ...newItemList,
-      ],
-    };
     break;
   }
 

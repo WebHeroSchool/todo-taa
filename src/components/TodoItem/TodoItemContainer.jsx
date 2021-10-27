@@ -15,17 +15,27 @@ import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
 import {
   setOrderItems,
 } from '../../store/actions/todo/setFilters';
+import isNormalLength from '../../utils/isNormalLength';
 
 
-const TodoItemContainer = props => (
-  <TodoItem
-    { ...props }
-    onChangeCheckbox ={ () => props.toggleItem(props.id) }
-    onDeleteItem = { () => props.deleteItem(props.id) }
-    onEditItem = { props.editItem }
-    onSingleDoubleClick = { onSingleDoubleClick }
-  />
-);
+const TodoItemContainer = props => {
+  const editItemWithValidation = (id, value) => {
+    if (isNormalLength(value)) {
+      return props.editItem(id, value);
+    };
+  };
+
+
+  return (
+    <TodoItem
+      { ...props }
+      onChangeCheckbox ={ () => props.toggleItem(props.id) }
+      onDeleteItem = { () => props.deleteItem(props.id) }
+      onEditItem = { editItemWithValidation }
+      onSingleDoubleClick = { onSingleDoubleClick }
+    />
+  );
+};
 
 export default connect(
   state => ({

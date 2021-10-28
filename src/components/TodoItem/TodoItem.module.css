@@ -44,11 +44,15 @@
   cursor: pointer;
 }
 
-/*.itemValue[contenteditable] {
-    -webkit-user-select: text;
-    user-select: text;
+.itemValue:focus-visible{
+  border: 1px dotted red;
 }
-*/
+
+
+.itemValue[contenteditable] {
+    -webkit-user-select: auto;
+    user-select: auto;
+}
 
 .unselectable {
   -webkit-touch-callout: none;

@@ -20,13 +20,6 @@ const TodoItem = props => {
     inputValue,
     setInputvalue,
   ] = useState(props.value);
-
-  useEffect(() => {
-    itemEl.current.focus();
-  }, [
-    props.isEditable,
-  ]);
-
   const [
     isDrag,
     setIsDrag,
@@ -39,6 +32,12 @@ const TodoItem = props => {
     toBottomAnimation,
     setToBottomAnimation,
   ] = useState(false);
+
+  useEffect(() => {
+    itemEl.current.focus();
+  }, [
+    props.isEditable,
+  ]);
 
   const handleDragStart = () => {
     props.setCurrentItem(props.order);
@@ -66,6 +65,7 @@ const TodoItem = props => {
     setToUpAnimation(false);
     setToBottomAnimation(false);
   };
+
 
   return (
     <li
@@ -100,6 +100,7 @@ const TodoItem = props => {
             [styles.itemValue]: true,
             [styles.isDrag]: isDrag,
             [styles.unselectable]: props.isSort,
+            [styles.wrongInputValue]: props.isWrongValue,
           }) }
           key={ props.id }
           contentEditable={ props.isEditable }
@@ -113,6 +114,7 @@ const TodoItem = props => {
           onKeyDown={ event => {
             if (event.code === 'Enter' ||
                 event.code === 'NumpadEnter') {
+              event.preventDefault();
               props.onEditItem(props.id, inputValue);
             } else if (event.code === 'Escape') {
               itemEl.current.textContent = props.value;

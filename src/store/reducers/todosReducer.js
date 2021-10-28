@@ -14,6 +14,7 @@ import {
 } from '../actions/deleteItemAction';
 import {
   EDIT_ITEM,
+  SET_IS_WRONG_VALUE,
 } from '../actions/todo/editItemAction';
 import {
   SET_ALL_FILTER,
@@ -53,6 +54,7 @@ export const todosReducer = (state = initialState, action) => {
           id: Date.now(),
           filter: (state.filter === 'active' || state.filter === 'all'),
           isEditable: false,
+          isWrongValue: true,
           order: state.count,
         },
         ...getTodoItemsFromStorage(),
@@ -138,6 +140,7 @@ export const todosReducer = (state = initialState, action) => {
       if (item.id === action.payload.id) {
         newItem.value = toTrimSpaces(action.payload.value.toUpperCase());
         newItem.isEditable = !item.isEditable;
+        newItem.isWrongValue = false;
       }
 
       return newItem;
@@ -153,12 +156,33 @@ export const todosReducer = (state = initialState, action) => {
       ],
     };
 
+    break;
+  }
+
+
+  case SET_IS_WRONG_VALUE: {
+    const newWrongValue = state.items.map(item => {
+      const newItem = {
+        ...item,
+      };
+
+
+      if (item.id === action.payload.id) {
+        newItem.isWrongValue = true;
+      }
+
+      return newItem;
+    });
+
+
     return {
       ...state,
       items: [
-        ...newItemList,
+        ...newWrongValue,
       ],
     };
+
+
     break;
   }
 

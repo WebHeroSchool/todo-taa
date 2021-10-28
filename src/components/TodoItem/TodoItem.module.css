@@ -44,10 +44,9 @@
   cursor: pointer;
 }
 
-.itemValue:focus-visible{
-  border: 1px dotted red;
+.wrongInputValue:focus-visible {
+  outline: 2px dashed #900;
 }
-
 
 .itemValue[contenteditable] {
     -webkit-user-select: auto;

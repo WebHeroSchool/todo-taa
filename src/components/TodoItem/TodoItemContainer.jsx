@@ -9,6 +9,7 @@ import {
 } from '../../store/actions/deleteItemAction';
 import {
   editItem,
+  setIsWrongValue,
 } from '../../store/actions/todo/editItemAction';
 import TodoItem from './TodoItem';
 import onSingleDoubleClick from '../../utils/onSingleDoubleClick';
@@ -22,7 +23,7 @@ const TodoItemContainer = props => {
   const editItemWithValidation = (id, value) => {
     if (isNormalLength(value)) {
       return props.editItem(id, value);
-    };
+    }; return props.setIsWrongValue(id);
   };
 
 
@@ -46,5 +47,6 @@ export default connect(
     deleteItem,
     editItem,
     setOrderItems,
+    setIsWrongValue,
   }
 )(TodoItemContainer);

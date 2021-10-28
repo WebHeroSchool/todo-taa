@@ -1,4 +1,5 @@
 export const EDIT_ITEM = 'EDIT_ITEM';
+export const SET_IS_WRONG_VALUE = 'SET_IS_WRONG_VALUE';
 
 
 export const editItem = (id, value) => ({
@@ -6,5 +7,12 @@ export const editItem = (id, value) => ({
   payload: {
     id,
     value,
+  },
+});
+
+export const setIsWrongValue = id => ({
+  type: SET_IS_WRONG_VALUE,
+  payload: {
+    id,
   },
 });

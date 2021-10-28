@@ -114,6 +114,7 @@ const TodoItem = props => {
           onKeyDown={ event => {
             if (event.code === 'Enter' ||
                 event.code === 'NumpadEnter') {
+              event.preventDefault();
               props.onEditItem(props.id, inputValue);
             } else if (event.code === 'Escape') {
               itemEl.current.textContent = props.value;

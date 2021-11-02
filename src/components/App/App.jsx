@@ -10,6 +10,7 @@ import Menu from '../Menu/Menu';
 import AboutContainer from '../About/AboutContainer';
 import TodoContainer from '../Todo/TodoContainer';
 import ContactsContainer from '../Contacts/ContactsContainer';
+import DndList from '../DndList/DndList';
 
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
             <Route path='/' exact component={AboutContainer} />
             <Route path='/todo' component={TodoContainer} />
             <Route path='/contacts' component={ContactsContainer} />
+            <Route path='/test' component={DndList} />
             <Redirect to='/' />
           </Switch>
         </div>

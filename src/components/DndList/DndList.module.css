@@ -1,0 +1,6 @@
+.listItem {
+  margin: .5rem;
+  padding: .5rem;
+  border: dotted 1px #f50057;
+  touch-action: none;
+}

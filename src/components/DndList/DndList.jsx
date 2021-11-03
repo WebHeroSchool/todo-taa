@@ -16,6 +16,33 @@ const list = [
 
 
 const DndList = () => {
+  const [
+    selectedEl,
+    setSelectedEl,
+  ] = useState(null);
+
+  const [
+    coordinateX,
+    setCoodrinateX,
+  ] = useState(null);
+
+  const [
+    coordinateY,
+    setCoodrinateY,
+  ] = useState(null);
+
+  const test = (event, coordinateY) => {
+    console.log(event.target);
+    console.log(coordinateY);
+  };
+
+  useEffect(() => {
+    const body = document.body;
+    body.addEventListener('pointermove', event => test(event, coordinateY));
+    console.log(body);
+    console.log(onPointerMoveHandler);
+  }, []);
+
   const onPointerDownHandler = event => {
     setSelectedEl(event.target);
     console.log(event);
@@ -31,6 +58,7 @@ const DndList = () => {
 
   const onPointerMoveHandler = event => {
     if (selectedEl) {
+      console.log('tets');
       setCoodrinateX(event.clientX -
         selectedEl.offsetLeft -
         (selectedEl.offsetWidth * .5));
@@ -47,22 +75,6 @@ const DndList = () => {
     };
     setSelectedEl(null);
   };
-
-
-  const [
-    selectedEl,
-    setSelectedEl,
-  ] = useState(null);
-
-  const [
-    coordinateX,
-    setCoodrinateX,
-  ] = useState(null);
-
-  const [
-    coordinateY,
-    setCoodrinateY,
-  ] = useState(null);
 
 
   useEffect(() => {
@@ -87,7 +99,6 @@ const DndList = () => {
               className={ styles.listItem }
               key={ element }
               onPointerDown={ onPointerDownHandler }
-              onPointerMove={ onPointerMoveHandler }
               onPointerUp={ onPointerUpHandler }
             >
               { element }

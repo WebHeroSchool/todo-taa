@@ -21,76 +21,79 @@ const DndList = () => {
     setSelectedEl,
   ] = useState(null);
 
-  const [
-    coordinateX,
-    setCoodrinateX,
-  ] = useState(null);
+  // const [
+  //   coordinateX,
+  //   setCoodrinateX,
+  // ] = useState(null);
 
   const [
     coordinateY,
     setCoodrinateY,
   ] = useState(null);
 
-  const test = (event, coordinateY) => {
-    console.log(event.target);
-    console.log(coordinateY);
-  };
 
   useEffect(() => {
-    const body = document.body;
-    body.addEventListener('pointermove', event => test(event, coordinateY));
-    console.log(body);
-    console.log(onPointerMoveHandler);
+    window.addEventListener('pointermove', onPointerMoveHandler);
+    console.log('body');
   }, []);
 
   const onPointerDownHandler = event => {
     setSelectedEl(event.target);
-    console.log(event);
+    // console.log(event);
 
-    setCoodrinateX(event.clientX -
-      event.target.offsetLeft -
-      (event.target.offsetWidth * .5));
+    // setCoodrinateX(event.clientX -
+    //   event.target.offsetLeft -
+    //   (event.target.offsetWidth * .5));
 
     setCoodrinateY(event.clientY -
       event.target.offsetTop -
       (event.target.offsetHeight * .5));
   };
 
-  const onPointerMoveHandler = event => {
-    if (selectedEl) {
-      console.log('tets');
-      setCoodrinateX(event.clientX -
-        selectedEl.offsetLeft -
-        (selectedEl.offsetWidth * .5));
+  // const onPointerMoveHandler = event => {
+  //   if (selectedEl) {
+  //     console.log('tets');
+  //     setCoodrinateX(event.clientX -
+  //       selectedEl.offsetLeft -
+  //       (selectedEl.offsetWidth * .5));
 
-      setCoodrinateY(event.clientY -
-        selectedEl.offsetTop -
-        (selectedEl.offsetHeight * .5));
-    };
+  //     setCoodrinateY(event.clientY -
+  //       selectedEl.offsetTop -
+  //       (selectedEl.offsetHeight * .5));
+  //   };
+  // };
+
+  const onPointerMoveHandler = event => {
+    console.log('tets');
+    // setCoodrinateX(event.clientX -
+    //   event.target.offsetLeft -
+    //   (event.target.offsetWidth * .5));
+
+    setCoodrinateY(event.clientY -
+        event.target.offsetTop -
+        (event.target.offsetHeight * .5));
   };
 
-  const onPointerUpHandler = () => {
-    if (selectedEl) {
-      selectedEl.style.transform = 'unset';
-    };
+  const onPointerUpHandler = event => {
+    event.target.style.transform = 'unset';
     setSelectedEl(null);
   };
 
 
   useEffect(() => {
-    if (coordinateX || coordinateY) {
-      selectedEl.style.transform = `scale(1.1, 1) translate(${
-        coordinateX}px, ${coordinateY}px)`;
+    if (selectedEl) {
+      selectedEl.style.transform = `scaleX(1.1) translateY(${coordinateY}px)`;
     };
   },
   [
-    coordinateX,
+    selectedEl,
+    // coordinateX,
     coordinateY,
   ]);
 
 
   return (
-    <ul
+    <ul className={ styles.wrapper }
     >
       {
         list.map(

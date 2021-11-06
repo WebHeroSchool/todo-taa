@@ -1,8 +1,15 @@
 import {
   useState,
-  useEffect,
+  // useEffect,
 } from 'react';
 import styles from './DndList.module.css';
+
+import {
+  onTouchStartHandler,
+  onTouchMoveHandler,
+  onTouchStopHandler,
+  onContextMenuHandler,
+} from './touchEvents';
 
 const list = [
   1,
@@ -20,80 +27,36 @@ const DndList = () => {
     selectedEl,
     setSelectedEl,
   ] = useState(null);
-
-  // const [
-  //   coordinateX,
-  //   setCoodrinateX,
-  // ] = useState(null);
-
   const [
-    coordinateY,
-    setCoodrinateY,
+    timerId,
+    setTimerId,
   ] = useState(null);
 
 
-  useEffect(() => {
-    window.addEventListener('pointermove', onPointerMoveHandler);
-    console.log('body');
-  }, []);
-
-  const onPointerDownHandler = event => {
-    setSelectedEl(event.target);
-    // console.log(event);
-
-    // setCoodrinateX(event.clientX -
-    //   event.target.offsetLeft -
-    //   (event.target.offsetWidth * .5));
-
-    setCoodrinateY(event.clientY -
-      event.target.offsetTop -
-      (event.target.offsetHeight * .5));
+  const onPointerDownHandler = () => {
+    if (event.pointerType !== 'touch') {
+      setSelectedEl(event.target);
+    }
+    // event.target.style.transform = `scaleX(1.1)`;
+    console.log();
   };
 
-  // const onPointerMoveHandler = event => {
-  //   if (selectedEl) {
-  //     console.log('tets');
-  //     setCoodrinateX(event.clientX -
-  //       selectedEl.offsetLeft -
-  //       (selectedEl.offsetWidth * .5));
-
-  //     setCoodrinateY(event.clientY -
-  //       selectedEl.offsetTop -
-  //       (selectedEl.offsetHeight * .5));
-  //   };
-  // };
-
-  const onPointerMoveHandler = event => {
-    console.log('tets');
-    // setCoodrinateX(event.clientX -
-    //   event.target.offsetLeft -
-    //   (event.target.offsetWidth * .5));
-
-    setCoodrinateY(event.clientY -
-        event.target.offsetTop -
-        (event.target.offsetHeight * .5));
+  const onDragEnterHandler = () => {
+    console.log();
+    // event.target.style.transform = `translateY(${
+    //   event.target.offsetHeight
+    // }px)`;
+    // event.target.insertAdjacentElement('afterend', selectedEl);
   };
 
   const onPointerUpHandler = event => {
     event.target.style.transform = 'unset';
-    setSelectedEl(null);
   };
 
 
-  useEffect(() => {
-    if (selectedEl) {
-      selectedEl.style.transform = `scaleX(1.1) translateY(${coordinateY}px)`;
-    };
-  },
-  [
-    selectedEl,
-    // coordinateX,
-    coordinateY,
-  ]);
-
-
   return (
-    <ul className={ styles.wrapper }
+    <ul
+      className={ styles.wrapper }
     >
       {
         list.map(
@@ -101,8 +64,17 @@ const DndList = () => {
             <li
               className={ styles.listItem }
               key={ element }
+              draggable={ true }
+              onDragEnter={ onDragEnterHandler }
               onPointerDown={ onPointerDownHandler }
               onPointerUp={ onPointerUpHandler }
+              onTouchStart={
+                event => onTouchStartHandler(event, setTimerId, setSelectedEl) }
+              onTouchMove={
+                event => onTouchMoveHandler(event, selectedEl, timerId) }
+              onTouchEnd={
+                event => onTouchStopHandler(event, setSelectedEl, timerId) }
+              onContextMenu={ onContextMenuHandler }
             >
               { element }
             </li>

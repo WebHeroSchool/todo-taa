@@ -9,4 +9,5 @@
   border: dotted 1px #f50057;
   touch-action: none;
   user-select: none;
+  transition: transform .1s ease-out;
 }

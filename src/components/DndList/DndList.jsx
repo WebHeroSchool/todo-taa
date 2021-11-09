@@ -1,6 +1,6 @@
 import {
   useState,
-  // useEffect,
+  useEffect,
 } from 'react';
 import styles from './DndList.module.css';
 
@@ -32,44 +32,93 @@ const DndList = () => {
     setTimerId,
   ] = useState(null);
 
-  const setTranslateNextEl = element => {
-    const nextEl = element.nextElementSibling;
-    if (nextEl) {
-      nextEl.style.transform = `translateY(${element.offsetHeight}px)`;
-      setTranslateNextEl(nextEl);
+  const [
+    coordY,
+    setCoordY,
+  ] = useState(null);
+
+
+  useEffect(() => {
+    document.addEventListener('pointermove', onPointerMoveHandler);
+  }, []);
+
+  useEffect(() => {
+    if (selectedEl) {
+      selectedEl.style.pointerEvents = 'none';
     }
-  };
+  }, [
+    selectedEl,
+  ]);
+
+  useEffect(() => {
+    if (selectedEl) {
+      selectedEl.style.transform = `translateY(${coordY -
+        selectedEl.offsetTop - (selectedEl.offsetHeight * .5)}px)`;
+    }
+  }, [
+    coordY,
+  ]);
+
+
+  // const setTranslateNextEl = element => {
+  //   const nextEl = element.nextElementSibling;
+  //   if (nextEl) {
+  //     nextEl.style.transform = `translateY(${element.offsetHeight}px)`;
+  //     setTranslateNextEl(nextEl);
+  //   }
+  // };
+
+
+  // const onDragStartHandler = event => {
+  //   setSelectedEl(event.target);
+  //   setTranslateNextEl(event.target);
+  // };
+
+  // const onDragOverHandler = event => {
+  // console.log(event);
+  // selectedEl.style.transform = `translateY(${event.pageY}px)`;
+  // };
+
+  // const onDragEnterHandler = event => {
+  // selectedEl.remove();
+  // event.target.style.transform = 'unset';
+  // event.target.style.transform = `translateY(${
+  //   event.target.offsetHeight
+  // }px)`;
+  // event.target.insertAdjacentElement('afterend', selectedEl);
+  // };
+
 
   const onPointerDownHandler = event => {
     if (event.pointerType !== 'touch') {
       setSelectedEl(event.target);
     }
+
+
     // event.target.style.position = 'absolute';
     // event.target.style.transform = `scaleX(1.1)`;
   };
 
-  const onDragStartHandler = event => {
-    setSelectedEl(event.target);
-    setTranslateNextEl(event.target);
+
+  const onPointerMoveHandler = event => {
+    setCoordY(event.pageY);
+
+
+    // console.log('test s');
+    // console.log(selectedEl);
+    // if (selectedEl) {
+    //   selectedEl.style.transform = `translateY(${event.pageY -
+    //     selectedEl.offsetTop - (selectedEl.offsetHeight * .5)}px)`;
+    // }
   };
 
-  const onDragOverHandler = event => {
+  const onPointerUpHandler = () => {
+    console.log();
+    // event.target.style.transform = 'unset';
     // console.log(event);
-    selectedEl.style.transform = `translateY(${event.pageY}px)`;
   };
 
-  const onDragEnterHandler = event => {
-    // selectedEl.remove();
-    event.target.style.transform = 'unset';
-    // event.target.style.transform = `translateY(${
-    //   event.target.offsetHeight
-    // }px)`;
-    // event.target.insertAdjacentElement('afterend', selectedEl);
-  };
-
-  const onPointerUpHandler = event => {
-    event.target.style.transform = 'unset';
-  };
+  const onPointerEnterHandler = () => console.log('test');
 
 
   return (
@@ -82,12 +131,9 @@ const DndList = () => {
             <li
               className={ styles.listItem }
               key={ element }
-              draggable={ true }
-              onDragStart={ onDragStartHandler }
-              onDragOver={ onDragOverHandler }
-              onDragEnter={ onDragEnterHandler }
               onPointerDown={ onPointerDownHandler }
               onPointerUp={ onPointerUpHandler }
+              onPointerEnter={ onPointerEnterHandler }
               onTouchStart={
                 event => onTouchStartHandler(event, setTimerId, setSelectedEl) }
               onTouchMove={

@@ -32,17 +32,35 @@ const DndList = () => {
     setTimerId,
   ] = useState(null);
 
+  const setTranslateNextEl = element => {
+    const nextEl = element.nextElementSibling;
+    if (nextEl) {
+      nextEl.style.transform = `translateY(${element.offsetHeight}px)`;
+      setTranslateNextEl(nextEl);
+    }
+  };
 
-  const onPointerDownHandler = () => {
+  const onPointerDownHandler = event => {
     if (event.pointerType !== 'touch') {
       setSelectedEl(event.target);
     }
+    // event.target.style.position = 'absolute';
     // event.target.style.transform = `scaleX(1.1)`;
-    console.log();
   };
 
-  const onDragEnterHandler = () => {
-    console.log();
+  const onDragStartHandler = event => {
+    setSelectedEl(event.target);
+    setTranslateNextEl(event.target);
+  };
+
+  const onDragOverHandler = event => {
+    // console.log(event);
+    selectedEl.style.transform = `translateY(${event.pageY}px)`;
+  };
+
+  const onDragEnterHandler = event => {
+    // selectedEl.remove();
+    event.target.style.transform = 'unset';
     // event.target.style.transform = `translateY(${
     //   event.target.offsetHeight
     // }px)`;
@@ -65,6 +83,8 @@ const DndList = () => {
               className={ styles.listItem }
               key={ element }
               draggable={ true }
+              onDragStart={ onDragStartHandler }
+              onDragOver={ onDragOverHandler }
               onDragEnter={ onDragEnterHandler }
               onPointerDown={ onPointerDownHandler }
               onPointerUp={ onPointerUpHandler }

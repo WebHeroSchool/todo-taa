@@ -37,17 +37,33 @@ const DndList = () => {
     setCoordY,
   ] = useState(null);
 
+  const [
+    changedEl,
+    setChangedEl,
+  ] = useState(null);
+
 
   useEffect(() => {
     document.addEventListener('pointermove', onPointerMoveHandler);
   }, []);
 
   useEffect(() => {
-    if (selectedEl) {
-      selectedEl.style.pointerEvents = 'none';
+    document.addEventListener('pointerup',
+      () => onPointerUpHandler(selectedEl, changedEl, styles.noPointer));
+  }, [
+    selectedEl,
+  ]);
+
+  useEffect(() => {
+    if (selectedEl && selectedEl.classList[styles.noPointer]) {
+      console.log('olo');
+      return selectedEl.classList.remove(styles.noPointer);
+    } else if (selectedEl) {
+      return selectedEl.classList.add(styles.noPointer);
     }
   }, [
     selectedEl,
+    changedEl,
   ]);
 
   useEffect(() => {
@@ -112,13 +128,28 @@ const DndList = () => {
     // }
   };
 
-  const onPointerUpHandler = () => {
+  const onPointerUpHandler = (selectedEl, changedEl, className) => {
     console.log();
-    // event.target.style.transform = 'unset';
-    // console.log(event);
+    console.log(changedEl);
+    if (selectedEl) {
+      selectedEl.classList.remove(className);
+      if (changedEl) {
+        changedEl.insertAdjacentElement('afterend', selectedEl);
+        selectedEl.style.transform = 'unset';
+      }
+    }
+    setSelectedEl(null);
   };
 
-  const onPointerEnterHandler = () => console.log('test');
+  const onPointerEnterHandler = event => {
+    console.log('test');
+    if (event.target !== selectedEl) {
+      setChangedEl(event.target);
+    } else if (selectedEl) {
+      event.target.style.transform = `translateY(-${
+        selectedEl.offsetHeight}px)`;
+    }
+  };
 
 
   return (
@@ -132,7 +163,6 @@ const DndList = () => {
               className={ styles.listItem }
               key={ element }
               onPointerDown={ onPointerDownHandler }
-              onPointerUp={ onPointerUpHandler }
               onPointerEnter={ onPointerEnterHandler }
               onTouchStart={
                 event => onTouchStartHandler(event, setTimerId, setSelectedEl) }

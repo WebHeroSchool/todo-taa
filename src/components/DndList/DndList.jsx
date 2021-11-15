@@ -1,7 +1,7 @@
 // import {
-//   useState,
-//   useEffect,
-//   useRef,
+// useState,
+// useEffect,
+// useRef,
 // } from 'react';
 import styles from './DndList.module.css';
 
@@ -10,8 +10,6 @@ import styles from './DndList.module.css';
 //   // eventLog,
 //   // searchIndex,
 // } from './handlersUtils';
-
-import useTest from './useTest';
 
 
 const list = [
@@ -26,10 +24,37 @@ const list = [
 
 
 const DndList = () => {
-  console.log();
-  const qwerty = useTest('new');
-  const onPointerEnterHandler = () => {
-    console.log(qwerty);
+  // const [
+  //   shift,
+  //   setShift,
+  // ] = useState(0);
+
+
+  const shift = (element, height) => {
+    element.style.transform = `translateY(${height}px)`;
+    let next;
+    if (height) {
+      next = element.nextElementSibling;
+    } else {
+      next = element.previousElementSibling;
+    }
+
+    if (next) {
+      shift(next, height);
+    }
+  };
+
+  const onPointerEnterHandler = event => {
+    let height;
+    if (event.target.style.transform.length < 16) {
+      height = event.target.offsetHeight;
+    } else {
+      height = 0;
+    }
+
+    shift(event.target, height);
+
+    // event.target.style.transform = `translateY(${getShift()}px)`;
   };
 
   return (
@@ -51,8 +76,8 @@ const DndList = () => {
           )
         }
       </ul>
-      <div>current hover: {useTest('lol')}</div>
-      <div>prev hover: {useTest()}</div>
+      <div>current hover: {'current'}</div>
+      <div>prev hover: {'prev'}</div>
     </>
   );
 };

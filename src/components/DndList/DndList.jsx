@@ -1,8 +1,8 @@
-// import {
-// useState,
-// useEffect,
-// useRef,
-// } from 'react';
+import {
+  useState,
+  // useEffect,
+  // useRef,
+} from 'react';
 import styles from './DndList.module.css';
 
 // import {
@@ -24,9 +24,19 @@ const list = [
 
 
 const DndList = () => {
+  const [
+    element,
+    setElement,
+  ] = useState(null);
+
   // const [
-  //   shift,
-  //   setShift,
+  //   coordX,
+  //   setCoordX,
+  // ] = useState(0);
+
+  // const [
+  //   coordY,
+  //   setCoordY,
   // ] = useState(0);
 
 
@@ -44,7 +54,19 @@ const DndList = () => {
     }
   };
 
+
+  const onPointerDownHandler = event => {
+    event.target.style.pointerEvents = 'none';
+    setElement(event.target);
+    console.log(event);
+    // shift(event.target, event.target.offsetHeight);
+  };
+
   const onPointerEnterHandler = event => {
+    // if (event.target === element) {
+    //   return event.stopPropagation();
+    // }
+    console.log(event.target.innerText);
     let height;
     if (event.target.style.transform.length < 16) {
       height = event.target.offsetHeight;
@@ -52,15 +74,34 @@ const DndList = () => {
       height = 0;
     }
 
-    shift(event.target, height);
-
-    // event.target.style.transform = `translateY(${getShift()}px)`;
+    if (element) {
+      shift(event.target, height);
+    }
   };
+
+  const onPointerLeaveHandler = () => {
+    if (element) {
+      element.style.pointerEvents = 'auto';
+      shift(element.parentElement.lastElementChild, 0);
+      setElement(null);
+    }
+  };
+
+  const onPointerMoveHandler = event => {
+    if (element) {
+      const shift = event.clientY - element.offsetTop -
+        (element.scrollHeight * .5);
+      element.style.transform = `translateY(${shift}px)`;
+    }
+  };
+
 
   return (
     <>
       <ul
         className={ styles.wrapper }
+        onPointerLeave={ onPointerLeaveHandler }
+        onPointerMove={ onPointerMoveHandler }
       >
         {
           list.map(
@@ -68,6 +109,7 @@ const DndList = () => {
               <li
                 className={ styles.listItem }
                 key={ element }
+                onPointerDown={ onPointerDownHandler }
                 onPointerEnter={ onPointerEnterHandler }
               >
                 { element }

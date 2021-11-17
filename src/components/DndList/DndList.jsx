@@ -56,9 +56,11 @@ const DndList = () => {
 
 
   const onPointerDownHandler = event => {
-    event.target.style.pointerEvents = 'none';
-    setElement(event.target);
-    console.log(event);
+    if (event.target.className === styles.listItem) {
+      event.target.style.pointerEvents = 'none';
+      setElement(event.target);
+    }
+    // console.log(event);
     // shift(event.target, event.target.offsetHeight);
   };
 
@@ -66,7 +68,7 @@ const DndList = () => {
     // if (event.target === element) {
     //   return event.stopPropagation();
     // }
-    console.log(event.target.innerText);
+    // console.log(event.target.innerText);
     let height;
     if (event.target.style.transform.length < 16) {
       height = event.target.offsetHeight;
@@ -100,6 +102,7 @@ const DndList = () => {
     <>
       <ul
         className={ styles.wrapper }
+        onPointerDown={ onPointerDownHandler }
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ onPointerMoveHandler }
       >
@@ -109,7 +112,6 @@ const DndList = () => {
               <li
                 className={ styles.listItem }
                 key={ element }
-                onPointerDown={ onPointerDownHandler }
                 onPointerEnter={ onPointerEnterHandler }
               >
                 { element }

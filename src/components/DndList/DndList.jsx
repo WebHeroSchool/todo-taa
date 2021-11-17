@@ -69,7 +69,7 @@ const DndList = () => {
     // shift(event.target, event.target.offsetHeight);
   };
 
-  const onPointerEnterHandler = event => {
+  const onPointerOverHandler = event => {
     // console.log(event);
     // if (event.target === element) {
     //   return event.stopPropagation();
@@ -114,7 +114,7 @@ const DndList = () => {
         onPointerDown={ onPointerDownHandler }
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ onPointerMoveHandler }
-        onPointerOver={ onPointerEnterHandler }
+        onPointerOver={ onPointerOverHandler }
       >
         {
           list.map(

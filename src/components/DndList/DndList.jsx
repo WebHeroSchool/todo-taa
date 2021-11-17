@@ -57,33 +57,42 @@ const DndList = () => {
 
   const onPointerDownHandler = event => {
     if (event.target.className === styles.listItem) {
-      event.target.style.pointerEvents = 'none';
-      setElement(event.target);
+      const clone = event.target.cloneNode(true);
+      clone.style.pointerEvents = 'none';
+      // clone.style.position = 'absolute';
+      event.target.after(clone);
+      event.target.remove();
+      setElement(clone);
+      console.log(element);
     }
     // console.log(event);
     // shift(event.target, event.target.offsetHeight);
   };
 
   const onPointerEnterHandler = event => {
+    // console.log(event);
     // if (event.target === element) {
     //   return event.stopPropagation();
     // }
     // console.log(event.target.innerText);
-    let height;
-    if (event.target.style.transform.length < 16) {
-      height = event.target.offsetHeight;
-    } else {
-      height = 0;
-    }
+    if (event.target.className === styles.listItem) {
+      let height;
+      if (event.target.style.transform.length < 16) {
+        height = event.target.offsetHeight;
+      } else {
+        height = 0;
+      }
 
-    if (element) {
-      shift(event.target, height);
+      if (element) {
+        shift(event.target, height);
+      }
     }
   };
 
   const onPointerLeaveHandler = () => {
     if (element) {
       element.style.pointerEvents = 'auto';
+      element.style.color = 'red';
       shift(element.parentElement.lastElementChild, 0);
       setElement(null);
     }
@@ -105,6 +114,7 @@ const DndList = () => {
         onPointerDown={ onPointerDownHandler }
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ onPointerMoveHandler }
+        onPointerOver={ onPointerEnterHandler }
       >
         {
           list.map(
@@ -112,7 +122,6 @@ const DndList = () => {
               <li
                 className={ styles.listItem }
                 key={ element }
-                onPointerEnter={ onPointerEnterHandler }
               >
                 { element }
               </li>

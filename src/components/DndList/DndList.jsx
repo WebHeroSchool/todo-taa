@@ -57,13 +57,18 @@ const DndList = () => {
 
   const onPointerDownHandler = event => {
     if (event.target.className === styles.listItem) {
-      const clone = event.target.cloneNode(true);
-      clone.style.pointerEvents = 'none';
+      // const clone = event.target.cloneNode(true);
+      // clone.style.pointerEvents = 'none';
+      event.target.parentElement.style.height = `${
+        event.target.parentElement.offsetHeight}px`;
+      event.target.style.pointerEvents = 'none';
+      event.target.style.width = `${event.target.offsetWidth}px`;
+      event.target.style.boxSizing = 'border-box';
+      event.target.style.position = 'fixed';
       // clone.style.position = 'absolute';
-      event.target.after(clone);
-      event.target.remove();
-      setElement(clone);
-      console.log(element);
+      // event.target.after(clone);
+      // event.target.remove();
+      setElement(event.target);
     }
     // console.log(event);
     // shift(event.target, event.target.offsetHeight);

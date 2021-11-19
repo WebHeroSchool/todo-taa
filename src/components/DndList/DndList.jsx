@@ -42,6 +42,7 @@ const DndList = () => {
 
   const shift = (element, height) => {
     element.style.transform = `translateY(${height}px)`;
+    element.style.transition = `transform 1s ease-out`;
     let next;
     if (height) {
       next = element.nextElementSibling;
@@ -63,8 +64,12 @@ const DndList = () => {
         event.target.parentElement.offsetHeight}px`;
       event.target.style.pointerEvents = 'none';
       event.target.style.width = `${event.target.offsetWidth}px`;
-      event.target.style.boxSizing = 'border-box';
+
       event.target.style.position = 'fixed';
+
+      shift(
+        event.target.nextElementSibling, event.target.offsetHeight, true);
+
       // clone.style.position = 'absolute';
       // event.target.after(clone);
       // event.target.remove();
@@ -79,13 +84,14 @@ const DndList = () => {
     // if (event.target === element) {
     //   return event.stopPropagation();
     // }
-    // console.log(event.target.innerText);
     if (event.target.className === styles.listItem) {
       let height;
       if (event.target.style.transform.length < 16) {
         height = event.target.offsetHeight;
       } else {
         height = 0;
+        console.log(event.target.innerText);
+        console.log(event.target.style.transform);
       }
 
       if (element) {
@@ -94,12 +100,19 @@ const DndList = () => {
     }
   };
 
+
+  const cancel = () => {
+    element.style.width = '';
+    element.style.position = '';
+    element.style.pointerEvents = '';
+    element.style.color = 'red';
+    shift(element.parentElement.lastElementChild, 0);
+    setElement(null);
+  };
+
   const onPointerLeaveHandler = () => {
     if (element) {
-      element.style.pointerEvents = 'auto';
-      element.style.color = 'red';
-      shift(element.parentElement.lastElementChild, 0);
-      setElement(null);
+      cancel();
     }
   };
 

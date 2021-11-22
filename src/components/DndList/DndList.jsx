@@ -3,15 +3,40 @@ import {
 } from 'react';
 import styles from './DndList.module.css';
 
+import {
+  searchIndex,
+} from './handlersUtils';
+
 
 const list = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
+  {
+    value: 1,
+    order: 1,
+  },
+  {
+    value: 2,
+    order: 2,
+  },
+  {
+    value: 3,
+    order: 3,
+  },
+  {
+    value: 4,
+    order: 4,
+  },
+  {
+    value: 5,
+    order: 5,
+  },
+  {
+    value: 6,
+    order: 6,
+  },
+  {
+    value: 7,
+    order: 7,
+  },
 ];
 
 
@@ -19,6 +44,11 @@ const DndList = () => {
   const [
     element,
     setElement,
+  ] = useState(null);
+
+  const [
+    triggeredElement,
+    setTriggeredElement,
   ] = useState(null);
 
 
@@ -62,8 +92,20 @@ const DndList = () => {
     }
   };
 
+  const getHeight = element => {
+    let height;
+    if (element.style.transform.length < 16) {
+      height = element.offsetHeight;
+    } else {
+      height = 0;
+    }
+
+    return height;
+  };
+
   const onPointerOverHandler = event => {
-    if (event.target.className === styles.listItem) {
+    if (document.elementFromPoint(
+      event.clientX, event.clientY).className === styles.listItem) {
       let height;
       if (event.target.style.transform.length < 16) {
         height = event.target.offsetHeight;
@@ -75,11 +117,13 @@ const DndList = () => {
         shift(event.target, height);
         setTransition(event.target.parentElement.firstElementChild, .1);
       }
+
+      setTriggeredElement(event.target);
     }
   };
 
 
-  const cancel = () => {
+  const endOfGesture = () => {
     element.style.width = '';
     element.style.position = '';
     element.style.pointerEvents = '';
@@ -91,7 +135,7 @@ const DndList = () => {
 
   const onPointerLeaveHandler = () => {
     if (element) {
-      cancel();
+      endOfGesture();
     }
   };
 
@@ -99,7 +143,32 @@ const DndList = () => {
     if (element) {
       const shift = event.clientY - element.offsetTop -
         (element.scrollHeight * .5);
+      // console.log(shift);
       element.style.transform = `translateY(${shift}px)`;
+    }
+
+    const elementUnderPointer = document.elementFromPoint(
+      event.clientX, event.clientY);
+
+    if (element && elementUnderPointer
+        && elementUnderPointer.className === styles.listItem) {
+      shift(elementUnderPointer, getHeight(elementUnderPointer));
+      console.log(element.style.transform);
+    }
+  };
+
+  const onPointerUpListener = () => {
+    if (element) {
+      let where;
+      if (searchIndex(element) < searchIndex(triggeredElement)) {
+        where = 'afterEnd';
+      } else {
+        where = 'beforeBegin';
+      }
+
+      triggeredElement.insertAdjacentElement(where, element);
+
+      return endOfGesture();
     }
   };
 
@@ -112,15 +181,16 @@ const DndList = () => {
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ onPointerMoveHandler }
         onPointerOver={ onPointerOverHandler }
+        onPointerUp={ onPointerUpListener }
       >
         {
           list.map(
             element => (
               <li
                 className={ styles.listItem }
-                key={ element }
+                key={ element.value }
               >
-                { element }
+                { element.value }
               </li>
             )
           )

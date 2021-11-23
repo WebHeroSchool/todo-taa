@@ -52,18 +52,21 @@ const DndList = () => {
   ] = useState(null);
 
 
-  const shift = (element, height) => {
-    element.style.transform = `translateY(${height ?
-      height + 8 : height}px)`;
+  const shift = (thisElement, height, lastModify = false) => {
+    if (thisElement !== element
+        || (thisElement === element && lastModify)) {
+      thisElement.style.transform = `translateY(${height ?
+        height + 8 : height}px)`;
+    }
     let next;
     if (height) {
-      next = element.nextElementSibling;
+      next = thisElement.nextElementSibling;
     } else {
-      next = element.previousElementSibling;
+      next = thisElement.previousElementSibling;
     }
 
     if (next) {
-      shift(next, height);
+      shift(next, height, lastModify);
     }
   };
 
@@ -92,16 +95,6 @@ const DndList = () => {
     }
   };
 
-  const getHeight = element => {
-    let height;
-    if (element.style.transform.length < 16) {
-      height = element.offsetHeight;
-    } else {
-      height = 0;
-    }
-
-    return height;
-  };
 
   const onPointerOverHandler = event => {
     if (document.elementFromPoint(
@@ -122,13 +115,47 @@ const DndList = () => {
     }
   };
 
+  const getHeight = element => {
+    let height;
+    if (element.style.transform.length < 16) {
+      height = element.offsetHeight;
+    } else {
+      height = 0;
+    }
+
+    return height;
+  };
+
+
+  const onTouchOverHandler = event => {
+    const elementUnderPointer = document.elementFromPoint(
+      event.touches[0].pageX,
+      event.touches[0].pageY);
+
+    if (element && elementUnderPointer
+        && elementUnderPointer.className === styles.listItem) {
+      if (event.currentTarget.lastElementChild === triggeredElement) {
+        setTriggeredElement(null);
+      } else {
+        setTriggeredElement(elementUnderPointer);
+      }
+      shift(elementUnderPointer, getHeight(elementUnderPointer));
+    }
+
+    // if (elementUnderPointer.className === styles.listItem
+    //     && elementUnderPointer !== element) {
+    //   // shift(elementUnderPointer, getHeight(elementUnderPointer));
+    //   console.log(event);
+    // }
+  };
+
 
   const endOfGesture = () => {
     element.style.width = '';
     element.style.position = '';
     element.style.pointerEvents = '';
     element.style.color = 'red';
-    shift(element.parentElement.lastElementChild, 0);
+    shift(element.parentElement.lastElementChild, 0, true);
     setTransition(element.parentElement.firstElementChild, 0);
     setElement(null);
   };
@@ -143,17 +170,8 @@ const DndList = () => {
     if (element) {
       const shift = event.clientY - element.offsetTop -
         (element.scrollHeight * .5);
-      // console.log(shift);
+      // console.log('shift - ', shift);
       element.style.transform = `translateY(${shift}px)`;
-    }
-
-    const elementUnderPointer = document.elementFromPoint(
-      event.clientX, event.clientY);
-
-    if (element && elementUnderPointer
-        && elementUnderPointer.className === styles.listItem) {
-      shift(elementUnderPointer, getHeight(elementUnderPointer));
-      console.log(element.style.transform);
     }
   };
 
@@ -180,6 +198,7 @@ const DndList = () => {
         onPointerDown={ onPointerDownHandler }
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ onPointerMoveHandler }
+        onTouchMove={ onTouchOverHandler }
         onPointerOver={ onPointerOverHandler }
         onPointerUp={ onPointerUpListener }
       >

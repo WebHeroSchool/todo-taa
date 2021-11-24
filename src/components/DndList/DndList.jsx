@@ -5,6 +5,7 @@ import styles from './DndList.module.css';
 
 import {
   searchIndex,
+  slideToDown,
 } from './handlersUtils';
 
 
@@ -107,6 +108,7 @@ const DndList = () => {
       }
 
       if (element) {
+        console.log('shift');
         shift(event.target, height);
         setTransition(event.target.parentElement.firstElementChild, .1);
       }
@@ -176,9 +178,11 @@ const DndList = () => {
   };
 
   const onPointerUpListener = () => {
+    // console.log(searchIndex(triggeredElement));
+
     if (element) {
       let where;
-      if (searchIndex(element) < searchIndex(triggeredElement)) {
+      if (slideToDown(searchIndex(element), searchIndex(triggeredElement))) {
         where = 'afterEnd';
       } else {
         where = 'beforeBegin';
@@ -194,7 +198,6 @@ const DndList = () => {
   return (
     <>
       <ul
-        className={ styles.wrapper }
         onPointerDown={ onPointerDownHandler }
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ onPointerMoveHandler }

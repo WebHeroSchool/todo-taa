@@ -5,7 +5,7 @@ import styles from './DndList.module.css';
 
 import {
   searchIndex,
-  slideToDown,
+  isSlideToDown,
 } from './handlersUtils';
 
 
@@ -37,6 +37,34 @@ const list = [
   {
     value: 7,
     order: 7,
+  },
+  {
+    value: 8,
+    order: 8,
+  },
+  {
+    value: 9,
+    order: 9,
+  },
+  {
+    value: 10,
+    order: 10,
+  },
+  {
+    value: 11,
+    order: 11,
+  },
+  {
+    value: 12,
+    order: 12,
+  },
+  {
+    value: 13,
+    order: 13,
+  },
+  {
+    value: 14,
+    order: 14,
   },
 ];
 
@@ -108,12 +136,23 @@ const DndList = () => {
       }
 
       if (element) {
-        console.log('shift');
+        setTriggeredElement(event.target);
         shift(event.target, height);
         setTransition(event.target.parentElement.firstElementChild, .1);
       }
 
-      setTriggeredElement(event.target);
+
+      // if (element) {
+      //   if (triggeredElement && event.target === triggeredElement) {
+      //     setTriggeredElement(event.target);
+      //     if (isSlideToDown(searchIndex(element),
+      //       searchIndex(triggeredElement))) {
+      //       setTriggeredElement(event.target.previousElementSiblinge);
+      //     } else {
+      //       setTriggeredElement(event.target.nextElementSiblinge);
+      //     }
+      //   }
+      // }
     }
   };
 
@@ -160,6 +199,7 @@ const DndList = () => {
     shift(element.parentElement.lastElementChild, 0, true);
     setTransition(element.parentElement.firstElementChild, 0);
     setElement(null);
+    setTriggeredElement(null);
   };
 
   const onPointerLeaveHandler = () => {
@@ -180,16 +220,18 @@ const DndList = () => {
   const onPointerUpListener = () => {
     // console.log(searchIndex(triggeredElement));
 
-    if (element) {
+    if (element && triggeredElement) {
       let where;
-      if (slideToDown(searchIndex(element), searchIndex(triggeredElement))) {
+      if (isSlideToDown(searchIndex(element), searchIndex(triggeredElement))) {
         where = 'afterEnd';
       } else {
         where = 'beforeBegin';
       }
 
       triggeredElement.insertAdjacentElement(where, element);
+    }
 
+    if (element) {
       return endOfGesture();
     }
   };

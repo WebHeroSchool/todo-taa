@@ -6,7 +6,15 @@ import styles from './DndList.module.css';
 import {
   searchIndex,
   isSlideToDown,
+  shift,
+  setTransition,
 } from './handlersUtils';
+
+import {
+  onPointerMoveHandler,
+  onPointerDownHandler,
+  onContextMenuHandler,
+} from './touchEvents';
 
 
 const list = [
@@ -38,34 +46,6 @@ const list = [
     value: 7,
     order: 7,
   },
-  {
-    value: 8,
-    order: 8,
-  },
-  {
-    value: 9,
-    order: 9,
-  },
-  {
-    value: 10,
-    order: 10,
-  },
-  {
-    value: 11,
-    order: 11,
-  },
-  {
-    value: 12,
-    order: 12,
-  },
-  {
-    value: 13,
-    order: 13,
-  },
-  {
-    value: 14,
-    order: 14,
-  },
 ];
 
 
@@ -81,50 +61,6 @@ const DndList = () => {
   ] = useState(null);
 
 
-  const shift = (thisElement, height, lastModify = false) => {
-    if (thisElement !== element
-        || (thisElement === element && lastModify)) {
-      thisElement.style.transform = `translateY(${height ?
-        height + 8 : height}px)`;
-    }
-    let next;
-    if (height) {
-      next = thisElement.nextElementSibling;
-    } else {
-      next = thisElement.previousElementSibling;
-    }
-
-    if (next) {
-      shift(next, height, lastModify);
-    }
-  };
-
-  const setTransition = (element, time = 0) => {
-    element.style.transition = `transform ${time}s ease-out`;
-
-    const next = element.nextElementSibling;
-    if (next) {
-      setTransition(next, time);
-    }
-  };
-
-
-  const onPointerDownHandler = event => {
-    if (event.target.className === styles.listItem) {
-      event.target.parentElement.style.height = `${
-        event.target.parentElement.offsetHeight}px`;
-      event.target.style.pointerEvents = 'none';
-      event.target.style.width = `${event.target.offsetWidth}px`;
-      if (event.target.nextElementSibling) {
-        shift(
-          event.target.nextElementSibling, event.target.offsetHeight);
-      }
-      event.target.style.position = 'fixed';
-      setElement(event.target);
-    }
-  };
-
-
   const onPointerOverHandler = event => {
     if (document.elementFromPoint(
       event.clientX, event.clientY).className === styles.listItem) {
@@ -137,22 +73,9 @@ const DndList = () => {
 
       if (element) {
         setTriggeredElement(event.target);
-        shift(event.target, height);
+        shift(element, event.target, height);
         setTransition(event.target.parentElement.firstElementChild, .1);
       }
-
-
-      // if (element) {
-      //   if (triggeredElement && event.target === triggeredElement) {
-      //     setTriggeredElement(event.target);
-      //     if (isSlideToDown(searchIndex(element),
-      //       searchIndex(triggeredElement))) {
-      //       setTriggeredElement(event.target.previousElementSiblinge);
-      //     } else {
-      //       setTriggeredElement(event.target.nextElementSiblinge);
-      //     }
-      //   }
-      // }
     }
   };
 
@@ -180,14 +103,8 @@ const DndList = () => {
       } else {
         setTriggeredElement(elementUnderPointer);
       }
-      shift(elementUnderPointer, getHeight(elementUnderPointer));
+      shift(element, elementUnderPointer, getHeight(elementUnderPointer));
     }
-
-    // if (elementUnderPointer.className === styles.listItem
-    //     && elementUnderPointer !== element) {
-    //   // shift(elementUnderPointer, getHeight(elementUnderPointer));
-    //   console.log(event);
-    // }
   };
 
 
@@ -196,7 +113,7 @@ const DndList = () => {
     element.style.position = '';
     element.style.pointerEvents = '';
     element.style.color = 'red';
-    shift(element.parentElement.lastElementChild, 0, true);
+    shift(element, element.parentElement.lastElementChild, 0, true);
     setTransition(element.parentElement.firstElementChild, 0);
     setElement(null);
     setTriggeredElement(null);
@@ -208,21 +125,15 @@ const DndList = () => {
     }
   };
 
-  const onPointerMoveHandler = event => {
-    if (element) {
-      const shift = event.clientY - element.offsetTop -
-        (element.scrollHeight * .5);
-      // console.log('shift - ', shift);
-      element.style.transform = `translateY(${shift}px)`;
-    }
-  };
 
   const onPointerUpListener = () => {
-    // console.log(searchIndex(triggeredElement));
-
     if (element && triggeredElement) {
       let where;
-      if (isSlideToDown(searchIndex(element), searchIndex(triggeredElement))) {
+      const isDown = isSlideToDown(searchIndex(element),
+        searchIndex(triggeredElement));
+
+      if ((isDown && triggeredElement.style.transform.length < 16)
+        || (!isDown && triggeredElement.style.transform.length < 16)) {
         where = 'afterEnd';
       } else {
         where = 'beforeBegin';
@@ -240,12 +151,19 @@ const DndList = () => {
   return (
     <>
       <ul
-        onPointerDown={ onPointerDownHandler }
+        onPointerDown={ event => onPointerDownHandler(
+          event.target,
+          styles.listItem,
+          shift,
+          element,
+          setElement,
+        ) }
         onPointerLeave={ onPointerLeaveHandler }
-        onPointerMove={ onPointerMoveHandler }
+        onPointerMove={ event => onPointerMoveHandler(event, element) }
         onTouchMove={ onTouchOverHandler }
         onPointerOver={ onPointerOverHandler }
         onPointerUp={ onPointerUpListener }
+        onContextMenu={ onContextMenuHandler }
       >
         {
           list.map(

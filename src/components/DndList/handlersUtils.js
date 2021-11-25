@@ -36,3 +36,26 @@ export const setTransition = (element, time = 0) => {
     setTransition(next, time);
   }
 };
+
+
+export const getHeight = element => {
+  let height;
+  if (element.style.transform.length < 16) {
+    height = element.offsetHeight;
+  } else {
+    height = 0;
+  }
+
+  return height;
+};
+
+
+export const endOfGesture = (element, setElement, setTriggeredElement) => {
+  element.style.width = '';
+  element.style.position = '';
+  element.style.pointerEvents = '';
+  shift(element, element.parentElement.lastElementChild, 0, true);
+  setTransition(element.parentElement.firstElementChild, 0);
+  setElement(null);
+  setTriggeredElement(null);
+};

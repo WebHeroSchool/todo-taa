@@ -8,13 +8,18 @@ import {
   isSlideToDown,
   shift,
   setTransition,
+  getHeight,
+  endOfGesture,
 } from './handlersUtils';
 
 import {
   onPointerMoveHandler,
   onPointerDownHandler,
+  onPointerOverHandler,
+  onTouchOverHandler,
+  onPointerUpListener,
   onContextMenuHandler,
-} from './touchEvents';
+} from './handleEvents';
 
 
 const list = [
@@ -61,89 +66,9 @@ const DndList = () => {
   ] = useState(null);
 
 
-  const onPointerOverHandler = event => {
-    if (document.elementFromPoint(
-      event.clientX, event.clientY).className === styles.listItem) {
-      let height;
-      if (event.target.style.transform.length < 16) {
-        height = event.target.offsetHeight;
-      } else {
-        height = 0;
-      }
-
-      if (element) {
-        setTriggeredElement(event.target);
-        shift(element, event.target, height);
-        setTransition(event.target.parentElement.firstElementChild, .1);
-      }
-    }
-  };
-
-  const getHeight = element => {
-    let height;
-    if (element.style.transform.length < 16) {
-      height = element.offsetHeight;
-    } else {
-      height = 0;
-    }
-
-    return height;
-  };
-
-
-  const onTouchOverHandler = event => {
-    const elementUnderPointer = document.elementFromPoint(
-      event.touches[0].pageX,
-      event.touches[0].pageY);
-
-    if (element && elementUnderPointer
-        && elementUnderPointer.className === styles.listItem) {
-      if (event.currentTarget.lastElementChild === triggeredElement) {
-        setTriggeredElement(null);
-      } else {
-        setTriggeredElement(elementUnderPointer);
-      }
-      shift(element, elementUnderPointer, getHeight(elementUnderPointer));
-    }
-  };
-
-
-  const endOfGesture = () => {
-    element.style.width = '';
-    element.style.position = '';
-    element.style.pointerEvents = '';
-    element.style.color = 'red';
-    shift(element, element.parentElement.lastElementChild, 0, true);
-    setTransition(element.parentElement.firstElementChild, 0);
-    setElement(null);
-    setTriggeredElement(null);
-  };
-
   const onPointerLeaveHandler = () => {
     if (element) {
-      endOfGesture();
-    }
-  };
-
-
-  const onPointerUpListener = () => {
-    if (element && triggeredElement) {
-      let where;
-      const isDown = isSlideToDown(searchIndex(element),
-        searchIndex(triggeredElement));
-
-      if ((isDown && triggeredElement.style.transform.length < 16)
-        || (!isDown && triggeredElement.style.transform.length < 16)) {
-        where = 'afterEnd';
-      } else {
-        where = 'beforeBegin';
-      }
-
-      triggeredElement.insertAdjacentElement(where, element);
-    }
-
-    if (element) {
-      return endOfGesture();
+      endOfGesture(element, setElement, setTriggeredElement);
     }
   };
 
@@ -160,9 +85,33 @@ const DndList = () => {
         ) }
         onPointerLeave={ onPointerLeaveHandler }
         onPointerMove={ event => onPointerMoveHandler(event, element) }
-        onTouchMove={ onTouchOverHandler }
-        onPointerOver={ onPointerOverHandler }
-        onPointerUp={ onPointerUpListener }
+        onTouchMove={ event => onTouchOverHandler(
+          event,
+          element,
+          styles.listItem,
+          triggeredElement,
+          setTriggeredElement,
+          shift,
+          getHeight,
+        ) }
+        onPointerOver={ event => onPointerOverHandler(
+          event,
+          styles.listItem,
+          element,
+          setTriggeredElement,
+          shift,
+          setTransition,
+          getHeight,
+        ) }
+        onPointerUp={ () => onPointerUpListener(
+          element,
+          triggeredElement,
+          isSlideToDown,
+          searchIndex,
+          endOfGesture,
+          setElement,
+          setTriggeredElement,
+        ) }
         onContextMenu={ onContextMenuHandler }
       >
         {

@@ -1,3 +1,12 @@
+import {
+  searchIndex,
+  isSlideToDown,
+  shift,
+  setTransition,
+  getHeight,
+} from './handlersUtils';
+
+
 export const onPointerMoveHandler = (event, element) => {
   if (element) {
     const shift = event.clientY - element.offsetTop -
@@ -8,14 +17,14 @@ export const onPointerMoveHandler = (event, element) => {
 
 
 export const onPointerDownHandler = (eventTarget,
-  style, modifyer, element, newElement) => {
+  style, element, newElement) => {
   if (eventTarget.className === style) {
     eventTarget.parentElement.style.height = `${
       eventTarget.parentElement.offsetHeight}px`;
     eventTarget.style.pointerEvents = 'none';
     eventTarget.style.width = `${eventTarget.offsetWidth}px`;
     if (eventTarget.nextElementSibling) {
-      modifyer(element,
+      shift(element,
         eventTarget.nextElementSibling, eventTarget.offsetHeight);
     }
     eventTarget.style.position = 'fixed';
@@ -25,7 +34,7 @@ export const onPointerDownHandler = (eventTarget,
 
 
 export const onPointerOverHandler = (event,
-  style, element, setTriggeredElement, shift, setTransition, getHeight) => {
+  style, element, setTriggeredElement) => {
   if (document.elementFromPoint(
     event.clientX, event.clientY).className === style) {
     const height = getHeight(event.target);
@@ -40,7 +49,7 @@ export const onPointerOverHandler = (event,
 
 
 export const onTouchOverHandler = (event, element, style,
-  triggeredElement, setTriggeredElement, shift, getHeight) => {
+  triggeredElement, setTriggeredElement) => {
   const elementUnderPointer = document.elementFromPoint(
     event.touches[0].pageX,
     event.touches[0].pageY);
@@ -57,9 +66,8 @@ export const onTouchOverHandler = (event, element, style,
 };
 
 
-export const onPointerUpListener = (element, triggeredElement,
-  isSlideToDown, searchIndex, endOfGesture,
-  setElement, setTriggeredElement) => {
+export const onPointerUpListener = (element,
+  triggeredElement, endOfGesture, setElement, setTriggeredElement) => {
   if (element && triggeredElement) {
     let where;
     const isDown = isSlideToDown(searchIndex(element),
@@ -77,6 +85,14 @@ export const onPointerUpListener = (element, triggeredElement,
 
   if (element) {
     return endOfGesture(element, setElement, setTriggeredElement);
+  }
+};
+
+
+export const onPointerLeaveHandler = (element,
+  endOfGesture, setElement, setTriggeredElement) => {
+  if (element) {
+    endOfGesture(element, setElement, setTriggeredElement);
   }
 };
 

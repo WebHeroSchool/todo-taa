@@ -4,11 +4,6 @@ import {
 import styles from './DndList.module.css';
 
 import {
-  searchIndex,
-  isSlideToDown,
-  shift,
-  setTransition,
-  getHeight,
   endOfGesture,
 } from './handlersUtils';
 
@@ -18,6 +13,7 @@ import {
   onPointerOverHandler,
   onTouchOverHandler,
   onPointerUpListener,
+  onPointerLeaveHandler,
   onContextMenuHandler,
 } from './handleEvents';
 
@@ -66,24 +62,21 @@ const DndList = () => {
   ] = useState(null);
 
 
-  const onPointerLeaveHandler = () => {
-    if (element) {
-      endOfGesture(element, setElement, setTriggeredElement);
-    }
-  };
-
-
   return (
     <>
       <ul
         onPointerDown={ event => onPointerDownHandler(
           event.target,
           styles.listItem,
-          shift,
           element,
           setElement,
         ) }
-        onPointerLeave={ onPointerLeaveHandler }
+        onPointerLeave={ () => onPointerLeaveHandler(
+          element,
+          endOfGesture,
+          setElement,
+          setTriggeredElement,
+        ) }
         onPointerMove={ event => onPointerMoveHandler(event, element) }
         onTouchMove={ event => onTouchOverHandler(
           event,
@@ -91,23 +84,16 @@ const DndList = () => {
           styles.listItem,
           triggeredElement,
           setTriggeredElement,
-          shift,
-          getHeight,
         ) }
         onPointerOver={ event => onPointerOverHandler(
           event,
           styles.listItem,
           element,
           setTriggeredElement,
-          shift,
-          setTransition,
-          getHeight,
         ) }
         onPointerUp={ () => onPointerUpListener(
           element,
           triggeredElement,
-          isSlideToDown,
-          searchIndex,
           endOfGesture,
           setElement,
           setTriggeredElement,

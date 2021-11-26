@@ -113,8 +113,6 @@ const DndList = () => {
           )
         }
       </ul>
-      <div>current hover: {'current'}</div>
-      <div>prev hover: {'prev'}</div>
     </>
   );
 };

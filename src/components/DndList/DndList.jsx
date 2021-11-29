@@ -1,6 +1,7 @@
 import {
   useState,
   useEffect,
+  useRef,
 } from 'react';
 import styles from './DndList.module.css';
 
@@ -50,8 +51,10 @@ const list = [
 ];
 
 
-const log = value => {
-  console.log(value);
+const onHtmlUpHandler = (element, event) => {
+  console.log(element.current);
+  console.log(event.target);
+  console.log(element.current === event.target);
 };
 
 
@@ -66,8 +69,12 @@ const DndList = () => {
     setTriggeredElement,
   ] = useState(null);
 
+
+  const ulElement = useRef(null);
+
+
   useEffect(() => {
-    const newLog = log.bind(null, 'test');
+    const newLog = onHtmlUpHandler.bind(event, ulElement);
 
     document.documentElement.addEventListener('pointerup', newLog);
 
@@ -87,7 +94,7 @@ const DndList = () => {
 
   return (
     <>
-      <ul
+      <ul ref={ ulElement }
         onPointerDown={ event => onPointerDownHandler(
           event.target,
           styles.listItem,

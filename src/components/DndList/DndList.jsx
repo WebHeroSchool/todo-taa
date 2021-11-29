@@ -1,5 +1,6 @@
 import {
   useState,
+  useEffect,
 } from 'react';
 import styles from './DndList.module.css';
 
@@ -49,6 +50,11 @@ const list = [
 ];
 
 
+const log = value => {
+  console.log(value);
+};
+
+
 const DndList = () => {
   const [
     element,
@@ -59,6 +65,16 @@ const DndList = () => {
     triggeredElement,
     setTriggeredElement,
   ] = useState(null);
+
+  useEffect(() => {
+    const newLog = log.bind(null, 'test');
+
+    document.documentElement.addEventListener('pointerup', newLog);
+
+    return () => {
+      document.documentElement.removeEventListener('pointerup', newLog);
+    };
+  }, []);
 
 
   /* onPointerLeave={ () => onPointerLeaveHandler(

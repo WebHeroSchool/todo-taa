@@ -89,12 +89,12 @@ export const onPointerUpListener = (element,
 };
 
 
-export const onPointerLeaveHandler = (element,
-  endOfGesture, setElement, setTriggeredElement) => {
-  if (element) {
-    endOfGesture(element, setElement, setTriggeredElement);
-  }
-};
+// export const onPointerLeaveHandler = (element,
+//   endOfGesture, setElement, setTriggeredElement) => {
+//   if (element) {
+//     endOfGesture(element, setElement, setTriggeredElement);
+//   }
+// };
 
 
 export const onContextMenuHandler = event => {

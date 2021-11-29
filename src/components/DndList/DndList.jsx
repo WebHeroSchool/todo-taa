@@ -13,7 +13,6 @@ import {
   onPointerOverHandler,
   onTouchOverHandler,
   onPointerUpListener,
-  onPointerLeaveHandler,
   onContextMenuHandler,
 } from './handleEvents';
 
@@ -62,6 +61,14 @@ const DndList = () => {
   ] = useState(null);
 
 
+  /* onPointerLeave={ () => onPointerLeaveHandler(
+    element,
+    endOfGesture,
+    setElement,
+    setTriggeredElement,
+  ) } */
+
+
   return (
     <>
       <ul
@@ -70,12 +77,6 @@ const DndList = () => {
           styles.listItem,
           element,
           setElement,
-        ) }
-        onPointerLeave={ () => onPointerLeaveHandler(
-          element,
-          endOfGesture,
-          setElement,
-          setTriggeredElement,
         ) }
         onPointerMove={ event => onPointerMoveHandler(event, element) }
         onTouchMove={ event => onTouchOverHandler(

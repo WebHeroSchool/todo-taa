@@ -20,18 +20,6 @@ const TodoItem = props => {
     inputValue,
     setInputvalue,
   ] = useState(props.value);
-  const [
-    isDrag,
-    setIsDrag,
-  ] = useState(false);
-  const [
-    toUpAnimation,
-    setToUpAnimation,
-  ] = useState(false);
-  const [
-    toBottomAnimation,
-    setToBottomAnimation,
-  ] = useState(false);
 
   useEffect(() => {
     itemEl.current.focus();
@@ -39,49 +27,15 @@ const TodoItem = props => {
     props.isEditable,
   ]);
 
-  const handleDragStart = () => {
-    props.setCurrentItem(props.order);
-    props.setCurrentHeight(listEl.current.clientHeight);
-  };
-  const handleDragEnd = () => {
-    setIsDrag(false);
-  };
-  const handleDragLeave = () => {
-    setIsDrag(false);
-    setToUpAnimation(false);
-    setToBottomAnimation(false);
-  };
-  const handleDragOver = () => {
-    event.preventDefault();
-    if (props.order !== props.currentItem) {
-      setIsDrag(true);
-      setToUpAnimation(props.order < props.currentItem);
-      setToBottomAnimation(props.order > props.currentItem);
-    }
-  };
-  const handleDrop = () => {
-    props.setOrderItems(props.currentItem, props.order);
-    setIsDrag(false);
-    setToUpAnimation(false);
-    setToBottomAnimation(false);
-  };
-
 
   return (
     <li
+      onPointerDown={ event => console.log(event) }
       ref={ listEl }
       className = { classNames({
         [styles.item]: true,
         [styles.done]: props.isDone,
-        [styles.toUpAnimation]: toUpAnimation,
-        [styles.toBottomAnimation]: toBottomAnimation,
       }) }
-      draggable={ !props.isSort }
-      onDragEnd={ handleDragEnd }
-      onDragLeave={ handleDragLeave }
-      onDragOver={ handleDragOver }
-      onDragStart={ handleDragStart }
-      onDrop={ handleDrop }
     >
       <Checkbox
         style={{
@@ -98,8 +52,6 @@ const TodoItem = props => {
           ref={ itemEl }
           className={ classNames({
             [styles.itemValue]: true,
-            [styles.isDrag]: isDrag,
-            [styles.unselectable]: props.isSort,
             [styles.wrongInputValue]: props.isWrongValue,
           }) }
           key={ props.id }

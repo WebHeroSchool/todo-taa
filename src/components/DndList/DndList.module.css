@@ -1,9 +1,0 @@
-.listItem {
-  margin: .5rem;
-  padding: .5rem;
-  border: dotted 1px #f50057;
-  touch-action: none;
-  user-select: none;
-  box-sizing: border-box;
-  /*transition: transform 1s ease-out;*/
-}

@@ -3,7 +3,6 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import styles from './DndList.module.css';
 
 import {
   endOfGesture,
@@ -18,6 +17,8 @@ import {
   onContextMenuHandler,
   onPointerLeaveHandler,
 } from './handleEvents';
+
+import TodoItemContainer from '../TodoItem/TodoItemContainer';
 
 
 const list = [
@@ -88,13 +89,19 @@ const DndList = () => {
     element,
   ]);
 
+  useEffect(() => {
+    console.log(element);
+  }, [
+    element,
+  ]);
+
 
   return (
     <>
       <ul ref={ ulElement }
         onPointerDown={ event => onPointerDownHandler(
           event.target,
-          styles.listItem,
+          'TodoItem_item__2olry',
           element,
           setElement,
         ) }
@@ -102,13 +109,13 @@ const DndList = () => {
         onTouchMove={ event => onTouchOverHandler(
           event,
           element,
-          styles.listItem,
+          'TodoItem_item__2olry',
           triggeredElement,
           setTriggeredElement,
         ) }
         onPointerOver={ event => onPointerOverHandler(
           event,
-          styles.listItem,
+          'TodoItem_item__2olry',
           element,
           setTriggeredElement,
         ) }
@@ -123,13 +130,11 @@ const DndList = () => {
       >
         {
           list.map(
-            element => (
-              <li
-                className={ styles.listItem }
-                key={ element.value }
-              >
-                { element.value }
-              </li>
+            item => (
+              <TodoItemContainer
+                key={ item }
+                { ...item }
+              />
             )
           )
         }

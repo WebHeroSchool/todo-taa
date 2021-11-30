@@ -17,7 +17,9 @@ export const onPointerMoveHandler = (event, element) => {
 
 
 export const onPointerDownHandler = (eventTarget,
-  style, element, newElement) => {
+  style, element, setElement) => {
+  console.log(style);
+  console.log(eventTarget);
   if (eventTarget.className === style) {
     eventTarget.parentElement.style.height = `${
       eventTarget.parentElement.offsetHeight}px`;
@@ -28,7 +30,7 @@ export const onPointerDownHandler = (eventTarget,
         eventTarget.nextElementSibling, eventTarget.offsetHeight);
     }
     eventTarget.style.position = 'fixed';
-    newElement(eventTarget);
+    setElement(eventTarget);
   }
 };
 

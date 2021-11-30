@@ -7,26 +7,15 @@
   max-height: 100%;
   margin-bottom: 1rem;
   transition: transform, linear, .2s;
-}
-
-.isDrag {
-  box-shadow: 0 8px 8px -4px #223c5033;
-  border: 1px dotted var(--active-button-color);
-  border-radius: 0.3rem;
+  touch-action: none;
+  user-select: none;
+  box-sizing: border-box;
 }
 
 .itemValueWrapper {
   display: flex;
   flex-direction: column;
   width: 80%;
-}
-
-.toUpAnimation {
-  transform: translate(2rem, -.6rem) scale(1.1);
-}
-
-.toBottomAnimation {
-  transform: translate(2rem, .6rem) scale(1.1);
 }
 
 .itemValue {
@@ -51,15 +40,6 @@
 .itemValue[contenteditable] {
     -webkit-user-select: auto;
     user-select: auto;
-}
-
-.unselectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .done {

@@ -16,6 +16,7 @@ import {
   onTouchOverHandler,
   onPointerUpListener,
   onContextMenuHandler,
+  onPointerLeaveHandler,
 } from './handleEvents';
 
 
@@ -51,13 +52,6 @@ const list = [
 ];
 
 
-const onHtmlUpHandler = (element, event) => {
-  console.log(element.current);
-  console.log(event.target);
-  console.log(element.current === event.target);
-};
-
-
 const DndList = () => {
   const [
     element,
@@ -74,22 +68,25 @@ const DndList = () => {
 
 
   useEffect(() => {
-    const newLog = onHtmlUpHandler.bind(event, ulElement);
+    const onHtmlUpHandler = onPointerLeaveHandler.bind(
+      event,
+      ulElement,
+      element,
+      endOfGesture,
+      setElement,
+      setTriggeredElement,
+    );
 
-    document.documentElement.addEventListener('pointerup', newLog);
+
+    document.documentElement.addEventListener('pointerup', onHtmlUpHandler);
 
     return () => {
-      document.documentElement.removeEventListener('pointerup', newLog);
+      document.documentElement.removeEventListener('pointerup',
+        onHtmlUpHandler);
     };
-  }, []);
-
-
-  /* onPointerLeave={ () => onPointerLeaveHandler(
+  }, [
     element,
-    endOfGesture,
-    setElement,
-    setTriggeredElement,
-  ) } */
+  ]);
 
 
   return (

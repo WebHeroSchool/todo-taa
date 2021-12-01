@@ -17,8 +17,8 @@ export const onPointerMoveHandler = (event, element) => {
 
 
 export const onPointerDownHandler = (eventTarget,
-  style, element, newElement) => {
-  if (eventTarget.className === style) {
+  ulElement, element, newElement) => {
+  if (ulElement.current.contains(eventTarget)) {
     eventTarget.parentElement.style.height = `${
       eventTarget.parentElement.offsetHeight}px`;
     eventTarget.style.pointerEvents = 'none';
@@ -34,15 +34,18 @@ export const onPointerDownHandler = (eventTarget,
 
 
 export const onPointerOverHandler = (event,
-  style, element, setTriggeredElement) => {
-  if (document.elementFromPoint(
-    event.clientX, event.clientY).className === style) {
-    const height = getHeight(event.target);
+  ulElement, element, setTriggeredElement) => {
+  const eventTarget = document.elementFromPoint(
+    event.clientX, event.clientY).closest('li');
+
+  if (ulElement.current.contains(eventTarget)) {
+    const height = getHeight(eventTarget);
 
     if (element) {
-      setTriggeredElement(event.target);
-      shift(element, event.target, height);
-      setTransition(event.target.parentElement.firstElementChild, .1);
+      console.log('test');
+      setTriggeredElement(eventTarget);
+      shift(element, eventTarget, height);
+      setTransition(eventTarget.parentElement.firstElementChild, .1);
     }
   }
 };
@@ -59,7 +62,7 @@ export const onTouchOverHandler = (event, element, style,
     if (event.currentTarget.lastElementChild === triggeredElement) {
       setTriggeredElement(null);
     } else {
-      setTriggeredElement(elementUnderPointer);
+      setTriggeredElement(elementUnderPointer.closest('li'));
     }
     shift(element, elementUnderPointer, getHeight(elementUnderPointer));
   }

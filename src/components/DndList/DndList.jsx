@@ -67,7 +67,6 @@ const DndList = ({
     setTriggeredElement,
   ] = useState(null);
 
-
   const ulElement = useRef(null);
 
 
@@ -96,8 +95,8 @@ const DndList = ({
   return (
     <ul ref={ ulElement }
       onPointerDown={ event => onPointerDownHandler(
-        event.target,
-        styles.listItem,
+        event.target.closest('li'),
+        ulElement,
         element,
         setElement,
       ) }
@@ -111,7 +110,7 @@ const DndList = ({
       ) }
       onPointerOver={ event => onPointerOverHandler(
         event,
-        styles.listItem,
+        ulElement,
         element,
         setTriggeredElement,
       ) }

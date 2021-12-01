@@ -17,18 +17,20 @@ export const onPointerMoveHandler = (event, element) => {
 
 
 export const onPointerDownHandler = (eventTarget,
-  ulElement, element, newElement) => {
+  ulElement, element, setElement) => {
   if (ulElement.current.contains(eventTarget)) {
     eventTarget.parentElement.style.height = `${
       eventTarget.parentElement.offsetHeight}px`;
     eventTarget.style.pointerEvents = 'none';
     eventTarget.style.width = `${eventTarget.offsetWidth}px`;
+
     if (eventTarget.nextElementSibling) {
       shift(element,
         eventTarget.nextElementSibling, eventTarget.offsetHeight);
     }
+
     eventTarget.style.position = 'fixed';
-    newElement(eventTarget);
+    setElement(eventTarget);
   }
 };
 

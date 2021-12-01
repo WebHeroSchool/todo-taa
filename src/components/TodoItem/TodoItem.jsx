@@ -57,7 +57,7 @@ const TodoItem = props => {
           key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
-          onClick={ props.onSingleDoubleClick(
+          onPointerDown={ props.onSingleDoubleClick(
             () => props.onChangeCheckbox(),
             () => props.onEditItem(props.id, inputValue),
           ) }

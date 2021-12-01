@@ -44,7 +44,6 @@ export const onPointerOverHandler = (event,
     const height = getHeight(eventTarget);
 
     if (element) {
-      console.log('test');
       setTriggeredElement(eventTarget);
       shift(element, eventTarget, height);
       setTransition(eventTarget.parentElement.firstElementChild, .1);

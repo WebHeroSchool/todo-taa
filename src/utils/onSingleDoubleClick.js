@@ -4,6 +4,7 @@ const onSingleDoubleClick = (onSingleClickHandler, onDoubleClickHandler) => {
   const delay = 200;
 
   return function () {
+    console.log(event.type);
     if (!time) {
       time = Date.now();
       timerId = setTimeout(() => {

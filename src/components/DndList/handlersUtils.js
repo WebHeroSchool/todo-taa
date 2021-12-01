@@ -10,7 +10,6 @@ export const isSlideToDown = (indexOfMovable, indexOfStatic) => {
 
 
 export const shift = (pointer, thisElement, height, lastModify = false) => {
-  console.log(thisElement);
   if (thisElement !== pointer
       || (thisElement === pointer && lastModify)) {
     thisElement.style.transform = `translateY(${height ?

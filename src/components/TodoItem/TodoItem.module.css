@@ -7,6 +7,7 @@
   max-height: 100%;
   margin-bottom: 1rem;
   transition: transform, linear, .2s;
+  user-select: none;
 }
 
 .isDrag {

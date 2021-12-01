@@ -1,10 +1,12 @@
-import styles from './ItemList.module.css';
-import TodoItemContainer from '../TodoItem/TodoItemContainer';
+// import styles from './ItemList.module.css';
+// import TodoItemContainer from '../TodoItem/TodoItemContainer';
 import ErrorMessages from '../ErrorMessages/ErrorMessages';
 import withMargin from '../hoc/withMargin/withMargin';
-import {
-  useState,
-} from 'react';
+import DndList from '../DndList/DndList';
+
+// import {
+//   useState,
+// } from 'react';
 
 
 const ItemList = props => {
@@ -14,21 +16,22 @@ const ItemList = props => {
     props,
   );
 
-  const [
-    currentItem,
-    setCurrentItem,
-  ] = useState(0);
-  const [
-    currentHeight,
-    setCurrentHeight,
-  ] = useState(0);
+  // const [
+  //   currentItem,
+  //   setCurrentItem,
+  // ] = useState(0);
+  // const [
+  //   currentHeight,
+  //   setCurrentHeight,
+  // ] = useState(0);
 
 
   const list = props.items.filter(item => item.filter);
 
   if (list.length > 0) {
     return (
-      <ul className={ styles.list } >
+      <DndList list={ list } />
+      /* <ul className={ styles.list } >
         {list.map(
           item => (
             <TodoItemContainer
@@ -41,7 +44,7 @@ const ItemList = props => {
             />
           )
         )}
-      </ul>
+      </ul> */
     );
   } return (
     <>

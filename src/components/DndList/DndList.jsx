@@ -19,8 +19,10 @@ import {
   onPointerLeaveHandler,
 } from './handleEvents';
 
+import TodoItemContainer from '../TodoItem/TodoItemContainer';
 
-const list = [
+
+const initialList = [
   {
     value: 1,
     order: 1,
@@ -52,7 +54,9 @@ const list = [
 ];
 
 
-const DndList = () => {
+const DndList = ({
+  list = initialList,
+}) => {
   const [
     element,
     setElement,
@@ -90,51 +94,57 @@ const DndList = () => {
 
 
   return (
-    <>
-      <ul ref={ ulElement }
-        onPointerDown={ event => onPointerDownHandler(
-          event.target,
-          styles.listItem,
-          element,
-          setElement,
-        ) }
-        onPointerMove={ event => onPointerMoveHandler(event, element) }
-        onTouchMove={ event => onTouchOverHandler(
-          event,
-          element,
-          styles.listItem,
-          triggeredElement,
-          setTriggeredElement,
-        ) }
-        onPointerOver={ event => onPointerOverHandler(
-          event,
-          styles.listItem,
-          element,
-          setTriggeredElement,
-        ) }
-        onPointerUp={ () => onPointerUpListener(
-          element,
-          triggeredElement,
-          endOfGesture,
-          setElement,
-          setTriggeredElement,
-        ) }
-        onContextMenu={ onContextMenuHandler }
-      >
-        {
-          list.map(
-            element => (
-              <li
-                className={ styles.listItem }
-                key={ element.value }
-              >
-                { element.value }
-              </li>
-            )
+    <ul ref={ ulElement }
+      onPointerDown={ event => onPointerDownHandler(
+        event.target,
+        styles.listItem,
+        element,
+        setElement,
+      ) }
+      onPointerMove={ event => onPointerMoveHandler(event, element) }
+      onTouchMove={ event => onTouchOverHandler(
+        event,
+        element,
+        styles.listItem,
+        triggeredElement,
+        setTriggeredElement,
+      ) }
+      onPointerOver={ event => onPointerOverHandler(
+        event,
+        styles.listItem,
+        element,
+        setTriggeredElement,
+      ) }
+      onPointerUp={ () => onPointerUpListener(
+        element,
+        triggeredElement,
+        endOfGesture,
+        setElement,
+        setTriggeredElement,
+      ) }
+      onContextMenu={ onContextMenuHandler }
+    >
+      {
+        list.map(
+          item => (
+            /* <li
+              className={ styles.listItem }
+              key={ element.value }
+            >
+              { element.value }
+            </li> */
+            <TodoItemContainer
+              key={ item.id.toString() }
+              // currentItem={ currentItem }
+              // setCurrentItem={ setCurrentItem }
+              // currentHeight={ currentHeight }
+              // setCurrentHeight={ setCurrentHeight }
+              { ...item }
+            />
           )
-        }
-      </ul>
-    </>
+        )
+      }
+    </ul>
   );
 };
 

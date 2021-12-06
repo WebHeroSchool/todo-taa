@@ -3,7 +3,6 @@ import {
   useEffect,
   useRef,
 } from 'react';
-import styles from './DndList.module.css';
 
 import {
   endOfGesture,
@@ -22,40 +21,8 @@ import {
 import TodoItemContainer from '../TodoItem/TodoItemContainer';
 
 
-const initialList = [
-  {
-    value: 1,
-    order: 1,
-  },
-  {
-    value: 2,
-    order: 2,
-  },
-  {
-    value: 3,
-    order: 3,
-  },
-  {
-    value: 4,
-    order: 4,
-  },
-  {
-    value: 5,
-    order: 5,
-  },
-  {
-    value: 6,
-    order: 6,
-  },
-  {
-    value: 7,
-    order: 7,
-  },
-];
-
-
 const DndList = ({
-  list = initialList,
+  list,
 }) => {
   const [
     element,
@@ -104,7 +71,7 @@ const DndList = ({
       onTouchMove={ event => onTouchOverHandler(
         event,
         element,
-        styles.listItem,
+        ulElement,
         triggeredElement,
         setTriggeredElement,
       ) }

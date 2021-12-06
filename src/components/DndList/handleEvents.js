@@ -54,18 +54,18 @@ export const onPointerOverHandler = (event,
 };
 
 
-export const onTouchOverHandler = (event, element, style,
+export const onTouchOverHandler = (event, element, ulElement,
   triggeredElement, setTriggeredElement) => {
   const elementUnderPointer = document.elementFromPoint(
     event.touches[0].pageX,
-    event.touches[0].pageY);
+    event.touches[0].pageY).closest('li');
 
   if (element && elementUnderPointer
-      && elementUnderPointer.className === style) {
+      && ulElement.current.contains(elementUnderPointer)) {
     if (event.currentTarget.lastElementChild === triggeredElement) {
       setTriggeredElement(null);
     } else {
-      setTriggeredElement(elementUnderPointer.closest('li'));
+      setTriggeredElement(elementUnderPointer);
     }
     shift(element, elementUnderPointer, getHeight(elementUnderPointer));
   }

@@ -31,7 +31,6 @@ const withFetch = (Component, props) => {
       })
       .catch(data => props.setFetchError('fetch error', data))
       .then(() => props.setIsLoading(false));
-    // .then(() => props.setIsSubLoading(false));
   }, [
     props.fetch.isRefresh,
     props.url,

@@ -93,18 +93,8 @@ const DndList = ({
       {
         list.map(
           item => (
-            /* <li
-              className={ styles.listItem }
-              key={ element.value }
-            >
-              { element.value }
-            </li> */
             <TodoItemContainer
               key={ item.id.toString() }
-              // currentItem={ currentItem }
-              // setCurrentItem={ setCurrentItem }
-              // currentHeight={ currentHeight }
-              // setCurrentHeight={ setCurrentHeight }
               { ...item }
             />
           )

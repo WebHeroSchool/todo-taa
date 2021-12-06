@@ -42,6 +42,7 @@ const TodoItem = props => {
         }}
         checked={ props.isDone }
         name={ `checked ${props.value.toString()}` }
+        // onPointerDown={ event => event.stopPropagation() }
         onChange={ props.onChangeCheckbox }
       />
       <div
@@ -57,7 +58,8 @@ const TodoItem = props => {
           key={ props.id }
           contentEditable={ props.isEditable }
           suppressContentEditableWarning={ true }
-          onPointerDown={ props.onSingleDoubleClick(
+          // onPointerDown={ event => event.stopPropagation() }
+          onClick={ props.onSingleDoubleClick(
             () => props.onChangeCheckbox(),
             () => props.onEditItem(props.id, inputValue),
           ) }

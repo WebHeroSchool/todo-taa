@@ -9,6 +9,8 @@ import {
 
 export const onPointerMoveHandler = (event, element) => {
   if (element) {
+    const top = element.getBoundingClientRect().top;
+    console.log(top);
     const shift = event.clientY - element.offsetTop -
       (element.scrollHeight * .5);
     element.style.transform = `translateY(${shift}px)`;

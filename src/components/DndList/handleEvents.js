@@ -7,10 +7,16 @@ import {
 } from './handlersUtils';
 
 
+const setElementPosition = element => {
+  const elementTop = element.getBoundingClientRect().top;
+  const delta = event.pageY - elementTop - (element.offsetHeight * .5);
+
+  return element.style.transform = `translateY(${delta}px)`;
+};
+
+
 export const onPointerMoveHandler = (event, element) => {
   if (element) {
-    const top = element.getBoundingClientRect().top;
-    console.log(top);
     const shift = event.clientY - element.offsetTop -
       (element.scrollHeight * .5);
     element.style.transform = `translateY(${shift}px)`;
@@ -22,6 +28,8 @@ export const onPointerDownHandler = (eventTarget,
   ulElement, element, setElement) => {
   if (!event.target.closest('span')) {
     if (ulElement.current.contains(eventTarget)) {
+      setElementPosition(eventTarget);
+
       eventTarget.parentElement.style.height = `${
         eventTarget.parentElement.offsetHeight}px`;
       eventTarget.style.pointerEvents = 'none';

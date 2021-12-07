@@ -14,7 +14,10 @@ const ItemList = props => {
 
   if (list.length > 0) {
     return (
-      <DndList list={ list } />
+      <DndList
+        list={ list }
+        isDisabled={ props.isSort }
+      />
     );
   } return (
     <ErrorMessagesWithMargin errorType="empty filter" />

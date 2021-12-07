@@ -23,6 +23,7 @@ import TodoItemContainer from '../TodoItem/TodoItemContainer';
 
 const DndList = ({
   list,
+  isDisabled,
 }) => {
   const [
     element,
@@ -61,12 +62,16 @@ const DndList = ({
 
   return (
     <ul ref={ ulElement }
-      onPointerDown={ event => onPointerDownHandler(
-        event.target.closest('li'),
-        ulElement,
-        element,
-        setElement,
-      ) }
+      onPointerDown={ event => {
+        if (!isDisabled) {
+          return onPointerDownHandler(
+            event.target.closest('li'),
+            ulElement,
+            element,
+            setElement,
+          );
+        };
+      } }
       onPointerMove={ event => onPointerMoveHandler(event, element) }
       onTouchMove={ event => onTouchOverHandler(
         event,

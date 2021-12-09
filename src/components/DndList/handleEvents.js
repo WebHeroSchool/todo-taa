@@ -4,15 +4,8 @@ import {
   shift,
   setTransition,
   getHeight,
+  setElementPosition,
 } from './handlersUtils';
-
-
-const setElementPosition = element => {
-  const elementTop = element.getBoundingClientRect().top;
-  const delta = event.pageY - elementTop - (element.offsetHeight * .5);
-
-  return element.style.transform = `translateY(${delta}px)`;
-};
 
 
 export const onPointerMoveHandler = (event, element) => {
@@ -28,8 +21,6 @@ export const onPointerDownHandler = (eventTarget,
   ulElement, element, setElement) => {
   if (!event.target.closest('span')) {
     if (ulElement.current.contains(eventTarget)) {
-      setElementPosition(eventTarget);
-
       eventTarget.parentElement.style.height = `${
         eventTarget.parentElement.offsetHeight}px`;
       eventTarget.style.pointerEvents = 'none';
@@ -41,6 +32,7 @@ export const onPointerDownHandler = (eventTarget,
       }
 
       eventTarget.style.position = 'fixed';
+      setElementPosition(eventTarget, event.offsetY);
       setElement(eventTarget);
     }
   }

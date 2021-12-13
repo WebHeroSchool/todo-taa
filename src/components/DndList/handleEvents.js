@@ -4,6 +4,7 @@ import {
   shift,
   setTransition,
   getHeight,
+  setElementPosition,
 } from './handlersUtils';
 
 
@@ -17,47 +18,61 @@ export const onPointerMoveHandler = (event, element) => {
 
 
 export const onPointerDownHandler = (eventTarget,
-  style, element, setElement) => {
-  console.log(style);
-  console.log(eventTarget);
-  if (eventTarget.className === style) {
-    eventTarget.parentElement.style.height = `${
-      eventTarget.parentElement.offsetHeight}px`;
-    eventTarget.style.pointerEvents = 'none';
-    eventTarget.style.width = `${eventTarget.offsetWidth}px`;
-    if (eventTarget.nextElementSibling) {
-      shift(element,
-        eventTarget.nextElementSibling, eventTarget.offsetHeight);
+  ulElement, element, setElement) => {
+  if (!event.target.closest('span')) {
+    if (ulElement.current.contains(eventTarget)) {
+      eventTarget.parentElement.style.height = `${
+        eventTarget.parentElement.offsetHeight}px`;
+      eventTarget.style.pointerEvents = 'none';
+      eventTarget.style.width = `${eventTarget.offsetWidth}px`;
+
+      if (eventTarget.nextElementSibling) {
+        shift(element,
+          eventTarget.nextElementSibling, eventTarget.offsetHeight);
+      }
+
+      eventTarget.style.position = 'fixed';
+      setElementPosition(eventTarget, event.offsetY);
+      setElement(eventTarget);
     }
-    eventTarget.style.position = 'fixed';
-    setElement(eventTarget);
   }
 };
 
 
 export const onPointerOverHandler = (event,
-  style, element, setTriggeredElement) => {
-  if (document.elementFromPoint(
-    event.clientX, event.clientY).className === style) {
-    const height = getHeight(event.target);
+  ulElement, element, setTriggeredElement) => {
+  const eventTarget = document.elementFromPoint(
+    event.clientX, event.clientY).closest('li');
+
+  if (ulElement.current.contains(eventTarget)) {
+    const height = getHeight(eventTarget);
 
     if (element) {
-      setTriggeredElement(event.target);
-      shift(element, event.target, height);
-      setTransition(event.target.parentElement.firstElementChild, .1);
+      setTriggeredElement(eventTarget);
+      shift(element, eventTarget, height);
+      setTransition(eventTarget.parentElement.firstElementChild, .1);
     }
   }
 };
 
 
-export const onTouchOverHandler = (event, element, style,
+export const onTouchOverHandler = (event, element, ulElement,
   triggeredElement, setTriggeredElement) => {
-  const elementUnderPointer = document.elementFromPoint(
+  const elFromPointer = document.elementFromPoint(
     event.touches[0].pageX,
     event.touches[0].pageY);
 
-  if (element && elementUnderPointer
-      && elementUnderPointer.className === style) {
+  const closestLi = () => {
+    if (elFromPointer) {
+      return elFromPointer.closest('li');
+    }
+  };
+
+  const elementUnderPointer = closestLi();
+
+
+  if (element
+      && ulElement.current.contains(elementUnderPointer)) {
     if (event.currentTarget.lastElementChild === triggeredElement) {
       setTriggeredElement(null);
     } else {

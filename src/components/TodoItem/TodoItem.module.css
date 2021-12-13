@@ -6,10 +6,15 @@
   width: 95%;
   max-height: 100%;
   margin-bottom: 1rem;
-  transition: transform, linear, .2s;
   touch-action: none;
   user-select: none;
   box-sizing: border-box;
+}
+
+.isDrag {
+  box-shadow: 0 8px 8px -4px #223c5033;
+  border: 1px dotted var(--active-button-color);
+  border-radius: 0.3rem;
 }
 
 .itemValueWrapper {

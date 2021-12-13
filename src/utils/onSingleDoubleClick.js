@@ -3,6 +3,7 @@ const onSingleDoubleClick = (onSingleClickHandler, onDoubleClickHandler) => {
   let timerId;
   const delay = 200;
 
+
   return function () {
     if (!time) {
       time = Date.now();

@@ -52,6 +52,7 @@ const TodoItem = props => {
           ref={ itemEl }
           className={ classNames({
             [styles.itemValue]: true,
+            [styles.unselectable]: props.isSort,
             [styles.wrongInputValue]: props.isWrongValue,
           }) }
           key={ props.id }

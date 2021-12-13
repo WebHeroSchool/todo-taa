@@ -9,11 +9,18 @@ export const isSlideToDown = (indexOfMovable, indexOfStatic) => {
 };
 
 
+export const setElementPosition = (element, offsetY) => {
+  const delta = offsetY - (element.offsetHeight * .5);
+
+  return element.style.transform = `translateY(${delta}px)`;
+};
+
+
 export const shift = (pointer, thisElement, height, lastModify = false) => {
   if (thisElement !== pointer
       || (thisElement === pointer && lastModify)) {
     thisElement.style.transform = `translateY(${height ?
-      height + 8 : height}px)`;
+      height + 16 : height}px)`;
   }
   let next;
   if (height) {

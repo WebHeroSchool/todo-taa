@@ -58,11 +58,20 @@ export const onPointerOverHandler = (event,
 
 export const onTouchOverHandler = (event, element, ulElement,
   triggeredElement, setTriggeredElement) => {
-  const elementUnderPointer = document.elementFromPoint(
+  const elFromPointer = document.elementFromPoint(
     event.touches[0].pageX,
-    event.touches[0].pageY).closest('li');
+    event.touches[0].pageY);
 
-  if (element && elementUnderPointer
+  const closestLi = () => {
+    if (elFromPointer) {
+      return elFromPointer.closest('li');
+    }
+  };
+
+  const elementUnderPointer = closestLi();
+
+
+  if (element
       && ulElement.current.contains(elementUnderPointer)) {
     if (event.currentTarget.lastElementChild === triggeredElement) {
       setTriggeredElement(null);

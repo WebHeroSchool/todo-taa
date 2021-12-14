@@ -41,13 +41,15 @@ export const onPointerDownHandler = (event,
   };
 
 
-  if (event.pointerType === 'touch') {
+  if (event.pointerType === 'touch'
+    && event.target.tagName === 'DIV'
+    && !event.target.firstElementChild.isContentEditable) {
     const timer = setTimeout(() => {
       eventTarget.style.backgroundColor = 'var(--dragging-element)';
       doHandler();
     }, 200);
     setTimerId(timer);
-  } else {
+  } else if (event.pointerType !== 'touch') {
     doHandler();
   };
 };

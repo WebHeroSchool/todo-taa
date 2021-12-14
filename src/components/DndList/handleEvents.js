@@ -17,25 +17,38 @@ export const onPointerMoveHandler = (event, element) => {
 };
 
 
-export const onPointerDownHandler = (eventTarget,
+export const onPointerDownHandler = (event,
   ulElement, element, setElement) => {
-  if (!event.target.closest('span')) {
-    if (ulElement.current.contains(eventTarget)) {
-      eventTarget.parentElement.style.height = `${
-        eventTarget.parentElement.offsetHeight}px`;
-      eventTarget.style.pointerEvents = 'none';
-      eventTarget.style.width = `${eventTarget.offsetWidth}px`;
+  const eventTarget = event.target.closest('li');
+  const doHandler = () => {
+    if (!event.target.closest('span')) {
+      if (ulElement.current.contains(eventTarget)) {
+        eventTarget.parentElement.style.height = `${
+          eventTarget.parentElement.offsetHeight}px`;
+        eventTarget.style.pointerEvents = 'none';
+        eventTarget.style.width = `${eventTarget.offsetWidth}px`;
 
-      if (eventTarget.nextElementSibling) {
-        shift(element,
-          eventTarget.nextElementSibling, eventTarget.offsetHeight);
+        if (eventTarget.nextElementSibling) {
+          shift(element,
+            eventTarget.nextElementSibling, eventTarget.offsetHeight);
+        }
+
+        eventTarget.style.position = 'fixed';
+        setElementPosition(eventTarget, event.nativeEvent.offsetY);
+        setElement(eventTarget);
       }
-
-      eventTarget.style.position = 'fixed';
-      setElementPosition(eventTarget, event.offsetY);
-      setElement(eventTarget);
     }
-  }
+  };
+
+
+  if (event.pointerType === 'touch') {
+    setTimeout(() => {
+      eventTarget.style.backgroundColor = '#33ff002e';
+      doHandler();
+    }, 1000);
+  } else {
+    doHandler();
+  };
 };
 
 

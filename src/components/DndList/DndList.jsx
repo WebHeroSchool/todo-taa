@@ -65,7 +65,7 @@ const DndList = ({
       onPointerDown={ event => {
         if (!isDisabled) {
           return onPointerDownHandler(
-            event.target.closest('li'),
+            event,
             ulElement,
             element,
             setElement,

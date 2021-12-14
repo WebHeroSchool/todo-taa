@@ -35,6 +35,11 @@ const DndList = ({
     setTriggeredElement,
   ] = useState(null);
 
+  const [
+    timerId,
+    setTimerId,
+  ] = useState(null);
+
   const ulElement = useRef(null);
 
 
@@ -69,6 +74,7 @@ const DndList = ({
             ulElement,
             element,
             setElement,
+            setTimerId,
           );
         };
       } }
@@ -79,6 +85,7 @@ const DndList = ({
         ulElement,
         triggeredElement,
         setTriggeredElement,
+        timerId,
       ) }
       onPointerOver={ event => onPointerOverHandler(
         event,
@@ -92,6 +99,7 @@ const DndList = ({
         endOfGesture,
         setElement,
         setTriggeredElement,
+        timerId,
       ) }
       onContextMenu={ onContextMenuHandler }
     >

@@ -18,7 +18,7 @@ export const onPointerMoveHandler = (event, element) => {
 
 
 export const onPointerDownHandler = (event,
-  ulElement, element, setElement) => {
+  ulElement, element, setElement, setTimerId) => {
   const eventTarget = event.target.closest('li');
   const doHandler = () => {
     if (!event.target.closest('span')) {
@@ -42,10 +42,11 @@ export const onPointerDownHandler = (event,
 
 
   if (event.pointerType === 'touch') {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       eventTarget.style.backgroundColor = '#33ff002e';
       doHandler();
     }, 1000);
+    setTimerId(timer);
   } else {
     doHandler();
   };
@@ -70,7 +71,11 @@ export const onPointerOverHandler = (event,
 
 
 export const onTouchOverHandler = (event, element, ulElement,
-  triggeredElement, setTriggeredElement) => {
+  triggeredElement, setTriggeredElement, timerId) => {
+  if (event.type === 'touchmove') {
+    clearTimeout(timerId);
+  }
+
   const elFromPointer = document.elementFromPoint(
     event.touches[0].pageX,
     event.touches[0].pageY);
@@ -97,7 +102,11 @@ export const onTouchOverHandler = (event, element, ulElement,
 
 
 export const onPointerUpListener = (element,
-  triggeredElement, endOfGesture, setElement, setTriggeredElement) => {
+  triggeredElement, endOfGesture, setElement, setTriggeredElement, timerId) => {
+  if (event.pointerType === 'touch') {
+    clearTimeout(timerId);
+  }
+
   if (element && triggeredElement) {
     let where;
     const isDown = isSlideToDown(searchIndex(element),

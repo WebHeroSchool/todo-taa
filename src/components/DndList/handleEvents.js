@@ -45,7 +45,7 @@ export const onPointerDownHandler = (event,
     const timer = setTimeout(() => {
       eventTarget.style.backgroundColor = 'var(--dragging-element)';
       doHandler();
-    }, 1000);
+    }, 200);
     setTimerId(timer);
   } else {
     doHandler();

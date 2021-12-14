@@ -61,6 +61,7 @@ export const endOfGesture = (element, setElement, setTriggeredElement) => {
   element.style.width = '';
   element.style.position = '';
   element.style.pointerEvents = '';
+  element.style.backgroundColor = '';
   shift(element, element.parentElement.lastElementChild, 0, true);
   setTransition(element.parentElement.firstElementChild, 0);
   setElement(null);

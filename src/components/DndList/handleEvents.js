@@ -43,7 +43,7 @@ export const onPointerDownHandler = (event,
 
   if (event.pointerType === 'touch') {
     const timer = setTimeout(() => {
-      eventTarget.style.backgroundColor = '#33ff002e';
+      eventTarget.style.backgroundColor = 'var(--dragging-element)';
       doHandler();
     }, 1000);
     setTimerId(timer);

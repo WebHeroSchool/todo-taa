@@ -42,8 +42,9 @@ export const onPointerDownHandler = (event,
 
 
   if (event.pointerType === 'touch'
-    && event.target.tagName === 'DIV'
-    && !event.target.firstElementChild.isContentEditable) {
+    && event.target.classList[0] === 'draggable'
+    && !event.target.previousElementSibling
+      .previousElementSibling.isContentEditable) {
     const timer = setTimeout(() => {
       eventTarget.style.backgroundColor = 'var(--dragging-element)';
       doHandler();

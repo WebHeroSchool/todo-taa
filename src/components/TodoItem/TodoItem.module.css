@@ -6,29 +6,19 @@
   width: 95%;
   max-height: 100%;
   margin-bottom: 1rem;
-  touch-action: none;
+  /*touch-action: none;*/
   user-select: none;
   box-sizing: border-box;
 }
 
-.isDrag {
-  box-shadow: 0 8px 8px -4px #223c5033;
-  border: 1px dotted var(--active-button-color);
-  border-radius: 0.3rem;
+.touchActionsOff {
+  touch-action: none;
 }
 
 .itemValueWrapper {
   display: flex;
   flex-direction: column;
   width: 80%;
-}
-
-.toUpAnimation {
-  transform: translate(2rem, -.6rem) scale(1.1);
-}
-
-.toBottomAnimation {
-  transform: translate(2rem, .6rem) scale(1.1);
 }
 
 .itemValue {
@@ -70,7 +60,7 @@
 }
 
 .deleteBtn {
-  opacity: 0;
+  /*opacity: 0;*/
   height: 100%;
   transition: opacity .4s ease-out !important;
 }

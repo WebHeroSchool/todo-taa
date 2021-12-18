@@ -80,11 +80,13 @@ const TodoItem = props => {
       <Button
         className={ styles.deleteBtn }
         variant="contained"
-        color="secondary"
         onClick={ props.onDeleteItem }
       >
         <DeleteForeverTwoToneIcon fontSize="medium" />
       </Button>
+      <div className={ classNames('draggable', styles.touchActionsOff) }>
+        aaaa
+      </div>
     </li>
   );
 };

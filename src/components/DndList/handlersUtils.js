@@ -57,7 +57,9 @@ export const getHeight = element => {
 };
 
 
-export const endOfGesture = (element, setElement, setTriggeredElement) => {
+export const endOfGesture = (element, setElement,
+  setTriggeredElement, ulElement) => {
+  ulElement.current.style.cursor = '';
   element.style.width = '';
   element.style.position = '';
   element.style.pointerEvents = '';

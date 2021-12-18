@@ -6,9 +6,12 @@
   width: 95%;
   max-height: 100%;
   margin-bottom: 1rem;
-  /*touch-action: none;*/
   user-select: none;
   box-sizing: border-box;
+}
+
+.draggable:hover {
+  cursor: move;
 }
 
 .touchActionsOff {

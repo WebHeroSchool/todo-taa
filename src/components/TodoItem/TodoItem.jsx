@@ -84,7 +84,11 @@ const TodoItem = props => {
       >
         <DeleteForeverTwoToneIcon fontSize="medium" />
       </Button>
-      <div className={ classNames('draggable', styles.touchActionsOff) }>
+      <div className={ classNames(
+        'draggable',
+        styles.touchActionsOff,
+        styles.draggable,
+      ) }>
         aaaa
       </div>
     </li>

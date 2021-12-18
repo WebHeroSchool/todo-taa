@@ -100,6 +100,7 @@ const DndList = ({
         setElement,
         setTriggeredElement,
         timerId,
+        ulElement,
       ) }
       onContextMenu={ onContextMenuHandler }
     >

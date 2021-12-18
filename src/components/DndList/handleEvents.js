@@ -23,6 +23,7 @@ export const onPointerDownHandler = (event,
   const doHandler = () => {
     if (!event.target.closest('span')) {
       if (ulElement.current.contains(eventTarget)) {
+        ulElement.current.style.cursor = 'move';
         eventTarget.parentElement.style.height = `${
           eventTarget.parentElement.offsetHeight}px`;
         eventTarget.style.pointerEvents = 'none';
@@ -104,8 +105,8 @@ export const onTouchOverHandler = (event, element, ulElement,
 };
 
 
-export const onPointerUpListener = (element,
-  triggeredElement, endOfGesture, setElement, setTriggeredElement, timerId) => {
+export const onPointerUpListener = (element, triggeredElement,
+  endOfGesture, setElement, setTriggeredElement, timerId, ulElement) => {
   if (event.pointerType === 'touch') {
     clearTimeout(timerId);
   }
@@ -126,7 +127,7 @@ export const onPointerUpListener = (element,
   }
 
   if (element) {
-    return endOfGesture(element, setElement, setTriggeredElement);
+    return endOfGesture(element, setElement, setTriggeredElement, ulElement);
   }
 };
 

@@ -5,6 +5,7 @@ import {
   Checkbox,
 } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
+import DragHandleIcon from '@material-ui/icons/DragHandle';
 import {
   useEffect,
   useState,
@@ -79,7 +80,6 @@ const TodoItem = props => {
       </div>
       <Button
         className={ styles.deleteBtn }
-        variant="contained"
         onClick={ props.onDeleteItem }
       >
         <DeleteForeverTwoToneIcon fontSize="medium" />
@@ -89,7 +89,7 @@ const TodoItem = props => {
         styles.touchActionsOff,
         styles.draggable,
       ) }>
-        aaaa
+        <DragHandleIcon className={ styles.DragHandleIcon } />
       </div>
     </li>
   );

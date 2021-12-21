@@ -20,8 +20,21 @@ export const onPointerMoveHandler = (event, element) => {
 export const onPointerDownHandler = (event,
   ulElement, element, setElement, setTimerId) => {
   const eventTarget = event.target.closest('li');
+
+  if (event.pointerType === 'mouse'
+    && event.target.closest('.draggable')) {
+    ulElement.current.querySelectorAll(
+      'button').forEach(item => item.style.pointerEvents = 'none');
+    ulElement.current.querySelectorAll(
+      '.draggable').forEach(item => {
+      if (!event.target.closest('div').contains(item)) {
+        item.style.pointerEvents = 'none';
+      }
+    });
+  };
+
   const doHandler = () => {
-    if (!event.target.closest('span')) {
+    if (event.target.closest('.draggable')) {
       if (ulElement.current.contains(eventTarget)) {
         ulElement.current.style.cursor = 'move';
         eventTarget.parentElement.style.height = `${
@@ -43,8 +56,8 @@ export const onPointerDownHandler = (event,
 
 
   if (event.pointerType === 'touch'
-    && event.target.classList[0] === 'draggable'
-    && !event.target.previousElementSibling
+    && event.target.parentElement.classList[0] === 'draggable'
+    && !event.target.parentElement.previousElementSibling
       .previousElementSibling.isContentEditable) {
     const timer = setTimeout(() => {
       eventTarget.style.backgroundColor = 'var(--dragging-element)';
@@ -140,7 +153,7 @@ export const onPointerLeaveHandler = (
   setTriggeredElement,
 ) => {
   if (ulElement.current !== event.target && element) {
-    return endOfGesture(element, setElement, setTriggeredElement);
+    return endOfGesture(element, setElement, setTriggeredElement, ulElement);
   }
 };
 

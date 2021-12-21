@@ -59,7 +59,11 @@ export const getHeight = element => {
 
 export const endOfGesture = (element, setElement,
   setTriggeredElement, ulElement) => {
-  ulElement.current.style.cursor = '';
+  ulElement.current.style.cursor = 'auto';
+  ulElement.current.querySelectorAll('button').forEach(
+    item => item.style.pointerEvents = '');
+  ulElement.current.querySelectorAll('.draggable').forEach(
+    item => item.style.pointerEvents = '');
   element.style.width = '';
   element.style.position = '';
   element.style.pointerEvents = '';

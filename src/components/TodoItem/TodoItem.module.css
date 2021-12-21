@@ -1,6 +1,5 @@
 .item {
   align-content: stretch;
-  color: #000000de;
   display: flex;
   justify-content: space-between;
   width: 95%;
@@ -10,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.draggable:hover {
+.draggable {
   cursor: move;
 }
 
@@ -63,15 +62,28 @@
 }
 
 .deleteBtn {
-  /*opacity: 0;*/
+  color: #606060!important;
   height: 100%;
   transition: opacity .4s ease-out !important;
+}
+
+.deleteBtn:hover {
+  color: #ffffff!important;
+  background-color: var(--additional-button-color)!important;
+}
+
+.deleteBtn:active {
+  background-color: var(--active-button-color)!important;
 }
 
 .item:hover .deleteBtn {
   opacity: 1;
 }
 
+.DragHandleIcon {
+  color: var(--main-text-color);
+  margin: .4rem;
+}
 
 @media (max-width: 519px) {
   .item {

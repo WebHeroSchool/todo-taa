@@ -2,7 +2,7 @@
 
 Приложение в разработке. Скоро запуск.
 
-Прогресс можно отследить во вкладке Projects (или п [cссылке](https://github.com/WebHeroSchool/todo-taa/projects/1))
+Прогресс можно отследить во вкладке Projects (или по [cссылке](https://github.com/WebHeroSchool/todo-taa/projects/1))
 
 description...
 

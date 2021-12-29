@@ -7,11 +7,10 @@ import {
   setElementPosition,
 } from './handlersUtils';
 
-// смотри на значение 50 !!! нужно найти этот сдвиг на странице
 export const onPointerMoveHandler = (event, element) => {
   if (element) {
     const shift = event.pageY - element.offsetTop -
-      (element.scrollHeight * .5) - document.scrollingElement.scrollTop + 50;
+      (element.scrollHeight * .5) - document.scrollingElement.scrollTop;
 
     element.style.transform = `translateY(${shift}px)`;
   }
@@ -95,7 +94,7 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   const elFromPointer = document.elementFromPoint(
     event.touches[0].pageX,
-    event.touches[0].pageY);
+    event.touches[0].pageY - document.scrollingElement.scrollTop);
 
   const closestLi = () => {
     if (elFromPointer) {

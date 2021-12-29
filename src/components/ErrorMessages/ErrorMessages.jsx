@@ -42,11 +42,11 @@ const ErrorMessages = ({
       <BackgroundImg className={ styles.background } />
       <div className={ styles.errorMessage }>
         <p className={ styles.errorText }>
-          { errorsState.[errorType].errorText }
+          { errorsState[errorType].errorText }
         </p>
         <p className={ styles.errorDescription }>
           <small>
-            { errorsState.[errorType].errorDescription }
+            { errorsState[errorType].errorDescription }
           </small>
         </p>
       </div>

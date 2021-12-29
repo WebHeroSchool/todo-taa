@@ -7,11 +7,12 @@ import {
   setElementPosition,
 } from './handlersUtils';
 
-
+// смотри на значение 50 !!! нужно найти этот сдвиг на странице
 export const onPointerMoveHandler = (event, element) => {
   if (element) {
-    const shift = event.clientY - element.offsetTop -
-      (element.scrollHeight * .5);
+    const shift = event.pageY - element.offsetTop -
+      (element.scrollHeight * .5) - document.scrollingElement.scrollTop + 50;
+
     element.style.transform = `translateY(${shift}px)`;
   }
 };
@@ -46,9 +47,8 @@ export const onPointerDownHandler = (event,
           shift(element,
             eventTarget.nextElementSibling, eventTarget.offsetHeight);
         }
-
         eventTarget.style.position = 'fixed';
-        setElementPosition(eventTarget, event.nativeEvent.offsetY);
+        setElementPosition(eventTarget, event.nativeEvent.pageY);
         setElement(eventTarget);
       }
     }

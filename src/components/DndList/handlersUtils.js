@@ -9,8 +9,9 @@ export const isSlideToDown = (indexOfMovable, indexOfStatic) => {
 };
 
 
-export const setElementPosition = (element, offsetY) => {
-  const delta = offsetY - (element.offsetHeight * .5);
+export const setElementPosition = (element, pageY) => {
+  const delta = pageY - element.offsetTop - (element.offsetHeight * .5)
+    - document.scrollingElement.scrollTop;
 
   return element.style.transform = `translateY(${delta}px)`;
 };

@@ -6,6 +6,7 @@ import {
 
 import {
   endOfGesture,
+  scrollTo,
 } from './handlersUtils';
 
 import {
@@ -73,20 +74,15 @@ const DndList = ({
   ]);
 
 
-  const scrollTo = () => {
-    if (element) {
-      setIntervalId(setInterval(() => {
-        ulElement.current.parentElement.scrollTop += 30;
-      }, 200));
-    };
-  };
-
   useEffect(() => {
+    const scrollToWithArgs = scrollTo.bind(
+      null, element, setIntervalId, ulElement);
+
     ulElement.current.parentElement.addEventListener(
-      'pointerleave', scrollTo);
+      'pointerleave', scrollToWithArgs);
 
     return () => ulElement.current.parentElement.removeEventListener(
-      'pointerleave', scrollTo);
+      'pointerleave', scrollToWithArgs);
   }, [
     element,
   ]);

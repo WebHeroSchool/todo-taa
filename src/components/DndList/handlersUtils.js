@@ -78,3 +78,12 @@ export const endOfGesture = (element, setElement,
     stopInterval(null, intervalId);
   }
 };
+
+
+export const scrollTo = (element, setIntervalId, ulElement) => {
+  if (element) {
+    setIntervalId(setInterval(() => {
+      ulElement.current.parentElement.scrollTop += 30;
+    }, 200));
+  };
+};

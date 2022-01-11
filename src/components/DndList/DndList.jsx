@@ -40,6 +40,11 @@ const DndList = ({
     setTimerId,
   ] = useState(null);
 
+  const [
+    intervalId,
+    setIntervalId,
+  ] = useState(null);
+
   const ulElement = useRef(null);
 
 
@@ -51,6 +56,8 @@ const DndList = ({
       endOfGesture,
       setElement,
       setTriggeredElement,
+      stopInterval,
+      intervalId,
     );
 
 
@@ -62,6 +69,42 @@ const DndList = ({
     };
   }, [
     element,
+    intervalId,
+  ]);
+
+
+  const scrollTo = () => {
+    if (element) {
+      setIntervalId(setInterval(() => {
+        ulElement.current.parentElement.scrollTop += 30;
+      }, 200));
+    };
+  };
+
+  useEffect(() => {
+    ulElement.current.parentElement.addEventListener(
+      'pointerleave', scrollTo);
+
+    return () => ulElement.current.parentElement.removeEventListener(
+      'pointerleave', scrollTo);
+  }, [
+    element,
+  ]);
+
+  const stopInterval = (event, id = intervalId) => {
+    console.log('olol');
+    console.log(id);
+    clearInterval(id);
+  };
+
+  useEffect(() => {
+    ulElement.current.parentElement.addEventListener(
+      'pointerenter', stopInterval);
+
+    return () => ulElement.current.parentElement.removeEventListener(
+      'pointerenter', stopInterval);
+  }, [
+    intervalId,
   ]);
 
 

@@ -150,9 +150,12 @@ export const onPointerLeaveHandler = (
   endOfGesture,
   setElement,
   setTriggeredElement,
+  stopInterval,
+  intervalId,
 ) => {
   if (ulElement.current !== event.target && element) {
-    return endOfGesture(element, setElement, setTriggeredElement, ulElement);
+    return endOfGesture(element, setElement, setTriggeredElement,
+      ulElement, stopInterval, intervalId);
   }
 };
 

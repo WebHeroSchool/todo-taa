@@ -59,7 +59,7 @@ export const getHeight = element => {
 
 
 export const endOfGesture = (element, setElement,
-  setTriggeredElement, ulElement) => {
+  setTriggeredElement, ulElement, stopInterval, intervalId) => {
   ulElement.current.style.cursor = 'auto';
   ulElement.current.querySelectorAll('button').forEach(
     item => item.style.pointerEvents = '');
@@ -74,4 +74,7 @@ export const endOfGesture = (element, setElement,
   setTransition(element.parentElement.firstElementChild, 0);
   setElement(null);
   setTriggeredElement(null);
+  if (stopInterval) {
+    stopInterval(null, intervalId);
+  }
 };

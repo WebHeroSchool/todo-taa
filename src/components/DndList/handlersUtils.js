@@ -65,6 +65,7 @@ export const endOfGesture = (element, setElement,
     item => item.style.pointerEvents = '');
   ulElement.current.querySelectorAll('.draggable').forEach(
     item => item.style.pointerEvents = '');
+
   element.style.width = '';
   element.style.position = '';
   element.style.pointerEvents = '';

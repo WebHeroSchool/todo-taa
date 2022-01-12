@@ -26,6 +26,7 @@ import TodoItemContainer from '../TodoItem/TodoItemContainer';
 const DndList = ({
   list,
   isDisabled,
+  ...props
 }) => {
   const [
     element,
@@ -140,6 +141,7 @@ const DndList = ({
         setTriggeredElement,
         timerId,
         ulElement,
+        props.setOrderItems,
       ) }
       onContextMenu={ onContextMenuHandler }
     >

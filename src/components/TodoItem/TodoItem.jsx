@@ -14,8 +14,6 @@ import {
 
 
 const TodoItem = props => {
-  console.log(props);
-
   const itemEl = useRef(null);
   const listEl = useRef(null);
 
@@ -38,6 +36,7 @@ const TodoItem = props => {
         [styles.item]: true,
         [styles.done]: props.isDone,
       }) }
+      data-order = { props.order }
     >
       <Checkbox
         style={{

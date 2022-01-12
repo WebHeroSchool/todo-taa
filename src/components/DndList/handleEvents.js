@@ -118,7 +118,8 @@ export const onTouchOverHandler = (event, element, ulElement,
 
 
 export const onPointerUpListener = (element, triggeredElement,
-  endOfGesture, setElement, setTriggeredElement, timerId, ulElement) => {
+  endOfGesture, setElement, setTriggeredElement,
+  timerId, ulElement, setOrderItems) => {
   if (event.pointerType === 'touch') {
     clearTimeout(timerId);
   }
@@ -141,6 +142,7 @@ export const onPointerUpListener = (element, triggeredElement,
   document.body.classList.remove('TodoItem_unselectable__oqDok');
 
   if (element) {
+    setOrderItems(element.dataset.order, triggeredElement.dataset.order);
     return endOfGesture(element, setElement, setTriggeredElement, ulElement);
   }
 };

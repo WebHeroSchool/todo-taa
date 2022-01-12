@@ -1,6 +1,6 @@
 import ErrorMessages from '../ErrorMessages/ErrorMessages';
 import withMargin from '../hoc/withMargin/withMargin';
-import DndList from '../DndList/DndList';
+import DndListContainer from '../DndList/DndListContainer';
 
 
 const ItemList = props => {
@@ -14,7 +14,7 @@ const ItemList = props => {
 
   if (list.length > 0) {
     return (
-      <DndList
+      <DndListContainer
         list={ list }
         isDisabled={ props.isSort }
       />

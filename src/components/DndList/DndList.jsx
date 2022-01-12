@@ -7,6 +7,7 @@ import {
 import {
   endOfGesture,
   scrollTo,
+  stopInterval,
 } from './handlersUtils';
 
 import {
@@ -61,8 +62,8 @@ const DndList = ({
       intervalId,
     );
 
-
-    document.documentElement.addEventListener('pointerup', onHtmlUpHandler);
+    document.documentElement.addEventListener('pointerup',
+      onHtmlUpHandler);
 
     return () => {
       document.documentElement.removeEventListener('pointerup',
@@ -87,18 +88,15 @@ const DndList = ({
     element,
   ]);
 
-  const stopInterval = (event, id = intervalId) => {
-    console.log('olol');
-    console.log(id);
-    clearInterval(id);
-  };
 
   useEffect(() => {
+    const stopCurrentInterval = stopInterval.bind(null, intervalId);
+
     ulElement.current.parentElement.addEventListener(
-      'pointerenter', stopInterval);
+      'pointerenter', stopCurrentInterval);
 
     return () => ulElement.current.parentElement.removeEventListener(
-      'pointerenter', stopInterval);
+      'pointerenter', stopCurrentInterval);
   }, [
     intervalId,
   ]);

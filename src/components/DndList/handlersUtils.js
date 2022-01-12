@@ -75,7 +75,7 @@ export const endOfGesture = (element, setElement,
   setElement(null);
   setTriggeredElement(null);
   if (stopInterval) {
-    stopInterval(null, intervalId);
+    stopInterval(intervalId);
   }
 };
 
@@ -86,4 +86,9 @@ export const scrollTo = (element, setIntervalId, ulElement) => {
       ulElement.current.parentElement.scrollTop += 30;
     }, 200));
   };
+};
+
+
+export const stopInterval = id => {
+  clearInterval(id);
 };

@@ -70,14 +70,24 @@ export const onPointerDownHandler = (event,
 
 
 export const onPointerOverHandler = (event,
-  ulElement, element, setTriggeredElement) => {
+  ulElement, element, setTriggeredElement, triggeredElement) => {
   if (element) {
     const eventTarget = document.elementFromPoint(
       event.clientX, event.clientY).closest('li');
 
     if (ulElement.current.contains(eventTarget)) {
       const height = getHeight(eventTarget, element);
-      setTriggeredElement(eventTarget);
+
+      if (triggeredElement === eventTarget
+        && element.dataset.order > eventTarget.dataset.order) {
+        setTriggeredElement(eventTarget.previousElementSibling);
+      } else if (triggeredElement === eventTarget
+        && element.dataset.order < eventTarget.dataset.order) {
+        setTriggeredElement(eventTarget.nextElementSibling);
+      } else {
+        setTriggeredElement(eventTarget);
+      }
+
       shift(element, eventTarget, height);
       setTransition(eventTarget.parentElement.firstElementChild, .1);
     }

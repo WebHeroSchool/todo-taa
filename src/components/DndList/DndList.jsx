@@ -132,6 +132,7 @@ const DndList = ({
         ulElement,
         element,
         setTriggeredElement,
+        triggeredElement,
       ) }
       onPointerUp={ () => onPointerUpListener(
         element,

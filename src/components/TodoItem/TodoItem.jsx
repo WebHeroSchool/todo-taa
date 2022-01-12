@@ -14,6 +14,8 @@ import {
 
 
 const TodoItem = props => {
+  console.log(props);
+
   const itemEl = useRef(null);
   const listEl = useRef(null);
 
@@ -92,8 +94,6 @@ const TodoItem = props => {
         ) }
         onPointerDown = {
           () => document.body.classList.add(styles.unselectable)}
-        onPointerUp = {
-          () => document.body.classList.remove(styles.unselectable)}
       >
         <DragHandleIcon className={ styles.DragHandleIcon } />
       </div>

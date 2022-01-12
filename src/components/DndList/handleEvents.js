@@ -71,13 +71,12 @@ export const onPointerDownHandler = (event,
 
 export const onPointerOverHandler = (event,
   ulElement, element, setTriggeredElement) => {
-  const eventTarget = document.elementFromPoint(
-    event.clientX, event.clientY).closest('li');
+  if (element) {
+    const eventTarget = document.elementFromPoint(
+      event.clientX, event.clientY).closest('li');
 
-  if (ulElement.current.contains(eventTarget)) {
-    const height = getHeight(eventTarget);
-
-    if (element) {
+    if (ulElement.current.contains(eventTarget)) {
+      const height = getHeight(eventTarget);
       setTriggeredElement(eventTarget);
       shift(element, eventTarget, height);
       setTransition(eventTarget.parentElement.firstElementChild, .1);

@@ -1,3 +1,5 @@
+import styles from '../TodoItem/TodoItem.module.css';
+
 export const searchIndex = element => Array.prototype.indexOf.call(
   element.parentElement.children, element);
 
@@ -59,7 +61,8 @@ export const getHeight = (elementUnderPointer, element) => {
 
 
 export const endOfGesture = (element, setElement,
-  setTriggeredElement, ulElement, stopInterval, intervalId) => {
+  setTriggeredElement, ulElement, stopInterval, intervalId,
+  triggeredElement, setOrderItems) => {
   ulElement.current.style.cursor = 'auto';
   ulElement.current.querySelectorAll('button').forEach(
     item => item.style.pointerEvents = '');
@@ -74,9 +77,14 @@ export const endOfGesture = (element, setElement,
   setTransition(element.parentElement.firstElementChild, 0);
   setElement(null);
   setTriggeredElement(null);
+
   if (stopInterval) {
     stopInterval(intervalId);
   }
+
+  document.body.classList.remove(styles.unselectable);
+
+  setOrderItems(element.dataset.order, triggeredElement.dataset.order);
 };
 
 

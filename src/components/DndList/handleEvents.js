@@ -139,11 +139,9 @@ export const onPointerUpListener = (element, triggeredElement,
     triggeredElement.insertAdjacentElement(where, element);
   }
 
-  document.body.classList.remove('TodoItem_unselectable__oqDok');
-
   if (element) {
-    setOrderItems(element.dataset.order, triggeredElement.dataset.order);
-    return endOfGesture(element, setElement, setTriggeredElement, ulElement);
+    return endOfGesture(element, setElement, setTriggeredElement, ulElement,
+      null, null, triggeredElement, setOrderItems);
   }
 };
 

@@ -47,7 +47,6 @@ export const setTransition = (element, time = 0) => {
 
 
 export const getHeight = (elementUnderPointer, element) => {
-  console.log(element);
   let height;
   if (elementUnderPointer.style.transform.length < 16) {
     height = element.offsetHeight;

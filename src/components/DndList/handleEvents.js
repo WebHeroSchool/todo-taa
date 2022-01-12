@@ -111,7 +111,8 @@ export const onTouchOverHandler = (event, element, ulElement,
     } else {
       setTriggeredElement(elementUnderPointer);
     }
-    shift(element, elementUnderPointer, getHeight(elementUnderPointer));
+    shift(element, elementUnderPointer,
+      getHeight(elementUnderPointer, element));
   }
 };
 
@@ -136,6 +137,8 @@ export const onPointerUpListener = (element, triggeredElement,
 
     triggeredElement.insertAdjacentElement(where, element);
   }
+
+  document.body.classList.remove('TodoItem_unselectable__oqDok');
 
   if (element) {
     return endOfGesture(element, setElement, setTriggeredElement, ulElement);

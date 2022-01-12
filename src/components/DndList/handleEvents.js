@@ -116,11 +116,16 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   if (element
       && ulElement.current.contains(elementUnderPointer)) {
-    if (event.currentTarget.lastElementChild === triggeredElement) {
-      setTriggeredElement(null);
+    if (triggeredElement === elementUnderPointer
+      && element.dataset.order > elementUnderPointer.dataset.order) {
+      setTriggeredElement(elementUnderPointer.previousElementSibling);
+    } else if (triggeredElement === elementUnderPointer
+      && element.dataset.order < elementUnderPointer.dataset.order) {
+      setTriggeredElement(elementUnderPointer.nextElementSibling);
     } else {
       setTriggeredElement(elementUnderPointer);
     }
+
     shift(element, elementUnderPointer,
       getHeight(elementUnderPointer, element));
   }

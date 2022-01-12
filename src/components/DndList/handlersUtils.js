@@ -84,7 +84,9 @@ export const endOfGesture = (element, setElement,
 
   document.body.classList.remove(styles.unselectable);
 
-  setOrderItems(element.dataset.order, triggeredElement.dataset.order);
+  if (triggeredElement) {
+    setOrderItems(element.dataset.order, triggeredElement.dataset.order);
+  };
 };
 
 

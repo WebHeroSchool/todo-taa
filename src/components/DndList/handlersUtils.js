@@ -106,3 +106,17 @@ export const scrollTo = (element, setIntervalId, ulElement, event) => {
 export const stopInterval = id => {
   clearInterval(id);
 };
+
+
+export const orderOfDroppedItem = (triggeredElement, eventTarget,
+  element, setTriggeredElement) => {
+  if (triggeredElement === eventTarget
+    && element.dataset.order > eventTarget.dataset.order) {
+    setTriggeredElement(eventTarget.previousElementSibling);
+  } else if (triggeredElement === eventTarget
+    && element.dataset.order < eventTarget.dataset.order) {
+    setTriggeredElement(eventTarget.nextElementSibling);
+  } else {
+    setTriggeredElement(eventTarget);
+  }
+};

@@ -5,6 +5,7 @@ import {
   setTransition,
   getHeight,
   setElementPosition,
+  orderOfDroppedItem,
 } from './handlersUtils';
 
 export const onPointerMoveHandler = (event, element) => {
@@ -78,15 +79,8 @@ export const onPointerOverHandler = (event,
     if (ulElement.current.contains(eventTarget)) {
       const height = getHeight(eventTarget, element);
 
-      if (triggeredElement === eventTarget
-        && element.dataset.order > eventTarget.dataset.order) {
-        setTriggeredElement(eventTarget.previousElementSibling);
-      } else if (triggeredElement === eventTarget
-        && element.dataset.order < eventTarget.dataset.order) {
-        setTriggeredElement(eventTarget.nextElementSibling);
-      } else {
-        setTriggeredElement(eventTarget);
-      }
+      orderOfDroppedItem(triggeredElement, eventTarget,
+        element, setTriggeredElement);
 
       shift(element, eventTarget, height);
       setTransition(eventTarget.parentElement.firstElementChild, .1);
@@ -116,15 +110,8 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   if (element
       && ulElement.current.contains(elementUnderPointer)) {
-    if (triggeredElement === elementUnderPointer
-      && element.dataset.order > elementUnderPointer.dataset.order) {
-      setTriggeredElement(elementUnderPointer.previousElementSibling);
-    } else if (triggeredElement === elementUnderPointer
-      && element.dataset.order < elementUnderPointer.dataset.order) {
-      setTriggeredElement(elementUnderPointer.nextElementSibling);
-    } else {
-      setTriggeredElement(elementUnderPointer);
-    }
+    orderOfDroppedItem(triggeredElement, elementUnderPointer,
+      element, setTriggeredElement);
 
     shift(element, elementUnderPointer,
       getHeight(elementUnderPointer, element));

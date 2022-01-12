@@ -77,7 +77,7 @@ const DndList = ({
 
   useEffect(() => {
     const scrollToWithArgs = scrollTo.bind(
-      null, element, setIntervalId, ulElement);
+      event, element, setIntervalId, ulElement);
 
     ulElement.current.parentElement.addEventListener(
       'pointerleave', scrollToWithArgs);

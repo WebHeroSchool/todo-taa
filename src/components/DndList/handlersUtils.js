@@ -80,10 +80,14 @@ export const endOfGesture = (element, setElement,
 };
 
 
-export const scrollTo = (element, setIntervalId, ulElement) => {
+export const scrollTo = (element, setIntervalId, ulElement, event) => {
   if (element) {
     setIntervalId(setInterval(() => {
-      ulElement.current.parentElement.scrollTop += 30;
+      if (event.clientY > event.target.offsetParent.offsetTop) {
+        ulElement.current.parentElement.scrollTop += 30;
+      } else {
+        ulElement.current.parentElement.scrollTop -= 30;
+      }
     }, 200));
   };
 };

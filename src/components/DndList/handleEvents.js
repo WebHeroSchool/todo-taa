@@ -76,7 +76,7 @@ export const onPointerOverHandler = (event,
       event.clientX, event.clientY).closest('li');
 
     if (ulElement.current.contains(eventTarget)) {
-      const height = getHeight(eventTarget);
+      const height = getHeight(eventTarget, element);
       setTriggeredElement(eventTarget);
       shift(element, eventTarget, height);
       setTransition(eventTarget.parentElement.firstElementChild, .1);

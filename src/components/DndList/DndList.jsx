@@ -76,13 +76,14 @@ const DndList = ({
 
 
   useEffect(() => {
+    const parentOfList = ulElement.current.parentElement;
     const scrollToWithArgs = scrollTo.bind(
       event, element, setIntervalId, ulElement);
 
-    ulElement.current.parentElement.addEventListener(
+    parentOfList.addEventListener(
       'pointerleave', scrollToWithArgs);
 
-    return () => ulElement.current.parentElement.removeEventListener(
+    return () => parentOfList.removeEventListener(
       'pointerleave', scrollToWithArgs);
   }, [
     element,
@@ -90,12 +91,13 @@ const DndList = ({
 
 
   useEffect(() => {
+    const parentOfList = ulElement.current.parentElement;
     const stopCurrentInterval = stopInterval.bind(null, intervalId);
 
-    ulElement.current.parentElement.addEventListener(
+    parentOfList.addEventListener(
       'pointerenter', stopCurrentInterval);
 
-    return () => ulElement.current.parentElement.removeEventListener(
+    return () => parentOfList.removeEventListener(
       'pointerenter', stopCurrentInterval);
   }, [
     intervalId,

@@ -37,7 +37,7 @@ const withScrollBar = (Component, props, items = 0) => {
     () => {
       setScrollPosition(0);
     }, [
-      items.length,
+      items,
     ]
   );
 

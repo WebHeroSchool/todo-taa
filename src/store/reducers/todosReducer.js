@@ -57,7 +57,7 @@ export const todosReducer = (state = initialState, action) => {
           isWrongValue: true,
           order: state.count,
         },
-        ...getTodoItemsFromStorage(),
+        ...state.items,
       ];
       const newCount = ++state.count;
 

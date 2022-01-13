@@ -1,4 +1,6 @@
-const regExp = /.{18}/;
+export const normalLength = 22;
+
+const regExp = new RegExp(`.{${normalLength}}`);
 
 
 const isNormalLength = string => {

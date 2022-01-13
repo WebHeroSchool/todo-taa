@@ -8,6 +8,10 @@ import {
   useState,
 } from 'react';
 
+import {
+  normalLength,
+} from '../../utils/isNormalLength';
+
 import InputItem from './InputItem';
 
 
@@ -44,7 +48,8 @@ const InputItemContainer = props => {
 
   const onChangeTextField = event => {
     const textOnly = /^[0-9\/*\@#$%^&-+ ]/;
-    const length = /[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{20}/;
+    const length = new RegExp(
+      `[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{${normalLength}}`);
     if (textOnly.test(event.target.value)) {
       return addErrorStatus('Должно начинаться с прописи');
     } else if (length.test(event.target.value)) {

@@ -54,7 +54,7 @@ export const todosReducer = (state = initialState, action) => {
           id: Date.now(),
           filter: (state.filter === 'active' || state.filter === 'all'),
           isEditable: false,
-          isWrongValue: true,
+          isWrongValue: false,
           order: state.count,
         },
         ...state.items,

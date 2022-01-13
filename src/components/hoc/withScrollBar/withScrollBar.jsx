@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 
-const withScrollBar = (Component, props, items = 0) => {
+const withScrollBar = (Component, props, ...triggers) => {
   const [
     scrollPosition,
     setScrollPosition,
@@ -36,8 +36,9 @@ const withScrollBar = (Component, props, items = 0) => {
   useEffect(
     () => {
       setScrollPosition(0);
+      noScrollEl.current.scrollTop = 0;
     }, [
-      items,
+      ...triggers,
     ]
   );
 

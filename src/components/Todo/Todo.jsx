@@ -20,7 +20,8 @@ const ErrorMessagesWithMargin = props => withMargin(
   props,
 );
 const ItemListContainerWithScrollbar = props => withScrollBar(
-  ItemListContainer, props, props.todos.items);
+  ItemListContainer, props,
+  props.todos.items[0].filter, props.todos.items[0].id);
 
 const Todo = ({
   count,

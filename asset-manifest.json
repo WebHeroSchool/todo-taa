@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todo-taa/static/css/main.34c0900e.css",
-    "main.js": "/todo-taa/static/js/main.efe87aa0.js",
+    "main.js": "/todo-taa/static/js/main.901e23e8.js",
     "static/media/roboto-medium.ttf": "/todo-taa/static/media/roboto-medium.7429a63c09f79a1760b0.ttf",
     "static/media/roboto-regular.ttf": "/todo-taa/static/media/roboto-regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/roboto-bold.ttf": "/todo-taa/static/media/roboto-bold.75371f53f06181df75f1.ttf",
@@ -29,10 +29,10 @@
     "static/media/cancel.svg": "/todo-taa/static/media/cancel.ab15af3811c16e5eb9987a83945dc78c.svg",
     "static/media/ellipse.svg": "/todo-taa/static/media/ellipse.935b3a2483254c19cfee4902eba4dd8d.svg",
     "main.34c0900e.css.map": "/todo-taa/static/css/main.34c0900e.css.map",
-    "main.efe87aa0.js.map": "/todo-taa/static/js/main.efe87aa0.js.map"
+    "main.901e23e8.js.map": "/todo-taa/static/js/main.901e23e8.js.map"
   },
   "entrypoints": [
     "static/css/main.34c0900e.css",
-    "static/js/main.efe87aa0.js"
+    "static/js/main.901e23e8.js"
   ]
 }

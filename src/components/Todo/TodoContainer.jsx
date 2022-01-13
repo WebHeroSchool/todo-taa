@@ -22,6 +22,7 @@ const TodoContainer = props => (
 
 export default connect(
   state => ({
+    todos: state.todos,
     count: state.todos.count,
   })
 )(TodoContainer);

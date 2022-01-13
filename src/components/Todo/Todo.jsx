@@ -20,10 +20,11 @@ const ErrorMessagesWithMargin = props => withMargin(
   props,
 );
 const ItemListContainerWithScrollbar = props => withScrollBar(
-  ItemListContainer, props);
+  ItemListContainer, props, props.todos.items);
 
 const Todo = ({
   count,
+  ...props
 }) => (
   <>
     <Title titleValue={ 'TO DO:' } />
@@ -32,7 +33,7 @@ const Todo = ({
       count > 0 ?
         <>
           <SortContainer />
-          <ItemListContainerWithScrollbar />
+          <ItemListContainerWithScrollbar { ...props } />
         </> :
         <ErrorMessagesWithMargin errorType="empty todoList" />
     }

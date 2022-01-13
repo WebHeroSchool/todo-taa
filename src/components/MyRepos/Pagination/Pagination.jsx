@@ -55,6 +55,7 @@ const Pagination = props => {
               [styles.active]: activePage === page,
             }) }
             variant="outlined"
+            disabled={ page === activePage }
           >
             { page }
           </Button>)

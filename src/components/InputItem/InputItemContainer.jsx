@@ -43,7 +43,7 @@ const InputItemContainer = props => {
   };
 
   const onChangeTextField = event => {
-    const textOnly = /^[0-9\/*\@#$%^&-+]/;
+    const textOnly = /^[0-9\/*\@#$%^&-+ ]/;
     const length = /[а-яА-ЯёЁa-zA-Z0-9\/*\@#$%^&-+]{20}/;
     if (textOnly.test(event.target.value)) {
       return addErrorStatus('Должно начинаться с прописи');

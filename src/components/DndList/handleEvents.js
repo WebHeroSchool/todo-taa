@@ -97,7 +97,7 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   const elFromPointer = document.elementFromPoint(
     event.touches[0].pageX,
-    event.touches[0].pageY - document.scrollingElement.scrollTop);
+    event.touches[0].pageY);
 
   const closestLi = () => {
     if (elFromPointer) {
@@ -107,11 +107,13 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   const elementUnderPointer = closestLi();
 
-
   if (element
       && ulElement.current.contains(elementUnderPointer)) {
     orderOfDroppedItem(triggeredElement, elementUnderPointer,
       element, setTriggeredElement);
+
+    console.log(elementUnderPointer);
+    // console.log('test');
 
     shift(element, elementUnderPointer,
       getHeight(elementUnderPointer, element));

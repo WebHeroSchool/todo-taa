@@ -1,3 +1,5 @@
+import styles from './DndList.module.css';
+
 import {
   useState,
   useEffect,
@@ -107,6 +109,7 @@ const DndList = ({
 
   return (
     <ul ref={ ulElement }
+      className={ styles.list }
       onPointerDown={ event => {
         if (!isDisabled) {
           return onPointerDownHandler(

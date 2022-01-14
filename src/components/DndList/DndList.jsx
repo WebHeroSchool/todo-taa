@@ -50,6 +50,11 @@ const DndList = ({
     setIntervalId,
   ] = useState(null);
 
+  const [
+    isShiftAllowed,
+    setIsShiftAllowed,
+  ] = useState(true);
+
   const ulElement = useRef(null);
 
 
@@ -129,6 +134,8 @@ const DndList = ({
         triggeredElement,
         setTriggeredElement,
         timerId,
+        setIsShiftAllowed,
+        isShiftAllowed,
       ) }
       onPointerOver={ event => onPointerOverHandler(
         event,

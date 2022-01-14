@@ -90,7 +90,8 @@ export const onPointerOverHandler = (event,
 
 
 export const onTouchOverHandler = (event, element, ulElement,
-  triggeredElement, setTriggeredElement, timerId) => {
+  triggeredElement, setTriggeredElement, timerId,
+  setIsShiftAllowed, isShiftAllowed) => {
   if (event.type === 'touchmove') {
     clearTimeout(timerId);
   }
@@ -107,16 +108,17 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   const elementUnderPointer = closestLi();
 
-  if (element
+  if (!elementUnderPointer) {
+    setIsShiftAllowed(true);
+  }
+
+  if (element && isShiftAllowed
       && ulElement.current.contains(elementUnderPointer)) {
     orderOfDroppedItem(triggeredElement, elementUnderPointer,
-      element, setTriggeredElement);
-
-    console.log(elementUnderPointer);
-    // console.log('test');
+      element, setTriggeredElement, setIsShiftAllowed);
 
     shift(element, elementUnderPointer,
-      getHeight(elementUnderPointer, element));
+      getHeight(elementUnderPointer, element), null, setIsShiftAllowed);
   }
 };
 

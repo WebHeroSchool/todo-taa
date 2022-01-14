@@ -19,7 +19,8 @@ export const setElementPosition = (element, pageY) => {
 };
 
 
-export const shift = (pointer, thisElement, height, lastModify = false) => {
+export const shift = (pointer, thisElement, height, lastModify = false,
+  setIsShiftAllowed) => {
   if (thisElement !== pointer
       || (thisElement === pointer && lastModify)) {
     thisElement.style.transform = `translateY(${height ?
@@ -34,6 +35,10 @@ export const shift = (pointer, thisElement, height, lastModify = false) => {
 
   if (next) {
     shift(pointer, next, height, lastModify);
+  }
+
+  if (setIsShiftAllowed) {
+    setIsShiftAllowed(false);
   }
 };
 

@@ -105,12 +105,14 @@ export const todosReducer = (state = initialState, action) => {
 
 
   case DELETE_ITEM: {
-    let indexForDelete = 0;
-    const newItemList = state.items.filter((item, index) => {
-      if (item.id === action.payload) {
-        indexForDelete = -1;
+    let isDecrement = true;
+
+    const newItemList = state.items.filter(item => {
+      if (isDecrement && item.id !== action.payload) {
+        item.order--;
+      } else {
+        isDecrement = false;
       }
-      item.order = index + indexForDelete;
 
       return item.id !== action.payload;
     });

@@ -41,6 +41,9 @@ const InputItemContainer = props => {
     setHelperText(' ');
   };
 
+  const checkElementInStore = () => props.items.some(
+    element => element.value === inputValue.toUpperCase());
+
   const submitData = () => {
     props.createItem(inputValue.toUpperCase());
     setInputvalue('');
@@ -59,23 +62,23 @@ const InputItemContainer = props => {
     removeErrorStatus();
   };
 
+  const submitDataHandler = () => {
+    if (inputValue && !checkElementInStore()) {
+      submitData();
+      removeErrorStatus();
+    } else {
+      addErrorStatus('Такое дело уже добавлено в список');
+    }
+  };
+
   const onKeyDownTextField = event => {
     if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-      if (inputValue) {
-        submitData();
-        removeErrorStatus();
-      } else {
-        addErrorStatus();
-      }
+      submitDataHandler();
     }
   };
 
   const onClickButton = () => {
-    if (inputValue) {
-      submitData();
-    } else {
-      addErrorStatus();
-    }
+    submitDataHandler();
   };
 
   return (
@@ -90,7 +93,10 @@ const InputItemContainer = props => {
   );
 };
 
-export default connect(null,
+export default connect(
+  state => ({
+    items: state.todos.items,
+  }),
   {
     createItem,
   },

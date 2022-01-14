@@ -1,6 +1,8 @@
-# My ToDo-App - аннотация:
+# My ToDo-App - Аннотация:
 
 Финальная работа по курсу React.js в WebHeroSchool
+
+<img src="src/components/ErrorMessages/images/background.svg" width="400"/>
 
 ***Демонстрация проекта ([ссылка](https://webheroschool.github.io/todo-taa))***  
 

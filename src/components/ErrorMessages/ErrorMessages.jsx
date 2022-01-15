@@ -1,7 +1,14 @@
+import {
+  Suspense,
+  lazy,
+} from 'react';
+
 import styles from './ErrorMessages.module.css';
 import {
   ReactComponent as BackgroundImg,
 } from './images/background.svg';
+
+const Loader = lazy(() => import('../Loader/Loader'));
 
 const ErrorMessages = ({
   errorType,
@@ -38,19 +45,23 @@ const ErrorMessages = ({
 
 
   return (
-    <div className={ styles.windowWrapper }>
-      <BackgroundImg className={ styles.background } />
-      <div className={ styles.errorMessage }>
-        <p className={ styles.errorText }>
-          { errorsState[errorType].errorText }
-        </p>
-        <p className={ styles.errorDescription }>
-          <small>
-            { errorsState[errorType].errorDescription }
-          </small>
-        </p>
+    <Suspense fallback={<Loader />}>
+
+      <div className={ styles.windowWrapper }>
+        <BackgroundImg className={ styles.background } />
+        <div className={ styles.errorMessage }>
+          <p className={ styles.errorText }>
+            { errorsState[errorType].errorText }
+          </p>
+          <p className={ styles.errorDescription }>
+            <small>
+              { errorsState[errorType].errorDescription }
+            </small>
+          </p>
+        </div>
       </div>
-    </div>
+
+    </Suspense>
   );
 };
 

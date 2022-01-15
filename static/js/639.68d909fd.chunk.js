@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktodo=self.webpackChunktodo||[]).push([[639],{2639:function(e,n,r){r.r(n),r.d(n,{default:function(){return l}});var o=r(2791),s="Loader_loader__+lRPl",t=r(184),u=(0,o.lazy)((function(){return Promise.all([r.e(220),r.e(873)]).then(r.bind(r,7787))})),l=function(){return(0,t.jsx)(o.Suspense,{children:(0,t.jsx)(u,{className:s,color:"secondary"})})}}}]);
+//# sourceMappingURL=639.68d909fd.chunk.js.map

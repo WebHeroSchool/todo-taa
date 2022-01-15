@@ -1,5 +1,8 @@
 import styles from './Loader.module.css';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
+import {
+  CircularProgress,
+} from '@material-ui/core';
 
 
 const Loader = () => (

@@ -1,16 +1,23 @@
+import {
+  Suspense,
+  lazy,
+} from 'react';
+
 import withIndent from '../hoc/withIndent/withIndent';
 import withMargin from '../hoc/withMargin/withMargin';
 import withScrollBar from '../hoc/withScrollBar/withScrollBar';
 
-import Title from '../Title/Title';
-import InputItemContainer from '../InputItem/InputItemContainer';
-import SortContainer from '../Sort/SortContainer';
-import ItemListContainer from '../ItemList/ItemListContainer';
-import FooterContainer from '../Footer/FooterContainer';
-import {
-  Divider,
-} from '@material-ui/core';
-import ErrorMessages from '../ErrorMessages/ErrorMessages';
+
+const Loader = lazy(() => import('../Loader/Loader'));
+const Title = lazy(() => import('../Title/Title'));
+const InputItemContainer = lazy(
+  () => import('../InputItem/InputItemContainer'));
+const SortContainer = lazy(() => import('../Sort/SortContainer'));
+const ItemListContainer = lazy(() => import('../ItemList/ItemListContainer'));
+const FooterContainer = lazy(() => import('../Footer/FooterContainer'));
+const ErrorMessages = lazy(() => import('../ErrorMessages/ErrorMessages'));
+
+const Divider = lazy(() => import('@material-ui/core/Divider'));
 
 
 const FooterWithIdent = () => withIndent(FooterContainer);
@@ -27,7 +34,7 @@ const Todo = ({
   count,
   ...props
 }) => (
-  <>
+  <Suspense fallback={<Loader />}>
     <Title titleValue={ 'TO DO:' } />
     <InputItemContainer />
     {
@@ -40,7 +47,7 @@ const Todo = ({
     }
     <Divider />
     <FooterWithIdent />
-  </>
+  </Suspense>
 );
 
 

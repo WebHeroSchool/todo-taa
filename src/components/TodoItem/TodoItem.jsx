@@ -91,6 +91,7 @@ const TodoItem = props => {
         <Button
           className={ styles.deleteBtn }
           onClick={ props.onDeleteItem }
+          title="Удалить дело"
         >
           <DeleteForeverTwoToneIcon fontSize="medium" />
         </Button>

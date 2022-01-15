@@ -25,6 +25,7 @@ const InputItem = props => (
       className={styles.button}
       color="primary"
       onClick={ props.onClickButton }
+      title="Добавить задачу"
     >
       <PostAddIcon fontSize="medium" />
     </Button>

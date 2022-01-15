@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/70.2ba1ce4e.chunk.css","mappings":"AAAA,qBAEE,WAAY,CADZ,qBAEF,CAGA,yBACE,qBACE,yBAAkB,CAAlB,iBACF,CACF","sources":["components/AppLink/AppLink.module.css"],"sourcesContent":[".link {\n  text-decoration: unset;\n  color: unset;\n}\n\n\n@media (max-width: 339px) {\n  .link {\n    width: max-content;\n  }\n}\n"],"names":[],"sourceRoot":""}

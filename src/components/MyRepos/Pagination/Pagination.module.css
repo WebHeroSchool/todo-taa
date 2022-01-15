@@ -9,14 +9,13 @@
 
 .active {
   color: #900 !important;
-  margin: 0 .8rem  !important;
+  margin: .8rem !important;
   font-weight: bold;
 }
 
 .button {
   min-width: 3rem !important;
 }
-
 
 @media (max-width: 420px) {
   .button {

@@ -4,11 +4,11 @@
   margin: auto;
 }
 
-
 .appWrapper {
   display: flex;
   justify-content: center;
 }
+
 .routeWrapper {
   display: flex;
   flex-direction: column;
@@ -18,8 +18,8 @@
 @media (max-width: 768px) {
   .body {
     max-width: 100%;
-
   }
+
   .appWrapper {
     flex-direction: column;
     justify-content: flex-start;

@@ -47,9 +47,9 @@ const MyReposContainer = props => {
     setPage,
   ] = useState(1);
 
+  const host = 'https://api.github.com';
   const myUrl =
-  `https://api.github.com/users/chiga2030/repos?per_page=${
-    perPage}&page=${page}`;
+  `${host}/users/chiga2030/repos?per_page=${perPage}&page=${page}`;
 
   const [
     url,
@@ -65,6 +65,7 @@ const MyReposContainer = props => {
 
   return (
     <MyReposWithFetch
+      host={ host }
       url={ url }
       setPage={ setPage }
       error={ props.repos.fetchReposFailure }

@@ -1,6 +1,8 @@
 import styles from './Contacts.module.css';
 import classNames from 'classnames';
 
+import Helmet from 'react-helmet';
+
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
 import withLink from '../hoc/withLink/withLink';
@@ -52,6 +54,13 @@ const Contacts = props => {
     <p>Fetch error: { props.contacts.errorMessage }</p>;
   } return (
     <>
+      <Helmet>
+        <link
+          rel="preload"
+          href={ props.contacts.items.avatar_url }
+          as="image"
+        />
+      </Helmet>
       <div className={ styles.contactsInner }>
 
         <div className={ styles.avatarContainer }>

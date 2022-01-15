@@ -24,7 +24,6 @@
   fill: #0094ff;
 }
 
-
 @media (max-width: 370px) {
   .circulSvg {
     display: none;

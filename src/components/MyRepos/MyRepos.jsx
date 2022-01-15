@@ -1,9 +1,10 @@
+import Helmet from 'react-helmet';
+
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
 import ErrorMessages from '../ErrorMessages/ErrorMessages';
 import RepoList from './RepoList/RepoList';
 import Pagination from './Pagination/Pagination';
-
 
 import withMargin from '../hoc/withMargin/withMargin';
 import withIndent from '../hoc/withIndent/withIndent';
@@ -37,6 +38,12 @@ const MyRepos = props => {
     return <Loader />;
   } return (
     <>
+      <Helmet>
+        <link
+          rel="preconnect"
+          href={ props.host }
+        />
+      </Helmet>
       <TitleWithIndent variant="h2" titleValue="Репозитории на github.com" />
       {props.repos.errorType ?
         <ErrorMessagesWithMargin

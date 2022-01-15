@@ -1,6 +1,6 @@
 .itemWrapper {
-  padding: 0.8rem;
-  margin-bottom: 0.8rem;
+  padding: .8rem;
+  margin-bottom: .8rem;
 }
 
 .header {
@@ -17,13 +17,13 @@
   font-size: var(--font-size-post-small);
   font-weight: 500;
   color: var(--main-text-color);
-  margin-bottom: 0.4rem;
+  margin-bottom: .4rem;
   display: inline-block;
 }
 
 .description {
   margin: 0 0 .4rem 0;
-  font-size: 0.8rem;
+  font-size: .8rem;
   color: var(--additional-text-color);
 }
 
@@ -43,8 +43,7 @@
   text-align: end;
 }
 
-
-@media (max-width:  480px) {
+@media (max-width: 480px) {
   .lastUpdate {
     display: flex;
     flex-direction: column;

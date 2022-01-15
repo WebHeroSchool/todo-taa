@@ -1,6 +1,6 @@
 :root {
   --main-text-color: #1c154e;
-  --additional-text-color: #999999;
+  --additional-text-color: #999;
   --unchoiced-text-color: #a7a2cb;
   --placeholder-text-color: #d0d3e2;
   --stroke-color: #e1e3ee;
@@ -11,16 +11,14 @@
   --text-button-color: #fff;
   --additional-button-color: #f50057;
   --active-button-color: #c51162;
-
   --dragging-element: #33ff002e;
-
-  --font-size-large:  1.8rem;
-  --font-size-prelarge:  1.5rem;
-  --font-size-post-medium:  1.2rem;
-  --font-size-medium:  1rem;
-  --font-size-post-small:  .9rem;
-  --font-size-small:  .8rem;
-  --font-size-extra-small:  .7rem;
+  --font-size-large: 1.8rem;
+  --font-size-prelarge: 1.5rem;
+  --font-size-post-medium: 1.2rem;
+  --font-size-medium: 1rem;
+  --font-size-post-small: .9rem;
+  --font-size-small: .8rem;
+  --font-size-extra-small: .7rem;
 }
 
 body {
@@ -32,9 +30,8 @@ body {
   margin: 2vw;
 }
 
-
 @media (max-width: 580px) {
   :root {
-    --font-size-large:  1.3rem;
+    --font-size-large: 1.3rem;
   }
 }

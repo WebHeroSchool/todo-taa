@@ -25,19 +25,23 @@ const initialSortList = [
     'icon': AlphaSvg,
     'isActive': false,
     'type': 'alphabet',
+    'title': 'Сортировать по алфавиту',
   },
   {
     'icon': DateSvg,
     'isActive': false,
     'type': 'date',
+    'title': 'Сортировать по дате добавления',
   },
   {
     'icon': ReverseSvg,
     'type': 'reverse',
+    'title': 'Перевернуть список',
   },
   {
     'icon': CancelSvg,
     'type': 'cancel',
+    'title': 'Отменить сортировку',
   },
 ];
 
@@ -108,6 +112,7 @@ const Sort = props => {
               }) }
               onClick={ () => onClickHandler(Button.type) }
               disabled={ !props.isSort && Button.type === 'cancel' }
+              title={ Button.title }
             >
               <Button.icon className={ classNames({
                 [styles.buttonImage]: true,

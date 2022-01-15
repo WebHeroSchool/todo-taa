@@ -41,7 +41,7 @@
   outline: 2px dashed #900;
 }
 
-.itemValue[contenteditable = "true"] {
+.itemValue[contenteditable="true"] {
   user-select: auto;
 }
 
@@ -60,18 +60,18 @@
 }
 
 .deleteBtn {
-  color: #606060!important;
+  color: #606060 !important;
   height: 100%;
   transition: opacity .4s ease-out !important;
 }
 
 .deleteBtn:hover {
-  color: #ffffff!important;
-  background-color: var(--additional-button-color)!important;
+  color: #fff !important;
+  background-color: var(--additional-button-color) !important;
 }
 
 .deleteBtn:active {
-  background-color: var(--active-button-color)!important;
+  background-color: var(--active-button-color) !important;
 }
 
 .item:hover .deleteBtn {

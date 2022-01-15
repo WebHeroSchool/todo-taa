@@ -1,9 +1,18 @@
+import {
+  Suspense,
+  lazy,
+} from 'react';
+
 import styles from './Loader.module.css';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
+const CircularProgress = lazy(() => import(
+  '@material-ui/core/CircularProgress'));
 
 
 const Loader = () => (
-  <CircularProgress className={ styles.loader } color="secondary" />
+  <Suspense>
+    <CircularProgress className={ styles.loader } color="secondary" />
+  </Suspense>
 );
 
 

@@ -1,36 +1,33 @@
-import {
-  ReactSVG,
-} from 'react-svg';
-
 import classNames from 'classnames';
+import styles from './withLink.module.css';
 
-import styles from './SocialLink.module.css';
 
-
-const SocialLink = ({
-  iconSrc,
-  linkTo,
-  linkValue,
-  isEmail,
-  isBlank,
-  isWithMiddleMargin,
-}) => (
+const withLink = (
+  Image,
+  {
+    linkTo,
+    linkValue,
+    isEmail,
+    isBlank,
+    isWithMiddleMargin,
+    title = 'Связаться со мной',
+  },
+) => (
   <a
     className={ styles.contactData }
     href={ isEmail ? `mailto:${linkTo}` : linkTo }
     target={ isBlank ? 'blank' : '' }
+    title={ title }
   >
-    <ReactSVG
+    <Image
       className={classNames({
         [styles.icon]: true,
         [styles.iconWithMiddleMargin]: isWithMiddleMargin,
       })}
-      src={iconSrc}
-      wrapper="span"
     />
     { linkValue }
   </a>
 );
 
 
-export default SocialLink;
+export default withLink;

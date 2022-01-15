@@ -1,4 +1,10 @@
+import {
+  Suspense,
+  lazy,
+} from 'react';
+
 import styles from './App.module.css';
+
 import {
   HashRouter as Router,
   Switch,
@@ -6,29 +12,44 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import Menu from '../Menu/Menu';
-import AboutContainer from '../About/AboutContainer';
-import TodoContainer from '../Todo/TodoContainer';
-import ContactsContainer from '../Contacts/ContactsContainer';
-
+const Loader = lazy(() => import('../Loader/Loader'));
+const Menu = lazy(() => import('../Menu/Menu'));
+const AboutContainer = lazy(() => import('../About/AboutContainer'));
+const TodoContainer = lazy(() => import('../Todo/TodoContainer'));
+const ContactsContainer = lazy(() => import('../Contacts/ContactsContainer'));
 
 const App = () => (
   <Router>
     <div className={styles.body}>
 
       <div className={styles.appWrapper}>
-
-        <Menu />
+        <Suspense fallback={<Loader />}>
+          <Menu />
+        </Suspense>
 
         <div className={styles.routeWrapper}>
           <Switch>
-            <Route path='/' exact component={AboutContainer} />
-            <Route path='/todo' component={TodoContainer} />
-            <Route path='/contacts' component={ContactsContainer} />
+            <Route path='/' exact>
+              <Suspense fallback={<Loader />}>
+                <AboutContainer />
+              </Suspense>
+            </Route>
+
+            <Route path='/todo'>
+              <Suspense fallback={<Loader />}>
+                <TodoContainer />
+              </Suspense>
+            </Route>
+
+            <Route path='/contacts'>
+              <Suspense fallback={<Loader />}>
+                <ContactsContainer />
+              </Suspense>
+            </Route>
+
             <Redirect to='/' />
           </Switch>
         </div>
-
       </div>
 
     </div>

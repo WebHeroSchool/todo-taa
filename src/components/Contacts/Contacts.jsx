@@ -1,21 +1,44 @@
+import styles from './Contacts.module.css';
+import classNames from 'classnames';
+
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
-import SocialLink from './SocialLink/SocialLink';
+import withLink from './SocialLink/SocialLink';
 
-import emailIcon from './images/email.svg';
-import emailRoundIcon from './images/emailRound.svg';
-import telegramIcon from './images/telegram.svg';
-import telegramRoundIcon from './images/telegramRound.svg';
-import githubIcon from './images/github.svg';
-import linkedinIcon from './images/linkedin.svg';
-import twitterIcon from './images/twitter.svg';
+import {
+  ReactComponent as EmailIcon,
+} from './images/email.svg';
+import {
+  ReactComponent as EmailRoundIcon,
+} from './images/emailRound.svg';
+import {
+  ReactComponent as TelegramIcon,
+} from './images/telegram.svg';
+import {
+  ReactComponent as TelegramRoundIcon,
+} from './images/telegramRound.svg';
+import {
+  ReactComponent as GithubIcon,
+} from './images/github.svg';
+import {
+  ReactComponent as LinkedinIcon,
+} from './images/linkedin.svg';
+import {
+  ReactComponent as TwitterIcon,
+} from './images/twitter.svg';
 
-import styles from './Contacts.module.css';
 
 import {
   useState,
 } from 'react';
-import classNames from 'classnames';
+
+const EmailLink = props => withLink(EmailIcon, props);
+const EmailRoundLink = props => withLink(EmailRoundIcon, props);
+const TelegramLink = props => withLink(TelegramIcon, props);
+const TelegramRoundLink = props => withLink(TelegramRoundIcon, props);
+const GithubLink = props => withLink(GithubIcon, props);
+const LinkedinLink = props => withLink(LinkedinIcon, props);
+const TwitterLink = props => withLink(TwitterIcon, props);
 
 const Contacts = props => {
   const [
@@ -50,47 +73,48 @@ const Contacts = props => {
 
           <div className={ styles.content }>
             <p className={ styles.bio }>{ props.contacts.items.bio }</p>
-            <SocialLink
-              iconSrc={ emailIcon }
+
+            <EmailLink
               linkTo={ props.contacts.items.email }
               linkValue={ props.contacts.items.email }
               isEmail={true}
             />
-            <SocialLink
-              iconSrc={ telegramIcon }
+
+            <TelegramLink
               linkTo={ `tg://resolve?domain=${props.contacts.items.login}` }
               linkValue="+7(926)265-4213"
             />
           </div>
 
+
           <div className={ styles.networks }>
+
             <div className={ styles.hidenLinks }>
-              <SocialLink
-                iconSrc={ emailRoundIcon }
+              <EmailRoundLink
                 linkTo={ props.contacts.items.email }
                 isEmail={true}
                 isWithMiddleMargin={ true }
               />
-              <SocialLink
-                iconSrc={ telegramRoundIcon }
+
+              <TelegramRoundLink
                 linkTo={ `tg://resolve?domain=${props.contacts.items.login}` }
                 isWithMiddleMargin={ true }
               />
             </div>
-            <SocialLink
-              iconSrc={ githubIcon }
+
+            <GithubLink
               linkTo={ props.contacts.items.html_url }
               isBlank={ true }
               isWithMiddleMargin={ true }
             />
-            <SocialLink
-              iconSrc={ linkedinIcon }
+
+            <LinkedinLink
               linkTo="https://linkedin.com/in/tkachuk-anton/"
               isBlank={ true }
               isWithMiddleMargin={ true }
             />
-            <SocialLink
-              iconSrc={ twitterIcon }
+
+            <TwitterLink
               linkTo={ `https://twitter.com/${
                 props.contacts.items.twitter_username}` }
               isBlank={ true }

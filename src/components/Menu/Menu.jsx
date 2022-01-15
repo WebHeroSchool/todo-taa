@@ -27,7 +27,7 @@ const Menu = () => {
     <Paper className={styles.menu} elevation={3} >
       <Suspense fallback={<Loader />}>
         <MenuList>
-          <nav className={ styles.menuList }>
+          <nav className={ styles.menuList } role="menuitem">
             <AppLink
               to="/"
               selectedIndex={selectedIndex}

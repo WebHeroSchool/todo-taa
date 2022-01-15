@@ -10,12 +10,14 @@ const withLink = (
     isEmail,
     isBlank,
     isWithMiddleMargin,
+    title = 'Связаться со мной',
   },
 ) => (
   <a
     className={ styles.contactData }
     href={ isEmail ? `mailto:${linkTo}` : linkTo }
     target={ isBlank ? 'blank' : '' }
+    title={ title }
   >
     <Image
       className={classNames({

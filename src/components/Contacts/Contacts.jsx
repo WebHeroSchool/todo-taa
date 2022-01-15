@@ -87,11 +87,13 @@ const Contacts = props => {
               linkTo={ props.contacts.items.email }
               linkValue={ props.contacts.items.email }
               isEmail={true}
+              title="Написать мне на почту"
             />
 
             <TelegramLink
               linkTo={ `tg://resolve?domain=${props.contacts.items.login}` }
               linkValue="+7(926)265-4213"
+              title="Написать мне в Телеграм"
             />
           </div>
 
@@ -103,11 +105,13 @@ const Contacts = props => {
                 linkTo={ props.contacts.items.email }
                 isEmail={true}
                 isWithMiddleMargin={ true }
+                title="Написать мне на почту"
               />
 
               <TelegramRoundLink
                 linkTo={ `tg://resolve?domain=${props.contacts.items.login}` }
                 isWithMiddleMargin={ true }
+                title="Написать мне в Телеграм"
               />
             </div>
 
@@ -115,12 +119,14 @@ const Contacts = props => {
               linkTo={ props.contacts.items.html_url }
               isBlank={ true }
               isWithMiddleMargin={ true }
+              title="Мой GitHub"
             />
 
             <LinkedinLink
               linkTo="https://linkedin.com/in/tkachuk-anton/"
               isBlank={ true }
               isWithMiddleMargin={ true }
+              title="Я в Linked In"
             />
 
             <TwitterLink
@@ -128,6 +134,7 @@ const Contacts = props => {
                 props.contacts.items.twitter_username}` }
               isBlank={ true }
               isWithMiddleMargin={ true }
+              title="Я в Twitter"
             />
           </div>
         </div>

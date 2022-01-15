@@ -23,7 +23,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "stylelint 'src/**/*.css'",
-    "precommit": "npm run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +42,7 @@
       "last 1 safari version"
     ]
   },
+  "pre-commit": [ "lint" ],
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -54,6 +54,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.2.3",
+    "pre-commit": "^1.2.2",
     "stylelint": "^14.2.0"
   }
 }

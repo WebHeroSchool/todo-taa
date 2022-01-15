@@ -1,4 +1,9 @@
 import {
+  Suspense,
+  lazy,
+} from 'react';
+
+import {
   connect,
 } from 'react-redux';
 
@@ -12,9 +17,11 @@ import {
   setContactsIsError as setFetchError,
 } from '../../store/actions/fetchError';
 
-import Contacts from './Contacts';
-
 import withFetch from '../hoc/withFetch/withFetch';
+
+const Loader = lazy(() => import('../Loader/Loader'));
+const Contacts = lazy(() => import('./Contacts'));
+
 
 const url = `https://api.github.com/users/chiga2030`;
 
@@ -25,10 +32,12 @@ const ContactsWithFetch = props => withFetch(Contacts, {
 
 
 const ContactsContainer = props => (
-  <ContactsWithFetch
-    url={ url }
-    { ...props }
-  />
+  <Suspense fallback={<Loader />}>
+    <ContactsWithFetch
+      url={ url }
+      { ...props }
+    />
+  </Suspense>
 );
 
 

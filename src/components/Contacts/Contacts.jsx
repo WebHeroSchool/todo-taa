@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import Loader from '../Loader/Loader';
 import Title from '../Title/Title';
-import withLink from './SocialLink/SocialLink';
+import withLink from '../hoc/withLink/withLink';
 
 import {
   ReactComponent as EmailIcon,

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import styles from './SocialLink.module.css';
+import styles from './withLink.module.css';
 
 
 const withLink = (

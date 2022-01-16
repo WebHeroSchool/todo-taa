@@ -115,7 +115,7 @@ export const onTouchOverHandler = (event, element, ulElement,
   if (element && isShiftAllowed
       && ulElement.current.contains(elementUnderPointer)) {
     orderOfDroppedItem(triggeredElement, elementUnderPointer,
-      element, setTriggeredElement, setIsShiftAllowed);
+      element, setTriggeredElement);
 
     shift(element, elementUnderPointer,
       getHeight(elementUnderPointer, element), null, setIsShiftAllowed);

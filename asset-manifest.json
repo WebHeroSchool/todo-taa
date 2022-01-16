@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todo-taa/static/css/main.2875fcec.css",
-    "main.js": "/todo-taa/static/js/main.9451eac8.js",
+    "main.js": "/todo-taa/static/js/main.e6e28cae.js",
     "static/css/618.d214b560.chunk.css": "/todo-taa/static/css/618.d214b560.chunk.css",
     "static/js/618.37c34c14.chunk.js": "/todo-taa/static/js/618.37c34c14.chunk.js",
     "static/css/639.19b41b1a.chunk.css": "/todo-taa/static/css/639.19b41b1a.chunk.css",
@@ -55,8 +55,8 @@
     "static/media/label.svg": "/todo-taa/static/media/label.d302981c367f72d11e4056b57a16f1ce.svg",
     "static/media/github.svg": "/todo-taa/static/media/github.61a1fd659fd7e955574c9ec804e82a68.svg",
     "static/media/fork.svg": "/todo-taa/static/media/fork.a232545dff4cd138fd9cc408345605d8.svg",
-    "static/media/email.svg": "/todo-taa/static/media/email.a4b34e32741256ff45dea1cc98f4d7fc.svg",
     "index.html": "/todo-taa/index.html",
+    "static/media/email.svg": "/todo-taa/static/media/email.a4b34e32741256ff45dea1cc98f4d7fc.svg",
     "static/media/twitter.svg": "/todo-taa/static/media/twitter.5303e6905711d0b1e836db5dcea0f686.svg",
     "static/media/emailRound.svg": "/todo-taa/static/media/emailRound.0137f346e02203586842f59a79538785.svg",
     "static/media/linkedin.svg": "/todo-taa/static/media/linkedin.80de20f8611445f40fc45fb45e01c285.svg",
@@ -69,7 +69,7 @@
     "static/media/cancel.svg": "/todo-taa/static/media/cancel.ab15af3811c16e5eb9987a83945dc78c.svg",
     "static/media/ellipse.svg": "/todo-taa/static/media/ellipse.935b3a2483254c19cfee4902eba4dd8d.svg",
     "main.2875fcec.css.map": "/todo-taa/static/css/main.2875fcec.css.map",
-    "main.9451eac8.js.map": "/todo-taa/static/js/main.9451eac8.js.map",
+    "main.e6e28cae.js.map": "/todo-taa/static/js/main.e6e28cae.js.map",
     "618.d214b560.chunk.css.map": "/todo-taa/static/css/618.d214b560.chunk.css.map",
     "618.37c34c14.chunk.js.map": "/todo-taa/static/js/618.37c34c14.chunk.js.map",
     "639.19b41b1a.chunk.css.map": "/todo-taa/static/css/639.19b41b1a.chunk.css.map",
@@ -113,6 +113,6 @@
   },
   "entrypoints": [
     "static/css/main.2875fcec.css",
-    "static/js/main.9451eac8.js"
+    "static/js/main.e6e28cae.js"
   ]
 }

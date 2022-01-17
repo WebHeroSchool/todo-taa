@@ -136,13 +136,15 @@ const DndList = ({
         timerId,
         setIsShiftAllowed,
         isShiftAllowed,
+        props.setOrderItems,
       ) }
       onPointerOver={ event => onPointerOverHandler(
         event,
         ulElement,
         element,
-        setTriggeredElement,
+        // setTriggeredElement,
         triggeredElement,
+        props.setOrderItems,
       ) }
       onPointerUp={ () => onPointerUpListener(
         element,

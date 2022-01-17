@@ -3,7 +3,7 @@ import {
   setTransition,
   getHeight,
   setElementPosition,
-  orderOfDroppedItem,
+  // orderOfDroppedItem,
 } from './handlersUtils';
 
 export const onPointerMoveHandler = (event, element) => {
@@ -69,7 +69,11 @@ export const onPointerDownHandler = (event,
 
 
 export const onPointerOverHandler = (event,
-  ulElement, element, setTriggeredElement, triggeredElement) => {
+  ulElement, element,
+  // setTriggeredElement,
+  triggeredElement,
+  setOrderItems
+) => {
   if (element) {
     const eventTarget = document.elementFromPoint(
       event.clientX, event.clientY).closest('li');
@@ -77,11 +81,16 @@ export const onPointerOverHandler = (event,
     if (ulElement.current.contains(eventTarget)) {
       const height = getHeight(eventTarget, element);
 
-      orderOfDroppedItem(triggeredElement, eventTarget,
-        element, setTriggeredElement);
+      // orderOfDroppedItem(triggeredElement, eventTarget,
+      //   element, setTriggeredElement);
+
 
       shift(element, eventTarget, height);
-      setTransition(eventTarget.parentElement.firstElementChild, .1);
+      setTransition(eventTarget.parentElement.firstElementChild, 0);
+    }
+
+    if (element && eventTarget) {
+      setOrderItems(element.dataset.order, eventTarget.dataset.order);
     }
   }
 };
@@ -89,7 +98,7 @@ export const onPointerOverHandler = (event,
 
 export const onTouchOverHandler = (event, element, ulElement,
   triggeredElement, setTriggeredElement, timerId,
-  setIsShiftAllowed, isShiftAllowed) => {
+  setIsShiftAllowed, isShiftAllowed, setOrderItems) => {
   if (event.type === 'touchmove') {
     clearTimeout(timerId);
   }
@@ -112,11 +121,13 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   if (element && isShiftAllowed
       && ulElement.current.contains(elementUnderPointer)) {
-    orderOfDroppedItem(triggeredElement, elementUnderPointer,
-      element, setTriggeredElement);
+    // orderOfDroppedItem(triggeredElement, elementUnderPointer,
+    //   element, setTriggeredElement);
+
 
     shift(element, elementUnderPointer,
       getHeight(elementUnderPointer, element), null, setIsShiftAllowed);
+    setOrderItems(element.dataset.order, elementUnderPointer.dataset.order);
   }
 };
 

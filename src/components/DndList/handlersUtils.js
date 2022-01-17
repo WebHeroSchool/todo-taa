@@ -86,7 +86,7 @@ export const endOfGesture = (element, setElement,
 
 
 export const scrollTo = (element, setIntervalId, ulElement, event) => {
-  if (element) {
+  if (element && event.pointerType !== 'touch') {
     setIntervalId(setInterval(() => {
       if (event.clientY > event.target.offsetParent.offsetTop) {
         ulElement.current.parentElement.scrollTop += 30;
@@ -103,15 +103,15 @@ export const stopInterval = id => {
 };
 
 
-export const orderOfDroppedItem = (triggeredElement, eventTarget,
-  element, setTriggeredElement) => {
-  if (triggeredElement === eventTarget
-    && element.dataset.order > eventTarget.dataset.order) {
-    setTriggeredElement(eventTarget.previousElementSibling);
-  } else if (triggeredElement === eventTarget
-    && element.dataset.order < eventTarget.dataset.order) {
-    setTriggeredElement(eventTarget.nextElementSibling);
-  } else {
-    setTriggeredElement(eventTarget);
-  }
-};
+// export const orderOfDroppedItem = (triggeredElement, eventTarget,
+//   element, setTriggeredElement) => {
+//   if (triggeredElement === eventTarget
+//     && element.dataset.order > eventTarget.dataset.order) {
+//     setTriggeredElement(eventTarget.previousElementSibling);
+//   } else if (triggeredElement === eventTarget
+//     && element.dataset.order < eventTarget.dataset.order) {
+//     setTriggeredElement(eventTarget.nextElementSibling);
+//   } else {
+//     setTriggeredElement(eventTarget);
+//   }
+// };

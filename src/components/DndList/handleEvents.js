@@ -84,7 +84,6 @@ export const onPointerOverHandler = (event,
       // orderOfDroppedItem(triggeredElement, eventTarget,
       //   element, setTriggeredElement);
 
-
       shift(element, eventTarget, height);
       setTransition(eventTarget.parentElement.firstElementChild, 0);
     }

@@ -19,7 +19,6 @@ import {
   onTouchOverHandler,
   onPointerUpListener,
   onContextMenuHandler,
-  onPointerLeaveHandler,
 } from './handleEvents';
 
 import TodoItemContainer from '../TodoItem/TodoItemContainer';
@@ -36,11 +35,6 @@ const DndList = ({
   ] = useState(null);
 
   const [
-    triggeredElement,
-    setTriggeredElement,
-  ] = useState(null);
-
-  const [
     timerId,
     setTimerId,
   ] = useState(null);
@@ -50,37 +44,7 @@ const DndList = ({
     setIntervalId,
   ] = useState(null);
 
-  const [
-    isShiftAllowed,
-    setIsShiftAllowed,
-  ] = useState(true);
-
   const ulElement = useRef(null);
-
-
-  useEffect(() => {
-    const onHtmlUpHandler = onPointerLeaveHandler.bind(
-      event,
-      ulElement,
-      element,
-      endOfGesture,
-      setElement,
-      setTriggeredElement,
-      stopInterval,
-      intervalId,
-    );
-
-    document.documentElement.addEventListener('pointerup',
-      onHtmlUpHandler);
-
-    return () => {
-      document.documentElement.removeEventListener('pointerup',
-        onHtmlUpHandler);
-    };
-  }, [
-    element,
-    intervalId,
-  ]);
 
 
   useEffect(() => {
@@ -131,27 +95,19 @@ const DndList = ({
         event,
         element,
         ulElement,
-        triggeredElement,
-        setTriggeredElement,
         timerId,
-        setIsShiftAllowed,
-        isShiftAllowed,
         props.setOrderItems,
       ) }
       onPointerOver={ event => onPointerOverHandler(
         event,
         ulElement,
         element,
-        // setTriggeredElement,
-        triggeredElement,
         props.setOrderItems,
       ) }
       onPointerUp={ () => onPointerUpListener(
         element,
-        triggeredElement,
         endOfGesture,
         setElement,
-        setTriggeredElement,
         timerId,
         ulElement,
         props.setOrderItems,

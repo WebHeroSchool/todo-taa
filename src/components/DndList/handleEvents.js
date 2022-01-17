@@ -1,9 +1,7 @@
 import {
   shift,
-  setTransition,
   getHeight,
   setElementPosition,
-  // orderOfDroppedItem,
 } from './handlersUtils';
 
 export const onPointerMoveHandler = (event, element) => {
@@ -16,8 +14,13 @@ export const onPointerMoveHandler = (event, element) => {
 };
 
 
-export const onPointerDownHandler = (event,
-  ulElement, element, setElement, setTimerId) => {
+export const onPointerDownHandler = (
+  event,
+  ulElement,
+  element,
+  setElement,
+  setTimerId
+) => {
   const eventTarget = event.target.closest('li');
 
   if (event.pointerType === 'mouse'
@@ -68,11 +71,11 @@ export const onPointerDownHandler = (event,
 };
 
 
-export const onPointerOverHandler = (event,
-  ulElement, element,
-  // setTriggeredElement,
-  triggeredElement,
-  setOrderItems
+export const onPointerOverHandler = (
+  event,
+  ulElement,
+  element,
+  setOrderItems,
 ) => {
   if (element) {
     const eventTarget = document.elementFromPoint(
@@ -81,30 +84,26 @@ export const onPointerOverHandler = (event,
     if (ulElement.current.contains(eventTarget)) {
       const height = getHeight(eventTarget, element);
 
-      // orderOfDroppedItem(triggeredElement, eventTarget,
-      //   element, setTriggeredElement);
-
       shift(element, eventTarget, height);
-      setTransition(eventTarget.parentElement.firstElementChild, 0);
-    }
-
-    if (element && eventTarget) {
       setOrderItems(element.dataset.order, eventTarget.dataset.order);
     }
   }
 };
 
 
-export const onTouchOverHandler = (event, element, ulElement,
-  triggeredElement, setTriggeredElement, timerId,
-  setIsShiftAllowed, isShiftAllowed, setOrderItems) => {
+export const onTouchOverHandler = (
+  event,
+  element,
+  ulElement,
+  timerId,
+  setOrderItems) => {
   if (event.type === 'touchmove') {
     clearTimeout(timerId);
   }
 
   const elFromPointer = document.elementFromPoint(
     event.touches[0].pageX,
-    event.touches[0].pageY);
+    event.touches[0].pageY - document.scrollingElement.scrollTop);
 
   const closestLi = () => {
     if (elFromPointer) {
@@ -114,49 +113,30 @@ export const onTouchOverHandler = (event, element, ulElement,
 
   const elementUnderPointer = closestLi();
 
-  if (!elementUnderPointer) {
-    setIsShiftAllowed(true);
-  }
-
-  if (element && isShiftAllowed
-      && ulElement.current.contains(elementUnderPointer)) {
-    // orderOfDroppedItem(triggeredElement, elementUnderPointer,
-    //   element, setTriggeredElement);
-
-
+  if (element
+    && ulElement.current.contains(elementUnderPointer)) {
     shift(element, elementUnderPointer,
-      getHeight(elementUnderPointer, element), null, setIsShiftAllowed);
+      getHeight(elementUnderPointer, element),
+    );
+
     setOrderItems(element.dataset.order, elementUnderPointer.dataset.order);
   }
 };
 
 
-export const onPointerUpListener = (element, triggeredElement,
-  endOfGesture, setElement, setTriggeredElement,
-  timerId, ulElement, setOrderItems) => {
+export const onPointerUpListener = (
+  element,
+  endOfGesture,
+  setElement,
+  timerId,
+  ulElement,
+) => {
   if (event.pointerType === 'touch') {
     clearTimeout(timerId);
   }
 
   if (element) {
-    return endOfGesture(element, setElement, setTriggeredElement, ulElement,
-      null, null, triggeredElement, setOrderItems);
-  }
-};
-
-
-export const onPointerLeaveHandler = (
-  ulElement,
-  element,
-  endOfGesture,
-  setElement,
-  setTriggeredElement,
-  stopInterval,
-  intervalId,
-) => {
-  if (ulElement.current !== event.target && element) {
-    return endOfGesture(element, setElement, setTriggeredElement,
-      ulElement, stopInterval, intervalId);
+    return endOfGesture(element, setElement, ulElement);
   }
 };
 

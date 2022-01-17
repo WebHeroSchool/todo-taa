@@ -1,15 +1,5 @@
 import styles from '../TodoItem/TodoItem.module.css';
 
-export const searchIndex = element => Array.prototype.indexOf.call(
-  element.parentElement.children, element);
-
-
-export const isSlideToDown = (indexOfMovable, indexOfStatic) => {
-  if (indexOfMovable < indexOfStatic) {
-    return true;
-  } return false;
-};
-
 
 export const setElementPosition = (element, pageY) => {
   const delta = pageY - element.offsetTop - (element.offsetHeight * .5)

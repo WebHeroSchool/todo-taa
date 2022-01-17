@@ -1,6 +1,4 @@
 import {
-  searchIndex,
-  isSlideToDown,
   shift,
   setTransition,
   getHeight,
@@ -128,21 +126,6 @@ export const onPointerUpListener = (element, triggeredElement,
   timerId, ulElement, setOrderItems) => {
   if (event.pointerType === 'touch') {
     clearTimeout(timerId);
-  }
-
-  if (element && triggeredElement) {
-    let where;
-    const isDown = isSlideToDown(searchIndex(element),
-      searchIndex(triggeredElement));
-
-    if ((isDown && triggeredElement.style.transform.length < 16)
-      || (!isDown && triggeredElement.style.transform.length < 16)) {
-      where = 'afterEnd';
-    } else {
-      where = 'beforeBegin';
-    }
-
-    triggeredElement.insertAdjacentElement(where, element);
   }
 
   if (element) {

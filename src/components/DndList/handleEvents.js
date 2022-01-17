@@ -69,7 +69,11 @@ export const onPointerDownHandler = (event,
 
 
 export const onPointerOverHandler = (event,
-  ulElement, element, setTriggeredElement, triggeredElement) => {
+  ulElement, element,
+  // setTriggeredElement,
+  triggeredElement,
+  setOrderItems
+) => {
   if (element) {
     const eventTarget = document.elementFromPoint(
       event.clientX, event.clientY).closest('li');
@@ -77,11 +81,15 @@ export const onPointerOverHandler = (event,
     if (ulElement.current.contains(eventTarget)) {
       const height = getHeight(eventTarget, element);
 
-      orderOfDroppedItem(triggeredElement, eventTarget,
-        element, setTriggeredElement);
+      // orderOfDroppedItem(triggeredElement, eventTarget,
+      //   element, setTriggeredElement);
+
+      if (element && eventTarget) {
+        setOrderItems(element.dataset.order, eventTarget.dataset.order);
+      }
 
       shift(element, eventTarget, height);
-      setTransition(eventTarget.parentElement.firstElementChild, .1);
+      setTransition(eventTarget.parentElement.firstElementChild, 0);
     }
   }
 };

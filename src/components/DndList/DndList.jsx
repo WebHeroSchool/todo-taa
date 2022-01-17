@@ -141,8 +141,9 @@ const DndList = ({
         event,
         ulElement,
         element,
-        setTriggeredElement,
+        // setTriggeredElement,
         triggeredElement,
+        props.setOrderItems
       ) }
       onPointerUp={ () => onPointerUpListener(
         element,
